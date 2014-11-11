@@ -141,7 +141,7 @@ public class ControllerViewMsj {
      * @param componente El componente donde se adjuntara el mensaje.
      */
     public static void muestraMensajeGlobo(String mensaje, JComponent componente) {
-        ModernBalloonStyle style = new ModernBalloonStyle(5, 5, Color.WHITE, Color.LIGHT_GRAY, new Color(231, 168, 185));
+        ModernBalloonStyle style = new ModernBalloonStyle(5, 5, Color.WHITE, Color.LIGHT_GRAY, new Color(115,164,209));
         style.setBorderThickness(3);
         style.enableAntiAliasing(true);
         BalloonTip bt = new BalloonTip(componente, mensaje, style, false);

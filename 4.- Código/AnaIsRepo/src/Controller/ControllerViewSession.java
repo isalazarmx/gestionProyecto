@@ -6,7 +6,6 @@
 package Controller;
 
 import Model.ModelUsuario;
-import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
@@ -32,7 +31,7 @@ public class ControllerViewSession {
     
     public void next(JLabel labelStatus,Thread hilo, ModelUsuario user){
         if(!username.getText().equals("Nombre de usuario") && !username.getText().isEmpty()){
-            if(!crearPass(pass1).equals("Password-01")){
+            if(!crearPass(pass1).equals("Password-01") && !pass1.getText().isEmpty()){
                 if(ControllerConsults.validateSession(user)){
                     labelStatus.setText("Iniciando sistema");
                     hilo.resume();
