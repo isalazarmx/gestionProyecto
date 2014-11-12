@@ -22,7 +22,7 @@ public class ViewInit extends javax.swing.JFrame {
      */
     public ViewInit() {
         initComponents();
-        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Image/LogoEmp.png"));
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Image/iconEmpresa.png"));
         setIconImage(icon);
         super.setLocationRelativeTo(null);
         initCharger();

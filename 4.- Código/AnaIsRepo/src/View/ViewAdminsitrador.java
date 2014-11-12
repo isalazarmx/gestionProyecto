@@ -36,7 +36,7 @@ public class ViewAdminsitrador extends javax.swing.JFrame {
         this.modelEmpresa = modelEmpresa;
         this.modelUsuario = modelUsuario;
         initComponents();
-        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Image/Logo.png"));
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Image/iconEmpresa.png"));
         setIconImage(icon);
         initClock();
         initFecha();
@@ -95,8 +95,9 @@ public class ViewAdminsitrador extends javax.swing.JFrame {
         usuario = new javax.swing.JLabel();
         jLabelHora1 = new javax.swing.JLabel();
         jPanelEncabezado = new javax.swing.JPanel();
-        iniciar1 = new javax.swing.JButton();
+        inicio = new javax.swing.JButton();
         iniciar2 = new javax.swing.JButton();
+        iniciar3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -148,23 +149,22 @@ public class ViewAdminsitrador extends javax.swing.JFrame {
         panelTituloLayout.setHorizontalGroup(
             panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTituloLayout.createSequentialGroup()
-                .addContainerGap(280, Short.MAX_VALUE)
+                .addContainerGap(244, Short.MAX_VALUE)
                 .addComponent(jLabelHora, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(BMin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BCerrar))
+                .addComponent(BCerrar)
+                .addGap(25, 25, 25))
         );
         panelTituloLayout.setVerticalGroup(
             panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+            .addComponent(BCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
             .addComponent(jLabelHora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabelFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panelTituloLayout.createSequentialGroup()
-                .addComponent(BMin, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(BMin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanelCentral.setBackground(new java.awt.Color(204, 204, 204));
@@ -214,47 +214,49 @@ public class ViewAdminsitrador extends javax.swing.JFrame {
         jPanelCentral.setLayout(jPanelCentralLayout);
         jPanelCentralLayout.setHorizontalGroup(
             jPanelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanelCentralLayout.createSequentialGroup()
                 .addGap(75, 75, 75)
                 .addComponent(jPanelDatUsu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanelCentralLayout.createSequentialGroup()
-                .addGap(378, 378, 378)
+                .addContainerGap()
                 .addComponent(jLabelHora1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanelCentralLayout.setVerticalGroup(
             jPanelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCentralLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addContainerGap()
                 .addComponent(jLabelHora1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(158, 158, 158)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(216, 216, 216)
                 .addComponent(jPanelDatUsu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanelEncabezado.setBackground(new java.awt.Color(255, 255, 255));
         jPanelEncabezado.setForeground(new java.awt.Color(205, 212, 205));
         jPanelEncabezado.setToolTipText("");
 
-        iniciar1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        iniciar1.setForeground(new java.awt.Color(51, 51, 51));
-        iniciar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/home.png"))); // NOI18N
-        iniciar1.setText("Inicio");
-        iniciar1.setContentAreaFilled(false);
-        iniciar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        iniciar1.setSelected(true);
-        iniciar1.addActionListener(new java.awt.event.ActionListener() {
+        inicio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        inicio.setForeground(new java.awt.Color(51, 51, 51));
+        inicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/InicioDisable.png"))); // NOI18N
+        inicio.setContentAreaFilled(false);
+        inicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        inicio.setSelected(true);
+        inicio.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        inicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                iniciar1ActionPerformed(evt);
+                inicioActionPerformed(evt);
             }
         });
 
         iniciar2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         iniciar2.setForeground(new java.awt.Color(51, 51, 51));
+        iniciar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/th-list.png"))); // NOI18N
         iniciar2.setText("Productos");
         iniciar2.setContentAreaFilled(false);
         iniciar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -265,25 +267,40 @@ public class ViewAdminsitrador extends javax.swing.JFrame {
             }
         });
 
+        iniciar3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        iniciar3.setForeground(new java.awt.Color(51, 51, 51));
+        iniciar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/chart-bar.png"))); // NOI18N
+        iniciar3.setText("Reportes");
+        iniciar3.setContentAreaFilled(false);
+        iniciar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        iniciar3.setSelected(true);
+        iniciar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniciar3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelEncabezadoLayout = new javax.swing.GroupLayout(jPanelEncabezado);
         jPanelEncabezado.setLayout(jPanelEncabezadoLayout);
         jPanelEncabezadoLayout.setHorizontalGroup(
             jPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEncabezadoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(iniciar1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inicio)
+                .addGap(22, 22, 22)
                 .addComponent(iniciar2)
+                .addGap(12, 12, 12)
+                .addComponent(iniciar3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelEncabezadoLayout.setVerticalGroup(
             jPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEncabezadoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(iniciar1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(iniciar2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iniciar3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iniciar2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -291,18 +308,21 @@ public class ViewAdminsitrador extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanelEncabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanelCentral, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanelEncabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(panelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanelCentral, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(189, Short.MAX_VALUE))
+                .addComponent(jPanelEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanelCentral, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(169, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -329,13 +349,18 @@ public class ViewAdminsitrador extends javax.swing.JFrame {
         setExtendedState(ViewAdminsitrador.CROSSHAIR_CURSOR); 
     }//GEN-LAST:event_BMinActionPerformed
 
-    private void iniciar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciar1ActionPerformed
-    
-    }//GEN-LAST:event_iniciar1ActionPerformed
+    private void inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioActionPerformed
+        inicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/inicioEnable.png")));
+    }//GEN-LAST:event_inicioActionPerformed
 
     private void iniciar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciar2ActionPerformed
         // TODO add your handling code here:
+        inicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/inicioDisable.png")));
     }//GEN-LAST:event_iniciar2ActionPerformed
+
+    private void iniciar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciar3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_iniciar3ActionPerformed
 
     public void agregaJPanel(JPanel panelBase, JPanel panelAdd)
     {
@@ -348,9 +373,9 @@ public class ViewAdminsitrador extends javax.swing.JFrame {
     private javax.swing.JButton BCerrar;
     private javax.swing.JButton BMin;
     private javax.swing.JLabel Titulo01;
-    private javax.swing.JButton iniciar;
-    private javax.swing.JButton iniciar1;
     private javax.swing.JButton iniciar2;
+    private javax.swing.JButton iniciar3;
+    private javax.swing.JButton inicio;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelFecha;
     private javax.swing.JLabel jLabelHora;
