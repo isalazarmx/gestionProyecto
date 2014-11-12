@@ -96,6 +96,7 @@ public class ViewAdminsitrador extends javax.swing.JFrame {
         jLabelHora1 = new javax.swing.JLabel();
         jPanelEncabezado = new javax.swing.JPanel();
         iniciar1 = new javax.swing.JButton();
+        iniciar2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -239,18 +240,32 @@ public class ViewAdminsitrador extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanelEncabezado.setBackground(new java.awt.Color(0, 153, 204));
+        jPanelEncabezado.setBackground(new java.awt.Color(255, 255, 255));
         jPanelEncabezado.setForeground(new java.awt.Color(205, 212, 205));
+        jPanelEncabezado.setToolTipText("");
 
         iniciar1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        iniciar1.setForeground(new java.awt.Color(255, 255, 255));
-        iniciar1.setText("Productos");
+        iniciar1.setForeground(new java.awt.Color(51, 51, 51));
+        iniciar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/home.png"))); // NOI18N
+        iniciar1.setText("Inicio");
         iniciar1.setContentAreaFilled(false);
         iniciar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         iniciar1.setSelected(true);
         iniciar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 iniciar1ActionPerformed(evt);
+            }
+        });
+
+        iniciar2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        iniciar2.setForeground(new java.awt.Color(51, 51, 51));
+        iniciar2.setText("Productos");
+        iniciar2.setContentAreaFilled(false);
+        iniciar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        iniciar2.setSelected(true);
+        iniciar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniciar2ActionPerformed(evt);
             }
         });
 
@@ -261,13 +276,17 @@ public class ViewAdminsitrador extends javax.swing.JFrame {
             .addGroup(jPanelEncabezadoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(iniciar1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(iniciar2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelEncabezadoLayout.setVerticalGroup(
             jPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEncabezadoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(iniciar1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(iniciar1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iniciar2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -285,9 +304,9 @@ public class ViewAdminsitrador extends javax.swing.JFrame {
                 .addComponent(panelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanelEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(135, 135, 135)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelCentral, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -318,6 +337,10 @@ public class ViewAdminsitrador extends javax.swing.JFrame {
     
     }//GEN-LAST:event_iniciar1ActionPerformed
 
+    private void iniciar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_iniciar2ActionPerformed
+
     public void agregaJPanel(JPanel panelBase, JPanel panelAdd)
     {
         panelBase.removeAll();
@@ -331,6 +354,7 @@ public class ViewAdminsitrador extends javax.swing.JFrame {
     private javax.swing.JLabel Titulo01;
     private javax.swing.JButton iniciar;
     private javax.swing.JButton iniciar1;
+    private javax.swing.JButton iniciar2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelFecha;
     private javax.swing.JLabel jLabelHora;
