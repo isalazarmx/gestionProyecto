@@ -2,7 +2,7 @@ package Controller;
 
 import Model.ModelEmpresa;
 import Model.ModelUsuario;
-import View.ViewAdminsitrador;
+import View.ViewBasePrincipal;
 import View.ViewCaptInfoBussines;
 import View.ViewCaptInfoUser;
 import java.awt.Color;
@@ -77,7 +77,6 @@ public class ControllerCharger extends Thread {
                         break;
                 }
                 Thread.sleep(1000);
-                System.out.println("hilo Ejecutando");
             } catch (InterruptedException e) {
             }
         }
@@ -166,16 +165,15 @@ public class ControllerCharger extends Thread {
             /* Create and display the form */
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
-                    new ViewAdminsitrador(modelEmpresa, modelUsuario).setVisible(true);
+                    new ViewBasePrincipal(modelEmpresa, modelUsuario).setVisible(true);
                 }
-            });
-            System.out.println("Matar Hilo");
-            this.interrupt();
-            this.suspend();
-            this.stop();  
+            }); 
         }else{
-        
+            //Iniciar venta para vendedor
         }
+        this.interrupt();
+        this.suspend();
+        this.stop(); 
     }
     
     private void lanzarPantalla(JPanel panel, String mensaje, boolean flag) {
@@ -185,10 +183,8 @@ public class ControllerCharger extends Thread {
         panelBase.updateUI();
         labelStatus.setForeground(new Color(0, 0, 0));
         labelStatus.setText(mensaje);
-        if (flag) {
-            System.out.println("Hilo se detuvo");
+        if (flag)
             super.suspend();
-        }
     }
 
     /**
