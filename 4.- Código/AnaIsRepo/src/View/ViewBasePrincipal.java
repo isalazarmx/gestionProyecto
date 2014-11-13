@@ -16,7 +16,6 @@ import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
@@ -44,8 +43,9 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         initClock();
         initFecha();
         configIniciales();
-        addPanel(jPanelCentral,new JPanel());
-        identifUser();
+        addPanel(panelBotoneraPrincipal, new ViewBaseAdministradorBotoneraPrincipal());
+        addPanel(paneCentral, new ViewBaseAdministrador());
+        labelBienvenida.setText("Bienvenido Jesús Salazar");
     }
     
     private void initFecha(){
@@ -63,22 +63,18 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         super.setBackground(new Color(44,62,80));
         super.setSize(dim); 
         super.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        panelBotoneraPrincipal.setLayout(new GridBagLayout());
+        panelBotoneraPrincipal.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        panelBotoneraPrincipal.setVisible(true);
+        paneCentral.setLayout(new GridBagLayout());
+        paneCentral.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        paneCentral.setVisible(true);
     }
     
-    private void addPanel(JPanel panelBase,JPanel add)
-    {
-        panelBase.setLayout(new GridBagLayout());
-        panelBase.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        panelBase.setVisible(true);
-        panelBase.add(add);
-        panelBase.updateUI();
-    }
-
-    private void identifUser(){
-        ViewBaseAdministrador panel = new ViewBaseAdministrador();
-        jPanelCentral.removeAll();
-        jPanelCentral.add(panel);
-        jPanelCentral.updateUI();
+    private void addPanel(JPanel base, JPanel panel){
+        base.removeAll();
+        base.add(panel);
+        base.updateUI();
     }
     
     /**
@@ -90,19 +86,22 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanelBase = new javax.swing.JPanel();
         panelTitulo = new javax.swing.JPanel();
         BCerrar = new javax.swing.JButton();
         BMin = new javax.swing.JButton();
         jLabelFecha = new javax.swing.JLabel();
         jLabelHora = new javax.swing.JLabel();
-        jPanelCentral = new javax.swing.JPanel();
+        panelBotoneraPrincipal = new javax.swing.JPanel();
+        paneCentral = new javax.swing.JPanel();
+        panelBotoneraPrincipal1 = new javax.swing.JPanel();
+        labelBienvenida = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelBase.setBackground(new java.awt.Color(255, 255, 255));
 
         panelTitulo.setBackground(new java.awt.Color(245, 246, 247));
         panelTitulo.setForeground(new java.awt.Color(0, 51, 51));
@@ -133,14 +132,14 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabelFecha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelFecha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabelFecha.setForeground(new java.awt.Color(51, 51, 51));
         jLabelFecha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelFecha.setText("Fecha");
 
-        jLabelHora.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelHora.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabelHora.setForeground(new java.awt.Color(51, 51, 51));
-        jLabelHora.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelHora.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelHora.setText("Clock");
 
         javax.swing.GroupLayout panelTituloLayout = new javax.swing.GroupLayout(panelTitulo);
@@ -149,10 +148,10 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
             panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTituloLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelHora, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelHora, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(BMin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BCerrar)
@@ -161,38 +160,82 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         panelTituloLayout.setVerticalGroup(
             panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(BCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+            .addComponent(BMin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabelHora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabelFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(BMin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanelCentral.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelCentral.setForeground(new java.awt.Color(204, 204, 204));
+        panelBotoneraPrincipal.setBackground(new java.awt.Color(43, 53, 66));
 
-        javax.swing.GroupLayout jPanelCentralLayout = new javax.swing.GroupLayout(jPanelCentral);
-        jPanelCentral.setLayout(jPanelCentralLayout);
-        jPanelCentralLayout.setHorizontalGroup(
-            jPanelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelBotoneraPrincipalLayout = new javax.swing.GroupLayout(panelBotoneraPrincipal);
+        panelBotoneraPrincipal.setLayout(panelBotoneraPrincipalLayout);
+        panelBotoneraPrincipalLayout.setHorizontalGroup(
+            panelBotoneraPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelBotoneraPrincipalLayout.setVerticalGroup(
+            panelBotoneraPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        paneCentral.setBackground(new java.awt.Color(245, 246, 247));
+        paneCentral.setForeground(new java.awt.Color(204, 204, 204));
+
+        javax.swing.GroupLayout paneCentralLayout = new javax.swing.GroupLayout(paneCentral);
+        paneCentral.setLayout(paneCentralLayout);
+        paneCentralLayout.setHorizontalGroup(
+            paneCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1000, Short.MAX_VALUE)
         );
-        jPanelCentralLayout.setVerticalGroup(
-            jPanelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 761, Short.MAX_VALUE)
+        paneCentralLayout.setVerticalGroup(
+            paneCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 630, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanelCentral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        panelBotoneraPrincipal1.setBackground(new java.awt.Color(53, 66, 81));
+
+        labelBienvenida.setBackground(new java.awt.Color(245, 246, 247));
+        labelBienvenida.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelBienvenida.setForeground(new java.awt.Color(245, 246, 247));
+        labelBienvenida.setText("Bienvenido");
+
+        javax.swing.GroupLayout panelBotoneraPrincipal1Layout = new javax.swing.GroupLayout(panelBotoneraPrincipal1);
+        panelBotoneraPrincipal1.setLayout(panelBotoneraPrincipal1Layout);
+        panelBotoneraPrincipal1Layout.setHorizontalGroup(
+            panelBotoneraPrincipal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBotoneraPrincipal1Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(labelBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelBotoneraPrincipal1Layout.setVerticalGroup(
+            panelBotoneraPrincipal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBotoneraPrincipal1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanelBaseLayout = new javax.swing.GroupLayout(jPanelBase);
+        jPanelBase.setLayout(jPanelBaseLayout);
+        jPanelBaseLayout.setHorizontalGroup(
+            jPanelBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(paneCentral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelBotoneraPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelBotoneraPrincipal1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanelBaseLayout.setVerticalGroup(
+            jPanelBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBaseLayout.createSequentialGroup()
                 .addComponent(panelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanelCentral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(panelBotoneraPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panelBotoneraPrincipal1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(paneCentral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -200,12 +243,12 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -233,8 +276,11 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
     private javax.swing.JButton BMin;
     private javax.swing.JLabel jLabelFecha;
     private javax.swing.JLabel jLabelHora;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanelCentral;
+    private javax.swing.JPanel jPanelBase;
+    private javax.swing.JLabel labelBienvenida;
+    private javax.swing.JPanel paneCentral;
+    private javax.swing.JPanel panelBotoneraPrincipal;
+    private javax.swing.JPanel panelBotoneraPrincipal1;
     private javax.swing.JPanel panelTitulo;
     // End of variables declaration//GEN-END:variables
 }
