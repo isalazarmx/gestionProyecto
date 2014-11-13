@@ -8,7 +8,7 @@ package View;
 
 import Controller.ControllerClockPanel;
 import Controller.ControllerDatePanel;
-import Controller.ControllerViewAdministrador;
+import Controller.ControllerViewAdministradorBotoneraPrincipal;
 import Model.ModelEmpresa;
 import Model.ModelUsuario;
 import java.awt.Color;
@@ -28,7 +28,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
     ModelUsuario modelUsuario;
     ControllerClockPanel hiloHora;
     public static int idUsuario;
-    ControllerViewAdministrador controller;
+    ControllerViewAdministradorBotoneraPrincipal controller;
     /**
      * Creates new form principal
      * @param modelEmpresa
@@ -42,10 +42,19 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         setIconImage(icon);
         initClock();
         initFecha();
-        configIniciales();
-        addPanel(panelBotoneraPrincipal, new ViewBaseAdministradorBotoneraPrincipal());
-        addPanel(paneCentral, new ViewBaseAdministrador());
-        labelBienvenida.setText("Bienvenido Jesús Salazar");
+        configInit();
+        configInicialesPanel(panelBotoneraPrincipal);
+        configInicialesPanel(panelBotoneraSubPrincipal);
+        configInicialesPanel(panelCentral);
+        addPanel(panelBotoneraPrincipal, new ViewBaseAdministradorBotoneraPrincipal(panelBotoneraSubPrincipal,panelCentral));
+        addPanel(panelCentral, new ViewBaseAdministrador());
+    }
+    
+    private void configInit(){
+        Dimension dim = super.getToolkit().getScreenSize(); 
+        super.setBackground(new Color(44,62,80));
+        super.setSize(dim); 
+        super.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
     }
     
     private void initFecha(){
@@ -58,17 +67,10 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         clock.start();
     }
     
-    private void configIniciales(){
-        Dimension dim = super.getToolkit().getScreenSize(); 
-        super.setBackground(new Color(44,62,80));
-        super.setSize(dim); 
-        super.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        panelBotoneraPrincipal.setLayout(new GridBagLayout());
-        panelBotoneraPrincipal.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        panelBotoneraPrincipal.setVisible(true);
-        paneCentral.setLayout(new GridBagLayout());
-        paneCentral.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        paneCentral.setVisible(true);
+    private void configInicialesPanel(JPanel panel){
+        panel.setLayout(new GridBagLayout());
+        panel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        panel.setVisible(true);
     }
     
     private void addPanel(JPanel base, JPanel panel){
@@ -94,9 +96,8 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         jLabelHora = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         panelBotoneraPrincipal = new javax.swing.JPanel();
-        paneCentral = new javax.swing.JPanel();
-        panelBotoneraPrincipal1 = new javax.swing.JPanel();
-        labelBienvenida = new javax.swing.JLabel();
+        panelBotoneraSubPrincipal = new javax.swing.JPanel();
+        panelCentral = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -173,7 +174,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
             .addComponent(jLabelFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        panelBotoneraPrincipal.setBackground(new java.awt.Color(245, 246, 247));
+        panelBotoneraPrincipal.setBackground(new java.awt.Color(153, 153, 153));
 
         javax.swing.GroupLayout panelBotoneraPrincipalLayout = new javax.swing.GroupLayout(panelBotoneraPrincipal);
         panelBotoneraPrincipal.setLayout(panelBotoneraPrincipalLayout);
@@ -186,42 +187,31 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
             .addGap(0, 50, Short.MAX_VALUE)
         );
 
-        paneCentral.setBackground(new java.awt.Color(245, 246, 247));
-        paneCentral.setForeground(new java.awt.Color(204, 204, 204));
+        panelBotoneraSubPrincipal.setBackground(new java.awt.Color(102, 102, 102));
 
-        javax.swing.GroupLayout paneCentralLayout = new javax.swing.GroupLayout(paneCentral);
-        paneCentral.setLayout(paneCentralLayout);
-        paneCentralLayout.setHorizontalGroup(
-            paneCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelBotoneraSubPrincipalLayout = new javax.swing.GroupLayout(panelBotoneraSubPrincipal);
+        panelBotoneraSubPrincipal.setLayout(panelBotoneraSubPrincipalLayout);
+        panelBotoneraSubPrincipalLayout.setHorizontalGroup(
+            panelBotoneraSubPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1000, Short.MAX_VALUE)
         );
-        paneCentralLayout.setVerticalGroup(
-            paneCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelBotoneraSubPrincipalLayout.setVerticalGroup(
+            panelBotoneraSubPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        panelCentral.setBackground(new java.awt.Color(51, 51, 51));
+        panelCentral.setForeground(new java.awt.Color(204, 204, 204));
+
+        javax.swing.GroupLayout panelCentralLayout = new javax.swing.GroupLayout(panelCentral);
+        panelCentral.setLayout(panelCentralLayout);
+        panelCentralLayout.setHorizontalGroup(
+            panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1000, Short.MAX_VALUE)
+        );
+        panelCentralLayout.setVerticalGroup(
+            panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 630, Short.MAX_VALUE)
-        );
-
-        panelBotoneraPrincipal1.setBackground(new java.awt.Color(245, 246, 247));
-
-        labelBienvenida.setBackground(new java.awt.Color(245, 246, 247));
-        labelBienvenida.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        labelBienvenida.setForeground(new java.awt.Color(43, 53, 66));
-        labelBienvenida.setText("Bienvenido");
-
-        javax.swing.GroupLayout panelBotoneraPrincipal1Layout = new javax.swing.GroupLayout(panelBotoneraPrincipal1);
-        panelBotoneraPrincipal1.setLayout(panelBotoneraPrincipal1Layout);
-        panelBotoneraPrincipal1Layout.setHorizontalGroup(
-            panelBotoneraPrincipal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBotoneraPrincipal1Layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(labelBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelBotoneraPrincipal1Layout.setVerticalGroup(
-            panelBotoneraPrincipal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBotoneraPrincipal1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanelBaseLayout = new javax.swing.GroupLayout(jPanelBase);
@@ -229,9 +219,9 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         jPanelBaseLayout.setHorizontalGroup(
             jPanelBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(paneCentral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelCentral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(panelBotoneraPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelBotoneraPrincipal1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelBotoneraSubPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanelBaseLayout.setVerticalGroup(
             jPanelBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,9 +230,9 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(panelBotoneraPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(panelBotoneraPrincipal1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelBotoneraSubPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(paneCentral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelCentral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -286,10 +276,9 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelFecha;
     private javax.swing.JLabel jLabelHora;
     private javax.swing.JPanel jPanelBase;
-    private javax.swing.JLabel labelBienvenida;
-    private javax.swing.JPanel paneCentral;
     private javax.swing.JPanel panelBotoneraPrincipal;
-    private javax.swing.JPanel panelBotoneraPrincipal1;
+    private javax.swing.JPanel panelBotoneraSubPrincipal;
+    private javax.swing.JPanel panelCentral;
     private javax.swing.JPanel panelTitulo;
     // End of variables declaration//GEN-END:variables
 }

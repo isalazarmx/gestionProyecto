@@ -5,22 +5,31 @@
  */
 package View;
 
-import Controller.ControllerViewAdministrador;
+import Controller.ControllerViewAdministradorBotoneraPrincipal;
 import java.util.ArrayList;
+import javax.swing.JPanel;
 
 /**
  *
  * @author Jesus
  */
 public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
-    ControllerViewAdministrador controller;
+    ControllerViewAdministradorBotoneraPrincipal controller;
+    JPanel panelBotoneraSubPrincipal;
+    JPanel panelCentral;
+    
     /**
      * Creates new form ViewBaseAdministradorBotoneraPrincipal
+     * @param panelBotoneraSubPrincipal
+     * @param panelCentral
      */
-    public ViewBaseAdministradorBotoneraPrincipal() {
+    public ViewBaseAdministradorBotoneraPrincipal(JPanel panelBotoneraSubPrincipal, JPanel panelCentral) {
+        this.panelBotoneraSubPrincipal = panelBotoneraSubPrincipal;
+        this.panelCentral = panelCentral;
         initComponents();
         initController();
         controller.accionButton(1);
+        addPanel(panelBotoneraSubPrincipal, new ViewBaseAdministradorBotonInicio());
     }
     
      private void initController(){
@@ -31,7 +40,7 @@ public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
         components.add(proveedores);
         components.add(ventas);
         components.add(reportes);
-        controller = new ControllerViewAdministrador(components);
+        controller = new ControllerViewAdministradorBotoneraPrincipal(components);
     }
 
     /**
@@ -54,7 +63,7 @@ public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
 
         inicio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         inicio.setForeground(new java.awt.Color(51, 51, 51));
-        inicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/InicioDisable.png"))); // NOI18N
+        inicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/inicioDisable.png"))); // NOI18N
         inicio.setContentAreaFilled(false);
         inicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -162,6 +171,7 @@ public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
 
     private void inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioActionPerformed
         controller.accionButton(1);
+        addPanel(panelBotoneraSubPrincipal, new ViewBaseAdministradorBotonInicio());
     }//GEN-LAST:event_inicioActionPerformed
 
     private void productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productosActionPerformed
@@ -189,6 +199,12 @@ public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
     }//GEN-LAST:event_reportesActionPerformed
 
 
+    private void addPanel(JPanel base, JPanel panel){
+        base.removeAll();
+        base.add(panel);
+        base.updateUI();
+    }
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton inicio;
     private javax.swing.JButton inventario;
