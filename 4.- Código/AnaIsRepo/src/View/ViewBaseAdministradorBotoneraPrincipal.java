@@ -50,7 +50,7 @@ public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
         ventas = new javax.swing.JButton();
         reportes = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(43, 53, 66));
+        setBackground(new java.awt.Color(245, 246, 247));
 
         inicio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         inicio.setForeground(new java.awt.Color(51, 51, 51));

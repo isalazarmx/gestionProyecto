@@ -92,6 +92,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         BMin = new javax.swing.JButton();
         jLabelFecha = new javax.swing.JLabel();
         jLabelHora = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         panelBotoneraPrincipal = new javax.swing.JPanel();
         paneCentral = new javax.swing.JPanel();
         panelBotoneraPrincipal1 = new javax.swing.JPanel();
@@ -103,7 +104,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
 
         jPanelBase.setBackground(new java.awt.Color(255, 255, 255));
 
-        panelTitulo.setBackground(new java.awt.Color(245, 246, 247));
+        panelTitulo.setBackground(new java.awt.Color(230, 230, 230));
         panelTitulo.setForeground(new java.awt.Color(0, 51, 51));
 
         BCerrar.setBackground(new java.awt.Color(255, 255, 255));
@@ -142,12 +143,18 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         jLabelHora.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelHora.setText("Clock");
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logo_empresa.png"))); // NOI18N
+        jLabel1.setText("Point to sale");
+
         javax.swing.GroupLayout panelTituloLayout = new javax.swing.GroupLayout(panelTitulo);
         panelTitulo.setLayout(panelTituloLayout);
         panelTituloLayout.setHorizontalGroup(
             panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTituloLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelHora, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -162,10 +169,11 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
             .addComponent(BCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
             .addComponent(BMin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabelHora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabelFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        panelBotoneraPrincipal.setBackground(new java.awt.Color(43, 53, 66));
+        panelBotoneraPrincipal.setBackground(new java.awt.Color(245, 246, 247));
 
         javax.swing.GroupLayout panelBotoneraPrincipalLayout = new javax.swing.GroupLayout(panelBotoneraPrincipal);
         panelBotoneraPrincipal.setLayout(panelBotoneraPrincipalLayout);
@@ -192,11 +200,11 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
             .addGap(0, 630, Short.MAX_VALUE)
         );
 
-        panelBotoneraPrincipal1.setBackground(new java.awt.Color(53, 66, 81));
+        panelBotoneraPrincipal1.setBackground(new java.awt.Color(245, 246, 247));
 
         labelBienvenida.setBackground(new java.awt.Color(245, 246, 247));
         labelBienvenida.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        labelBienvenida.setForeground(new java.awt.Color(245, 246, 247));
+        labelBienvenida.setForeground(new java.awt.Color(43, 53, 66));
         labelBienvenida.setText("Bienvenido");
 
         javax.swing.GroupLayout panelBotoneraPrincipal1Layout = new javax.swing.GroupLayout(panelBotoneraPrincipal1);
@@ -274,6 +282,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BCerrar;
     private javax.swing.JButton BMin;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelFecha;
     private javax.swing.JLabel jLabelHora;
     private javax.swing.JPanel jPanelBase;
