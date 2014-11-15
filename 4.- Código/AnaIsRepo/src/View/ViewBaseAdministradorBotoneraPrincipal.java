@@ -38,8 +38,10 @@ public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
         components.add(inicio);
         components.add(productos);
         components.add(inventario);
+        components.add(clientes);
         components.add(proveedores);
         components.add(ventas);
+        components.add(pedidos);
         components.add(reportes);
         controller = new ControllerViewAdministradorBotoneraPrincipal(components);
     }
@@ -53,17 +55,16 @@ public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelBotoneraPrincipal = new javax.swing.JPanel();
         inicio = new javax.swing.JButton();
         productos = new javax.swing.JButton();
         inventario = new javax.swing.JButton();
+        clientes = new javax.swing.JButton();
         proveedores = new javax.swing.JButton();
         ventas = new javax.swing.JButton();
+        pedidos = new javax.swing.JButton();
         reportes = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(245, 246, 247));
-
-        panelBotoneraPrincipal.setBackground(new java.awt.Color(245, 246, 247));
 
         inicio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         inicio.setForeground(new java.awt.Color(51, 51, 51));
@@ -104,6 +105,19 @@ public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
             }
         });
 
+        clientes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        clientes.setForeground(new java.awt.Color(51, 51, 51));
+        clientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clientesDisable.png"))); // NOI18N
+        clientes.setContentAreaFilled(false);
+        clientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        clientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        clientes.setSelected(true);
+        clientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clientesActionPerformed(evt);
+            }
+        });
+
         proveedores.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         proveedores.setForeground(new java.awt.Color(51, 51, 51));
         proveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/proveedoresDisable.png"))); // NOI18N
@@ -130,6 +144,19 @@ public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
             }
         });
 
+        pedidos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pedidos.setForeground(new java.awt.Color(51, 51, 51));
+        pedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pedidosDisable.png"))); // NOI18N
+        pedidos.setContentAreaFilled(false);
+        pedidos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pedidos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        pedidos.setSelected(true);
+        pedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pedidosActionPerformed(evt);
+            }
+        });
+
         reportes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         reportes.setForeground(new java.awt.Color(51, 51, 51));
         reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/reportesDisable.png"))); // NOI18N
@@ -143,50 +170,41 @@ public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout panelBotoneraPrincipalLayout = new javax.swing.GroupLayout(panelBotoneraPrincipal);
-        panelBotoneraPrincipal.setLayout(panelBotoneraPrincipalLayout);
-        panelBotoneraPrincipalLayout.setHorizontalGroup(
-            panelBotoneraPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBotoneraPrincipalLayout.createSequentialGroup()
-                .addComponent(inicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(productos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(proveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 149, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ventas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(reportes, javax.swing.GroupLayout.PREFERRED_SIZE, 123, Short.MAX_VALUE))
-        );
-        panelBotoneraPrincipalLayout.setVerticalGroup(
-            panelBotoneraPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(inicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(productos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(inventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(proveedores, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-            .addComponent(ventas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBotoneraPrincipalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(reportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(panelBotoneraPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(inicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(productos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(inventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(clientes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(proveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 149, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ventas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pedidos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(reportes, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 1, Short.MAX_VALUE)
-                .addComponent(panelBotoneraPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2, Short.MAX_VALUE))
+            .addComponent(inventario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(inicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(productos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(clientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(proveedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(ventas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pedidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(reportes, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -208,30 +226,36 @@ public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
 
     private void proveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proveedoresActionPerformed
         // TODO add your handling code here:
-        controller.accionButton(4);
+        controller.accionButton(5);
+        
     }//GEN-LAST:event_proveedoresActionPerformed
 
     private void ventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ventasActionPerformed
         // TODO add your handling code here:
-        controller.accionButton(5);
+        controller.accionButton(6);
+        controllerPaneles.addPanel(panelCentral, new ViewCaptInfVendedor());
     }//GEN-LAST:event_ventasActionPerformed
 
     private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
         // TODO add your handling code here:
-        controller.accionButton(6);
+        controller.accionButton(8);
     }//GEN-LAST:event_reportesActionPerformed
 
+    private void clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientesActionPerformed
+        // TODO add your handling code here:
+        controller.accionButton(4);
+    }//GEN-LAST:event_clientesActionPerformed
 
-    private void addPanel(JPanel base, JPanel panel){
-        base.removeAll();
-//        base.add(panel);
-        base.updateUI();
-    }
+    private void pedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedidosActionPerformed
+        // TODO add your handling code here:
+        controller.accionButton(7);
+    }//GEN-LAST:event_pedidosActionPerformed
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton clientes;
     private javax.swing.JButton inicio;
     private javax.swing.JButton inventario;
-    private javax.swing.JPanel panelBotoneraPrincipal;
+    private javax.swing.JButton pedidos;
     private javax.swing.JButton productos;
     private javax.swing.JButton proveedores;
     private javax.swing.JButton reportes;
