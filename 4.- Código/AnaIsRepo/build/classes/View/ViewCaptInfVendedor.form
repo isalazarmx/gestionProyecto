@@ -25,17 +25,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="capInfVendedor" alignment="0" pref="1136" max="32767" attributes="0"/>
+          <Component id="panelCapInfVendedor" alignment="0" pref="924" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="capInfVendedor" min="-2" pref="637" max="-2" attributes="0"/>
+          <Component id="panelCapInfVendedor" min="-2" pref="637" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="capInfVendedor">
+    <Container class="javax.swing.JPanel" name="panelCapInfVendedor">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="f7" green="f6" red="f5" type="rgb"/>
@@ -62,7 +62,7 @@
                               <Component id="panelProducto" alignment="1" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="panelCliente" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="218" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="panelPedido" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                               </Group>
@@ -194,6 +194,11 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="panelCliente">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f7" green="f6" red="f5" type="rgb"/>
+            </Property>
+          </Properties>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -211,8 +216,6 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="idCliente" min="-2" pref="114" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="botonBuscClien" min="-2" pref="40" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="botonClientes" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -221,7 +224,7 @@
                               <Component id="botonFechaVen" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="50" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -229,34 +232,30 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="labelCodClien" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="idCliente" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="botonBuscClien" pref="0" max="32767" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labelCodClien" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="idCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="botonClientes" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="labelNombreVenta" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="botonFechaVen" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
-                                  <Component id="labelFecha" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                              <Component id="labelFecha" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="comboTipoVen" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="comboTipoVen" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelNombreVenta" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="fecha" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="fecha" min="-2" max="-2" attributes="0"/>
+                                  <Component id="botonFechaVen" min="-2" pref="25" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="12" max="32767" attributes="0"/>
+                      <EmptySpace pref="17" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -276,7 +275,6 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
                 </Property>
-                <Property name="horizontalAlignment" type="int" value="4"/>
                 <Property name="text" type="java.lang.String" value="Nombre"/>
               </Properties>
             </Component>
@@ -342,20 +340,14 @@
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fechaKeyPressed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="botonBuscClien">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Image/zoom.png"/>
-                </Property>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JButton" name="botonClientes">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Image/group.png"/>
+                </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor de Mano"/>
                 </Property>
               </Properties>
             </Component>
@@ -364,11 +356,20 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Image/calender.png"/>
                 </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor de Mano"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="panelTotal">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f7" green="f6" red="f5" type="rgb"/>
+            </Property>
+          </Properties>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -567,6 +568,10 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Image/cancel.png"/>
                 </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor de Mano"/>
+                </Property>
                 <Property name="label" type="java.lang.String" value="Cancelar"/>
               </Properties>
             </Component>
@@ -578,10 +583,19 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Image/tick.png"/>
                 </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor de Mano"/>
+                </Property>
                 <Property name="label" type="java.lang.String" value="Aceptar"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JPanel" name="panelRestoAb">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f7" green="f6" red="f5" type="rgb"/>
+                </Property>
+              </Properties>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -696,6 +710,11 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="panelProducto">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f7" green="f6" red="f5" type="rgb"/>
+            </Property>
+          </Properties>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -708,7 +727,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="CodBarras" min="-2" pref="203" max="-2" attributes="0"/>
+                              <Component id="codBarras" min="-2" pref="203" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="botonBuscCod" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
@@ -752,7 +771,7 @@
                           <Component id="botonBuscCod" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="CodBarras" min="-2" max="-2" attributes="0"/>
+                                  <Component id="codBarras" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -790,7 +809,7 @@
                 <Property name="text" type="java.lang.String" value="C&#xf3;digo de Barras"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="CodBarras">
+            <Component class="javax.swing.JTextField" name="codBarras">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
@@ -802,16 +821,20 @@
                 <Property name="text" type="java.lang.String" value="0"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CodBarrasActionPerformed"/>
-                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="CodBarrasFocusGained"/>
-                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="CodBarrasFocusLost"/>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CodBarrasKeyPressed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="codBarrasActionPerformed"/>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="codBarrasFocusGained"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="codBarrasFocusLost"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="codBarrasKeyPressed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botonBuscCod">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Image/zoom.png"/>
+                </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor de Mano"/>
                 </Property>
               </Properties>
             </Component>
@@ -975,11 +998,20 @@
                   <Image iconType="3" name="/Image/arrow-forward.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Agregar"/>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor de Mano"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="panelPedido">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f7" green="f6" red="f5" type="rgb"/>
+            </Property>
+          </Properties>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -992,7 +1024,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="labelFechaPed" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="FechaPedido" min="-2" pref="120" max="-2" attributes="0"/>
+                                      <Component id="fechaPedido" min="-2" pref="120" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="labelFecEnt" min="-2" max="-2" attributes="0"/>
@@ -1015,7 +1047,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                      <Component id="horaEnt" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="91" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -1028,7 +1060,7 @@
                           <Component id="botonFechaPed" min="-2" pref="25" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelFechaPed" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="FechaPedido" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="fechaPedido" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -1040,7 +1072,7 @@
                           <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="horaEnt" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="botonFechaEnt" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
@@ -1064,7 +1096,7 @@
                 <Property name="text" type="java.lang.String" value="Fecha de pedido"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="FechaPedido">
+            <Component class="javax.swing.JTextField" name="fechaPedido">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
@@ -1079,6 +1111,10 @@
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Image/calender.png"/>
+                </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor de Mano"/>
                 </Property>
               </Properties>
             </Component>
@@ -1105,6 +1141,10 @@
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Image/calender.png"/>
+                </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor de Mano"/>
                 </Property>
               </Properties>
             </Component>
@@ -1135,7 +1175,7 @@
                 <Property name="text" type="java.lang.String" value="Hora de entrega"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="horaEnt">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
