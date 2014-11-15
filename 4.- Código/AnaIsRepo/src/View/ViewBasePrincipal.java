@@ -43,11 +43,14 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         initClock();
         initFecha();
         configInit();
-        configInicialesPanel(panelBotoneraPrincipal);
-        configInicialesPanel(panelBotoneraSubPrincipal);
-        configInicialesPanel(panelCentral);
-        addPanel(panelBotoneraPrincipal, new ViewBaseAdministradorBotoneraPrincipal(panelBotoneraSubPrincipal,panelCentral));
-        addPanel(panelCentral, new ViewBaseAdministrador());
+        panelBotoneraPrincipal.set
+        ViewBaseAdministradorBotoneraPrincipal viewBaseAdministradorBotoneraPrincipal = new ViewBaseAdministradorBotoneraPrincipal(panelBotoneraPrincipal);
+        
+//        configInicialesPanel(panelBotoneraPrincipal);
+//        configInicialesPanel(panelBotoneraSubPrincipal);
+//        configInicialesPanel(panelCentral);
+//        addPanel(panelBotoneraPrincipal, new ViewBaseAdministradorBotoneraPrincipal(panelBotoneraPrincipal,panelBotoneraSubPrincipal,panelCentral));
+//        addPanel(panelCentral, new ViewBaseAdministrador());
     }
     
     private void configInit(){
@@ -74,8 +77,8 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
     }
     
     private void addPanel(JPanel base, JPanel panel){
-        base.removeAll();
-        base.add(panel);
+//        base.removeAll();
+//        base.add(panel);
         base.updateUI();
     }
     

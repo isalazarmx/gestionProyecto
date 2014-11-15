@@ -20,16 +20,16 @@ public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
     
     /**
      * Creates new form ViewBaseAdministradorBotoneraPrincipal
+     * @param panelBotoneraCentral
      * @param panelBotoneraSubPrincipal
      * @param panelCentral
      */
-    public ViewBaseAdministradorBotoneraPrincipal(JPanel panelBotoneraSubPrincipal, JPanel panelCentral) {
-        this.panelBotoneraSubPrincipal = panelBotoneraSubPrincipal;
-        this.panelCentral = panelCentral;
+    public ViewBaseAdministradorBotoneraPrincipal(JPanel panelBotoneraCentral) {
+        this.panelBotoneraPrincipal = panelBotoneraCentral;
         initComponents();
         initController();
         controller.accionButton(1);
-        addPanel(panelBotoneraSubPrincipal, new ViewBaseAdministradorBotonInicio());
+        addPanel(panelBotoneraSubPrincipal, new ViewBaseAdministradorBotonInicio(panelBotoneraSubPrincipal));
     }
     
      private void initController(){
@@ -52,6 +52,7 @@ public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelBotoneraPrincipal = new javax.swing.JPanel();
         inicio = new javax.swing.JButton();
         productos = new javax.swing.JButton();
         inventario = new javax.swing.JButton();
@@ -60,6 +61,8 @@ public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
         reportes = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(245, 246, 247));
+
+        panelBotoneraPrincipal.setBackground(new java.awt.Color(245, 246, 247));
 
         inicio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         inicio.setForeground(new java.awt.Color(51, 51, 51));
@@ -139,11 +142,11 @@ public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        javax.swing.GroupLayout panelBotoneraPrincipalLayout = new javax.swing.GroupLayout(panelBotoneraPrincipal);
+        panelBotoneraPrincipal.setLayout(panelBotoneraPrincipalLayout);
+        panelBotoneraPrincipalLayout.setHorizontalGroup(
+            panelBotoneraPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBotoneraPrincipalLayout.createSequentialGroup()
                 .addComponent(inicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(productos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -156,58 +159,71 @@ public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(reportes, javax.swing.GroupLayout.PREFERRED_SIZE, 123, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelBotoneraPrincipalLayout.setVerticalGroup(
+            panelBotoneraPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(inicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(productos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(inventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(proveedores, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
             .addComponent(ventas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBotoneraPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(reportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(panelBotoneraPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 1, Short.MAX_VALUE)
+                .addComponent(panelBotoneraPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioActionPerformed
-        controller.accionButton(1);
-        addPanel(panelBotoneraSubPrincipal, new ViewBaseAdministradorBotonInicio());
+        // TODO add your handling code here:
     }//GEN-LAST:event_inicioActionPerformed
 
     private void productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productosActionPerformed
-        controller.accionButton(2);
+        // TODO add your handling code here:
     }//GEN-LAST:event_productosActionPerformed
 
     private void inventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventarioActionPerformed
         // TODO add your handling code here:
-        controller.accionButton(3);
     }//GEN-LAST:event_inventarioActionPerformed
 
     private void proveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proveedoresActionPerformed
         // TODO add your handling code here:
-        controller.accionButton(4);
     }//GEN-LAST:event_proveedoresActionPerformed
 
     private void ventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ventasActionPerformed
         // TODO add your handling code here:
-        controller.accionButton(5);
     }//GEN-LAST:event_ventasActionPerformed
 
     private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
         // TODO add your handling code here:
-        controller.accionButton(6);
     }//GEN-LAST:event_reportesActionPerformed
 
 
     private void addPanel(JPanel base, JPanel panel){
         base.removeAll();
-        base.add(panel);
+//        base.add(panel);
         base.updateUI();
     }
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton inicio;
     private javax.swing.JButton inventario;
+    private javax.swing.JPanel panelBotoneraPrincipal;
     private javax.swing.JButton productos;
     private javax.swing.JButton proveedores;
     private javax.swing.JButton reportes;
