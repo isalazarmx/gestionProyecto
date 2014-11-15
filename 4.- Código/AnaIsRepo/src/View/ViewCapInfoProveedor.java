@@ -30,8 +30,6 @@ public class ViewCapInfoProveedor extends javax.swing.JPanel {
         labelPrincProvee = new javax.swing.JLabel();
         labelCodProv = new javax.swing.JLabel();
         codProv = new javax.swing.JTextField();
-        labelBuscar = new javax.swing.JLabel();
-        labelProv = new javax.swing.JLabel();
         labelNomProv = new javax.swing.JLabel();
         nomProv = new javax.swing.JTextField();
         labelCiudProv = new javax.swing.JLabel();
@@ -49,6 +47,8 @@ public class ViewCapInfoProveedor extends javax.swing.JPanel {
         botonImpProv = new javax.swing.JButton();
         botonLimProv = new javax.swing.JButton();
         botonNuevProv = new javax.swing.JButton();
+        botonRelProv = new javax.swing.JButton();
+        botonEditarProv = new javax.swing.JButton();
 
         setForeground(new java.awt.Color(0, 102, 51));
 
@@ -77,10 +77,6 @@ public class ViewCapInfoProveedor extends javax.swing.JPanel {
                 codProvFocusLost(evt);
             }
         });
-
-        labelBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/zoom.png"))); // NOI18N
-
-        labelProv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/group-outline.png"))); // NOI18N
 
         labelNomProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelNomProv.setText("Nombre");
@@ -160,7 +156,6 @@ public class ViewCapInfoProveedor extends javax.swing.JPanel {
             }
         });
         jTable1.setShowHorizontalLines(false);
-        jTable1.setShowVerticalLines(false);
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setResizable(false);
@@ -230,6 +225,12 @@ public class ViewCapInfoProveedor extends javax.swing.JPanel {
         botonNuevProv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/user-add.png"))); // NOI18N
         botonNuevProv.setText("Nuevo Proveedor");
 
+        botonRelProv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/group.png"))); // NOI18N
+
+        botonEditarProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        botonEditarProv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/edit.png"))); // NOI18N
+        botonEditarProv.setText("Editar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -251,10 +252,8 @@ public class ViewCapInfoProveedor extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(codProv, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelBuscar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelProv))
-                            .addComponent(nomProv)
+                                .addComponent(botonRelProv, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nomProv, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
                             .addComponent(ciudadProv)
                             .addComponent(telProv)))
                     .addGroup(layout.createSequentialGroup()
@@ -269,36 +268,36 @@ public class ViewCapInfoProveedor extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(botonNuevProv)
-                                .addGap(92, 92, 92)
-                                .addComponent(botonImpProv)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(labelProvEnc)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(encontrados, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(26, 26, 26))))))
+                                        .addComponent(encontrados, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(botonEditarProv)))
+                                .addGap(26, 26, 26))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(botonNuevProv)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(botonImpProv)
+                                .addGap(66, 66, 66))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelPrincProvee)
-                    .addComponent(labelRelProv))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelRelProv, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelPrincProvee))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(labelCodProv)
-                                .addComponent(codProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(labelBuscar))
-                            .addComponent(labelProv))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelCodProv)
+                            .addComponent(codProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonRelProv, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelNomProv)
@@ -321,14 +320,15 @@ public class ViewCapInfoProveedor extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelProvEnc)
-                            .addComponent(encontrados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(55, 55, 55)
+                            .addComponent(encontrados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonEditarProv))))
+                .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonImpProv)
                     .addComponent(botonNuevProv)
                     .addComponent(botonBuscProv)
                     .addComponent(botonLimProv))
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -395,22 +395,22 @@ public class ViewCapInfoProveedor extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBuscProv;
+    private javax.swing.JButton botonEditarProv;
     private javax.swing.JButton botonImpProv;
     private javax.swing.JButton botonLimProv;
     private javax.swing.JButton botonNuevProv;
+    private javax.swing.JButton botonRelProv;
     private javax.swing.JTextField ciudadProv;
     private javax.swing.JTextField codProv;
     private javax.swing.JTextField codigoPostal;
     private javax.swing.JTextField encontrados;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JLabel labelBuscar;
     private javax.swing.JLabel labelCP;
     private javax.swing.JLabel labelCiudProv;
     private javax.swing.JLabel labelCodProv;
     private javax.swing.JLabel labelNomProv;
     private javax.swing.JLabel labelPrincProvee;
-    private javax.swing.JLabel labelProv;
     private javax.swing.JLabel labelProvEnc;
     private javax.swing.JLabel labelRelProv;
     private javax.swing.JLabel labelTelProv;
