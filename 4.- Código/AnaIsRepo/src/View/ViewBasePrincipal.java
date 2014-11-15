@@ -8,6 +8,7 @@ package View;
 
 import Controller.ControllerClockPanel;
 import Controller.ControllerDatePanel;
+import Controller.ControllerPaneles;
 import Controller.ControllerViewAdministradorBotoneraPrincipal;
 import Model.ModelEmpresa;
 import Model.ModelUsuario;
@@ -24,10 +25,10 @@ import javax.swing.JPanel;
  * @author Jesus
  */
 public class ViewBasePrincipal extends javax.swing.JFrame {
+    ControllerPaneles controllerPaneles;
     ModelEmpresa modelEmpresa;
     ModelUsuario modelUsuario;
     ControllerClockPanel hiloHora;
-    public static int idUsuario;
     ControllerViewAdministradorBotoneraPrincipal controller;
     /**
      * Creates new form principal
@@ -38,19 +39,19 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         this.modelEmpresa = modelEmpresa;
         this.modelUsuario = modelUsuario;
         initComponents();
-        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Image/iconEmpresa.png"));
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Image/Logo_Empresa.png"));
         setIconImage(icon);
         initClock();
         initFecha();
         configInit();
-        panelBotoneraPrincipal.set
-        ViewBaseAdministradorBotoneraPrincipal viewBaseAdministradorBotoneraPrincipal = new ViewBaseAdministradorBotoneraPrincipal(panelBotoneraPrincipal);
-        
-//        configInicialesPanel(panelBotoneraPrincipal);
-//        configInicialesPanel(panelBotoneraSubPrincipal);
-//        configInicialesPanel(panelCentral);
-//        addPanel(panelBotoneraPrincipal, new ViewBaseAdministradorBotoneraPrincipal(panelBotoneraPrincipal,panelBotoneraSubPrincipal,panelCentral));
-//        addPanel(panelCentral, new ViewBaseAdministrador());
+        controllerPaneles = new ControllerPaneles();
+        controllerPaneles.setModelEmpresa(modelEmpresa);
+        controllerPaneles.setModelUsuario(modelUsuario);
+        controllerPaneles.setPanelCentral(panelCentral);
+        controllerPaneles.setPanelBotoneraPrincipal(panelBotoneraPrincipal);
+        controllerPaneles.configPanel(panelBotoneraPrincipal);
+        controllerPaneles.configPanel(panelCentral);
+        controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBaseAdministradorBotoneraPrincipal(controllerPaneles));
     }
     
     private void configInit(){
@@ -70,18 +71,6 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         clock.start();
     }
     
-    private void configInicialesPanel(JPanel panel){
-        panel.setLayout(new GridBagLayout());
-        panel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        panel.setVisible(true);
-    }
-    
-    private void addPanel(JPanel base, JPanel panel){
-//        base.removeAll();
-//        base.add(panel);
-        base.updateUI();
-    }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -99,7 +88,6 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         jLabelHora = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         panelBotoneraPrincipal = new javax.swing.JPanel();
-        panelBotoneraSubPrincipal = new javax.swing.JPanel();
         panelCentral = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -149,15 +137,15 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logo_empresa.png"))); // NOI18N
-        jLabel1.setText("Point to sale");
+        jLabel1.setText("Line by line");
 
         javax.swing.GroupLayout panelTituloLayout = new javax.swing.GroupLayout(panelTitulo);
         panelTitulo.setLayout(panelTituloLayout);
         panelTituloLayout.setHorizontalGroup(
             panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTituloLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -177,7 +165,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
             .addComponent(jLabelFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        panelBotoneraPrincipal.setBackground(new java.awt.Color(153, 153, 153));
+        panelBotoneraPrincipal.setBackground(new java.awt.Color(245, 246, 247));
 
         javax.swing.GroupLayout panelBotoneraPrincipalLayout = new javax.swing.GroupLayout(panelBotoneraPrincipal);
         panelBotoneraPrincipal.setLayout(panelBotoneraPrincipalLayout);
@@ -190,20 +178,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
             .addGap(0, 50, Short.MAX_VALUE)
         );
 
-        panelBotoneraSubPrincipal.setBackground(new java.awt.Color(102, 102, 102));
-
-        javax.swing.GroupLayout panelBotoneraSubPrincipalLayout = new javax.swing.GroupLayout(panelBotoneraSubPrincipal);
-        panelBotoneraSubPrincipal.setLayout(panelBotoneraSubPrincipalLayout);
-        panelBotoneraSubPrincipalLayout.setHorizontalGroup(
-            panelBotoneraSubPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
-        );
-        panelBotoneraSubPrincipalLayout.setVerticalGroup(
-            panelBotoneraSubPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-        );
-
-        panelCentral.setBackground(new java.awt.Color(51, 51, 51));
+        panelCentral.setBackground(new java.awt.Color(245, 246, 247));
         panelCentral.setForeground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout panelCentralLayout = new javax.swing.GroupLayout(panelCentral);
@@ -214,7 +189,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         );
         panelCentralLayout.setVerticalGroup(
             panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
+            .addGap(0, 674, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanelBaseLayout = new javax.swing.GroupLayout(jPanelBase);
@@ -224,7 +199,6 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
             .addComponent(panelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(panelCentral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(panelBotoneraPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelBotoneraSubPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanelBaseLayout.setVerticalGroup(
             jPanelBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,8 +206,6 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
                 .addComponent(panelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(panelBotoneraPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(panelBotoneraSubPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(panelCentral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -280,7 +252,6 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelHora;
     private javax.swing.JPanel jPanelBase;
     private javax.swing.JPanel panelBotoneraPrincipal;
-    private javax.swing.JPanel panelBotoneraSubPrincipal;
     private javax.swing.JPanel panelCentral;
     private javax.swing.JPanel panelTitulo;
     // End of variables declaration//GEN-END:variables

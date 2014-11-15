@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.ControllerPaneles;
 import Controller.ControllerViewAdministradorBotoneraPrincipal;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -14,22 +15,22 @@ import javax.swing.JPanel;
  * @author Jesus
  */
 public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
+    ControllerPaneles controllerPaneles;
     ControllerViewAdministradorBotoneraPrincipal controller;
     JPanel panelBotoneraSubPrincipal;
     JPanel panelCentral;
     
     /**
      * Creates new form ViewBaseAdministradorBotoneraPrincipal
-     * @param panelBotoneraCentral
-     * @param panelBotoneraSubPrincipal
-     * @param panelCentral
+     * @param controllerPaneles
      */
-    public ViewBaseAdministradorBotoneraPrincipal(JPanel panelBotoneraCentral) {
-        this.panelBotoneraPrincipal = panelBotoneraCentral;
+    public ViewBaseAdministradorBotoneraPrincipal(ControllerPaneles controllerPaneles) {
+        this.controllerPaneles = controllerPaneles;
+        this.panelCentral = controllerPaneles.getPanelCentral();
         initComponents();
         initController();
         controller.accionButton(1);
-        addPanel(panelBotoneraSubPrincipal, new ViewBaseAdministradorBotonInicio(panelBotoneraSubPrincipal));
+        controllerPaneles.addPanel(panelCentral, new ViewBaseAdministrador(controllerPaneles));
     }
     
      private void initController(){
@@ -191,26 +192,33 @@ public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
 
     private void inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioActionPerformed
         // TODO add your handling code here:
+        controller.accionButton(1);
+        controllerPaneles.addPanel(panelCentral, new ViewBaseAdministrador(controllerPaneles));
     }//GEN-LAST:event_inicioActionPerformed
 
     private void productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productosActionPerformed
         // TODO add your handling code here:
+        controller.accionButton(2);
     }//GEN-LAST:event_productosActionPerformed
 
     private void inventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventarioActionPerformed
         // TODO add your handling code here:
+        controller.accionButton(3);
     }//GEN-LAST:event_inventarioActionPerformed
 
     private void proveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proveedoresActionPerformed
         // TODO add your handling code here:
+        controller.accionButton(4);
     }//GEN-LAST:event_proveedoresActionPerformed
 
     private void ventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ventasActionPerformed
         // TODO add your handling code here:
+        controller.accionButton(5);
     }//GEN-LAST:event_ventasActionPerformed
 
     private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
         // TODO add your handling code here:
+        controller.accionButton(6);
     }//GEN-LAST:event_reportesActionPerformed
 
 

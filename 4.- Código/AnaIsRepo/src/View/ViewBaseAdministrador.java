@@ -5,16 +5,29 @@
  */
 package View;
 
+import Controller.ControllerPaneles;
+import Model.ModelEmpresa;
+import Model.ModelUsuario;
+
 /**
  *
  * @author Jesus
  */
 public class ViewBaseAdministrador extends javax.swing.JPanel {
+    ControllerPaneles controllerPaneles;
+    ModelEmpresa modelEmpresa;
+    ModelUsuario modelUsuario;
     /**
      * Creates new form ViewBaseAdministrador
+     * @param controllerPaneles
      */
-    public ViewBaseAdministrador() {
+    public ViewBaseAdministrador(ControllerPaneles controllerPaneles) {
+        this.controllerPaneles = controllerPaneles;
+        this.modelEmpresa = controllerPaneles.getModelEmpresa();
+        this.modelUsuario = controllerPaneles.getModelUsuario();
+        
         initComponents();
+        tituloBienvenida.setText("Bienvenido "+modelUsuario.getNombre()+" "+modelUsuario.getaPaterno());
     }
 
     /**
@@ -26,38 +39,50 @@ public class ViewBaseAdministrador extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelCentral = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        tituloBienvenida = new javax.swing.JLabel();
 
-        jPanelCentral.setBackground(new java.awt.Color(245, 246, 247));
-        jPanelCentral.setForeground(new java.awt.Color(204, 204, 204));
+        setBackground(new java.awt.Color(153, 0, 153));
 
-        javax.swing.GroupLayout jPanelCentralLayout = new javax.swing.GroupLayout(jPanelCentral);
-        jPanelCentral.setLayout(jPanelCentralLayout);
-        jPanelCentralLayout.setHorizontalGroup(
-            jPanelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 840, Short.MAX_VALUE)
+        jPanel1.setBackground(new java.awt.Color(255, 51, 102));
+
+        tituloBienvenida.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tituloBienvenida.setText("BIenvenida");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tituloBienvenida)
+                .addContainerGap(804, Short.MAX_VALUE))
         );
-        jPanelCentralLayout.setVerticalGroup(
-            jPanelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 753, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tituloBienvenida)
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelCentral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelCentral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 536, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanelCentral;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel tituloBienvenida;
     // End of variables declaration//GEN-END:variables
 }

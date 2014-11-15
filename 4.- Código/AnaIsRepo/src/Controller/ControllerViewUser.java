@@ -59,8 +59,7 @@ public class ControllerViewUser {
                             hilo.resume();
                         }else
                             labelStatus.setText("Error interno para almacenar la información");
-                    }else
-                        ControllerViewMsj.muestraMensajeGlobo("Las contraseñas no son iguales", pass1);
+                    }
                 }else
                     ControllerViewMsj.muestraMensajeGlobo("El nombre de usuario ya existe", username);
             }else

@@ -147,6 +147,6 @@ public class ControllerViewMsj {
         BalloonTip bt = new BalloonTip(componente, mensaje, style, false);
         bt.setVisible(true);
         FadingUtils.fadeInBalloon(bt, null, 300, 24);
-        TimingUtils.showTimedBalloon(bt, 3000);
+        TimingUtils.showTimedBalloon(bt, 1500);
     }
 }

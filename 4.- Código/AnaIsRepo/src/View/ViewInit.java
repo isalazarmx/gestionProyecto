@@ -22,7 +22,7 @@ public class ViewInit extends javax.swing.JFrame {
      */
     public ViewInit() {
         initComponents();
-        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Image/iconEmpresa.png"));
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Image/logo_Empresa.png"));
         setIconImage(icon);
         super.setLocationRelativeTo(null);
         initCharger();
@@ -90,15 +90,15 @@ public class ViewInit extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logo_empresa.png"))); // NOI18N
-        jLabel1.setText("Point to sale");
+        jLabel1.setText("Line by line");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buttonClose)
                 .addContainerGap())
