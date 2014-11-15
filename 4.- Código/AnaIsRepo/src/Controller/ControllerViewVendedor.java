@@ -16,15 +16,24 @@ import javax.swing.JTextField;
  * @author Jesus
  */
 public class ControllerViewVendedor {
-    JTextField nameBussines;
-    JTextField rfc;
-    JTextField street;
-    JTextField numInt;
-    JTextField numExt;
-    JTextField col;
-    JTextField codePost;
-    JTextField pagWeb;
-    JTextField eMail;
+    JTextField idCliente;
+    JTextField fecha;
+    JTextField fechaPedido;
+    JTextField fechaEnt;
+    JTextField lugarEnt;
+    JTextField horaEnt;
+    JTextField codBarras;
+    JTextField descripcion;
+    JTextField price;
+    JTextField ;
+    JTextField fecha;
+    JTextField fechaPedido;
+    JTextField fechaEnt;
+    JTextField lugarEnt;
+    JTextField horaEnt;
+    JTextField codBarras;
+    JTextField descripcion;
+    JTextField price;
     
     public ControllerViewVendedor(ArrayList components){
         this.nameBussines = (JTextField)components.get(0);
