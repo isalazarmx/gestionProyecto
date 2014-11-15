@@ -35,6 +35,8 @@ public class ViewBuscarCodigoCliente extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(245, 246, 247));
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Buscar Código");
@@ -85,33 +87,35 @@ public class ViewBuscarCodigoCliente extends javax.swing.JPanel {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/trash.png"))); // NOI18N
         jButton1.setText("Limpiar");
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/tick.png"))); // NOI18N
         jButton2.setText("Aceptar");
+        jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelNombreBuscar)
                                 .addGap(18, 18, 18)
                                 .addComponent(bucarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 18, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(jButton1)
-                .addGap(81, 81, 81)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(jButton1)
+                        .addGap(81, 81, 81)
+                        .addComponent(jButton2)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
