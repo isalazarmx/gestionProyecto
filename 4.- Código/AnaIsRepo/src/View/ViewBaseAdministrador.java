@@ -25,7 +25,6 @@ public class ViewBaseAdministrador extends javax.swing.JPanel {
         this.controllerPaneles = controllerPaneles;
         this.modelEmpresa = controllerPaneles.getModelEmpresa();
         this.modelUsuario = controllerPaneles.getModelUsuario();
-        
         initComponents();
         tituloBienvenida.setText("Bienvenido "+modelUsuario.getNombre()+" "+modelUsuario.getaPaterno());
     }
