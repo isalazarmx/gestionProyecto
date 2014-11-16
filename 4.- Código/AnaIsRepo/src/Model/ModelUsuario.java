@@ -29,13 +29,13 @@ public class ModelUsuario {
     }
     
     public String addInfo(){
-        return "(01,'"
+        return "(1,'"
                 +getNombre()+"','"
                 +getaPaterno()+"','"
                 +getaMaterno()+"','"
                 +getUsername()+"','"
                 +getPassword()+"',"
-                +getTipo()+","
+                +getTipo()+",0,"
                 +getIdEmpresa()+
                 ");";
     }

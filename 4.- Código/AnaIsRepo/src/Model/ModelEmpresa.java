@@ -15,7 +15,9 @@ public class ModelEmpresa {
     private String calle;
     private int numINT;
     private int numExt;
+    private String ciudad;
     private String colonia;
+    private String estado;
     private int codigoPostal;
     private String RFC;
     private String pagWeb;
@@ -40,12 +42,14 @@ public class ModelEmpresa {
                 +getCalle()+"',"
                 +getNumINT()+","
                 +getNumExt()+",'"
-                +getColonia()+"',"
+                +getCiudad()+"','"
+                +getColonia()+"','"
+                +getEstado()+"',"
                 +getCodigoPostal()+",'"
                 +getRFC()+"','"
                 +getPagWeb()+"','"
                 +geteMail()+"'"
-                +");";
+                +",0);";
     }
     /**
      * @return the idEmpresa
@@ -185,6 +189,34 @@ public class ModelEmpresa {
      */
     public void seteMail(String eMail) {
         this.eMail = eMail;
+    }
+
+    /**
+     * @return the ciudad
+     */
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    /**
+     * @param ciudad the ciudad to set
+     */
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    /**
+     * @return the estado
+     */
+    public String getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
     
     
