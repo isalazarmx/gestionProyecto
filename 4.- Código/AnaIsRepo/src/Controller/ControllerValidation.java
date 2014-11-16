@@ -286,6 +286,10 @@ public class ControllerValidation {
         });
     }
 
+    static void validarFecha(JTextField fecha, Object object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public void placeHolder(boolean flag, JTextField boxText, String text) {
         if (flag) {
             if (boxText.getText().equals(text)) {
