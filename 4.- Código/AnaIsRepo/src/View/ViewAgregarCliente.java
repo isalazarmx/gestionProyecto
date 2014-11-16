@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package View;
+import Controller.ControllerPaneles;
 import Controller.ControllerValidation;
 
 /**
@@ -12,12 +13,14 @@ import Controller.ControllerValidation;
  */
 public class ViewAgregarCliente extends javax.swing.JPanel {
     ControllerValidation validation;
+    ControllerPaneles controllerPaneles;
 
     /**
      * Creates new form ViewAgregarCliente
      */
-    public ViewAgregarCliente() {
+    public ViewAgregarCliente(ControllerPaneles controllerPaneles) {
         initComponents();
+        this.controllerPaneles = controllerPaneles;//asi
     }
 
     /**
@@ -487,6 +490,11 @@ public class ViewAgregarCliente extends javax.swing.JPanel {
         jButton2.setText("Cancelar");
         jButton2.setContentAreaFilled(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/refresh.png"))); // NOI18N
@@ -672,6 +680,10 @@ public class ViewAgregarCliente extends javax.swing.JPanel {
     private void acColoniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acColoniaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_acColoniaActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewClientes(controllerPaneles)); //asi
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
