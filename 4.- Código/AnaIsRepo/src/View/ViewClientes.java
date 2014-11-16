@@ -19,10 +19,12 @@ import javax.swing.JPanel;
 public class ViewClientes extends javax.swing.JPanel {
 
     ControllerValidation validation;
+    ControllerPaneles controllerPaneles;
    
 public ViewClientes(ControllerPaneles controllerPaneles) {
         initComponents();
         this.validation = new ControllerValidation();
+        this.controllerPaneles = controllerPaneles;//asi
         
     }
     
@@ -373,7 +375,7 @@ public ViewClientes(ControllerPaneles controllerPaneles) {
     }//GEN-LAST:event_ceFocusLost
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewAgregarCliente()); //asi
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
