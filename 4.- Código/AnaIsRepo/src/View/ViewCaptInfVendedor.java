@@ -1009,11 +1009,11 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_priceFocusGained
 
     private void cantidadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidadFocusGained
-        // TODO add your handling code here:
+        placeHolder(true,cantidad,"0");
     }//GEN-LAST:event_cantidadFocusGained
 
     private void cantidadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidadFocusLost
-        // TODO add your handling code here:
+       placeHolder(false,cantidad,"0");
     }//GEN-LAST:event_cantidadFocusLost
 
     private void cantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadActionPerformed
@@ -1025,11 +1025,11 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_cantidadKeyPressed
 
     private void descuentoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_descuentoFocusGained
-        // TODO add your handling code here:
+        placeHolder(true,descuento,"0");
     }//GEN-LAST:event_descuentoFocusGained
 
     private void descuentoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_descuentoFocusLost
-        // TODO add your handling code here:
+         placeHolder(false,descuento,"0");
     }//GEN-LAST:event_descuentoFocusLost
 
     private void descuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descuentoActionPerformed
@@ -1041,11 +1041,11 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_descuentoKeyPressed
 
     private void importeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_importeFocusGained
-        // TODO add your handling code here:
+         placeHolder(true,importe,"0");
     }//GEN-LAST:event_importeFocusGained
 
     private void importeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_importeFocusLost
-        // TODO add your handling code here:
+         placeHolder(false,descuento,"0");
     }//GEN-LAST:event_importeFocusLost
 
     private void importeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importeActionPerformed
@@ -1057,7 +1057,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_importeKeyPressed
 
     private void tablaVendedorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tablaVendedorFocusGained
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_tablaVendedorFocusGained
 
     private void tablaVendedorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tablaVendedorFocusLost
@@ -1069,11 +1069,11 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_subtotalActionPerformed
 
     private void subtotalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_subtotalFocusGained
-        // TODO add your handling code here:
+         placeHolder(true,subtotal,"0");
     }//GEN-LAST:event_subtotalFocusGained
 
     private void subtotalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_subtotalFocusLost
-        // TODO add your handling code here:
+         placeHolder(false,subtotal,"0");
     }//GEN-LAST:event_subtotalFocusLost
 
     private void ivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ivaActionPerformed
@@ -1081,11 +1081,11 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_ivaActionPerformed
 
     private void ivaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ivaFocusGained
-        // TODO add your handling code here:
+         placeHolder(true,iva,"0");
     }//GEN-LAST:event_ivaFocusGained
 
     private void ivaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ivaFocusLost
-        // TODO add your handling code here:
+         placeHolder(false,iva,"0");
     }//GEN-LAST:event_ivaFocusLost
 
     private void ivaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ivaKeyPressed
@@ -1097,11 +1097,11 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_totalTActionPerformed
 
     private void totalTFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_totalTFocusGained
-        // TODO add your handling code here:
+         placeHolder(true,totalT,"0");
     }//GEN-LAST:event_totalTFocusGained
 
     private void totalTFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_totalTFocusLost
-        // TODO add your handling code here:
+        placeHolder(false,totalT,"0");
     }//GEN-LAST:event_totalTFocusLost
 
     private void comboTipoVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoVenActionPerformed

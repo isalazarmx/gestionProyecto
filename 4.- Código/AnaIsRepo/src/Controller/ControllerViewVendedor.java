@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Model.ModelEmpresa;
+import Model.ModelVenta;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JLabel;
@@ -25,73 +25,55 @@ public class ControllerViewVendedor {
     JTextField codBarras;
     JTextField descripcion;
     JTextField price;
-    JTextField ;
-    JTextField fecha;
-    JTextField fechaPedido;
-    JTextField fechaEnt;
-    JTextField lugarEnt;
-    JTextField horaEnt;
-    JTextField codBarras;
-    JTextField descripcion;
-    JTextField price;
+    JTextField cantidad;
+    JTextField descuento;
+    JTextField importe;
+    JTextField subtotal;
+    JTextField iva;
+    JTextField totalT;
+    JTextField abono;
+    JTextField resto;
     
     public ControllerViewVendedor(ArrayList components){
-        this.nameBussines = (JTextField)components.get(0);
-        this.rfc = (JTextField)components.get(1);
-        this.street = (JTextField)components.get(2);
-        this.numInt = (JTextField)components.get(3);
-        this.numExt = (JTextField)components.get(4);
-        this.col = (JTextField)components.get(5);
-        this.codePost = (JTextField)components.get(6);
-        this.pagWeb = (JTextField)components.get(7);
-        this.eMail = (JTextField)components.get(8);
+        this.idCliente = (JTextField)components.get(0);
+        this.fecha = (JTextField)components.get(1);
+        this.fechaPedido = (JTextField)components.get(2);
+        this.fechaEnt = (JTextField)components.get(3);
+        this.lugarEnt = (JTextField)components.get(4);
+        this.horaEnt = (JTextField)components.get(5);
+        this.codBarras = (JTextField)components.get(6);
+        this.descripcion= (JTextField)components.get(7);
+        this.price = (JTextField)components.get(8);
+        this.cantidad = (JTextField)components.get(9);
+        this.descuento = (JTextField)components.get(10);
+        this.importe = (JTextField)components.get(11);
+        this.subtotal = (JTextField)components.get(12);
+        this.iva = (JTextField)components.get(13);
+        this.totalT = (JTextField)components.get(14);
+        this.abono = (JTextField)components.get(15);
+        this.resto= (JTextField)components.get(16);
     }
     
     public void validations(){
-        ControllerValidation.limitarCaracteres(nameBussines, 25);
-        ControllerValidation.limitarCaracteres(rfc, 15);
-        ControllerValidation.limitarCaracteres(street, 40);
-        ControllerValidation.limitarCaracteres(numInt, 6);
-        ControllerValidation.soloNumeros(numInt);
-        ControllerValidation.limitarCaracteres(numExt, 6);
-        ControllerValidation.soloNumeros(numExt);
-        ControllerValidation.limitarCaracteres(col, 25);
-        ControllerValidation.limitarCaracteres(codePost, 5);
-        ControllerValidation.soloNumeros(codePost);
-        ControllerValidation.limitarCaracteres(pagWeb, 250);
-        ControllerValidation.limitarCaracteres(eMail, 45);
+        ControllerValidation.camposNoNulos(idCliente, "Campo oblagatorio");
+        ControllerValidation.validarFecha(fecha, null);
+        ControllerValidation.validarFecha(fechaPedido, null);
+        ControllerValidation.validarFecha(fechaEnt, null);
+        ControllerValidation.soloNumeros(horaEnt);
+        ControllerValidation.limitarCaracteres(descripcion, 250);
+        ControllerValidation.soloNumeros(cantidad);
+        ControllerValidation.soloNumeros(descuento);
+        ControllerValidation.soloNumeros(importe);
+        ControllerValidation.soloNumeros(iva);
+        ControllerValidation.soloNumeros(abono);
+       
     }
     
-    public void next(JLabel labelStatus,Thread hilo,ModelEmpresa emp){
-        if(!nameBussines.getText().equals("Nombre de la empresa (*)") && !nameBussines.getText().isEmpty()){
-            if(!rfc.getText().equals("R.F.C. (*)") && !rfc.getText().isEmpty()){
-                emp.setNombre(nameBussines.getText());
-                emp.setRFC(rfc.getText().toUpperCase().trim());
-                emp.setCalle(reviewInfo(street,"Calle",true));
-                emp.setCodigoPostal(Integer.parseInt(reviewInfo(codePost,"C.P.",false)));
-                emp.setNumINT(Integer.parseInt(reviewInfo(numInt,"No. Int.",false)));
-                emp.setNumExt(Integer.parseInt(reviewInfo(numExt,"No. Ext.",false)));
-                emp.setColonia(reviewInfo(col,"Colonia",true));
-                emp.setPagWeb(reviewInfo(pagWeb,"Página Web",true));
-                if(!eMail.getText().equals("E-mail") && (!eMail.getText().contains("@") || eMail.getText().contains(" "))){
-                    labelStatus.setForeground(new Color(153,0,0));
-                    labelStatus.setText("Revise su correo electronico");
-                }else{
-                    emp.seteMail(reviewInfo(eMail,"E-mail",true));
-                    if(ControllerConsults.addInfoBussines(emp)){
-                        labelStatus.setText("Datos de empresa agregados");
-                        hilo.resume();
-                    }else
-                        labelStatus.setText("Error interno para almacenar la información");
-                }
-            }else{
-                labelStatus.setForeground(new Color(153,0,0));
-                labelStatus.setText("Agregue el R.F.C. de la empresa");
-            }
-        }else{
-            labelStatus.setForeground(new Color(153,0,0));
-            labelStatus.setText("Agregue el nombre de la empresa");
-        }
+    public void next(JLabel labelStatus,Thread hilo,ModelVenta emp){
+        if(idCliente.getText().equals("Cod. Cliente") && idCliente.getText().isEmpty()){
+           labelStatus.setForeground(new Color(153,0,0));
+            labelStatus.setText("Agregue el código del cliente");
+        }else{   }
     }
     
     private String reviewInfo(JTextField box, String value,boolean flag){

@@ -135,6 +135,7 @@ public class ControllerConsults {
             Statement sta = conn.createStatement();
             user.setTipo(3);
             String strQuery = "insert into usuario values "+user.addInfo();
+            System.out.println(strQuery);
             sta.executeUpdate(strQuery);
             flag = true;
         } catch (SQLException ex) {

@@ -7,6 +7,7 @@ package Controller;
 
 import Model.ModelEmpresa;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -20,7 +21,9 @@ public class ControllerViewEmpresa {
     JTextField street;
     JTextField numInt;
     JTextField numExt;
+    JTextField ciudad;
     JTextField col;
+    JComboBox estado;
     JTextField codePost;
     JTextField pagWeb;
     JTextField eMail;
@@ -31,10 +34,12 @@ public class ControllerViewEmpresa {
         this.street = (JTextField)components.get(2);
         this.numInt = (JTextField)components.get(3);
         this.numExt = (JTextField)components.get(4);
-        this.col = (JTextField)components.get(5);
-        this.codePost = (JTextField)components.get(6);
-        this.pagWeb = (JTextField)components.get(7);
-        this.eMail = (JTextField)components.get(8);
+        this.ciudad = (JTextField)components.get(5);
+        this.col = (JTextField)components.get(6);
+        this.estado = (JComboBox)components.get(7);
+        this.codePost = (JTextField)components.get(8);
+        this.pagWeb = (JTextField)components.get(9);
+        this.eMail = (JTextField)components.get(10);
     }
     
     public void validations(){
@@ -45,6 +50,7 @@ public class ControllerViewEmpresa {
         ControllerValidation.soloNumeros(numInt);
         ControllerValidation.limitarCaracteres(numExt, 6);
         ControllerValidation.soloNumeros(numExt);
+        ControllerValidation.limitarCaracteres(ciudad, 25);
         ControllerValidation.limitarCaracteres(col, 25);
         ControllerValidation.limitarCaracteres(codePost, 5);
         ControllerValidation.soloNumeros(codePost);
@@ -61,7 +67,9 @@ public class ControllerViewEmpresa {
                 emp.setCodigoPostal(Integer.parseInt(reviewInfo(codePost,"C.P.",false)));
                 emp.setNumINT(Integer.parseInt(reviewInfo(numInt,"No. Int.",false)));
                 emp.setNumExt(Integer.parseInt(reviewInfo(numExt,"No. Ext.",false)));
+                emp.setCiudad(reviewInfo(ciudad,"Ciudad",true));
                 emp.setColonia(reviewInfo(col,"Colonia",true));
+                emp.setEstado((String)estado.getItemAt(estado.getSelectedIndex()));
                 emp.setPagWeb(reviewInfo(pagWeb,"Página Web",true));
                 if(!eMail.getText().equals("E-mail") && (!eMail.getText().contains("@") || eMail.getText().contains(" ")))
                     ControllerViewMsj.muestraMensajeGlobo("Debes ingresar un correo electronico valido", eMail);
