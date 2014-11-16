@@ -9,5 +9,6 @@ import javax.swing.JTextField;
  */
 public class ControllerClientes {
     JTextField Nombre;
+    JTextField RFC;
     
 }
