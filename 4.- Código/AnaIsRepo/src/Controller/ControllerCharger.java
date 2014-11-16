@@ -155,7 +155,7 @@ public class ControllerCharger extends Thread {
 
     private void initLogin(){
         JPanel viewInitSession = new ViewInitSession(labelStatus,this,modelUsuario);
-        lanzarPantalla(viewInitSession, "Bienvenido",true);
+        lanzarPantalla(viewInitSession, "Ingresa datos de sesión",true);
         lanzarPantalla(viewLoading, "Buscando permisos de usuario",false);
     }
 
@@ -181,7 +181,7 @@ public class ControllerCharger extends Thread {
         panelBase.removeAll();
         panelBase.add(panel);
         panelBase.updateUI();
-        labelStatus.setForeground(new Color(0, 0, 0));
+        labelStatus.setForeground(new Color(245,246,247));
         labelStatus.setText(mensaje);
         if (flag)
             super.suspend();

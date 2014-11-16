@@ -31,10 +31,10 @@ public class ViewLoading extends javax.swing.JPanel {
         panelCharger = new javax.swing.JPanel();
         logoCarga = new javax.swing.JLabel();
 
-        panelCharger.setBackground(new java.awt.Color(245, 246, 247));
+        panelCharger.setBackground(new java.awt.Color(53, 107, 161));
 
         logoCarga.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logoCarga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/LogoCharger.gif"))); // NOI18N
+        logoCarga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logoCharger.gif"))); // NOI18N
 
         javax.swing.GroupLayout panelChargerLayout = new javax.swing.GroupLayout(panelCharger);
         panelCharger.setLayout(panelChargerLayout);
