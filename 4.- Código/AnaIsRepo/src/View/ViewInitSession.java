@@ -9,7 +9,6 @@ package View;
 import Controller.ControllerValidation;
 import Controller.ControllerViewSession;
 import Model.ModelUsuario;
-import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 
