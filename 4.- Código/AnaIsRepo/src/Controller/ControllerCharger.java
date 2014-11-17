@@ -155,7 +155,7 @@ public class ControllerCharger extends Thread {
 
     private void initLogin(){
         JPanel viewInitSession = new ViewInitSession(labelStatus,this,modelUsuario);
-        lanzarPantalla(viewInitSession, "Ingresa datos de sesión",true);
+        lanzarPantalla(viewInitSession, "Bienvenido",true);
         lanzarPantalla(viewLoading, "Buscando permisos de usuario",false);
     }
 

@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 public class ControllerPaneles {
     private ModelEmpresa modelEmpresa;
     private ModelUsuario modelUsuario;
+    private JPanel panelUserData;
     private JPanel panelBotoneraPrincipal;
     private JPanel panelCentral;
     
@@ -87,5 +88,19 @@ public class ControllerPaneles {
      */
     public void setPanelCentral(JPanel panelCentral) {
         this.panelCentral = panelCentral;
+    }
+
+    /**
+     * @return the panelUserData
+     */
+    public JPanel getPanelUserData() {
+        return panelUserData;
+    }
+
+    /**
+     * @param panelUserData the panelUserData to set
+     */
+    public void setPanelUserData(JPanel panelUserData) {
+        this.panelUserData = panelUserData;
     }
 }

@@ -62,7 +62,8 @@ public class ViewCaptInfoUser extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(245, 246, 247));
 
-        jPanelUser.setBackground(new java.awt.Color(245, 246, 247));
+        jPanelUser.setBackground(new java.awt.Color(53, 107, 161));
+        jPanelUser.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         contact.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/contacts.png"))); // NOI18N
 
@@ -199,12 +200,14 @@ public class ViewCaptInfoUser extends javax.swing.JPanel {
             }
         });
 
+        labelNota.setBackground(new java.awt.Color(245, 246, 247));
         labelNota.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        labelNota.setForeground(new java.awt.Color(153, 0, 0));
+        labelNota.setForeground(new java.awt.Color(245, 246, 247));
         labelNota.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         labelNota.setText("Nota: (*) Campos obligatorios");
 
         next.setFont(new java.awt.Font("CordiaUPC", 0, 24)); // NOI18N
+        next.setForeground(new java.awt.Color(245, 246, 247));
         next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/chevron-right.png"))); // NOI18N
         next.setText("Siguiente");
         next.setContentAreaFilled(false);
@@ -269,22 +272,18 @@ public class ViewCaptInfoUser extends javax.swing.JPanel {
                 .addGroup(jPanelUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelNota, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanelUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2, Short.MAX_VALUE))
+            .addComponent(jPanelUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

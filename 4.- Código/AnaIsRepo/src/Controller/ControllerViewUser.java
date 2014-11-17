@@ -45,23 +45,29 @@ public class ControllerViewUser {
     public void next(JLabel labelStatus,Thread hilo,int idEmpresa,ModelUsuario user){
         if(!name.getText().equals("Nombre (*)") && !name.getText().isEmpty()){
             if(!username.getText().equals("Username (*)") && !username.getText().isEmpty()){
-                if(!ControllerConsults.checkExistUser(username.getText())){
-                    if(ControllerValidation.validarContrasenias(pass1,pass2)){
-                        user = new ModelUsuario();
-                        user.setNombre(name.getText());
-                        user.setaPaterno(reviewInfo(aPaterno,"Apellido paterno",true));
-                        user.setaMaterno(reviewInfo(aMaterno,"Apellido materno",true));
-                        user.setUsername(username.getText());
-                        user.setPassword(crearPass(pass1));
-                        user.setIdEmpresa(idEmpresa);
-                         if(ControllerConsults.addUser(user)){
-                            labelStatus.setText("Datos de administrador agregados");
-                            hilo.resume();
+                if(!crearPass(pass1).equals("Password-01") && !pass1.getText().isEmpty()){
+                    if(!crearPass(pass2).equals("Password-02") && !pass2.getText().isEmpty()){
+                        if(!ControllerConsults.checkExistUser(username.getText())){
+                            if(ControllerValidation.validarContrasenias(pass1,pass2)){
+                                user = new ModelUsuario();
+                                user.setNombre(name.getText());
+                                user.setaPaterno(reviewInfo(aPaterno,"Apellido paterno",true));
+                                user.setaMaterno(reviewInfo(aMaterno,"Apellido materno",true));
+                                user.setUsername(username.getText());
+                                user.setPassword(crearPass(pass1));
+                                user.setIdEmpresa(idEmpresa);
+                                 if(ControllerConsults.addUser(user)){
+                                    labelStatus.setText("Datos de administrador agregados");
+                                    hilo.resume();
+                                }else
+                                    labelStatus.setText("Error interno para almacenar la información");
+                            }
                         }else
-                            labelStatus.setText("Error interno para almacenar la información");
-                    }
+                            ControllerViewMsj.muestraMensajeGlobo("El nombre de usuario ya existe", username);
+                    }else
+                        ControllerViewMsj.muestraMensajeGlobo("Completa el formulario para la contraseña", pass2);
                 }else
-                    ControllerViewMsj.muestraMensajeGlobo("El nombre de usuario ya existe", username);
+                    ControllerViewMsj.muestraMensajeGlobo("Ingresa una contraseña", pass1);
             }else
                 ControllerViewMsj.muestraMensajeGlobo("Agrega un username", username);
         }else
