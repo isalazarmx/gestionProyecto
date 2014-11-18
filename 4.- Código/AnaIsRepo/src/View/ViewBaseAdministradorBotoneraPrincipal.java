@@ -23,14 +23,19 @@ public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
     /**
      * Creates new form ViewBaseAdministradorBotoneraPrincipal
      * @param controllerPaneles
+     * @param flag
      */
-    public ViewBaseAdministradorBotoneraPrincipal(ControllerPaneles controllerPaneles) {
+    public ViewBaseAdministradorBotoneraPrincipal(ControllerPaneles controllerPaneles,boolean flag) {
         this.controllerPaneles = controllerPaneles;
         this.panelCentral = controllerPaneles.getPanelCentral();
         initComponents();
         initController();
-        controller.accionButton(1);
-        controllerPaneles.addPanel(panelCentral, new ViewBaseAdministrador(controllerPaneles));
+        if(flag){
+            controller.accionButton(1);
+            controllerPaneles.addPanel(panelCentral, new ViewBaseAdministrador(controllerPaneles));
+        }else
+            controller.accionButton(9);
+        
     }
     
      private void initController(){

@@ -7,6 +7,9 @@ package View;
 
 import Controller.ControllerPaneles;
 import Controller.ControllerValidation;
+import Controller.ControllerViewEmpresa;
+import Model.ModelEmpresa;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,16 +18,39 @@ import Controller.ControllerValidation;
 public class ViewBaseAjustes extends javax.swing.JPanel {
     ControllerPaneles controllerPaneles;
     ControllerValidation validation;
+    ModelEmpresa modelEmpresa;
+    ControllerViewEmpresa controller;
     /**
      * Creates new form ViewBaseAdministrador
      * @param controllerPaneles
      */
-    public ViewBaseAjustes() {
+    public ViewBaseAjustes(ControllerPaneles controllerPaneles) {
         validation = new ControllerValidation();
         this.controllerPaneles = controllerPaneles;
+        this.modelEmpresa = controllerPaneles.getModelEmpresa();
         initComponents();
+        validation();
+        labelStatus.setText("");
+        controller.identificaInfo(modelEmpresa);
     }
 
+    private void validation(){
+        ArrayList components = new ArrayList<>();
+        components.add(nameBussines);
+        components.add(rfc);
+        components.add(street);
+        components.add(numInt);
+        components.add(numExt);
+        components.add(ciudad);
+        components.add(col);
+        components.add(estado);
+        components.add(codePost);
+        components.add(pagWeb);
+        components.add(eMail);
+        controller = new ControllerViewEmpresa(components);
+        controller.validations();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -68,6 +94,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
         pagWeb = new javax.swing.JTextField();
         eMail = new javax.swing.JTextField();
         next = new javax.swing.JButton();
+        labelStatus = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(245, 246, 247));
         setPreferredSize(new java.awt.Dimension(1000, 724));
@@ -110,7 +137,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
         nameBussines.setForeground(new java.awt.Color(180, 180, 180));
         nameBussines.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         nameBussines.setText("Nombre de la empresa (*)");
-        nameBussines.setPreferredSize(new java.awt.Dimension(170, 26));
+        nameBussines.setPreferredSize(new java.awt.Dimension(170, 28));
         nameBussines.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 nameBussinesFocusGained(evt);
@@ -134,7 +161,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
         rfc.setForeground(new java.awt.Color(180, 180, 180));
         rfc.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         rfc.setText("R.F.C. (*)");
-        rfc.setPreferredSize(new java.awt.Dimension(60, 26));
+        rfc.setPreferredSize(new java.awt.Dimension(60, 28));
         rfc.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 rfcFocusGained(evt);
@@ -222,6 +249,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
         ciudad.setForeground(new java.awt.Color(180, 180, 180));
         ciudad.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         ciudad.setText("Ciudad");
+        ciudad.setPreferredSize(new java.awt.Dimension(49, 28));
         ciudad.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 ciudadFocusGained(evt);
@@ -257,6 +285,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
         col.setForeground(new java.awt.Color(180, 180, 180));
         col.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         col.setText("Colonia");
+        col.setPreferredSize(new java.awt.Dimension(52, 28));
         col.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 colFocusGained(evt);
@@ -284,6 +313,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
         street.setForeground(new java.awt.Color(180, 180, 180));
         street.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         street.setText("Calle");
+        street.setPreferredSize(new java.awt.Dimension(35, 28));
         street.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 streetFocusGained(evt);
@@ -311,7 +341,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
         codePost.setForeground(new java.awt.Color(180, 180, 180));
         codePost.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         codePost.setText("C.P.");
-        codePost.setPreferredSize(new java.awt.Dimension(46, 26));
+        codePost.setPreferredSize(new java.awt.Dimension(46, 28));
         codePost.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 codePostFocusGained(evt);
@@ -339,7 +369,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
         numInt.setForeground(new java.awt.Color(180, 180, 180));
         numInt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         numInt.setText("No. Int.");
-        numInt.setPreferredSize(new java.awt.Dimension(50, 26));
+        numInt.setPreferredSize(new java.awt.Dimension(50, 28));
         numInt.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 numIntFocusGained(evt);
@@ -367,7 +397,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
         numExt.setForeground(new java.awt.Color(180, 180, 180));
         numExt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         numExt.setText("No. Ext.");
-        numExt.setPreferredSize(new java.awt.Dimension(50, 26));
+        numExt.setPreferredSize(new java.awt.Dimension(50, 28));
         numExt.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 numExtFocusGained(evt);
@@ -405,8 +435,8 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(col)
-                            .addComponent(ciudad)
+                            .addComponent(col, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ciudad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(street, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel12Layout.createSequentialGroup()
                                 .addComponent(codePost, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -474,6 +504,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
         pagWeb.setForeground(new java.awt.Color(180, 180, 180));
         pagWeb.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         pagWeb.setText("Página Web");
+        pagWeb.setPreferredSize(new java.awt.Dimension(79, 28));
         pagWeb.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 pagWebFocusGained(evt);
@@ -497,6 +528,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
         eMail.setForeground(new java.awt.Color(180, 180, 180));
         eMail.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         eMail.setText("E-mail");
+        eMail.setPreferredSize(new java.awt.Dimension(44, 28));
         eMail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 eMailFocusGained(evt);
@@ -526,14 +558,14 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pagWeb))
+                        .addComponent(pagWeb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(eMail)))
+                        .addComponent(eMail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel13Layout.setVerticalGroup(
@@ -542,7 +574,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel14)
                 .addGap(11, 11, 11)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pagWeb, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -559,6 +591,16 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
         next.setContentAreaFilled(false);
         next.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         next.setSelected(true);
+        next.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextActionPerformed(evt);
+            }
+        });
+
+        labelStatus.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelStatus.setForeground(new java.awt.Color(0, 204, 102));
+        labelStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelStatus.setText("Cambios guardados con éxito");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -570,7 +612,8 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
                     .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(next, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(next, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -583,8 +626,10 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelStatus)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(next)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -592,14 +637,17 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -610,7 +658,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -799,7 +847,15 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
 //        next();
     }//GEN-LAST:event_eMailKeyPressed
 
+    private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
+        // TODO add your handling code here:
+        modEmpresa();
+    }//GEN-LAST:event_nextActionPerformed
 
+    private void modEmpresa(){
+        controller.modifEmpresa(labelStatus, modelEmpresa);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ciudad;
     private javax.swing.JTextField codePost;
@@ -828,6 +884,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel labelNota;
+    private javax.swing.JLabel labelStatus;
     private javax.swing.JTextField nameBussines;
     private javax.swing.JButton next;
     private javax.swing.JTextField numExt;

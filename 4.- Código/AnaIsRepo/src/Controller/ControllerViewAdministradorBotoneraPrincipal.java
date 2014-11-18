@@ -69,6 +69,7 @@ public class ControllerViewAdministradorBotoneraPrincipal {
             case 6: confButton(ventas,button06,"Enable");break;
             case 7: confButton(pedidos,button07,"Enable");break;
             case 8: confButton(reportes,button08,"Enable");break;
+            case 9:break;    
         }
     }
     

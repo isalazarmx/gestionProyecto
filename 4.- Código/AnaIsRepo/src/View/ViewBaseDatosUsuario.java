@@ -7,6 +7,10 @@ package View;
 
 import Controller.ControllerPaneles;
 import Controller.ControllerValidation;
+import Controller.ControllerViewUser;
+import Model.ModelEmpresa;
+import Model.ModelUsuario;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,16 +19,36 @@ import Controller.ControllerValidation;
 public class ViewBaseDatosUsuario extends javax.swing.JPanel {
     ControllerPaneles controllerPaneles;
     ControllerValidation validation;
+    ControllerViewUser controller;
+    ModelEmpresa modelEmpresa;
+    ModelUsuario modelUsuario;
     /**
      * Creates new form ViewBaseAdministrador
      * @param controllerPaneles
      */
-    public ViewBaseDatosUsuario() {
+    public ViewBaseDatosUsuario(ControllerPaneles controllerPaneles) {
         validation = new ControllerValidation();
         this.controllerPaneles = controllerPaneles;
+        this.modelEmpresa = controllerPaneles.getModelEmpresa();
+        this.modelUsuario = controllerPaneles.getModelUsuario();
         initComponents();
+        validation();
+        labelStatus.setText("");
+        controller.identificaInfo(modelUsuario);
     }
-
+    
+    private void validation(){
+        ArrayList components = new ArrayList<>();
+        components.add(name);
+        components.add(aPaterno);
+        components.add(aMaterno);
+        components.add(username);
+        components.add(pass01);
+        components.add(pass02);
+        components.add(controllerPaneles.getUserData());
+        controller = new ControllerViewUser(components);
+        controller.validations();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,6 +80,7 @@ public class ViewBaseDatosUsuario extends javax.swing.JPanel {
         pass01 = new javax.swing.JPasswordField();
         pass02 = new javax.swing.JPasswordField();
         next = new javax.swing.JButton();
+        labelStatus = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(245, 246, 247));
         setPreferredSize(new java.awt.Dimension(1000, 724));
@@ -74,7 +99,9 @@ public class ViewBaseDatosUsuario extends javax.swing.JPanel {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,9 +223,9 @@ public class ViewBaseDatosUsuario extends javax.swing.JPanel {
                             .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(name, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                            .addComponent(name)
                             .addComponent(aPaterno)
-                            .addComponent(aMaterno))
+                            .addComponent(aMaterno, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -318,12 +345,11 @@ public class ViewBaseDatosUsuario extends javax.swing.JPanel {
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(pass02)
-                                .addComponent(pass01, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)))))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(pass02)
+                            .addComponent(pass01, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                            .addComponent(username))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -347,11 +373,21 @@ public class ViewBaseDatosUsuario extends javax.swing.JPanel {
 
         next.setBackground(new java.awt.Color(66, 139, 202));
         next.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        next.setForeground(new java.awt.Color(66, 139, 202));
+        next.setForeground(new java.awt.Color(52, 73, 94));
         next.setText("Guardar cambios");
         next.setContentAreaFilled(false);
         next.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         next.setSelected(true);
+        next.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextActionPerformed(evt);
+            }
+        });
+
+        labelStatus.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelStatus.setForeground(new java.awt.Color(0, 204, 102));
+        labelStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelStatus.setText("Cambios guardados con éxito");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -360,10 +396,11 @@ public class ViewBaseDatosUsuario extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(next, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,6 +409,8 @@ public class ViewBaseDatosUsuario extends javax.swing.JPanel {
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelStatus)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(next)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -389,7 +428,8 @@ public class ViewBaseDatosUsuario extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -400,7 +440,7 @@ public class ViewBaseDatosUsuario extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -418,8 +458,8 @@ public class ViewBaseDatosUsuario extends javax.swing.JPanel {
 
     private void nameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameKeyPressed
         // TODO add your handling code here:
-//        if(evt.getKeyChar()==10)
-//        next();
+        if(evt.getKeyChar()==10)
+            saveChanges();
     }//GEN-LAST:event_nameKeyPressed
 
     private void aPaternoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_aPaternoFocusGained
@@ -438,8 +478,8 @@ public class ViewBaseDatosUsuario extends javax.swing.JPanel {
 
     private void aPaternoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_aPaternoKeyPressed
         // TODO add your handling code here:
-//        if(evt.getKeyChar()==10)
-//        next();
+        if(evt.getKeyChar()==10)
+            saveChanges();
     }//GEN-LAST:event_aPaternoKeyPressed
 
     private void aMaternoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_aMaternoFocusGained
@@ -458,8 +498,8 @@ public class ViewBaseDatosUsuario extends javax.swing.JPanel {
 
     private void aMaternoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_aMaternoKeyPressed
         // TODO add your handling code here:
-//        if(evt.getKeyChar()==10)
-//        next();
+        if(evt.getKeyChar()==10)
+            saveChanges();
     }//GEN-LAST:event_aMaternoKeyPressed
 
     private void usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusGained
@@ -478,8 +518,8 @@ public class ViewBaseDatosUsuario extends javax.swing.JPanel {
 
     private void usernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameKeyPressed
         // TODO add your handling code here:
-//        if(evt.getKeyChar()==10)
-//        next();
+        if(evt.getKeyChar()==10)
+            saveChanges();
     }//GEN-LAST:event_usernameKeyPressed
 
     private void pass01FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pass01FocusGained
@@ -494,8 +534,8 @@ public class ViewBaseDatosUsuario extends javax.swing.JPanel {
 
     private void pass01KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pass01KeyTyped
         // TODO add your handling code here:
-//        if(evt.getKeyChar()==10)
-//        next();
+        if(evt.getKeyChar()==10)
+            saveChanges();
     }//GEN-LAST:event_pass01KeyTyped
 
     private void pass02FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pass02FocusGained
@@ -514,10 +554,18 @@ public class ViewBaseDatosUsuario extends javax.swing.JPanel {
 
     private void pass02KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pass02KeyTyped
         // TODO add your handling code here:
-//        if(evt.getKeyChar()==10)
-//        next();
+        if(evt.getKeyChar()==10)    
+            saveChanges();
     }//GEN-LAST:event_pass02KeyTyped
 
+    private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
+        // TODO add your handling code here:
+        saveChanges();
+    }//GEN-LAST:event_nextActionPerformed
+
+    private void saveChanges(){
+        controller.guardarCambios(labelStatus, modelEmpresa.getIdEmpresa(), modelUsuario);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField aMaterno;
@@ -537,6 +585,7 @@ public class ViewBaseDatosUsuario extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel labelNota;
+    private javax.swing.JLabel labelStatus;
     private javax.swing.JTextField name;
     private javax.swing.JButton next;
     private javax.swing.JPasswordField pass01;

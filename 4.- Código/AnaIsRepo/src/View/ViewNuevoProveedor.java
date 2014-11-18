@@ -4,17 +4,24 @@
  * and open the template in the editor.
  */
 package View;
+import Controller.ControllerPaneles;
+import Controller.ControllerValidation;
 
 /**
  *
  * @author Teté
  */
 public class ViewNuevoProveedor extends javax.swing.JPanel {
+    
+    ControllerPaneles controllerPaneles;
+    ControllerValidation validation;
 
     /**
      * Creates new form ViewNuevoProveedor
      */
     public ViewNuevoProveedor() {
+        validation = new ControllerValidation();
+        this.controllerPaneles = controllerPaneles;
         initComponents();
     }
 
@@ -27,132 +34,200 @@ public class ViewNuevoProveedor extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        labelNuevoPro = new javax.swing.JLabel();
-        panelDatoPer = new javax.swing.JPanel();
-        labelCodProv = new javax.swing.JLabel();
-        codProveedor = new javax.swing.JTextField();
-        labelNomProveedor = new javax.swing.JLabel();
-        nomProveedor = new javax.swing.JTextField();
-        labelApePaProv = new javax.swing.JLabel();
-        apePaternoProv = new javax.swing.JTextField();
-        labelApMatProv = new javax.swing.JLabel();
-        apeMatProv = new javax.swing.JTextField();
+        panelNuevoProveedor = new javax.swing.JPanel();
+        panelInformacion = new javax.swing.JPanel();
+        labelInformacionPersonal = new javax.swing.JLabel();
+        nameProveedor = new javax.swing.JTextField();
+        rfc = new javax.swing.JTextField();
+        labelNombreProveedor = new javax.swing.JLabel();
         labelRFC = new javax.swing.JLabel();
-        rFC = new javax.swing.JTextField();
+        labelNota = new javax.swing.JLabel();
+        labelApellidoPaterno = new javax.swing.JLabel();
+        apellidoPaternoProv = new javax.swing.JTextField();
+        labelApellidoMaterno = new javax.swing.JLabel();
+        apellidoMaternoProv = new javax.swing.JTextField();
+        labelMarca = new javax.swing.JLabel();
         marcaProv = new javax.swing.JTextField();
-        labelMarcaProv = new javax.swing.JLabel();
-        labelEmpresaProv = new javax.swing.JLabel();
         empresaProv = new javax.swing.JTextField();
-        labelTelFijoProv = new javax.swing.JLabel();
-        telefonoFijoProv = new javax.swing.JTextField();
-        labelTelCelProv = new javax.swing.JLabel();
-        telefonoCelProv = new javax.swing.JTextField();
+        labelEmpresa = new javax.swing.JLabel();
+        labelID = new javax.swing.JLabel();
+        iDProv = new javax.swing.JTextField();
+        labelConfiguracion = new javax.swing.JLabel();
+        labelNuevoProveedor = new javax.swing.JLabel();
+        panelDireccion = new javax.swing.JPanel();
+        labelDireccion = new javax.swing.JLabel();
+        comboestado = new javax.swing.JComboBox();
+        ciudad = new javax.swing.JTextField();
+        labelEstado = new javax.swing.JLabel();
+        labelCiudad = new javax.swing.JLabel();
+        labelColonia = new javax.swing.JLabel();
+        colonia = new javax.swing.JTextField();
+        labelCalle = new javax.swing.JLabel();
+        street = new javax.swing.JTextField();
+        labelCP = new javax.swing.JLabel();
+        codePost = new javax.swing.JTextField();
+        labelNumeroInterior = new javax.swing.JLabel();
+        numInt = new javax.swing.JTextField();
+        labelNumeroExterior = new javax.swing.JLabel();
+        numExt = new javax.swing.JTextField();
+        panelContacto = new javax.swing.JPanel();
+        labelContacto = new javax.swing.JLabel();
+        labelPaginaWeb = new javax.swing.JLabel();
         labelEMail = new javax.swing.JLabel();
-        eMailProv = new javax.swing.JTextField();
-        panelDirProv = new javax.swing.JPanel();
-        labelCalleProv = new javax.swing.JLabel();
-        calleProv = new javax.swing.JTextField();
-        labelNoIntProv = new javax.swing.JLabel();
-        noIntProv = new javax.swing.JTextField();
-        labelNoExt = new javax.swing.JLabel();
-        noExtProv = new javax.swing.JTextField();
-        labelColProv = new javax.swing.JLabel();
-        coloniaProv = new javax.swing.JTextField();
-        labelCiuProv = new javax.swing.JLabel();
-        ciudadProv = new javax.swing.JTextField();
-        codPosProv = new javax.swing.JTextField();
-        codigoPosProv = new javax.swing.JLabel();
-        botonLimpiarProv = new javax.swing.JButton();
-        botonCancelarProv = new javax.swing.JButton();
-        botonAceptarProv = new javax.swing.JButton();
+        pagWeb = new javax.swing.JTextField();
+        eMail = new javax.swing.JTextField();
+        labelTelefonoFijo = new javax.swing.JLabel();
+        telefonoFijo = new javax.swing.JTextField();
+        labelTelefonoCelular = new javax.swing.JLabel();
+        telefonoCelular = new javax.swing.JTextField();
+        next = new javax.swing.JButton();
+        cancel = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(245, 246, 247));
 
-        labelNuevoPro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelNuevoPro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelNuevoPro.setText("Nuevo Proveedor");
+        panelNuevoProveedor.setBackground(new java.awt.Color(245, 246, 247));
+        panelNuevoProveedor.setForeground(new java.awt.Color(0, 102, 51));
 
-        panelDatoPer.setBackground(new java.awt.Color(245, 246, 247));
-        panelDatoPer.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Personales", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        panelInformacion.setBackground(new java.awt.Color(255, 255, 255));
 
-        labelCodProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelCodProv.setText("Código de Proveedor");
+        labelInformacionPersonal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelInformacionPersonal.setForeground(new java.awt.Color(66, 139, 202));
+        labelInformacionPersonal.setText("Información personal:");
 
-        codProveedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        codProveedor.setForeground(new java.awt.Color(204, 204, 255));
-        codProveedor.setText("Cod. Prov.");
-        codProveedor.addFocusListener(new java.awt.event.FocusAdapter() {
+        nameProveedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nameProveedor.setForeground(new java.awt.Color(180, 180, 180));
+        nameProveedor.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        nameProveedor.setText("Nombre (*)");
+        nameProveedor.setPreferredSize(new java.awt.Dimension(170, 26));
+        nameProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameProveedorActionPerformed(evt);
+            }
+        });
+        nameProveedor.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                codProveedorFocusGained(evt);
+                nameProveedorFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                codProveedorFocusLost(evt);
+                nameProveedorFocusLost(evt);
+            }
+        });
+        nameProveedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nameProveedorKeyPressed(evt);
             }
         });
 
-        labelNomProveedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelNomProveedor.setText("Nombre");
-
-        nomProveedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        nomProveedor.setForeground(new java.awt.Color(204, 204, 255));
-        nomProveedor.setText("Nombre.");
-        nomProveedor.addFocusListener(new java.awt.event.FocusAdapter() {
+        rfc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        rfc.setForeground(new java.awt.Color(180, 180, 180));
+        rfc.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        rfc.setText("R.F.C. (*)");
+        rfc.setPreferredSize(new java.awt.Dimension(60, 26));
+        rfc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rfcActionPerformed(evt);
+            }
+        });
+        rfc.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                nomProveedorFocusGained(evt);
+                rfcFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                nomProveedorFocusLost(evt);
+                rfcFocusLost(evt);
+            }
+        });
+        rfc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                rfcKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                rfcKeyTyped(evt);
             }
         });
 
-        labelApePaProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelApePaProv.setText("Apellido Paterno");
-
-        apePaternoProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        apePaternoProv.setForeground(new java.awt.Color(204, 204, 255));
-        apePaternoProv.setText("Ape. Paterno.");
-        apePaternoProv.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                apePaternoProvFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                apePaternoProvFocusLost(evt);
-            }
-        });
-
-        labelApMatProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelApMatProv.setText("Apellido Materno");
-
-        apeMatProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        apeMatProv.setForeground(new java.awt.Color(204, 204, 255));
-        apeMatProv.setText("Ape. Materno.");
-        apeMatProv.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                apeMatProvFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                apeMatProvFocusLost(evt);
-            }
-        });
+        labelNombreProveedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelNombreProveedor.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelNombreProveedor.setText("Nombre:");
 
         labelRFC.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelRFC.setText("RFC");
+        labelRFC.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelRFC.setText("R.F.C. :");
 
-        rFC.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        rFC.setForeground(new java.awt.Color(204, 204, 255));
-        rFC.setText("RFC");
-        rFC.addFocusListener(new java.awt.event.FocusAdapter() {
+        labelNota.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        labelNota.setForeground(new java.awt.Color(66, 139, 202));
+        labelNota.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelNota.setText("Nota: (*) Campos obligatorios");
+
+        labelApellidoPaterno.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelApellidoPaterno.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelApellidoPaterno.setText("Apellido Paterno:");
+
+        apellidoPaternoProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        apellidoPaternoProv.setForeground(new java.awt.Color(180, 180, 180));
+        apellidoPaternoProv.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        apellidoPaternoProv.setText("Apellido Paterno (*)");
+        apellidoPaternoProv.setPreferredSize(new java.awt.Dimension(170, 26));
+        apellidoPaternoProv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                apellidoPaternoProvActionPerformed(evt);
+            }
+        });
+        apellidoPaternoProv.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                rFCFocusGained(evt);
+                apellidoPaternoProvFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                rFCFocusLost(evt);
+                apellidoPaternoProvFocusLost(evt);
+            }
+        });
+        apellidoPaternoProv.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                apellidoPaternoProvKeyPressed(evt);
             }
         });
 
+        labelApellidoMaterno.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelApellidoMaterno.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelApellidoMaterno.setText("Apellido Materno:");
+
+        apellidoMaternoProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        apellidoMaternoProv.setForeground(new java.awt.Color(180, 180, 180));
+        apellidoMaternoProv.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        apellidoMaternoProv.setText("Apellido Materno (*)");
+        apellidoMaternoProv.setPreferredSize(new java.awt.Dimension(170, 26));
+        apellidoMaternoProv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                apellidoMaternoProvActionPerformed(evt);
+            }
+        });
+        apellidoMaternoProv.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                apellidoMaternoProvFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                apellidoMaternoProvFocusLost(evt);
+            }
+        });
+        apellidoMaternoProv.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                apellidoMaternoProvKeyPressed(evt);
+            }
+        });
+
+        labelMarca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelMarca.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelMarca.setText("Marca :");
+
         marcaProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        marcaProv.setForeground(new java.awt.Color(204, 204, 255));
-        marcaProv.setText("Marca");
+        marcaProv.setForeground(new java.awt.Color(180, 180, 180));
+        marcaProv.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        marcaProv.setText("Marca (*)");
+        marcaProv.setPreferredSize(new java.awt.Dimension(60, 26));
+        marcaProv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                marcaProvActionPerformed(evt);
+            }
+        });
         marcaProv.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 marcaProvFocusGained(evt);
@@ -161,16 +236,25 @@ public class ViewNuevoProveedor extends javax.swing.JPanel {
                 marcaProvFocusLost(evt);
             }
         });
-
-        labelMarcaProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelMarcaProv.setText("Marca");
-
-        labelEmpresaProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelEmpresaProv.setText("Empresa");
+        marcaProv.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                marcaProvKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                marcaProvKeyTyped(evt);
+            }
+        });
 
         empresaProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        empresaProv.setForeground(new java.awt.Color(204, 204, 255));
-        empresaProv.setText("Empresa");
+        empresaProv.setForeground(new java.awt.Color(180, 180, 180));
+        empresaProv.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        empresaProv.setText("Empresa (*)");
+        empresaProv.setPreferredSize(new java.awt.Dimension(60, 26));
+        empresaProv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                empresaProvActionPerformed(evt);
+            }
+        });
         empresaProv.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 empresaProvFocusGained(evt);
@@ -179,399 +263,708 @@ public class ViewNuevoProveedor extends javax.swing.JPanel {
                 empresaProvFocusLost(evt);
             }
         });
-
-        labelTelFijoProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelTelFijoProv.setText("Teléfono Fijo");
-
-        telefonoFijoProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        telefonoFijoProv.setForeground(new java.awt.Color(204, 204, 255));
-        telefonoFijoProv.setText("Tel. Fijo.");
-        telefonoFijoProv.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                telefonoFijoProvFocusGained(evt);
+        empresaProv.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                empresaProvKeyPressed(evt);
             }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                telefonoFijoProvFocusLost(evt);
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                empresaProvKeyTyped(evt);
             }
         });
 
-        labelTelCelProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelTelCelProv.setText("Teléfono Celular");
+        labelEmpresa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelEmpresa.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelEmpresa.setText("Empresa:");
 
-        telefonoCelProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        telefonoCelProv.setForeground(new java.awt.Color(204, 204, 255));
-        telefonoCelProv.setText("Tel. Cel.");
-        telefonoCelProv.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                telefonoCelProvFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                telefonoCelProvFocusLost(evt);
+        labelID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelID.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelID.setText("Código de Proveedor:");
+
+        iDProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        iDProv.setForeground(new java.awt.Color(180, 180, 180));
+        iDProv.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        iDProv.setText("ID");
+        iDProv.setPreferredSize(new java.awt.Dimension(60, 26));
+        iDProv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iDProvActionPerformed(evt);
             }
         });
+        iDProv.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                iDProvFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                iDProvFocusLost(evt);
+            }
+        });
+        iDProv.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                iDProvKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                iDProvKeyTyped(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelInformacionLayout = new javax.swing.GroupLayout(panelInformacion);
+        panelInformacion.setLayout(panelInformacionLayout);
+        panelInformacionLayout.setHorizontalGroup(
+            panelInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInformacionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelInformacionLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(labelInformacionPersonal)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(labelNota, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelInformacionLayout.createSequentialGroup()
+                        .addGroup(panelInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelInformacionLayout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addGroup(panelInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(panelInformacionLayout.createSequentialGroup()
+                                        .addComponent(labelNombreProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(33, 33, 33)
+                                        .addComponent(nameProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelInformacionLayout.createSequentialGroup()
+                                        .addComponent(labelApellidoPaterno)
+                                        .addGap(29, 29, 29)
+                                        .addGroup(panelInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(apellidoPaternoProv, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(apellidoMaternoProv, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInformacionLayout.createSequentialGroup()
+                                .addGroup(panelInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(labelRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labelApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labelMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labelEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(labelID))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(panelInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rfc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(marcaProv, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(empresaProv, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(iDProv, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        panelInformacionLayout.setVerticalGroup(
+            panelInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInformacionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelInformacionPersonal)
+                    .addComponent(labelNota))
+                .addGap(11, 11, 11)
+                .addGroup(panelInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNombreProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelApellidoPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(apellidoPaternoProv, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(apellidoMaternoProv, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rfc, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(marcaProv, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(empresaProv, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelID, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iDProv, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        labelConfiguracion.setBackground(new java.awt.Color(250, 250, 250));
+        labelConfiguracion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/ajustesInfo.png"))); // NOI18N
+        labelConfiguracion.setText("Configuración de información de la tienda");
+
+        labelNuevoProveedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelNuevoProveedor.setForeground(new java.awt.Color(66, 139, 202));
+        labelNuevoProveedor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelNuevoProveedor.setText("Nuevo Proveedor");
+
+        panelDireccion.setBackground(new java.awt.Color(255, 255, 255));
+
+        labelDireccion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelDireccion.setForeground(new java.awt.Color(66, 139, 202));
+        labelDireccion.setText("Dirección:");
+
+        comboestado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        comboestado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Chiapas", "Chihuahua", "Coahuila", "Colima", "Distrito Federal", "Durango", "Estado de México", "Guanajuato", "Guerrero", "Hidalgo", "Jalisco", "Michoacán", "Morelos", "Nayarit", "Nuevo León", "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas" }));
+
+        ciudad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ciudad.setForeground(new java.awt.Color(180, 180, 180));
+        ciudad.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        ciudad.setText("Ciudad");
+        ciudad.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                ciudadFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                ciudadFocusLost(evt);
+            }
+        });
+        ciudad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ciudadActionPerformed(evt);
+            }
+        });
+        ciudad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ciudadKeyPressed(evt);
+            }
+        });
+
+        labelEstado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelEstado.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelEstado.setText("Estado:");
+
+        labelCiudad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelCiudad.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelCiudad.setText("Ciudad:");
+
+        labelColonia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelColonia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelColonia.setText("Colonia:");
+
+        colonia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        colonia.setForeground(new java.awt.Color(180, 180, 180));
+        colonia.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        colonia.setText("Colonia");
+        colonia.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                coloniaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                coloniaFocusLost(evt);
+            }
+        });
+        colonia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                coloniaActionPerformed(evt);
+            }
+        });
+        colonia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                coloniaKeyPressed(evt);
+            }
+        });
+
+        labelCalle.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelCalle.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelCalle.setText("Calle:");
+
+        street.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        street.setForeground(new java.awt.Color(180, 180, 180));
+        street.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        street.setText("Calle");
+        street.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                streetFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                streetFocusLost(evt);
+            }
+        });
+        street.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                streetActionPerformed(evt);
+            }
+        });
+        street.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                streetKeyPressed(evt);
+            }
+        });
+
+        labelCP.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelCP.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelCP.setText("Código Postal:");
+
+        codePost.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        codePost.setForeground(new java.awt.Color(180, 180, 180));
+        codePost.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        codePost.setText("C.P.");
+        codePost.setPreferredSize(new java.awt.Dimension(46, 26));
+        codePost.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                codePostFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                codePostFocusLost(evt);
+            }
+        });
+        codePost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                codePostActionPerformed(evt);
+            }
+        });
+        codePost.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                codePostKeyPressed(evt);
+            }
+        });
+
+        labelNumeroInterior.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelNumeroInterior.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelNumeroInterior.setText("Número interior:");
+
+        numInt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        numInt.setForeground(new java.awt.Color(180, 180, 180));
+        numInt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        numInt.setText("No. Int.");
+        numInt.setPreferredSize(new java.awt.Dimension(50, 26));
+        numInt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                numIntFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                numIntFocusLost(evt);
+            }
+        });
+        numInt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numIntActionPerformed(evt);
+            }
+        });
+        numInt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                numIntKeyPressed(evt);
+            }
+        });
+
+        labelNumeroExterior.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelNumeroExterior.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelNumeroExterior.setText("Número Exterior:");
+
+        numExt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        numExt.setForeground(new java.awt.Color(180, 180, 180));
+        numExt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        numExt.setText("No. Ext.");
+        numExt.setPreferredSize(new java.awt.Dimension(50, 26));
+        numExt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                numExtFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                numExtFocusLost(evt);
+            }
+        });
+        numExt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numExtActionPerformed(evt);
+            }
+        });
+        numExt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                numExtKeyPressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelDireccionLayout = new javax.swing.GroupLayout(panelDireccion);
+        panelDireccion.setLayout(panelDireccionLayout);
+        panelDireccionLayout.setHorizontalGroup(
+            panelDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDireccionLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(panelDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelDireccion)
+                    .addGroup(panelDireccionLayout.createSequentialGroup()
+                        .addGroup(panelDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(labelEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelColonia, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelCP, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(comboestado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(colonia)
+                            .addComponent(ciudad)
+                            .addComponent(street, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelDireccionLayout.createSequentialGroup()
+                                .addComponent(codePost, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(panelDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelDireccionLayout.createSequentialGroup()
+                                        .addComponent(labelNumeroExterior)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(numExt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(panelDireccionLayout.createSequentialGroup()
+                                        .addComponent(labelNumeroInterior)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(numInt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelDireccionLayout.setVerticalGroup(
+            panelDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDireccionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelDireccion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboestado, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelColonia, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(colonia, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(street, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelCP, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(codePost, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelNumeroInterior, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numInt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNumeroExterior, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numExt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelContacto.setBackground(new java.awt.Color(255, 255, 255));
+
+        labelContacto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelContacto.setForeground(new java.awt.Color(66, 139, 202));
+        labelContacto.setText("Contacto:");
+
+        labelPaginaWeb.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelPaginaWeb.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelPaginaWeb.setText("Página Web:");
 
         labelEMail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelEMail.setText("e-Mail");
+        labelEMail.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelEMail.setText("E-mail:");
 
-        eMailProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        eMailProv.setForeground(new java.awt.Color(204, 204, 255));
-        eMailProv.setText("e-Mail.");
-        eMailProv.addFocusListener(new java.awt.event.FocusAdapter() {
+        pagWeb.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pagWeb.setForeground(new java.awt.Color(180, 180, 180));
+        pagWeb.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        pagWeb.setText("Página Web");
+        pagWeb.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                eMailProvFocusGained(evt);
+                pagWebFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                eMailProvFocusLost(evt);
+                pagWebFocusLost(evt);
+            }
+        });
+        pagWeb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pagWebActionPerformed(evt);
+            }
+        });
+        pagWeb.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pagWebKeyPressed(evt);
             }
         });
 
-        javax.swing.GroupLayout panelDatoPerLayout = new javax.swing.GroupLayout(panelDatoPer);
-        panelDatoPer.setLayout(panelDatoPerLayout);
-        panelDatoPerLayout.setHorizontalGroup(
-            panelDatoPerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDatoPerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelDatoPerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelDatoPerLayout.createSequentialGroup()
-                        .addComponent(labelCodProv)
+        eMail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        eMail.setForeground(new java.awt.Color(180, 180, 180));
+        eMail.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        eMail.setText("E-mail (*)");
+        eMail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eMailActionPerformed(evt);
+            }
+        });
+        eMail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                eMailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                eMailFocusLost(evt);
+            }
+        });
+        eMail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                eMailKeyPressed(evt);
+            }
+        });
+
+        labelTelefonoFijo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelTelefonoFijo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelTelefonoFijo.setText("Teléfono fijo:");
+
+        telefonoFijo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        telefonoFijo.setForeground(new java.awt.Color(180, 180, 180));
+        telefonoFijo.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        telefonoFijo.setText("Teléfono fijo");
+        telefonoFijo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                telefonoFijoActionPerformed(evt);
+            }
+        });
+        telefonoFijo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                telefonoFijoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                telefonoFijoFocusLost(evt);
+            }
+        });
+        telefonoFijo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                telefonoFijoKeyPressed(evt);
+            }
+        });
+
+        labelTelefonoCelular.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelTelefonoCelular.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelTelefonoCelular.setText("Celular:");
+
+        telefonoCelular.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        telefonoCelular.setForeground(new java.awt.Color(180, 180, 180));
+        telefonoCelular.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        telefonoCelular.setText("Celular");
+        telefonoCelular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                telefonoCelularActionPerformed(evt);
+            }
+        });
+        telefonoCelular.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                telefonoCelularFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                telefonoCelularFocusLost(evt);
+            }
+        });
+        telefonoCelular.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                telefonoCelularKeyPressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelContactoLayout = new javax.swing.GroupLayout(panelContacto);
+        panelContacto.setLayout(panelContactoLayout);
+        panelContactoLayout.setHorizontalGroup(
+            panelContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelContactoLayout.createSequentialGroup()
+                .addGroup(panelContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelContactoLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(panelContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelContactoLayout.createSequentialGroup()
+                                .addComponent(labelPaginaWeb, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pagWeb))
+                            .addGroup(panelContactoLayout.createSequentialGroup()
+                                .addComponent(labelEMail, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(eMail))
+                            .addGroup(panelContactoLayout.createSequentialGroup()
+                                .addComponent(labelContacto)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(panelContactoLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(codProveedor))
-                    .addGroup(panelDatoPerLayout.createSequentialGroup()
-                        .addComponent(labelNomProveedor)
-                        .addGap(98, 98, 98)
-                        .addComponent(nomProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
-                    .addGroup(panelDatoPerLayout.createSequentialGroup()
-                        .addComponent(labelApePaProv)
-                        .addGap(47, 47, 47)
-                        .addComponent(apePaternoProv, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
-                    .addGroup(panelDatoPerLayout.createSequentialGroup()
-                        .addComponent(labelApMatProv)
-                        .addGap(42, 42, 42)
-                        .addComponent(apeMatProv, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
-                    .addGroup(panelDatoPerLayout.createSequentialGroup()
-                        .addGroup(panelDatoPerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelRFC)
-                            .addComponent(labelMarcaProv))
-                        .addGap(110, 110, 110)
-                        .addGroup(panelDatoPerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(marcaProv)
-                            .addComponent(rFC, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)))
-                    .addGroup(panelDatoPerLayout.createSequentialGroup()
-                        .addComponent(labelEmpresaProv)
-                        .addGap(96, 96, 96)
-                        .addComponent(empresaProv))
-                    .addGroup(panelDatoPerLayout.createSequentialGroup()
-                        .addComponent(labelTelFijoProv)
-                        .addGap(71, 71, 71)
-                        .addComponent(telefonoFijoProv))
-                    .addGroup(panelDatoPerLayout.createSequentialGroup()
-                        .addComponent(labelTelCelProv)
-                        .addGap(50, 50, 50)
-                        .addComponent(telefonoCelProv))
-                    .addGroup(panelDatoPerLayout.createSequentialGroup()
-                        .addComponent(labelEMail)
-                        .addGap(109, 109, 109)
-                        .addComponent(eMailProv)))
+                        .addComponent(labelTelefonoFijo, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(telefonoFijo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelTelefonoCelular)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(telefonoCelular, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        panelDatoPerLayout.setVerticalGroup(
-            panelDatoPerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDatoPerLayout.createSequentialGroup()
+        panelContactoLayout.setVerticalGroup(
+            panelContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelContactoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelDatoPerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelCodProv)
-                    .addComponent(codProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(labelContacto)
+                .addGap(11, 11, 11)
+                .addGroup(panelContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelPaginaWeb, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pagWeb, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelDatoPerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelNomProveedor)
-                    .addComponent(nomProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelDatoPerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelApePaProv)
-                    .addComponent(apePaternoProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelDatoPerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelApMatProv)
-                    .addComponent(apeMatProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelDatoPerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelRFC)
-                    .addComponent(rFC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(panelDatoPerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelMarcaProv)
-                    .addComponent(marcaProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelDatoPerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelEmpresaProv)
-                    .addComponent(empresaProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelDatoPerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelTelFijoProv)
-                    .addComponent(telefonoFijoProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelDatoPerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelTelCelProv)
-                    .addComponent(telefonoCelProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelDatoPerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelEMail)
-                    .addComponent(eMailProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGroup(panelContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelEMail, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eMail, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTelefonoFijo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(telefonoFijo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelTelefonoCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(telefonoCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        panelDirProv.setBackground(new java.awt.Color(245, 246, 247));
-        panelDirProv.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dirección", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        next.setBackground(new java.awt.Color(66, 139, 202));
+        next.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        next.setForeground(new java.awt.Color(52, 73, 94));
+        next.setText("Guardar cambios");
+        next.setContentAreaFilled(false);
+        next.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        next.setSelected(true);
 
-        labelCalleProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelCalleProv.setText("Calle");
+        cancel.setBackground(new java.awt.Color(66, 139, 202));
+        cancel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cancel.setForeground(new java.awt.Color(52, 73, 94));
+        cancel.setText("Cancelar");
+        cancel.setContentAreaFilled(false);
+        cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        cancel.setSelected(true);
 
-        calleProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        calleProv.setForeground(new java.awt.Color(204, 204, 255));
-        calleProv.setText("Calle.");
-        calleProv.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                calleProvFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                calleProvFocusLost(evt);
-            }
-        });
-
-        labelNoIntProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelNoIntProv.setText("No. Interior");
-
-        noIntProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        noIntProv.setForeground(new java.awt.Color(204, 204, 255));
-        noIntProv.setText("No. Int.");
-        noIntProv.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                noIntProvFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                noIntProvFocusLost(evt);
-            }
-        });
-
-        labelNoExt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelNoExt.setText("No. Exterior");
-
-        noExtProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        noExtProv.setForeground(new java.awt.Color(204, 204, 255));
-        noExtProv.setText("No. Ext.");
-        noExtProv.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                noExtProvFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                noExtProvFocusLost(evt);
-            }
-        });
-
-        labelColProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelColProv.setText("Colonia");
-
-        coloniaProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        coloniaProv.setForeground(new java.awt.Color(204, 204, 255));
-        coloniaProv.setText("Colonia.");
-        coloniaProv.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                coloniaProvFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                coloniaProvFocusLost(evt);
-            }
-        });
-
-        labelCiuProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelCiuProv.setText("Ciudad");
-
-        ciudadProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        ciudadProv.setForeground(new java.awt.Color(204, 204, 255));
-        ciudadProv.setText("Ciudad.");
-        ciudadProv.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                ciudadProvFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                ciudadProvFocusLost(evt);
-            }
-        });
-
-        codPosProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        codPosProv.setForeground(new java.awt.Color(204, 204, 255));
-        codPosProv.setText("C.P.");
-        codPosProv.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                codPosProvFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                codPosProvFocusLost(evt);
-            }
-        });
-
-        codigoPosProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        codigoPosProv.setText("Código Postal");
-
-        javax.swing.GroupLayout panelDirProvLayout = new javax.swing.GroupLayout(panelDirProv);
-        panelDirProv.setLayout(panelDirProvLayout);
-        panelDirProvLayout.setHorizontalGroup(
-            panelDirProvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDirProvLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelNuevoProveedorLayout = new javax.swing.GroupLayout(panelNuevoProveedor);
+        panelNuevoProveedor.setLayout(panelNuevoProveedorLayout);
+        panelNuevoProveedorLayout.setHorizontalGroup(
+            panelNuevoProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelNuevoProveedorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelDirProvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelDirProvLayout.createSequentialGroup()
-                        .addGroup(panelDirProvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelCiuProv)
-                            .addComponent(codigoPosProv))
-                        .addGap(63, 63, 63)
-                        .addGroup(panelDirProvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ciudadProv)
-                            .addComponent(codPosProv)))
-                    .addGroup(panelDirProvLayout.createSequentialGroup()
-                        .addGroup(panelDirProvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelNoIntProv)
-                            .addComponent(labelCalleProv)
-                            .addComponent(labelNoExt)
-                            .addComponent(labelColProv))
-                        .addGap(77, 77, 77)
-                        .addGroup(panelDirProvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(coloniaProv, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
-                            .addComponent(noExtProv)
-                            .addComponent(noIntProv)
-                            .addComponent(calleProv))))
-                .addContainerGap())
+                .addGroup(panelNuevoProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelNuevoProveedorLayout.createSequentialGroup()
+                        .addComponent(panelContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelNuevoProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(next, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(68, 68, 68))
+                    .addGroup(panelNuevoProveedorLayout.createSequentialGroup()
+                        .addGroup(panelNuevoProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelNuevoProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(labelNuevoProveedor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelNuevoProveedorLayout.createSequentialGroup()
+                                    .addComponent(panelInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(panelDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
-        panelDirProvLayout.setVerticalGroup(
-            panelDirProvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDirProvLayout.createSequentialGroup()
+        panelNuevoProveedorLayout.setVerticalGroup(
+            panelNuevoProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelNuevoProveedorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelDirProvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelCalleProv)
-                    .addComponent(calleProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(labelConfiguracion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelNuevoProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelDirProvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelNoIntProv)
-                    .addComponent(noIntProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelDirProvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelNoExt)
-                    .addComponent(noExtProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelDirProvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelColProv)
-                    .addComponent(coloniaProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelDirProvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelCiuProv)
-                    .addComponent(ciudadProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(panelDirProvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(codigoPosProv)
-                    .addComponent(codPosProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addGroup(panelNuevoProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelInformacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelNuevoProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelNuevoProveedorLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(next)
+                        .addGap(26, 26, 26)
+                        .addComponent(cancel)))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
-
-        botonLimpiarProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        botonLimpiarProv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/trash.png"))); // NOI18N
-        botonLimpiarProv.setText("Limpiar");
-        botonLimpiarProv.setContentAreaFilled(false);
-        botonLimpiarProv.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        botonCancelarProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        botonCancelarProv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/cancel.png"))); // NOI18N
-        botonCancelarProv.setText("Cancelar");
-        botonCancelarProv.setContentAreaFilled(false);
-        botonCancelarProv.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        botonAceptarProv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        botonAceptarProv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/tick.png"))); // NOI18N
-        botonAceptarProv.setText("Aceptar");
-        botonAceptarProv.setContentAreaFilled(false);
-        botonAceptarProv.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelNuevoPro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelDatoPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(panelDirProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 17, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(160, 160, 160)
-                .addComponent(botonLimpiarProv)
-                .addGap(100, 100, 100)
-                .addComponent(botonCancelarProv)
-                .addGap(89, 89, 89)
-                .addComponent(botonAceptarProv)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelNuevoProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelNuevoPro)
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panelDatoPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelDirProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(67, 67, 67)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonLimpiarProv)
-                    .addComponent(botonCancelarProv)
-                    .addComponent(botonAceptarProv))
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addComponent(panelNuevoProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 24, Short.MAX_VALUE))
         );
-
-        panelDirProv.getAccessibleContext().setAccessibleName("Dirección");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void codProveedorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codProveedorFocusGained
+    private void nameProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameProveedorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_codProveedorFocusGained
+    }//GEN-LAST:event_nameProveedorActionPerformed
 
-    private void codProveedorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codProveedorFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_codProveedorFocusLost
+    private void nameProveedorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameProveedorFocusGained
+        validation.placeHolder(true,nameProveedor,"Nombre de la empresa (*)");
+    }//GEN-LAST:event_nameProveedorFocusGained
 
-    private void nomProveedorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomProveedorFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nomProveedorFocusGained
+    private void nameProveedorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameProveedorFocusLost
+        validation.placeHolder(false ,nameProveedor,"Nombre de la empresa (*)");
+    }//GEN-LAST:event_nameProveedorFocusLost
 
-    private void nomProveedorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomProveedorFocusLost
+    private void nameProveedorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameProveedorKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nomProveedorFocusLost
+        //        if(evt.getKeyChar()==10)
+        //            next();
+    }//GEN-LAST:event_nameProveedorKeyPressed
 
-    private void apePaternoProvFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_apePaternoProvFocusGained
+    private void rfcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rfcActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_apePaternoProvFocusGained
+    }//GEN-LAST:event_rfcActionPerformed
 
-    private void apePaternoProvFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_apePaternoProvFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_apePaternoProvFocusLost
+    private void rfcFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rfcFocusGained
+        validation.placeHolder(true,rfc,"R.F.C. (*)");
+    }//GEN-LAST:event_rfcFocusGained
 
-    private void apeMatProvFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_apeMatProvFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_apeMatProvFocusGained
+    private void rfcFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rfcFocusLost
+        validation.placeHolder(false,rfc,"R.F.C. (*)");
+    }//GEN-LAST:event_rfcFocusLost
 
-    private void apeMatProvFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_apeMatProvFocusLost
+    private void rfcKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rfcKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_apeMatProvFocusLost
+        //        if(evt.getKeyChar()==10)
+        //            next();
+    }//GEN-LAST:event_rfcKeyPressed
 
-    private void rFCFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rFCFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rFCFocusGained
+    private void rfcKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rfcKeyTyped
 
-    private void rFCFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rFCFocusLost
+    }//GEN-LAST:event_rfcKeyTyped
+
+    private void apellidoPaternoProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoPaternoProvActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rFCFocusLost
+    }//GEN-LAST:event_apellidoPaternoProvActionPerformed
+
+    private void apellidoPaternoProvFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_apellidoPaternoProvFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_apellidoPaternoProvFocusGained
+
+    private void apellidoPaternoProvFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_apellidoPaternoProvFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_apellidoPaternoProvFocusLost
+
+    private void apellidoPaternoProvKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apellidoPaternoProvKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_apellidoPaternoProvKeyPressed
+
+    private void apellidoMaternoProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoMaternoProvActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_apellidoMaternoProvActionPerformed
+
+    private void apellidoMaternoProvFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_apellidoMaternoProvFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_apellidoMaternoProvFocusGained
+
+    private void apellidoMaternoProvFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_apellidoMaternoProvFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_apellidoMaternoProvFocusLost
+
+    private void apellidoMaternoProvKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apellidoMaternoProvKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_apellidoMaternoProvKeyPressed
+
+    private void marcaProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marcaProvActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_marcaProvActionPerformed
 
     private void marcaProvFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_marcaProvFocusGained
         // TODO add your handling code here:
@@ -581,6 +974,18 @@ public class ViewNuevoProveedor extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_marcaProvFocusLost
 
+    private void marcaProvKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_marcaProvKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_marcaProvKeyPressed
+
+    private void marcaProvKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_marcaProvKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_marcaProvKeyTyped
+
+    private void empresaProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empresaProvActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_empresaProvActionPerformed
+
     private void empresaProvFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_empresaProvFocusGained
         // TODO add your handling code here:
     }//GEN-LAST:event_empresaProvFocusGained
@@ -589,117 +994,260 @@ public class ViewNuevoProveedor extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_empresaProvFocusLost
 
-    private void telefonoFijoProvFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefonoFijoProvFocusGained
+    private void empresaProvKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_empresaProvKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_telefonoFijoProvFocusGained
+    }//GEN-LAST:event_empresaProvKeyPressed
 
-    private void telefonoFijoProvFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefonoFijoProvFocusLost
+    private void empresaProvKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_empresaProvKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_telefonoFijoProvFocusLost
+    }//GEN-LAST:event_empresaProvKeyTyped
 
-    private void telefonoCelProvFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefonoCelProvFocusGained
+    private void iDProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iDProvActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_telefonoCelProvFocusGained
+    }//GEN-LAST:event_iDProvActionPerformed
 
-    private void telefonoCelProvFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefonoCelProvFocusLost
+    private void iDProvFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_iDProvFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_telefonoCelProvFocusLost
+    }//GEN-LAST:event_iDProvFocusGained
 
-    private void eMailProvFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_eMailProvFocusGained
+    private void iDProvFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_iDProvFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_eMailProvFocusGained
+    }//GEN-LAST:event_iDProvFocusLost
 
-    private void eMailProvFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_eMailProvFocusLost
+    private void iDProvKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_iDProvKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_eMailProvFocusLost
+    }//GEN-LAST:event_iDProvKeyPressed
 
-    private void calleProvFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_calleProvFocusGained
+    private void iDProvKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_iDProvKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_calleProvFocusGained
+    }//GEN-LAST:event_iDProvKeyTyped
 
-    private void calleProvFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_calleProvFocusLost
+    private void ciudadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ciudadFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_calleProvFocusLost
+        validation.placeHolder(true,ciudad,"Ciudad");
+    }//GEN-LAST:event_ciudadFocusGained
 
-    private void noIntProvFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_noIntProvFocusGained
+    private void ciudadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ciudadFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_noIntProvFocusGained
+        validation.placeHolder(false,ciudad,"Ciudad");
+    }//GEN-LAST:event_ciudadFocusLost
 
-    private void noIntProvFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_noIntProvFocusLost
+    private void ciudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ciudadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_noIntProvFocusLost
+    }//GEN-LAST:event_ciudadActionPerformed
 
-    private void noExtProvFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_noExtProvFocusGained
+    private void ciudadKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ciudadKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_noExtProvFocusGained
+        //        if(evt.getKeyChar()==10)
+        //            next();
+    }//GEN-LAST:event_ciudadKeyPressed
 
-    private void noExtProvFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_noExtProvFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_noExtProvFocusLost
+    private void coloniaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_coloniaFocusGained
+        validation.placeHolder(true,colonia,"Colonia");
+    }//GEN-LAST:event_coloniaFocusGained
 
-    private void coloniaProvFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_coloniaProvFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_coloniaProvFocusGained
+    private void coloniaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_coloniaFocusLost
+        validation.placeHolder(false,colonia,"Colonia");
+    }//GEN-LAST:event_coloniaFocusLost
 
-    private void coloniaProvFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_coloniaProvFocusLost
+    private void coloniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coloniaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_coloniaProvFocusLost
+    }//GEN-LAST:event_coloniaActionPerformed
 
-    private void ciudadProvFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ciudadProvFocusGained
+    private void coloniaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_coloniaKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ciudadProvFocusGained
+        //        if(evt.getKeyChar()==10)
+        //        next();
+    }//GEN-LAST:event_coloniaKeyPressed
 
-    private void ciudadProvFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ciudadProvFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ciudadProvFocusLost
+    private void streetFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_streetFocusGained
+        validation.placeHolder(true,street,"Calle");
+    }//GEN-LAST:event_streetFocusGained
 
-    private void codPosProvFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codPosProvFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_codPosProvFocusGained
+    private void streetFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_streetFocusLost
+        validation.placeHolder(false,street,"Calle");
+    }//GEN-LAST:event_streetFocusLost
 
-    private void codPosProvFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codPosProvFocusLost
+    private void streetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_streetActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_codPosProvFocusLost
+    }//GEN-LAST:event_streetActionPerformed
+
+    private void streetKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_streetKeyPressed
+        //        if(evt.getKeyChar()==10)
+        //            next();
+    }//GEN-LAST:event_streetKeyPressed
+
+    private void codePostFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codePostFocusGained
+        validation.placeHolder(true,codePost,"C.P.");
+    }//GEN-LAST:event_codePostFocusGained
+
+    private void codePostFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codePostFocusLost
+        validation.placeHolder(false,codePost,"C.P.");
+    }//GEN-LAST:event_codePostFocusLost
+
+    private void codePostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codePostActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_codePostActionPerformed
+
+    private void codePostKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codePostKeyPressed
+        // TODO add your handling code here:
+        //        if(evt.getKeyChar()==10)
+        //            next();
+    }//GEN-LAST:event_codePostKeyPressed
+
+    private void numIntFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numIntFocusGained
+        validation.placeHolder(true,numInt,"No. Int.");
+    }//GEN-LAST:event_numIntFocusGained
+
+    private void numIntFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numIntFocusLost
+        validation.placeHolder(false,numInt,"No. Int.");
+    }//GEN-LAST:event_numIntFocusLost
+
+    private void numIntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numIntActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numIntActionPerformed
+
+    private void numIntKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numIntKeyPressed
+        // TODO add your handling code here:
+        //        if(evt.getKeyChar()==10)
+        //            next();
+    }//GEN-LAST:event_numIntKeyPressed
+
+    private void numExtFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numExtFocusGained
+        validation.placeHolder(true,numExt,"No. Ext.");
+    }//GEN-LAST:event_numExtFocusGained
+
+    private void numExtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numExtFocusLost
+        validation.placeHolder(false,numExt,"No. Ext.");
+    }//GEN-LAST:event_numExtFocusLost
+
+    private void numExtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numExtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numExtActionPerformed
+
+    private void numExtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numExtKeyPressed
+        // TODO add your handling code here:
+        //        if(evt.getKeyChar()==10)
+        //            next();
+    }//GEN-LAST:event_numExtKeyPressed
+
+    private void pagWebFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pagWebFocusGained
+        validation.placeHolder(true,pagWeb,"Página Web");
+    }//GEN-LAST:event_pagWebFocusGained
+
+    private void pagWebFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pagWebFocusLost
+        validation.placeHolder(false,pagWeb,"Página Web");
+    }//GEN-LAST:event_pagWebFocusLost
+
+    private void pagWebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagWebActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pagWebActionPerformed
+
+    private void pagWebKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pagWebKeyPressed
+        // TODO add your handling code here:
+        //        if(evt.getKeyChar()==10)
+        //        next();
+    }//GEN-LAST:event_pagWebKeyPressed
+
+    private void eMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eMailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eMailActionPerformed
+
+    private void eMailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_eMailFocusGained
+        validation.placeHolder(true,eMail,"E-mail");
+    }//GEN-LAST:event_eMailFocusGained
+
+    private void eMailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_eMailFocusLost
+        validation.placeHolder(false,eMail,"E-mail");
+    }//GEN-LAST:event_eMailFocusLost
+
+    private void eMailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_eMailKeyPressed
+        // TODO add your handling code here:
+        //        if(evt.getKeyChar()==10)
+        //        next();
+    }//GEN-LAST:event_eMailKeyPressed
+
+    private void telefonoFijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefonoFijoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_telefonoFijoActionPerformed
+
+    private void telefonoFijoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefonoFijoFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_telefonoFijoFocusGained
+
+    private void telefonoFijoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefonoFijoFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_telefonoFijoFocusLost
+
+    private void telefonoFijoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telefonoFijoKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_telefonoFijoKeyPressed
+
+    private void telefonoCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefonoCelularActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_telefonoCelularActionPerformed
+
+    private void telefonoCelularFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefonoCelularFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_telefonoCelularFocusGained
+
+    private void telefonoCelularFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefonoCelularFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_telefonoCelularFocusLost
+
+    private void telefonoCelularKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telefonoCelularKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_telefonoCelularKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField apeMatProv;
-    private javax.swing.JTextField apePaternoProv;
-    private javax.swing.JButton botonAceptarProv;
-    private javax.swing.JButton botonCancelarProv;
-    private javax.swing.JButton botonLimpiarProv;
-    private javax.swing.JTextField calleProv;
-    private javax.swing.JTextField ciudadProv;
-    private javax.swing.JTextField codPosProv;
-    private javax.swing.JTextField codProveedor;
-    private javax.swing.JLabel codigoPosProv;
-    private javax.swing.JTextField coloniaProv;
-    private javax.swing.JTextField eMailProv;
+    private javax.swing.JTextField apellidoMaternoProv;
+    private javax.swing.JTextField apellidoPaternoProv;
+    private javax.swing.JButton cancel;
+    private javax.swing.JTextField ciudad;
+    private javax.swing.JTextField codePost;
+    private javax.swing.JTextField colonia;
+    private javax.swing.JComboBox comboestado;
+    private javax.swing.JTextField eMail;
     private javax.swing.JTextField empresaProv;
-    private javax.swing.JLabel labelApMatProv;
-    private javax.swing.JLabel labelApePaProv;
-    private javax.swing.JLabel labelCalleProv;
-    private javax.swing.JLabel labelCiuProv;
-    private javax.swing.JLabel labelCodProv;
-    private javax.swing.JLabel labelColProv;
+    private javax.swing.JTextField iDProv;
+    private javax.swing.JLabel labelApellidoMaterno;
+    private javax.swing.JLabel labelApellidoPaterno;
+    private javax.swing.JLabel labelCP;
+    private javax.swing.JLabel labelCalle;
+    private javax.swing.JLabel labelCiudad;
+    private javax.swing.JLabel labelColonia;
+    private javax.swing.JLabel labelConfiguracion;
+    private javax.swing.JLabel labelContacto;
+    private javax.swing.JLabel labelDireccion;
     private javax.swing.JLabel labelEMail;
-    private javax.swing.JLabel labelEmpresaProv;
-    private javax.swing.JLabel labelMarcaProv;
-    private javax.swing.JLabel labelNoExt;
-    private javax.swing.JLabel labelNoIntProv;
-    private javax.swing.JLabel labelNomProveedor;
-    private javax.swing.JLabel labelNuevoPro;
+    private javax.swing.JLabel labelEmpresa;
+    private javax.swing.JLabel labelEstado;
+    private javax.swing.JLabel labelID;
+    private javax.swing.JLabel labelInformacionPersonal;
+    private javax.swing.JLabel labelMarca;
+    private javax.swing.JLabel labelNombreProveedor;
+    private javax.swing.JLabel labelNota;
+    private javax.swing.JLabel labelNuevoProveedor;
+    private javax.swing.JLabel labelNumeroExterior;
+    private javax.swing.JLabel labelNumeroInterior;
+    private javax.swing.JLabel labelPaginaWeb;
     private javax.swing.JLabel labelRFC;
-    private javax.swing.JLabel labelTelCelProv;
-    private javax.swing.JLabel labelTelFijoProv;
+    private javax.swing.JLabel labelTelefonoCelular;
+    private javax.swing.JLabel labelTelefonoFijo;
     private javax.swing.JTextField marcaProv;
-    private javax.swing.JTextField noExtProv;
-    private javax.swing.JTextField noIntProv;
-    private javax.swing.JTextField nomProveedor;
-    private javax.swing.JPanel panelDatoPer;
-    private javax.swing.JPanel panelDirProv;
-    private javax.swing.JTextField rFC;
-    private javax.swing.JTextField telefonoCelProv;
-    private javax.swing.JTextField telefonoFijoProv;
+    private javax.swing.JTextField nameProveedor;
+    private javax.swing.JButton next;
+    private javax.swing.JTextField numExt;
+    private javax.swing.JTextField numInt;
+    private javax.swing.JTextField pagWeb;
+    private javax.swing.JPanel panelContacto;
+    private javax.swing.JPanel panelDireccion;
+    private javax.swing.JPanel panelInformacion;
+    private javax.swing.JPanel panelNuevoProveedor;
+    private javax.swing.JTextField rfc;
+    private javax.swing.JTextField street;
+    private javax.swing.JTextField telefonoCelular;
+    private javax.swing.JTextField telefonoFijo;
     // End of variables declaration//GEN-END:variables
 }

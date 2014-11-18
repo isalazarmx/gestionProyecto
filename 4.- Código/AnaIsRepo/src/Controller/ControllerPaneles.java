@@ -9,6 +9,7 @@ import Model.ModelEmpresa;
 import Model.ModelUsuario;
 import java.awt.GridBagLayout;
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
@@ -21,6 +22,7 @@ public class ControllerPaneles {
     private JPanel panelUserData;
     private JPanel panelBotoneraPrincipal;
     private JPanel panelCentral;
+    private JButton userData;
     
     public void configPanel(JPanel panel){
         panel.setLayout(new GridBagLayout());
@@ -102,5 +104,19 @@ public class ControllerPaneles {
      */
     public void setPanelUserData(JPanel panelUserData) {
         this.panelUserData = panelUserData;
+    }
+
+    /**
+     * @return the userData
+     */
+    public JButton getUserData() {
+        return userData;
+    }
+
+    /**
+     * @param userData the userData to set
+     */
+    public void setUserData(JButton userData) {
+        this.userData = userData;
     }
 }
