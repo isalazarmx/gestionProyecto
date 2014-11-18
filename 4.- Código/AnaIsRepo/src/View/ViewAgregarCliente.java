@@ -6,6 +6,7 @@
 package View;
 import Controller.ControllerPaneles;
 import Controller.ControllerValidation;
+import Controller.ControllerViewClientes;
 import Controller.ControllerViewSession;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -17,16 +18,41 @@ import javax.swing.JPanel;
 public class ViewAgregarCliente extends javax.swing.JPanel {
     ControllerValidation validation;
     ControllerPaneles controllerPaneles;
+    ControllerViewClientes controller;
 
     /**
      * Creates new form ViewAgregarCliente
+     * @param controllerPaneles
      */
     public ViewAgregarCliente(ControllerPaneles controllerPaneles) {
         initComponents();
         this.controllerPaneles = controllerPaneles;//asi
         this.validation = new ControllerValidation();
+        this.validationClientes();
+        
     }
 
+    public void validationClientes()
+    {
+        ArrayList components = new ArrayList<>();
+        components.add(Nombre);
+        components.add (acApellidoPaterno);
+        components.add (acApellidoMaterno);
+        components.add (acRFC);
+        components.add (acTelefono);
+        components.add (acTelCelular);
+        components.add (acEmail);
+        components.add (acCalle);
+        components.add (acCiudad);
+        components.add (acColonia);
+        components.add (acEstados);
+        components.add (acCP);
+        components.add (acNoExt);
+        components.add (acNoInt);
+        
+        controller = new ControllerViewClientes(components);
+        controller.validations();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,7 +90,7 @@ public class ViewAgregarCliente extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         acCP = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        Estados = new javax.swing.JComboBox();
+        acEstados = new javax.swing.JComboBox();
         jLabel15 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         acIdCliente = new javax.swing.JTextField();
@@ -247,6 +273,11 @@ public class ViewAgregarCliente extends javax.swing.JPanel {
                 acNoExtFocusLost(evt);
             }
         });
+        acNoExt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acNoExtActionPerformed(evt);
+            }
+        });
 
         acNoInt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         acNoInt.setForeground(new java.awt.Color(180, 180, 180));
@@ -258,6 +289,11 @@ public class ViewAgregarCliente extends javax.swing.JPanel {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 acNoIntFocusLost(evt);
+            }
+        });
+        acNoInt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acNoIntActionPerformed(evt);
             }
         });
 
@@ -321,8 +357,13 @@ public class ViewAgregarCliente extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Estado:");
 
-        Estados.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Estados.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Chiapas", "Chihuahua", "Coahuila", "Colima", "Distrito Federal", "Durango", "Estado de México", "Guanajuato", "Guerrero", "Hidalgo", "Jalisco", "Michoacán", "Morelos", "Nayarit", "Nuevo León", "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas" }));
+        acEstados.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        acEstados.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Chiapas", "Chihuahua", "Coahuila", "Colima", "Distrito Federal", "Durango", "Estado de México", "Guanajuato", "Guerrero", "Hidalgo", "Jalisco", "Michoacán", "Morelos", "Nayarit", "Nuevo León", "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas" }));
+        acEstados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acEstadosActionPerformed(evt);
+            }
+        });
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel15.setText("No. Int");
@@ -366,7 +407,7 @@ public class ViewAgregarCliente extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Estados, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(acEstados, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(acCP, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(241, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -398,7 +439,7 @@ public class ViewAgregarCliente extends javax.swing.JPanel {
                         .addComponent(jLabel12))
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(Estados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(acEstados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(acCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -687,11 +728,11 @@ public class ViewAgregarCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_acCalleFocusLost
 
     private void acNoExtFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acNoExtFocusGained
-        validation.placeHolder(true,acNoExt,"No. Ext");        // TODO add your handling code here:
+        validation.placeHolder(true,acNoExt,"No. Ext.");        // TODO add your handling code here:
     }//GEN-LAST:event_acNoExtFocusGained
 
     private void acNoExtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acNoExtFocusLost
-        validation.placeHolder(false,acNoExt,"No. Ext");        // TODO add your handling code here:
+        validation.placeHolder(false,acNoExt,"No. Ext.");        // TODO add your handling code here:
     }//GEN-LAST:event_acNoExtFocusLost
 
     private void acNoIntFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acNoIntFocusGained
@@ -734,9 +775,20 @@ public class ViewAgregarCliente extends javax.swing.JPanel {
        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewClientes(controllerPaneles)); //asi
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void acEstadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acEstadosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_acEstadosActionPerformed
+
+    private void acNoExtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acNoExtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_acNoExtActionPerformed
+
+    private void acNoIntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acNoIntActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_acNoIntActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox Estados;
     private javax.swing.JTextField Nombre;
     private javax.swing.JTextField acApellidoMaterno;
     private javax.swing.JTextField acApellidoPaterno;
@@ -745,6 +797,7 @@ public class ViewAgregarCliente extends javax.swing.JPanel {
     private javax.swing.JTextField acCiudad;
     private javax.swing.JTextField acColonia;
     private javax.swing.JTextField acEmail;
+    private javax.swing.JComboBox acEstados;
     private javax.swing.JTextField acIdCliente;
     private javax.swing.JTextField acNoExt;
     private javax.swing.JTextField acNoInt;
