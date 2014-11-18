@@ -55,11 +55,13 @@ public class ControllerConsults {
                 empresa.setCalle(res.getString("calle"));
                 empresa.setNumINT(Integer.parseInt(res.getString("numInt")));
                 empresa.setNumExt(Integer.parseInt(res.getString("numExt")));
+                empresa.setCiudad(res.getString("ciudad"));
                 empresa.setColonia(res.getString("colonia"));
+                empresa.setEstado(res.getString("estado"));
                 empresa.setCodigoPostal(Integer.parseInt(res.getString("codigoPostal")));
                 empresa.setRFC(res.getString("RFC"));
                 empresa.setPagWeb(res.getString("pagWeb"));
-                empresa.seteMail(res.getString("e-mail"));
+                empresa.seteMail(res.getString("email"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(ControllerConsults.class.getName()).log(Level.SEVERE, null, ex);
@@ -135,6 +137,52 @@ public class ControllerConsults {
             Statement sta = conn.createStatement();
             user.setTipo(3);
             String strQuery = "insert into usuario values "+user.addInfo();
+            System.out.println(strQuery);
+            sta.executeUpdate(strQuery);
+            flag = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ControllerConsults.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+              try {
+                if (conn != null && !conn.isClosed())
+                    conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return flag;
+    }
+    
+    public static boolean modifUser(ModelUsuario user){
+        boolean flag = false;
+        ControllerConnDBMS controller = new ControllerConnDBMS();
+        Connection conn = controller.connectDB();
+        try {
+            Statement sta = conn.createStatement();
+            String strQuery = "update usuario "+user.modInfo()+" where idusuario = "+user.getIdUsuario();
+            System.out.println(strQuery);
+            sta.executeUpdate(strQuery);
+            flag = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ControllerConsults.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+              try {
+                if (conn != null && !conn.isClosed())
+                    conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return flag;
+    }
+    
+    public static boolean modifEmpresa(ModelEmpresa empresa){
+        boolean flag = false;
+        ControllerConnDBMS controller = new ControllerConnDBMS();
+        Connection conn = controller.connectDB();
+        try {
+            Statement sta = conn.createStatement();
+            String strQuery = "update empresa "+empresa.modInfo()+" where idempresa = "+empresa.getIdEmpresa()+";";
             System.out.println(strQuery);
             sta.executeUpdate(strQuery);
             flag = true;

@@ -40,6 +40,14 @@ public class ModelUsuario {
                 ");";
     }
     
+    public String modInfo(){
+        return "set nombre = '"+getNombre()+"',"+ 
+               "aPaterno = '"+getaPaterno()+"',"+
+               "aMaterno = '"+getaMaterno()+"',"+
+               "username = '"+getUsername()+"',"+
+               "password = '"+getPassword()+"'";
+    }
+    
     /**
      * @return the idUsuario
      */

@@ -47,10 +47,11 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         controllerPaneles.setModelEmpresa(modelEmpresa);
         controllerPaneles.setModelUsuario(modelUsuario);
         controllerPaneles.setPanelCentral(panelCentral);
+        controllerPaneles.setUserData(user);
         controllerPaneles.setPanelBotoneraPrincipal(panelBotoneraPrincipal);
         controllerPaneles.configPanel(panelBotoneraPrincipal);
         controllerPaneles.configPanel(panelCentral);
-        controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBaseAdministradorBotoneraPrincipal(controllerPaneles));
+        controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBaseAdministradorBotoneraPrincipal(controllerPaneles,true));
     }
     
     private void configInit(){
@@ -310,18 +311,19 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BMinActionPerformed
 
     private void ajustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajustesActionPerformed
-        controllerPaneles.addPanel(panelCentral, new ViewBaseAjustes());
+        controllerPaneles.addPanel(panelCentral, new ViewBaseAjustes(controllerPaneles));
+        controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBaseAdministradorBotoneraPrincipal(controllerPaneles,false));
     }//GEN-LAST:event_ajustesActionPerformed
 
     private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
         // TODO add your handling code here:
-        controllerPaneles.addPanel(panelCentral, new ViewBaseDatosUsuario());
+        controllerPaneles.addPanel(panelCentral, new ViewBaseDatosUsuario(controllerPaneles));
+        controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBaseAdministradorBotoneraPrincipal(controllerPaneles,false));
     }//GEN-LAST:event_userActionPerformed
 
-    public void agregaJPanel(JPanel panelBase, JPanel panelAdd)
-    {
+    public void agregaJPanel(JPanel panelBase, JPanel panelAdd){
         panelBase.removeAll();
-        panelBase.add(panelAdd,LEFT_ALIGNMENT);
+        panelBase.add(panelAdd);
         panelBase.updateUI();
     }
 

@@ -61,7 +61,7 @@ public class ViewBaseAdministrador extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(245, 246, 247));
-        setPreferredSize(new java.awt.Dimension(100, 724));
+        setPreferredSize(new java.awt.Dimension(1000, 724));
 
         jPanel3.setBackground(new java.awt.Color(245, 246, 247));
 

@@ -51,6 +51,21 @@ public class ModelEmpresa {
                 +geteMail()+"'"
                 +",0);";
     }
+    
+    public String modInfo(){
+        return "set nombre = '"+getNombre()+"',"+ 
+               "calle = '"+getCalle()+"',"+
+               "numInt = "+getNumINT()+","+
+               "numExt = "+getNumExt()+","+
+               "ciudad = '"+getCiudad()+"',"+
+               "colonia = '"+getColonia()+"',"+
+               "estado = '"+getEstado()+"',"+
+               "codigoPostal = "+getCodigoPostal()+","+
+               "RFC = '"+getRFC()+"',"+
+               "pagweb = '"+getPagWeb()+"',"+
+               "email = '"+geteMail()+"'";
+    }
+    
     /**
      * @return the idEmpresa
      */
