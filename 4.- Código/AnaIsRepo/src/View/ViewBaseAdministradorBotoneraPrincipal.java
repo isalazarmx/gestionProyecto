@@ -232,7 +232,7 @@ public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
     private void proveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proveedoresActionPerformed
             // TODO add your handling code here:
         controller.accionButton(5);
-        controllerPaneles.addPanel(panelCentral, new ViewProveedores(controllerPaneles));
+        controllerPaneles.addPanel(panelCentral, new ViewProveedor(controllerPaneles));
         
     }//GEN-LAST:event_proveedoresActionPerformed
 
