@@ -149,17 +149,17 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         idCliente.setForeground(new java.awt.Color(180, 180, 180));
         idCliente.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         idCliente.setText("Cod. Cliente(*)");
-        idCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idClienteActionPerformed(evt);
-            }
-        });
         idCliente.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 idClienteFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 idClienteFocusLost(evt);
+            }
+        });
+        idCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idClienteActionPerformed(evt);
             }
         });
         idCliente.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -188,17 +188,17 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         fecha.setForeground(new java.awt.Color(180, 180, 180));
         fecha.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         fecha.setText("Fecha(*)");
-        fecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fechaActionPerformed(evt);
-            }
-        });
         fecha.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 fechaFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 fechaFocusLost(evt);
+            }
+        });
+        fecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fechaActionPerformed(evt);
             }
         });
         fecha.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -222,7 +222,15 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
 
         fechaPedido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         fechaPedido.setForeground(new java.awt.Color(204, 204, 255));
-        fechaPedido.setText("Fecha Pedido.");
+        fechaPedido.setText("Fecha pedido.");
+        fechaPedido.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fechaPedidoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fechaPedidoFocusLost(evt);
+            }
+        });
 
         botonFechaPed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/calender.png"))); // NOI18N
         botonFechaPed.setContentAreaFilled(false);
@@ -234,6 +242,14 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         fechaEnt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         fechaEnt.setForeground(new java.awt.Color(204, 204, 255));
         fechaEnt.setText("Fecha entrega.");
+        fechaEnt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fechaEntFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fechaEntFocusLost(evt);
+            }
+        });
 
         botonFechaEnt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/calender.png"))); // NOI18N
         botonFechaEnt.setContentAreaFilled(false);
@@ -245,6 +261,14 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         lugarEnt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lugarEnt.setForeground(new java.awt.Color(204, 204, 255));
         lugarEnt.setText("Lugar de entrega.");
+        lugarEnt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                lugarEntFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                lugarEntFocusLost(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Hora de entrega");
@@ -252,6 +276,14 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         horaEnt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         horaEnt.setForeground(new java.awt.Color(204, 204, 255));
         horaEnt.setText("00:00");
+        horaEnt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                horaEntFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                horaEntFocusLost(evt);
+            }
+        });
 
         labelNota.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         labelNota.setForeground(new java.awt.Color(66, 139, 202));
@@ -421,17 +453,17 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         descripcion.setForeground(new java.awt.Color(180, 180, 180));
         descripcion.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         descripcion.setText("Descripción");
-        descripcion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                descripcionActionPerformed(evt);
-            }
-        });
         descripcion.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 descripcionFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 descripcionFocusLost(evt);
+            }
+        });
+        descripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descripcionActionPerformed(evt);
             }
         });
         descripcion.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -447,17 +479,17 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         price.setForeground(new java.awt.Color(180, 180, 180));
         price.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         price.setText("Precio");
-        price.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                priceActionPerformed(evt);
-            }
-        });
         price.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 priceFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 priceFocusLost(evt);
+            }
+        });
+        price.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                priceActionPerformed(evt);
             }
         });
         price.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -476,17 +508,17 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         cantidad.setForeground(new java.awt.Color(180, 180, 180));
         cantidad.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         cantidad.setText("0");
-        cantidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cantidadActionPerformed(evt);
-            }
-        });
         cantidad.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 cantidadFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 cantidadFocusLost(evt);
+            }
+        });
+        cantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cantidadActionPerformed(evt);
             }
         });
         cantidad.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -502,17 +534,17 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         descuento.setForeground(new java.awt.Color(180, 180, 180));
         descuento.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         descuento.setText("0");
-        descuento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                descuentoActionPerformed(evt);
-            }
-        });
         descuento.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 descuentoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 descuentoFocusLost(evt);
+            }
+        });
+        descuento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descuentoActionPerformed(evt);
             }
         });
         descuento.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -531,17 +563,17 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         importe.setForeground(new java.awt.Color(180, 180, 180));
         importe.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         importe.setText("0");
-        importe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                importeActionPerformed(evt);
-            }
-        });
         importe.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 importeFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 importeFocusLost(evt);
+            }
+        });
+        importe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                importeActionPerformed(evt);
             }
         });
         importe.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -703,17 +735,17 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         subtotal.setForeground(new java.awt.Color(180, 180, 180));
         subtotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         subtotal.setText("0");
-        subtotal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                subtotalActionPerformed(evt);
-            }
-        });
         subtotal.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 subtotalFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 subtotalFocusLost(evt);
+            }
+        });
+        subtotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subtotalActionPerformed(evt);
             }
         });
 
@@ -728,17 +760,17 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         iva.setForeground(new java.awt.Color(180, 180, 180));
         iva.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         iva.setText("0");
-        iva.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ivaActionPerformed(evt);
-            }
-        });
         iva.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 ivaFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 ivaFocusLost(evt);
+            }
+        });
+        iva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ivaActionPerformed(evt);
             }
         });
         iva.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -758,17 +790,17 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         totalT.setForeground(new java.awt.Color(180, 180, 180));
         totalT.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         totalT.setText("0");
-        totalT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                totalTActionPerformed(evt);
-            }
-        });
         totalT.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 totalTFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 totalTFocusLost(evt);
+            }
+        });
+        totalT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                totalTActionPerformed(evt);
             }
         });
 
@@ -799,6 +831,14 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         abono.setForeground(new java.awt.Color(204, 204, 255));
         abono.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         abono.setText("0");
+        abono.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                abonoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                abonoFocusLost(evt);
+            }
+        });
 
         label$1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         label$1.setText("$");
@@ -811,6 +851,14 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         resto.setForeground(new java.awt.Color(204, 204, 255));
         resto.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         resto.setText("0");
+        resto.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                restoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                restoFocusLost(evt);
+            }
+        });
 
         label$2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         label$2.setText("$");
@@ -1041,11 +1089,11 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_codBarrasActionPerformed
 
     private void codBarrasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codBarrasFocusLost
-        validation.placeHolder(false,codBarras,"Código Barras");
+        validation.placeHolder(false,codBarras,"Código de Barras");
     }//GEN-LAST:event_codBarrasFocusLost
 
     private void codBarrasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codBarrasFocusGained
-        validation.placeHolder(true,codBarras,"Código Barras");
+        validation.placeHolder(true,codBarras,"Código de Barras");
     }//GEN-LAST:event_codBarrasFocusGained
 
     private void idClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idClienteKeyPressed
@@ -1057,11 +1105,11 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_idClienteActionPerformed
 
     private void idClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idClienteFocusLost
-        validation.placeHolder(false,idCliente,"Código Cliente");
+        validation.placeHolder(false,idCliente,"Código de Cliente");
     }//GEN-LAST:event_idClienteFocusLost
 
     private void idClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idClienteFocusGained
-        validation.placeHolder(true,idCliente,"Código Cliente");
+        validation.placeHolder(true,idCliente,"Código de Cliente");
     }//GEN-LAST:event_idClienteFocusGained
 
     private void priceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceKeyPressed
@@ -1117,7 +1165,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_importeFocusGained
 
     private void importeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_importeFocusLost
-         validation.placeHolder(false,descuento,"0");
+         validation.placeHolder(false,importe,"0");
     }//GEN-LAST:event_importeFocusLost
 
     private void importeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importeActionPerformed
@@ -1187,6 +1235,54 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     private void comboTipoVenFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_comboTipoVenFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_comboTipoVenFocusLost
+
+    private void fechaPedidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaPedidoFocusGained
+        validation.placeHolder(true, fechaPedido, "Fecha pedido");
+    }//GEN-LAST:event_fechaPedidoFocusGained
+
+    private void fechaPedidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaPedidoFocusLost
+      validation.placeHolder(false, fechaPedido, "Fecha pedido");
+    }//GEN-LAST:event_fechaPedidoFocusLost
+
+    private void fechaEntFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaEntFocusGained
+        validation.placeHolder(true, fechaEnt, "Fecha entrega");
+    }//GEN-LAST:event_fechaEntFocusGained
+
+    private void fechaEntFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaEntFocusLost
+        validation.placeHolder(false, fechaEnt, "Fecha entrega");
+    }//GEN-LAST:event_fechaEntFocusLost
+
+    private void lugarEntFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lugarEntFocusGained
+        validation.placeHolder(true, lugarEnt, "Lugar entrega");
+    }//GEN-LAST:event_lugarEntFocusGained
+
+    private void lugarEntFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lugarEntFocusLost
+        validation.placeHolder(false, lugarEnt, "Lugar entrega");
+    }//GEN-LAST:event_lugarEntFocusLost
+
+    private void horaEntFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_horaEntFocusGained
+        validation.placeHolder(true, horaEnt, "Hora entrega");
+    }//GEN-LAST:event_horaEntFocusGained
+
+    private void horaEntFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_horaEntFocusLost
+        validation.placeHolder(false, horaEnt, "Hora entrega");
+    }//GEN-LAST:event_horaEntFocusLost
+
+    private void abonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_abonoFocusGained
+        validation.placeHolder(true, abono , "0");
+    }//GEN-LAST:event_abonoFocusGained
+
+    private void abonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_abonoFocusLost
+        validation.placeHolder(false, abono, "0");
+    }//GEN-LAST:event_abonoFocusLost
+
+    private void restoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_restoFocusGained
+        validation.placeHolder(true, resto, "0");
+    }//GEN-LAST:event_restoFocusGained
+
+    private void restoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_restoFocusLost
+      validation.placeHolder(false, resto, "0");
+    }//GEN-LAST:event_restoFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
