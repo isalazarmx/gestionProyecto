@@ -17,7 +17,7 @@ import javax.swing.JTextField;
  *
  * @author Jesus
  */
-public class ControllerViewUser {
+public class ControllerViewVendedores {
     JTextField name;
     JTextField aPaterno;
     JTextField aMaterno;
@@ -26,7 +26,7 @@ public class ControllerViewUser {
     JPasswordField pass2;
     JButton userData;
     
-    public ControllerViewUser(ArrayList components){
+    public ControllerViewVendedores(ArrayList components){
         this.name = (JTextField)components.get(0);
         this.aPaterno = (JTextField)components.get(1);
         this.aMaterno = (JTextField)components.get(2);
@@ -46,23 +46,23 @@ public class ControllerViewUser {
         ControllerValidation.limitarCaracteres(pass2, 16);
     }
     
-    public void next(JLabel labelStatus,Thread hilo,int idEmpresa,ModelUsuario user){
+    public void addUser(JLabel labelStatus,int idEmpresa){
         if(!name.getText().equals("Nombre (*)") && !name.getText().isEmpty()){
             if(!username.getText().equals("Username (*)") && !username.getText().isEmpty()){
                 if(!crearPass(pass1).equals("Password-01") && !pass1.getText().isEmpty()){
                     if(!crearPass(pass2).equals("Password-02") && !pass2.getText().isEmpty()){
                         if(!ControllerConsults.checkExistUser(username.getText())){
                             if(ControllerValidation.validarContrasenias(pass1,pass2)){
-                                user = new ModelUsuario();
+                                ModelUsuario user = new ModelUsuario();
                                 user.setNombre(name.getText());
                                 user.setaPaterno(reviewInfo(aPaterno,"Apellido paterno",true));
                                 user.setaMaterno(reviewInfo(aMaterno,"Apellido materno",true));
                                 user.setUsername(username.getText());
                                 user.setPassword(crearPass(pass1));
+                                user.setTipo(2);
                                 user.setIdEmpresa(idEmpresa);
                                  if(ControllerConsults.addUser(user)){
                                     labelStatus.setText("Datos de administrador agregados");
-                                    hilo.resume();
                                 }else
                                     labelStatus.setText("Error interno para almacenar la información");
                             }
