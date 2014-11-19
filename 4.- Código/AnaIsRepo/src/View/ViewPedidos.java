@@ -220,13 +220,13 @@ public class ViewPedidos extends javax.swing.JPanel {
 
         labelConfiguracion.setBackground(new java.awt.Color(250, 250, 250));
         labelConfiguracion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/ajustesInfo.png"))); // NOI18N
-        labelConfiguracion.setText("Configuración de información de la tienda");
+        labelConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pedidosPendientes.png"))); // NOI18N
+        labelConfiguracion.setText("Relación de pedidos existentes");
 
         labelPedidos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         labelPedidos.setForeground(new java.awt.Color(66, 139, 202));
         labelPedidos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelPedidos.setText("Relación de pedidos");
+        labelPedidos.setText("Pedidos");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N

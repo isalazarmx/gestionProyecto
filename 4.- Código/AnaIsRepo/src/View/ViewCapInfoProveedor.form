@@ -352,9 +352,9 @@
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Image/ajustesInfo.png"/>
+          <Image iconType="3" name="/Image/usuarioInfo.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Configuraci&#xf3;n de informaci&#xf3;n de la tienda"/>
+        <Property name="text" type="java.lang.String" value="Relaci&#xf3;n de proveedores existentes"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="labelRelacionProveedor">
@@ -485,6 +485,9 @@
         </Property>
         <Property name="selected" type="boolean" value="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editarProveedorActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="eliminarProveedor">
       <Properties>
@@ -504,6 +507,9 @@
         </Property>
         <Property name="selected" type="boolean" value="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eliminarProveedorActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -19,10 +19,11 @@ public class ViewNuevoProveedor extends javax.swing.JPanel {
     /**
      * Creates new form ViewNuevoProveedor
      */
-    public ViewNuevoProveedor() {
+    public ViewNuevoProveedor(ControllerPaneles controllerPaneles) {
+        initComponents();
         validation = new ControllerValidation();
         this.controllerPaneles = controllerPaneles;
-        initComponents();
+        
     }
 
     /**
@@ -390,8 +391,8 @@ public class ViewNuevoProveedor extends javax.swing.JPanel {
 
         labelConfiguracion.setBackground(new java.awt.Color(250, 250, 250));
         labelConfiguracion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/ajustesInfo.png"))); // NOI18N
-        labelConfiguracion.setText("Configuración de información de la tienda");
+        labelConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/usuarioInfo.png"))); // NOI18N
+        labelConfiguracion.setText("Agregar un nuevo proveedor");
 
         labelNuevoProveedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         labelNuevoProveedor.setForeground(new java.awt.Color(66, 139, 202));

@@ -7,6 +7,8 @@ package View;
 
 import Controller.ControllerPaneles;
 import Controller.ControllerValidation;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
 
 
 /**
@@ -265,8 +267,8 @@ public class ViewCapInfoProveedor extends javax.swing.JPanel {
 
         labelConfiguracion.setBackground(new java.awt.Color(250, 250, 250));
         labelConfiguracion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/ajustesInfo.png"))); // NOI18N
-        labelConfiguracion.setText("Configuración de información de la tienda");
+        labelConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/usuarioInfo.png"))); // NOI18N
+        labelConfiguracion.setText("Relación de proveedores existentes");
 
         labelRelacionProveedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         labelRelacionProveedor.setForeground(new java.awt.Color(66, 139, 202));
@@ -334,6 +336,11 @@ public class ViewCapInfoProveedor extends javax.swing.JPanel {
         editarProveedor.setContentAreaFilled(false);
         editarProveedor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         editarProveedor.setSelected(true);
+        editarProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarProveedorActionPerformed(evt);
+            }
+        });
 
         eliminarProveedor.setBackground(new java.awt.Color(66, 139, 202));
         eliminarProveedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -342,6 +349,11 @@ public class ViewCapInfoProveedor extends javax.swing.JPanel {
         eliminarProveedor.setContentAreaFilled(false);
         eliminarProveedor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         eliminarProveedor.setSelected(true);
+        eliminarProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarProveedorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -473,8 +485,17 @@ public class ViewCapInfoProveedor extends javax.swing.JPanel {
     }//GEN-LAST:event_iDProvKeyTyped
 
     private void nuevoProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoProveedorActionPerformed
-        // TODO add your handling code here:
+    
+       controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewNuevoProveedor(controllerPaneles));
     }//GEN-LAST:event_nuevoProveedorActionPerformed
+
+    private void editarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarProveedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editarProveedorActionPerformed
+
+    private void eliminarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarProveedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eliminarProveedorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
