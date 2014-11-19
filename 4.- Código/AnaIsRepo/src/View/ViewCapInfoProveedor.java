@@ -265,8 +265,8 @@ public class ViewCapInfoProveedor extends javax.swing.JPanel {
 
         labelConfiguracion.setBackground(new java.awt.Color(250, 250, 250));
         labelConfiguracion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/ajustesInfo.png"))); // NOI18N
-        labelConfiguracion.setText("Configuración de información de la tienda");
+        labelConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/proveedoresInfo.png"))); // NOI18N
+        labelConfiguracion.setText("Administración de proveedores");
 
         labelRelacionProveedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         labelRelacionProveedor.setForeground(new java.awt.Color(66, 139, 202));
