@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 /**
- *
+ *holiitita
  * @author Carolina
  */
 public class ViewAgregarCliente extends javax.swing.JPanel {
