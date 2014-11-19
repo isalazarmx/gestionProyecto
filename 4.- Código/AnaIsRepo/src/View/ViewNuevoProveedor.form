@@ -469,9 +469,9 @@
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Image/ajustesInfo.png"/>
+              <Image iconType="3" name="/Image/usuarioInfo.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Configuraci&#xf3;n de informaci&#xf3;n de la tienda"/>
+            <Property name="text" type="java.lang.String" value="Agregar un nuevo proveedor"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labelNuevoProveedor">

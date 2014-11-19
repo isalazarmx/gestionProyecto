@@ -485,6 +485,9 @@
         </Property>
         <Property name="selected" type="boolean" value="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editarProveedorActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="eliminarProveedor">
       <Properties>
@@ -504,6 +507,9 @@
         </Property>
         <Property name="selected" type="boolean" value="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eliminarProveedorActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
