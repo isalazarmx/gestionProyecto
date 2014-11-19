@@ -50,12 +50,12 @@ public class ViewPedidos extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaPedidos = new javax.swing.JTable();
         ClientesEditar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         pedidosEncontrados = new javax.swing.JLabel();
-        ce = new javax.swing.JTextField();
+        pedidosEnc = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         labelNombre = new javax.swing.JLabel();
         nombreCliente = new javax.swing.JTextField();
@@ -121,8 +121,8 @@ public class ViewPedidos extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaPedidos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tablaPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
@@ -171,7 +171,7 @@ public class ViewPedidos extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tablaPedidos);
 
         ClientesEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/edit.png"))); // NOI18N
         ClientesEditar.setContentAreaFilled(false);
@@ -193,15 +193,16 @@ public class ViewPedidos extends javax.swing.JPanel {
         pedidosEncontrados.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         pedidosEncontrados.setText("Pedidos Encontrados");
 
-        ce.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        ce.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        ce.setText("0");
-        ce.addFocusListener(new java.awt.event.FocusAdapter() {
+        pedidosEnc.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        pedidosEnc.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        pedidosEnc.setText("0");
+        pedidosEnc.setEnabled(false);
+        pedidosEnc.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                ceFocusGained(evt);
+                pedidosEncFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                ceFocusLost(evt);
+                pedidosEncFocusLost(evt);
             }
         });
 
@@ -223,7 +224,7 @@ public class ViewPedidos extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(pedidosEncontrados)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ce, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pedidosEnc, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -244,7 +245,8 @@ public class ViewPedidos extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pedidosEncontrados)
-                    .addComponent(ce, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(pedidosEnc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -498,25 +500,24 @@ public class ViewPedidos extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 29, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(295, 295, 295)
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(296, Short.MAX_VALUE)))
+                    .addContainerGap(276, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(295, 295, 295)
                     .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(296, Short.MAX_VALUE)))
+                    .addContainerGap(276, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -548,13 +549,13 @@ public class ViewPedidos extends javax.swing.JPanel {
        validation.placeHolder(false,idCliente,"R.F.C."); // TODO add your handling code here:
     }//GEN-LAST:event_idClienteFocusLost
 
-    private void ceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ceFocusGained
-       validation.placeHolder(true,ce,"0"); // TODO add your handling code here:
-    }//GEN-LAST:event_ceFocusGained
+    private void pedidosEncFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pedidosEncFocusGained
+       validation.placeHolder(true,pedidosEnc,"0"); // TODO add your handling code here:
+    }//GEN-LAST:event_pedidosEncFocusGained
 
-    private void ceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ceFocusLost
-        validation.placeHolder(false,ce,"0");        // TODO add your handling code here:
-    }//GEN-LAST:event_ceFocusLost
+    private void pedidosEncFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pedidosEncFocusLost
+        validation.placeHolder(false,pedidosEnc,"0");        // TODO add your handling code here:
+    }//GEN-LAST:event_pedidosEncFocusLost
 
     private void botonNuevoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoPedidoActionPerformed
         // TODO add your handling code here:
@@ -582,7 +583,6 @@ public class ViewPedidos extends javax.swing.JPanel {
     private javax.swing.JButton botonFecha;
     private javax.swing.JButton botonNuevoPedido;
     private javax.swing.JButton botonNuevoPedido1;
-    private javax.swing.JTextField ce;
     private javax.swing.JTextField fechaPedido;
     private javax.swing.JTextField idCliente;
     private javax.swing.JButton jButton3;
@@ -605,13 +605,14 @@ public class ViewPedidos extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelBuscar;
     private javax.swing.JLabel labelFecha;
     private javax.swing.JLabel labelNombre;
     private javax.swing.JLabel labelVentas;
     private javax.swing.JLabel labelcodCliente;
     private javax.swing.JTextField nombreCliente;
+    private javax.swing.JTextField pedidosEnc;
     private javax.swing.JLabel pedidosEncontrados;
+    private javax.swing.JTable tablaPedidos;
     // End of variables declaration//GEN-END:variables
 }
