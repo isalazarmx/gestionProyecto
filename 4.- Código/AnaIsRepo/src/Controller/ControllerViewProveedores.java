@@ -16,63 +16,70 @@ import javax.swing.JTextField;
  *
  * @author Carolina
  */
-public class ControllerViewClientes {
-    JTextField Nombre;
-    JTextField acApellidoPaterno;
-    JTextField acApellidoMaterno;
-    JTextField acRFC;
-    JTextField acTelefono;
-    JTextField acTelCelular;
-    JTextField acEmail;
+public class ControllerViewProveedores {
+    JTextField pNombre;
+    JTextField pApellidoPaterno;
+    JTextField pApellidoMaterno;
+    JTextField pRFC;
+    JTextField pMarca;
+    JTextField pEmpresa;
+    JTextField pTelefono;
+    JTextField pTelCelular;
+    JTextField pEmail;    
+    JTextField pCalle;
+    JTextField pCiudad;
+    JTextField pColonia;
+    JComboBox pEstados;
+    JTextField pCP;
+    JTextField pNoExt;
+    JTextField pNoInt;
     
-    JTextField acCalle;
-    JTextField acCiudad;
-    JTextField acColonia;
-    JComboBox acEstados;
-    JTextField acCP;
-    JTextField acNoExt;
-    JTextField acNoInt;
-    
-    public ControllerViewClientes(ArrayList components){
-        this.Nombre = (JTextField)components.get(0);
-        this.acApellidoPaterno = (JTextField)components.get(1);
-        this.acApellidoMaterno = (JTextField)components.get(2);
-        this.acRFC = (JTextField)components.get(3);
-        this.acTelefono = (JTextField)components.get(4);
-        this.acTelCelular = (JTextField)components.get(5);
-        this.acEmail = (JTextField)components.get(6);
-        this.acCalle = (JTextField)components.get(7);
-        this.acCiudad = (JTextField)components.get(8);
-        this.acColonia = (JTextField)components.get(9);
-        this.acEstados = (JComboBox)components.get(10);
-        this.acCP = (JTextField)components.get(11);
-        this.acNoExt = (JTextField)components.get(12);
-        this.acNoInt = (JTextField)components.get(13);
+    public ControllerViewProveedores(ArrayList components){
+        this.pNombre = (JTextField)components.get(0);
+        this.pApellidoPaterno = (JTextField)components.get(1);
+        this.pApellidoMaterno = (JTextField)components.get(2);
+        this.pRFC = (JTextField)components.get(3);
+        this.pMarca = (JTextField)components.get(4);
+        this.pEmpresa = (JTextField)components.get(5);     
+        this.pTelefono = (JTextField)components.get(6);
+        this.pTelCelular = (JTextField)components.get(7);
+        this.pEmail = (JTextField)components.get(8);
+        this.pCalle = (JTextField)components.get(9);
+        this.pCiudad = (JTextField)components.get(10);
+        this.pColonia = (JTextField)components.get(11);
+        this.pEstados = (JComboBox)components.get(12);
+        this.pCP = (JTextField)components.get(13);
+        this.pNoExt = (JTextField)components.get(14);
+        this.pNoInt = (JTextField)components.get(15);
     }
     
     public void validations(){
-        ControllerValidation.limitarCaracteres(Nombre, 25);
-        ControllerValidation.soloTexto(Nombre);
-        ControllerValidation.limitarCaracteres(acApellidoPaterno, 20);
-        ControllerValidation.soloTexto(acApellidoPaterno);
-        ControllerValidation.limitarCaracteres(acApellidoMaterno, 20);
-        ControllerValidation.soloTexto(acApellidoMaterno);
-        ControllerValidation.limitarCaracteres(acRFC, 15);
-        ControllerValidation.limitarCaracteres(acTelefono, 12);
-        ControllerValidation.soloNumeros(acTelefono);
-        ControllerValidation.limitarCaracteres(acTelCelular, 12);
-        ControllerValidation.soloNumeros(acTelCelular);
-        ControllerValidation.limitarCaracteres(acEmail,45 );
-        ControllerValidation.limitarCaracteres(acCalle,45);
+        ControllerValidation.limitarCaracteres(pNombre, 25);
+        ControllerValidation.soloTexto(pNombre);
+        ControllerValidation.limitarCaracteres(pApellidoPaterno, 20);
+        ControllerValidation.soloTexto(pApellidoPaterno);
+        ControllerValidation.limitarCaracteres(pApellidoMaterno, 20);
+        ControllerValidation.soloTexto(pApellidoMaterno);
+        ControllerValidation.limitarCaracteres(pMarca, 20);
+        ControllerValidation.limitarCaracteres(pEmpresa, 25);
+        ControllerValidation.limitarCaracteres(pRFC, 15);   
+        ControllerValidation.limitarCaracteres(pTelefono, 12);
+        ControllerValidation.soloNumeros(pTelefono);
+        ControllerValidation.limitarCaracteres(pTelCelular, 12);
+        ControllerValidation.soloNumeros(pTelCelular);       
+        ControllerValidation.limitarCaracteres(pEmail,45 );
+        ControllerValidation.limitarCaracteres(pCalle,45);
+        ControllerValidation.limitarCaracteres(pCiudad, 20);
+        ControllerValidation.limitarCaracteres(pColonia, 20);
+        ControllerValidation.limitarCaracteres(pCP, 5);
+        ControllerValidation.soloNumeros(pCP);
+        ControllerValidation.limitarCaracteres(pNoExt,6 );
+        ControllerValidation.soloNumeros(pNoExt);
+        ControllerValidation.limitarCaracteres(pNoInt, 6);     
+        ControllerValidation.soloNumeros(pNoInt);
         
-        ControllerValidation.limitarCaracteres(acNoExt,6 );
-        ControllerValidation.soloNumeros(acNoExt);
-        ControllerValidation.limitarCaracteres(acNoInt, 6);     
-        ControllerValidation.soloNumeros(acNoInt);
-        ControllerValidation.limitarCaracteres(acColonia, 20);
-        ControllerValidation.limitarCaracteres(acCiudad, 20);
-        ControllerValidation.limitarCaracteres(acCP, 5);
-        ControllerValidation.soloNumeros(acCP);
+        
+        
         
         
         

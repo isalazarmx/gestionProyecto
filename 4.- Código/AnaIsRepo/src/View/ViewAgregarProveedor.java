@@ -7,6 +7,7 @@ package View;
 import Controller.ControllerPaneles;
 import Controller.ControllerValidation;
 import Controller.ControllerViewSession;
+import Controller.ControllerViewProveedores;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
@@ -17,6 +18,7 @@ import javax.swing.JPanel;
 public class ViewAgregarProveedor extends javax.swing.JPanel {
     ControllerValidation validation;
     ControllerPaneles controllerPaneles;
+    ControllerViewProveedores controller;
 
     /**
      * Creates new form ViewAgregarCliente
@@ -25,6 +27,31 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
         initComponents();
         this.controllerPaneles = controllerPaneles;//asi
         this.validation = new ControllerValidation();
+        this.validationClientes();
+    }
+    
+    public void validationClientes ()
+    {
+        ArrayList components = new ArrayList<>();
+         components.add(pNombre);
+        components.add (pApellidoPaterno);
+        components.add (pApellidoMaterno);
+        components.add (pRFC);
+        components.add (pMarca);
+        components.add (pEmpresa);  
+        components.add (pTelefono);
+        components.add (pTelCelular);
+        components.add (pEmail);
+        components.add (pCalle);
+        components.add (pCiudad);
+        components.add (pColonia);
+        components.add (pEstados);
+        components.add (pCP);
+        components.add (pNoExt);
+        components.add (pNoInt);
+        
+        controller = new ControllerViewProveedores(components);
+        controller.validations();
     }
 
     /**
@@ -38,45 +65,44 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        Nombre = new javax.swing.JTextField();
+        pNombre = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        acApellidoPaterno = new javax.swing.JTextField();
+        pApellidoPaterno = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        acApellidoMaterno = new javax.swing.JTextField();
+        pApellidoMaterno = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        acRFC = new javax.swing.JTextField();
+        pRFC = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        acTelefono = new javax.swing.JTextField();
+        pTelefono = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        acTelCelular = new javax.swing.JTextField();
+        pTelCelular = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        acEmail = new javax.swing.JTextField();
+        pEmail = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        acCalle = new javax.swing.JTextField();
+        pCalle = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        acNoExt = new javax.swing.JTextField();
-        acNoInt = new javax.swing.JTextField();
+        pNoExt = new javax.swing.JTextField();
+        pNoInt = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        acColonia = new javax.swing.JTextField();
+        pColonia = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        acCiudad = new javax.swing.JTextField();
+        pCiudad = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        acCP = new javax.swing.JTextField();
+        pCP = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        Estados = new javax.swing.JComboBox();
+        pEstados = new javax.swing.JComboBox();
         jLabel15 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         acIdCliente = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
-        Marca = new javax.swing.JTextField();
+        pMarca = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
-        Empresa = new javax.swing.JTextField();
+        pEmpresa = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -91,63 +117,63 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Nombre: ");
 
-        Nombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Nombre.setForeground(new java.awt.Color(180, 180, 180));
-        Nombre.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        Nombre.setText("Nombre");
-        Nombre.addFocusListener(new java.awt.event.FocusAdapter() {
+        pNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pNombre.setForeground(new java.awt.Color(180, 180, 180));
+        pNombre.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        pNombre.setText("Nombre");
+        pNombre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                NombreFocusGained(evt);
+                pNombreFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                NombreFocusLost(evt);
+                pNombreFocusLost(evt);
             }
         });
-        Nombre.addActionListener(new java.awt.event.ActionListener() {
+        pNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NombreActionPerformed(evt);
+                pNombreActionPerformed(evt);
             }
         });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Apellido Paterno:");
 
-        acApellidoPaterno.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        acApellidoPaterno.setForeground(new java.awt.Color(180, 180, 180));
-        acApellidoPaterno.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        acApellidoPaterno.setText("Apellido Paterno");
-        acApellidoPaterno.addFocusListener(new java.awt.event.FocusAdapter() {
+        pApellidoPaterno.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pApellidoPaterno.setForeground(new java.awt.Color(180, 180, 180));
+        pApellidoPaterno.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        pApellidoPaterno.setText("Apellido Paterno");
+        pApellidoPaterno.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                acApellidoPaternoFocusGained(evt);
+                pApellidoPaternoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                acApellidoPaternoFocusLost(evt);
+                pApellidoPaternoFocusLost(evt);
             }
         });
-        acApellidoPaterno.addActionListener(new java.awt.event.ActionListener() {
+        pApellidoPaterno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                acApellidoPaternoActionPerformed(evt);
+                pApellidoPaternoActionPerformed(evt);
             }
         });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Apellido Materno:");
 
-        acApellidoMaterno.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        acApellidoMaterno.setForeground(new java.awt.Color(180, 180, 180));
-        acApellidoMaterno.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        acApellidoMaterno.setText("Apellido Materno");
-        acApellidoMaterno.addFocusListener(new java.awt.event.FocusAdapter() {
+        pApellidoMaterno.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pApellidoMaterno.setForeground(new java.awt.Color(180, 180, 180));
+        pApellidoMaterno.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        pApellidoMaterno.setText("Apellido Materno");
+        pApellidoMaterno.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                acApellidoMaternoFocusGained(evt);
+                pApellidoMaternoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                acApellidoMaternoFocusLost(evt);
+                pApellidoMaternoFocusLost(evt);
             }
         });
-        acApellidoMaterno.addActionListener(new java.awt.event.ActionListener() {
+        pApellidoMaterno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                acApellidoMaternoActionPerformed(evt);
+                pApellidoMaternoActionPerformed(evt);
             }
         });
 
@@ -155,16 +181,16 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("RFC:");
 
-        acRFC.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        acRFC.setForeground(new java.awt.Color(180, 180, 180));
-        acRFC.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        acRFC.setText("RFC");
-        acRFC.addFocusListener(new java.awt.event.FocusAdapter() {
+        pRFC.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pRFC.setForeground(new java.awt.Color(180, 180, 180));
+        pRFC.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        pRFC.setText("RFC");
+        pRFC.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                acRFCFocusGained(evt);
+                pRFCFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                acRFCFocusLost(evt);
+                pRFCFocusLost(evt);
             }
         });
 
@@ -172,16 +198,16 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel14.setText("Email:");
 
-        acTelefono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        acTelefono.setForeground(new java.awt.Color(180, 180, 180));
-        acTelefono.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        acTelefono.setText("xx-xxx-xxxxxxx");
-        acTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
+        pTelefono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pTelefono.setForeground(new java.awt.Color(180, 180, 180));
+        pTelefono.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        pTelefono.setText("xx-xxx-xxxxxxx");
+        pTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                acTelefonoFocusGained(evt);
+                pTelefonoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                acTelefonoFocusLost(evt);
+                pTelefonoFocusLost(evt);
             }
         });
 
@@ -189,32 +215,32 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Teléfono:");
 
-        acTelCelular.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        acTelCelular.setForeground(new java.awt.Color(180, 180, 180));
-        acTelCelular.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        acTelCelular.setText("xx-xxx-xxxxxxx");
-        acTelCelular.addFocusListener(new java.awt.event.FocusAdapter() {
+        pTelCelular.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pTelCelular.setForeground(new java.awt.Color(180, 180, 180));
+        pTelCelular.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        pTelCelular.setText("xx-xxx-xxxxxxx");
+        pTelCelular.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                acTelCelularFocusGained(evt);
+                pTelCelularFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                acTelCelularFocusLost(evt);
+                pTelCelularFocusLost(evt);
             }
         });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Tel. Celular:");
 
-        acEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        acEmail.setForeground(new java.awt.Color(180, 180, 180));
-        acEmail.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        acEmail.setText("cliente@reposteria.com");
-        acEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+        pEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pEmail.setForeground(new java.awt.Color(180, 180, 180));
+        pEmail.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        pEmail.setText("cliente@reposteria.com");
+        pEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                acEmailFocusGained(evt);
+                pEmailFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                acEmailFocusLost(evt);
+                pEmailFocusLost(evt);
             }
         });
 
@@ -223,16 +249,16 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setText("Calle:");
 
-        acCalle.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        acCalle.setForeground(new java.awt.Color(180, 180, 180));
-        acCalle.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        acCalle.setText("Calle");
-        acCalle.addFocusListener(new java.awt.event.FocusAdapter() {
+        pCalle.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pCalle.setForeground(new java.awt.Color(180, 180, 180));
+        pCalle.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        pCalle.setText("Calle");
+        pCalle.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                acCalleFocusGained(evt);
+                pCalleFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                acCalleFocusLost(evt);
+                pCalleFocusLost(evt);
             }
         });
 
@@ -240,29 +266,29 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel10.setText("No. Ext:");
 
-        acNoExt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        acNoExt.setForeground(new java.awt.Color(180, 180, 180));
-        acNoExt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        acNoExt.setText("No. Ext.");
-        acNoExt.addFocusListener(new java.awt.event.FocusAdapter() {
+        pNoExt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pNoExt.setForeground(new java.awt.Color(180, 180, 180));
+        pNoExt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        pNoExt.setText("No. Ext.");
+        pNoExt.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                acNoExtFocusGained(evt);
+                pNoExtFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                acNoExtFocusLost(evt);
+                pNoExtFocusLost(evt);
             }
         });
 
-        acNoInt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        acNoInt.setForeground(new java.awt.Color(180, 180, 180));
-        acNoInt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        acNoInt.setText("No. Int");
-        acNoInt.addFocusListener(new java.awt.event.FocusAdapter() {
+        pNoInt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pNoInt.setForeground(new java.awt.Color(180, 180, 180));
+        pNoInt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        pNoInt.setText("No. Int");
+        pNoInt.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                acNoIntFocusGained(evt);
+                pNoIntFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                acNoIntFocusLost(evt);
+                pNoIntFocusLost(evt);
             }
         });
 
@@ -270,21 +296,21 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel11.setText("Colonia:");
 
-        acColonia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        acColonia.setForeground(new java.awt.Color(180, 180, 180));
-        acColonia.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        acColonia.setText("Colonia");
-        acColonia.addFocusListener(new java.awt.event.FocusAdapter() {
+        pColonia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pColonia.setForeground(new java.awt.Color(180, 180, 180));
+        pColonia.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        pColonia.setText("Colonia");
+        pColonia.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                acColoniaFocusGained(evt);
+                pColoniaFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                acColoniaFocusLost(evt);
+                pColoniaFocusLost(evt);
             }
         });
-        acColonia.addActionListener(new java.awt.event.ActionListener() {
+        pColonia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                acColoniaActionPerformed(evt);
+                pColoniaActionPerformed(evt);
             }
         });
 
@@ -292,42 +318,42 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel12.setText("Ciudad:");
 
-        acCiudad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        acCiudad.setForeground(new java.awt.Color(180, 180, 180));
-        acCiudad.setText("Ciudad");
-        acCiudad.addFocusListener(new java.awt.event.FocusAdapter() {
+        pCiudad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pCiudad.setForeground(new java.awt.Color(180, 180, 180));
+        pCiudad.setText("Ciudad");
+        pCiudad.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                acCiudadFocusGained(evt);
+                pCiudadFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                acCiudadFocusLost(evt);
+                pCiudadFocusLost(evt);
             }
         });
-        acCiudad.addActionListener(new java.awt.event.ActionListener() {
+        pCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                acCiudadActionPerformed(evt);
+                pCiudadActionPerformed(evt);
             }
         });
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel13.setText("C.P:");
 
-        acCP.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        acCP.setForeground(new java.awt.Color(180, 180, 180));
-        acCP.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        acCP.setText("xxxxx");
-        acCP.setToolTipText("");
-        acCP.addFocusListener(new java.awt.event.FocusAdapter() {
+        pCP.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pCP.setForeground(new java.awt.Color(180, 180, 180));
+        pCP.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        pCP.setText("xxxxx");
+        pCP.setToolTipText("");
+        pCP.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                acCPFocusGained(evt);
+                pCPFocusGained(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Estado:");
 
-        Estados.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Estados.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Chiapas", "Chihuahua", "Coahuila", "Colima", "Distrito Federal", "Durango", "Estado de México", "Guanajuato", "Guerrero", "Hidalgo", "Jalisco", "Michoacán", "Morelos", "Nayarit", "Nuevo León", "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas" }));
+        pEstados.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pEstados.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Chiapas", "Chihuahua", "Coahuila", "Colima", "Distrito Federal", "Durango", "Estado de México", "Guanajuato", "Guerrero", "Hidalgo", "Jalisco", "Michoacán", "Morelos", "Nayarit", "Nuevo León", "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas" }));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel15.setText("No. Int");
@@ -335,10 +361,6 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(66, 139, 202));
         jLabel18.setText("Dirección");
-
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(66, 139, 202));
-        jLabel16.setText("Información personal:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -353,34 +375,28 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
                     .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pColonia, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(acCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(pCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel10)
+                                .addGap(109, 109, 109))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(292, 292, 292)
+                                .addComponent(pNoExt, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pNoInt, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(pCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Estados, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(acCP, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel16)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel3Layout.createSequentialGroup()
-                                            .addGap(291, 291, 291)
-                                            .addComponent(acNoExt, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel3Layout.createSequentialGroup()
-                                            .addComponent(acCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jLabel10)))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(acColonia, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(132, 132, 132)))
-                                .addGap(45, 45, 45)
-                                .addComponent(jLabel15)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(acNoInt, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(241, Short.MAX_VALUE))
+                        .addComponent(pEstados, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pCP, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(235, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jLabel18)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -389,33 +405,31 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel16))
+                .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(acCalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pCalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(acNoExt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pNoExt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel10)
-                        .addComponent(acNoInt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pNoInt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel15)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(acColonia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pColonia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addGap(13, 13, 13)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(acCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel12))
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(Estados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(pEstados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(acCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13)))
         );
 
@@ -472,31 +486,31 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
         jLabel19.setText("Marca:");
         jLabel19.setToolTipText("");
 
-        Marca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Marca.setForeground(new java.awt.Color(180, 180, 180));
-        Marca.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        Marca.setText("Marca");
-        Marca.addFocusListener(new java.awt.event.FocusAdapter() {
+        pMarca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pMarca.setForeground(new java.awt.Color(180, 180, 180));
+        pMarca.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        pMarca.setText("Marca");
+        pMarca.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                MarcaFocusGained(evt);
+                pMarcaFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                MarcaFocusLost(evt);
+                pMarcaFocusLost(evt);
             }
         });
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel21.setText("Empresa:");
 
-        Empresa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Empresa.setForeground(new java.awt.Color(180, 180, 180));
-        Empresa.setText("Empresa");
-        Empresa.addFocusListener(new java.awt.event.FocusAdapter() {
+        pEmpresa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pEmpresa.setForeground(new java.awt.Color(180, 180, 180));
+        pEmpresa.setText("Empresa");
+        pEmpresa.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                EmpresaFocusGained(evt);
+                pEmpresaFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                EmpresaFocusLost(evt);
+                pEmpresaFocusLost(evt);
             }
         });
 
@@ -519,7 +533,7 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -529,21 +543,21 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(acApellidoPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(pApellidoPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(acApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(pApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(acRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel19)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Marca, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel21)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Empresa))))
+                                .addComponent(pEmpresa))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -555,11 +569,11 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(acTelCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(acTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(acEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(pTelCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel22))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -584,31 +598,31 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
                     .addComponent(jLabel22))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
-                    .addComponent(acApellidoPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pApellidoPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(acApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(acRFC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pRFC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel19)
-                    .addComponent(Marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21)
-                    .addComponent(Empresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(acTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(15, 15, 15)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(acTelCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pTelCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(acEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -649,7 +663,7 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -669,149 +683,149 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
         validation.placeHolder(true,acIdCliente,"Id Cliente"); // TODO add your handling code here:
     }//GEN-LAST:event_acIdClienteFocusGained
 
-    private void NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreActionPerformed
+    private void pNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NombreActionPerformed
+    }//GEN-LAST:event_pNombreActionPerformed
 
     private void acIdClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acIdClienteFocusLost
         validation.placeHolder(false,acIdCliente,"Id Cliente");// TODO add your handling code here:
     }//GEN-LAST:event_acIdClienteFocusLost
 
-    private void NombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NombreFocusGained
-        validation.placeHolder(true,Nombre,"Nombre");        // TODO add your handling code here:
-    }//GEN-LAST:event_NombreFocusGained
+    private void pNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pNombreFocusGained
+        validation.placeHolder(true,pNombre,"Nombre");        // TODO add your handling code here:
+    }//GEN-LAST:event_pNombreFocusGained
 
-    private void NombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NombreFocusLost
-        validation.placeHolder(false,Nombre,"Nombre");         // TODO add your handling code here:
-    }//GEN-LAST:event_NombreFocusLost
+    private void pNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pNombreFocusLost
+        validation.placeHolder(false,pNombre,"Nombre");         // TODO add your handling code here:
+    }//GEN-LAST:event_pNombreFocusLost
 
-    private void acApellidoPaternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acApellidoPaternoActionPerformed
+    private void pApellidoPaternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pApellidoPaternoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_acApellidoPaternoActionPerformed
+    }//GEN-LAST:event_pApellidoPaternoActionPerformed
 
-    private void acApellidoPaternoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acApellidoPaternoFocusGained
-        validation.placeHolder(true,acApellidoPaterno,"Apellido Paterno");        // TODO add your handling code here:
-    }//GEN-LAST:event_acApellidoPaternoFocusGained
+    private void pApellidoPaternoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pApellidoPaternoFocusGained
+        validation.placeHolder(true,pApellidoPaterno,"Apellido Paterno");        // TODO add your handling code here:
+    }//GEN-LAST:event_pApellidoPaternoFocusGained
 
-    private void acApellidoPaternoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acApellidoPaternoFocusLost
-       validation.placeHolder(false, acApellidoPaterno,"Apellido Paterno"); // TODO add your handling code here:
-    }//GEN-LAST:event_acApellidoPaternoFocusLost
+    private void pApellidoPaternoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pApellidoPaternoFocusLost
+       validation.placeHolder(false, pApellidoPaterno,"Apellido Paterno"); // TODO add your handling code here:
+    }//GEN-LAST:event_pApellidoPaternoFocusLost
 
-    private void acApellidoMaternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acApellidoMaternoActionPerformed
+    private void pApellidoMaternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pApellidoMaternoActionPerformed
                 // TODO add your handling code here:
-    }//GEN-LAST:event_acApellidoMaternoActionPerformed
+    }//GEN-LAST:event_pApellidoMaternoActionPerformed
 
-    private void acApellidoMaternoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acApellidoMaternoFocusGained
-        validation.placeHolder(true,acApellidoMaterno,"Apellido Materno");        // TODO add your handling code here:
-    }//GEN-LAST:event_acApellidoMaternoFocusGained
+    private void pApellidoMaternoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pApellidoMaternoFocusGained
+        validation.placeHolder(true,pApellidoMaterno,"Apellido Materno");        // TODO add your handling code here:
+    }//GEN-LAST:event_pApellidoMaternoFocusGained
 
-    private void acApellidoMaternoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acApellidoMaternoFocusLost
-        validation.placeHolder(false,acApellidoMaterno,"Apellido Materno");        // TODO add your handling code here:
-    }//GEN-LAST:event_acApellidoMaternoFocusLost
+    private void pApellidoMaternoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pApellidoMaternoFocusLost
+        validation.placeHolder(false,pApellidoMaterno,"Apellido Materno");        // TODO add your handling code here:
+    }//GEN-LAST:event_pApellidoMaternoFocusLost
 
-    private void acRFCFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acRFCFocusGained
-        validation.placeHolder(true,acRFC,"RFC");        // TODO add your handling code here:
-    }//GEN-LAST:event_acRFCFocusGained
+    private void pRFCFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pRFCFocusGained
+        validation.placeHolder(true,pRFC,"RFC");        // TODO add your handling code here:
+    }//GEN-LAST:event_pRFCFocusGained
 
-    private void acRFCFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acRFCFocusLost
-        validation.placeHolder(false,acRFC,"RFC");        // TODO add your handling code here:
-    }//GEN-LAST:event_acRFCFocusLost
+    private void pRFCFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pRFCFocusLost
+        validation.placeHolder(false,pRFC,"RFC");        // TODO add your handling code here:
+    }//GEN-LAST:event_pRFCFocusLost
 
-    private void acTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acTelefonoFocusGained
-        validation.placeHolder(true,acTelefono,"xx-xxx-xxxxxxx");        // TODO add your handling code here:
-    }//GEN-LAST:event_acTelefonoFocusGained
+    private void pTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pTelefonoFocusGained
+        validation.placeHolder(true,pTelefono,"xx-xxx-xxxxxxx");        // TODO add your handling code here:
+    }//GEN-LAST:event_pTelefonoFocusGained
 
-    private void acTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acTelefonoFocusLost
-        validation.placeHolder(false,acTelefono,"xx-xxx-xxxxxxx");        // TODO add your handling code here:
-    }//GEN-LAST:event_acTelefonoFocusLost
+    private void pTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pTelefonoFocusLost
+        validation.placeHolder(false,pTelefono,"xx-xxx-xxxxxxx");        // TODO add your handling code here:
+    }//GEN-LAST:event_pTelefonoFocusLost
 
-    private void acTelCelularFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acTelCelularFocusGained
-        validation.placeHolder(true,acTelCelular,"xx-xxx-xxxxxxx");        // TODO add your handling code here:
-    }//GEN-LAST:event_acTelCelularFocusGained
+    private void pTelCelularFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pTelCelularFocusGained
+        validation.placeHolder(true,pTelCelular,"xx-xxx-xxxxxxx");        // TODO add your handling code here:
+    }//GEN-LAST:event_pTelCelularFocusGained
 
-    private void acTelCelularFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acTelCelularFocusLost
-        validation.placeHolder(false,acTelCelular,"xx-xxx-xxxxxxx");        // TODO add your handling code here:
-    }//GEN-LAST:event_acTelCelularFocusLost
+    private void pTelCelularFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pTelCelularFocusLost
+        validation.placeHolder(false,pTelCelular,"xx-xxx-xxxxxxx");        // TODO add your handling code here:
+    }//GEN-LAST:event_pTelCelularFocusLost
 
-    private void acEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acEmailFocusGained
-        validation.placeHolder(true,acEmail,"cliente@reposteria.com");        // TODO add your handling code here:
-    }//GEN-LAST:event_acEmailFocusGained
+    private void pEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pEmailFocusGained
+        validation.placeHolder(true,pEmail,"cliente@reposteria.com");        // TODO add your handling code here:
+    }//GEN-LAST:event_pEmailFocusGained
 
-    private void acEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acEmailFocusLost
-        validation.placeHolder(false,acEmail,"cliente@reposteria.com");        // TODO add your handling code here:
-    }//GEN-LAST:event_acEmailFocusLost
+    private void pEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pEmailFocusLost
+        validation.placeHolder(false,pEmail,"cliente@reposteria.com");        // TODO add your handling code here:
+    }//GEN-LAST:event_pEmailFocusLost
 
-    private void acCalleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acCalleFocusGained
-        validation.placeHolder(true,acCalle,"Calle");        // TODO add your handling code here:
-    }//GEN-LAST:event_acCalleFocusGained
+    private void pCalleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pCalleFocusGained
+        validation.placeHolder(true,pCalle,"Calle");        // TODO add your handling code here:
+    }//GEN-LAST:event_pCalleFocusGained
 
-    private void acCalleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acCalleFocusLost
-        validation.placeHolder(false,acCalle,"Calle");        // TODO add your handling code here:
-    }//GEN-LAST:event_acCalleFocusLost
+    private void pCalleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pCalleFocusLost
+        validation.placeHolder(false,pCalle,"Calle");        // TODO add your handling code here:
+    }//GEN-LAST:event_pCalleFocusLost
 
-    private void acNoExtFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acNoExtFocusGained
-        validation.placeHolder(true,acNoExt,"No. Ext");        // TODO add your handling code here:
-    }//GEN-LAST:event_acNoExtFocusGained
+    private void pNoExtFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pNoExtFocusGained
+        validation.placeHolder(true,pNoExt,"No. Ext");        // TODO add your handling code here:
+    }//GEN-LAST:event_pNoExtFocusGained
 
-    private void acNoExtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acNoExtFocusLost
-        validation.placeHolder(false,acNoExt,"No. Ext");        // TODO add your handling code here:
-    }//GEN-LAST:event_acNoExtFocusLost
+    private void pNoExtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pNoExtFocusLost
+        validation.placeHolder(false,pNoExt,"No. Ext");        // TODO add your handling code here:
+    }//GEN-LAST:event_pNoExtFocusLost
 
-    private void acNoIntFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acNoIntFocusGained
-        validation.placeHolder(true,acNoInt,"No. Int");       // TODO add your handling code here:
-    }//GEN-LAST:event_acNoIntFocusGained
+    private void pNoIntFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pNoIntFocusGained
+        validation.placeHolder(true,pNoInt,"No. Int");       // TODO add your handling code here:
+    }//GEN-LAST:event_pNoIntFocusGained
 
-    private void acNoIntFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acNoIntFocusLost
-        validation.placeHolder(false,acNoInt,"No. Int");        // TODO add your handling code here:
-    }//GEN-LAST:event_acNoIntFocusLost
+    private void pNoIntFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pNoIntFocusLost
+        validation.placeHolder(false,pNoInt,"No. Int");        // TODO add your handling code here:
+    }//GEN-LAST:event_pNoIntFocusLost
 
-    private void acColoniaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acColoniaFocusGained
-        validation.placeHolder(true,acColonia,"Colonia");        // TODO add your handling code here:
-    }//GEN-LAST:event_acColoniaFocusGained
+    private void pColoniaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pColoniaFocusGained
+        validation.placeHolder(true,pColonia,"Colonia");        // TODO add your handling code here:
+    }//GEN-LAST:event_pColoniaFocusGained
 
-    private void acColoniaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acColoniaFocusLost
-        validation.placeHolder(false,acColonia,"Colonia");        // TODO add your handling code here:
-    }//GEN-LAST:event_acColoniaFocusLost
+    private void pColoniaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pColoniaFocusLost
+        validation.placeHolder(false,pColonia,"Colonia");        // TODO add your handling code here:
+    }//GEN-LAST:event_pColoniaFocusLost
 
-    private void acCiudadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acCiudadFocusGained
-        validation.placeHolder(true,acCiudad,"Ciudad");        // TODO add your handling code here:
-    }//GEN-LAST:event_acCiudadFocusGained
+    private void pCiudadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pCiudadFocusGained
+        validation.placeHolder(true,pCiudad,"Ciudad");        // TODO add your handling code here:
+    }//GEN-LAST:event_pCiudadFocusGained
 
-    private void acCiudadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acCiudadFocusLost
-        validation.placeHolder(false,acCiudad,"Ciudad");        // TODO add your handling code here:
-    }//GEN-LAST:event_acCiudadFocusLost
+    private void pCiudadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pCiudadFocusLost
+        validation.placeHolder(false,pCiudad,"Ciudad");        // TODO add your handling code here:
+    }//GEN-LAST:event_pCiudadFocusLost
 
-    private void acCPFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acCPFocusGained
-        validation.placeHolder(true,acCP,"xxxxx");        // TODO add your handling code here:
-    }//GEN-LAST:event_acCPFocusGained
+    private void pCPFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pCPFocusGained
+        validation.placeHolder(true,pCP,"xxxxx");        // TODO add your handling code here:
+    }//GEN-LAST:event_pCPFocusGained
 
-    private void acCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acCiudadActionPerformed
+    private void pCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pCiudadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_acCiudadActionPerformed
+    }//GEN-LAST:event_pCiudadActionPerformed
 
-    private void acColoniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acColoniaActionPerformed
+    private void pColoniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pColoniaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_acColoniaActionPerformed
+    }//GEN-LAST:event_pColoniaActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewProveedor(controllerPaneles)); //asi
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void MarcaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_MarcaFocusGained
-        validation.placeHolder(true,Marca,"Marca");       // TODO add your handling code here:
-    }//GEN-LAST:event_MarcaFocusGained
+    private void pMarcaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pMarcaFocusGained
+        validation.placeHolder(true,pMarca,"Marca");       // TODO add your handling code here:
+    }//GEN-LAST:event_pMarcaFocusGained
 
-    private void MarcaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_MarcaFocusLost
-        validation.placeHolder(false,Marca,"Marca");         // TODO add your handling code here:
-    }//GEN-LAST:event_MarcaFocusLost
+    private void pMarcaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pMarcaFocusLost
+        validation.placeHolder(false,pMarca,"Marca");         // TODO add your handling code here:
+    }//GEN-LAST:event_pMarcaFocusLost
 
-    private void EmpresaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EmpresaFocusGained
-        validation.placeHolder(true,Empresa,"Empresa");         // TODO add your handling code here:
-    }//GEN-LAST:event_EmpresaFocusGained
+    private void pEmpresaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pEmpresaFocusGained
+        validation.placeHolder(true,pEmpresa,"Empresa");         // TODO add your handling code here:
+    }//GEN-LAST:event_pEmpresaFocusGained
 
-    private void EmpresaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EmpresaFocusLost
-        validation.placeHolder(false,Empresa,"Empresa");        // TODO add your handling code here:
-    }//GEN-LAST:event_EmpresaFocusLost
+    private void pEmpresaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pEmpresaFocusLost
+        validation.placeHolder(false,pEmpresa,"Empresa");        // TODO add your handling code here:
+    }//GEN-LAST:event_pEmpresaFocusLost
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -819,23 +833,7 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Empresa;
-    private javax.swing.JComboBox Estados;
-    private javax.swing.JTextField Marca;
-    private javax.swing.JTextField Nombre;
-    private javax.swing.JTextField acApellidoMaterno;
-    private javax.swing.JTextField acApellidoPaterno;
-    private javax.swing.JTextField acCP;
-    private javax.swing.JTextField acCalle;
-    private javax.swing.JTextField acCiudad;
-    private javax.swing.JTextField acColonia;
-    private javax.swing.JTextField acEmail;
     private javax.swing.JTextField acIdCliente;
-    private javax.swing.JTextField acNoExt;
-    private javax.swing.JTextField acNoInt;
-    private javax.swing.JTextField acRFC;
-    private javax.swing.JTextField acTelCelular;
-    private javax.swing.JTextField acTelefono;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -846,7 +844,6 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -863,5 +860,21 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField pApellidoMaterno;
+    private javax.swing.JTextField pApellidoPaterno;
+    private javax.swing.JTextField pCP;
+    private javax.swing.JTextField pCalle;
+    private javax.swing.JTextField pCiudad;
+    private javax.swing.JTextField pColonia;
+    private javax.swing.JTextField pEmail;
+    private javax.swing.JTextField pEmpresa;
+    private javax.swing.JComboBox pEstados;
+    private javax.swing.JTextField pMarca;
+    private javax.swing.JTextField pNoExt;
+    private javax.swing.JTextField pNoInt;
+    private javax.swing.JTextField pNombre;
+    private javax.swing.JTextField pRFC;
+    private javax.swing.JTextField pTelCelular;
+    private javax.swing.JTextField pTelefono;
     // End of variables declaration//GEN-END:variables
 }
