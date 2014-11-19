@@ -96,10 +96,8 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         importe = new javax.swing.JTextField();
         $1 = new javax.swing.JLabel();
         botonAgregar = new javax.swing.JButton();
-        labelConfiguracion = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaVendedor = new javax.swing.JTable();
-        labelVentas = new javax.swing.JLabel();
         panelTotal = new javax.swing.JPanel();
         labelSub = new javax.swing.JLabel();
         subtotal = new javax.swing.JTextField();
@@ -119,6 +117,9 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         labelResto = new javax.swing.JLabel();
         resto = new javax.swing.JTextField();
         label$2 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        labelNuevaVenta = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         botonFechaVen1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/calender.png"))); // NOI18N
 
@@ -129,6 +130,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         panelCapInfVendedor.setPreferredSize(new java.awt.Dimension(800, 600));
 
         panelCliente.setBackground(new java.awt.Color(255, 255, 255));
+        panelCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         labelCodClien.setBackground(new java.awt.Color(255, 255, 255));
         labelCodClien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -379,6 +381,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         );
 
         panelProducto.setBackground(new java.awt.Color(255, 255, 255));
+        panelProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Código de Barras");
@@ -597,7 +600,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
                         .addComponent($1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(botonAgregar)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelProductoLayout.setVerticalGroup(
             panelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -628,11 +631,6 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
                                 .addComponent($1)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        labelConfiguracion.setBackground(new java.awt.Color(250, 250, 250));
-        labelConfiguracion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logo_empresa.png"))); // NOI18N
-        labelConfiguracion.setText("Nueva venta");
 
         tablaVendedor.setAutoCreateRowSorter(true);
         tablaVendedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -690,12 +688,8 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
             tablaVendedor.getColumnModel().getColumn(7).setResizable(false);
         }
 
-        labelVentas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        labelVentas.setForeground(new java.awt.Color(66, 139, 202));
-        labelVentas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelVentas.setText("Ventas");
-
         panelTotal.setBackground(new java.awt.Color(255, 255, 255));
+        panelTotal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panelTotal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         labelSub.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -869,7 +863,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
                         .addComponent(botonCanc, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(72, 72, 72)
                         .addComponent(botonAcep, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
                         .addComponent(panelRestoAb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addGroup(panelTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -921,27 +915,49 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
                 .addGap(0, 15, Short.MAX_VALUE))
         );
 
+        jPanel7.setBackground(new java.awt.Color(250, 250, 250));
+        jPanel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(120, 120, 120), 1, true));
+
+        labelNuevaVenta.setBackground(new java.awt.Color(250, 250, 250));
+        labelNuevaVenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelNuevaVenta.setText("Nueva venta");
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logo_empresa.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(labelNuevaVenta))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout panelCapInfVendedorLayout = new javax.swing.GroupLayout(panelCapInfVendedor);
         panelCapInfVendedor.setLayout(panelCapInfVendedorLayout);
         panelCapInfVendedorLayout.setHorizontalGroup(
             panelCapInfVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCapInfVendedorLayout.createSequentialGroup()
-                .addGroup(panelCapInfVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(panelTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(panelCapInfVendedorLayout.createSequentialGroup()
-                .addGroup(panelCapInfVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCapInfVendedorLayout.createSequentialGroup()
-                        .addGroup(panelCapInfVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(panelProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panelCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(labelVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(294, 294, 294)
-                        .addComponent(jSeparator2))
-                    .addGroup(panelCapInfVendedorLayout.createSequentialGroup()
-                        .addComponent(labelConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(panelCapInfVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(panelTotal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCapInfVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(panelProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 884, Short.MAX_VALUE)
+                        .addComponent(panelCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(294, 294, 294)
+                .addComponent(jSeparator2)
                 .addContainerGap())
         );
         panelCapInfVendedorLayout.setVerticalGroup(
@@ -952,10 +968,8 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
                 .addGap(386, 386, 386))
             .addGroup(panelCapInfVendedorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelConfiguracion)
-                .addGap(1, 1, 1)
-                .addComponent(labelVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -963,7 +977,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(109, 109, 109))
+                .addGap(154, 154, 154))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -979,7 +993,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelCapInfVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1201,6 +1215,8 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel label$;
@@ -1210,7 +1226,6 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     private javax.swing.JLabel label$Total;
     private javax.swing.JLabel labelAbono;
     private javax.swing.JLabel labelCodClien;
-    private javax.swing.JLabel labelConfiguracion;
     private javax.swing.JLabel labelDcto;
     private javax.swing.JLabel labelDescripcion;
     private javax.swing.JLabel labelFecEnt;
@@ -1219,11 +1234,11 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     private javax.swing.JLabel labelLugEnt;
     private javax.swing.JLabel labelNombreVenta;
     private javax.swing.JLabel labelNota;
+    private javax.swing.JLabel labelNuevaVenta;
     private javax.swing.JLabel labelPT;
     private javax.swing.JLabel labelPrecioT;
     private javax.swing.JLabel labelResto;
     private javax.swing.JLabel labelSub;
-    private javax.swing.JLabel labelVentas;
     private javax.swing.JLabel labelcantidad;
     private javax.swing.JLabel labelprecio;
     private javax.swing.JLabel lableImporte;
