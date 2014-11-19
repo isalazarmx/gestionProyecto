@@ -1009,11 +1009,11 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_fechaActionPerformed
 
     private void fechaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaFocusLost
-        placeHolder(false,fecha,"Fecha");
+        validation.placeHolder(false,fecha,"Fecha");
     }//GEN-LAST:event_fechaFocusLost
 
     private void fechaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaFocusGained
-        placeHolder(true,fecha,"Fecha");
+        validation.placeHolder(true,fecha,"Fecha");
     }//GEN-LAST:event_fechaFocusGained
 
     private void descripcionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descripcionKeyPressed
@@ -1025,11 +1025,11 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_descripcionActionPerformed
 
     private void descripcionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_descripcionFocusLost
-        placeHolder(false,descripcion,"Descripción");
+        validation.placeHolder(false,descripcion,"Descripción");
     }//GEN-LAST:event_descripcionFocusLost
 
     private void descripcionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_descripcionFocusGained
-        placeHolder(true,descripcion,"Descripción");
+        validation.placeHolder(true,descripcion,"Descripción");
     }//GEN-LAST:event_descripcionFocusGained
 
     private void codBarrasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codBarrasKeyPressed
@@ -1041,11 +1041,11 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_codBarrasActionPerformed
 
     private void codBarrasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codBarrasFocusLost
-        placeHolder(false,codBarras,"Código Barras");
+        validation.placeHolder(false,codBarras,"Código Barras");
     }//GEN-LAST:event_codBarrasFocusLost
 
     private void codBarrasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codBarrasFocusGained
-        placeHolder(true,codBarras,"Código Barras");
+        validation.placeHolder(true,codBarras,"Código Barras");
     }//GEN-LAST:event_codBarrasFocusGained
 
     private void idClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idClienteKeyPressed
@@ -1057,11 +1057,11 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_idClienteActionPerformed
 
     private void idClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idClienteFocusLost
-        placeHolder(false,idCliente,"Código Cliente");
+        validation.placeHolder(false,idCliente,"Código Cliente");
     }//GEN-LAST:event_idClienteFocusLost
 
     private void idClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idClienteFocusGained
-        placeHolder(true,idCliente,"Código Cliente");
+        validation.placeHolder(true,idCliente,"Código Cliente");
     }//GEN-LAST:event_idClienteFocusGained
 
     private void priceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceKeyPressed
@@ -1073,19 +1073,19 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_priceActionPerformed
 
     private void priceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_priceFocusLost
-        placeHolder(false,price,"Precio");
+        validation.placeHolder(false,price,"Precio");
     }//GEN-LAST:event_priceFocusLost
 
     private void priceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_priceFocusGained
-        placeHolder(true,price,"Precio");
+        validation.placeHolder(true,price,"Precio");
     }//GEN-LAST:event_priceFocusGained
 
     private void cantidadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidadFocusGained
-        placeHolder(true,cantidad,"0");
+        validation.placeHolder(true,cantidad,"0");
     }//GEN-LAST:event_cantidadFocusGained
 
     private void cantidadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidadFocusLost
-       placeHolder(false,cantidad,"0");
+       validation.placeHolder(false,cantidad,"0");
     }//GEN-LAST:event_cantidadFocusLost
 
     private void cantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadActionPerformed
@@ -1097,11 +1097,11 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_cantidadKeyPressed
 
     private void descuentoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_descuentoFocusGained
-        placeHolder(true,descuento,"0");
+        validation.placeHolder(true,descuento,"0");
     }//GEN-LAST:event_descuentoFocusGained
 
     private void descuentoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_descuentoFocusLost
-         placeHolder(false,descuento,"0");
+         validation.placeHolder(false,descuento,"0");
     }//GEN-LAST:event_descuentoFocusLost
 
     private void descuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descuentoActionPerformed
@@ -1113,11 +1113,11 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_descuentoKeyPressed
 
     private void importeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_importeFocusGained
-         placeHolder(true,importe,"0");
+         validation.placeHolder(true,importe,"0");
     }//GEN-LAST:event_importeFocusGained
 
     private void importeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_importeFocusLost
-         placeHolder(false,descuento,"0");
+         validation.placeHolder(false,descuento,"0");
     }//GEN-LAST:event_importeFocusLost
 
     private void importeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importeActionPerformed
@@ -1141,11 +1141,11 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_subtotalActionPerformed
 
     private void subtotalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_subtotalFocusGained
-         placeHolder(true,subtotal,"0");
+         validation.placeHolder(true,subtotal,"0");
     }//GEN-LAST:event_subtotalFocusGained
 
     private void subtotalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_subtotalFocusLost
-         placeHolder(false,subtotal,"0");
+         validation.placeHolder(false,subtotal,"0");
     }//GEN-LAST:event_subtotalFocusLost
 
     private void ivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ivaActionPerformed
@@ -1153,11 +1153,11 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_ivaActionPerformed
 
     private void ivaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ivaFocusGained
-         placeHolder(true,iva,"0");
+         validation.placeHolder(true,iva,"0");
     }//GEN-LAST:event_ivaFocusGained
 
     private void ivaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ivaFocusLost
-         placeHolder(false,iva,"0");
+         validation.placeHolder(false,iva,"0");
     }//GEN-LAST:event_ivaFocusLost
 
     private void ivaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ivaKeyPressed
@@ -1169,11 +1169,11 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_totalTActionPerformed
 
     private void totalTFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_totalTFocusGained
-         placeHolder(true,totalT,"0");
+         validation.placeHolder(true,totalT,"0");
     }//GEN-LAST:event_totalTFocusGained
 
     private void totalTFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_totalTFocusLost
-        placeHolder(false,totalT,"0");
+        validation.placeHolder(false,totalT,"0");
     }//GEN-LAST:event_totalTFocusLost
 
     private void comboTipoVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoVenActionPerformed
@@ -1259,7 +1259,5 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     private javax.swing.JTextField totalT;
     // End of variables declaration//GEN-END:variables
 
-    private void placeHolder(boolean b, JTextField descripcion, String venta) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 }
