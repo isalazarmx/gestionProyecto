@@ -9,6 +9,7 @@ package View;
 import Controller.ControllerPaneles;
 import Controller.ControllerValidation;
 import Controller.ControllerViewSession;
+import Controller.ControllerViewPrincipalClientes;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
@@ -20,13 +21,26 @@ public class ViewClientes extends javax.swing.JPanel {
 
     ControllerValidation validation;
     ControllerPaneles controllerPaneles;
+    ControllerViewPrincipalClientes controller;
    
 public ViewClientes(ControllerPaneles controllerPaneles) {
         initComponents();
         this.validation = new ControllerValidation();
         this.controllerPaneles = controllerPaneles;//asi
+        this.validationPrincipalClientes(); //si
         
     }
+
+public void validationPrincipalClientes()
+{
+    ArrayList components = new ArrayList<>();
+    components.add(cNombre);
+    components.add(cRFC);
+    
+    controller = new ControllerViewPrincipalClientes(components);
+    controller.validations();
+    
+}
     
 
    
@@ -34,7 +48,6 @@ public ViewClientes(ControllerPaneles controllerPaneles) {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -46,33 +59,21 @@ public ViewClientes(ControllerPaneles controllerPaneles) {
         jButton5 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        Nombre = new javax.swing.JTextField();
+        cNombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        RFC = new javax.swing.JTextField();
+        cRFC = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        jLabel20 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(245, 246, 247));
-
-        jPanel1.setBackground(new java.awt.Color(245, 246, 247));
-        jPanel1.setPreferredSize(new java.awt.Dimension(700, 900));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        setBorder(new javax.swing.border.LineBorder(new java.awt.Color(220, 220, 220), 1, true));
+        setPreferredSize(new java.awt.Dimension(900, 700));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(245, 246, 247), 1, true));
+        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(220, 220, 220), 1, true));
 
         jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -190,20 +191,20 @@ public ViewClientes(ControllerPaneles controllerPaneles) {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText("Nombre");
 
-        Nombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Nombre.setForeground(new java.awt.Color(180, 180, 180));
-        Nombre.setText("Nombre (*)");
-        Nombre.addFocusListener(new java.awt.event.FocusAdapter() {
+        cNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cNombre.setForeground(new java.awt.Color(180, 180, 180));
+        cNombre.setText("Nombre (*)");
+        cNombre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                NombreFocusGained(evt);
+                cNombreFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                NombreFocusLost(evt);
+                cNombreFocusLost(evt);
             }
         });
-        Nombre.addActionListener(new java.awt.event.ActionListener() {
+        cNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NombreActionPerformed(evt);
+                cNombreActionPerformed(evt);
             }
         });
 
@@ -211,21 +212,21 @@ public ViewClientes(ControllerPaneles controllerPaneles) {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("R.F.C");
 
-        RFC.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RFC.setForeground(new java.awt.Color(180, 180, 180));
-        RFC.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        RFC.setText("R.F.C.");
-        RFC.addFocusListener(new java.awt.event.FocusAdapter() {
+        cRFC.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cRFC.setForeground(new java.awt.Color(180, 180, 180));
+        cRFC.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        cRFC.setText("R.F.C.");
+        cRFC.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                RFCFocusGained(evt);
+                cRFCFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                RFCFocusLost(evt);
+                cRFCFocusLost(evt);
             }
         });
-        RFC.addActionListener(new java.awt.event.ActionListener() {
+        cRFC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RFCActionPerformed(evt);
+                cRFCActionPerformed(evt);
             }
         });
 
@@ -258,11 +259,11 @@ public ViewClientes(ControllerPaneles controllerPaneles) {
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
-                .addComponent(RFC, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -284,12 +285,12 @@ public ViewClientes(ControllerPaneles controllerPaneles) {
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Nombre)
+                                .addComponent(cNombre)
                                 .addGap(18, 18, 18)))
                         .addComponent(jLabel4))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(RFC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cRFC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
@@ -333,26 +334,24 @@ public ViewClientes(ControllerPaneles controllerPaneles) {
         );
 
         jPanel7.setBackground(new java.awt.Color(250, 250, 250));
-        jPanel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(245, 246, 247), 1, true));
+        jPanel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true));
 
-        jLabel20.setBackground(new java.awt.Color(250, 250, 250));
-        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/userInfo.png"))); // NOI18N
-        jLabel20.setText("Administración de Clientes");
+        jLabel1.setBackground(new java.awt.Color(250, 250, 250));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/proveedoresInfo.png"))); // NOI18N
+        jLabel1.setText("Administracion de clientes");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -360,51 +359,47 @@ public ViewClientes(ControllerPaneles controllerPaneles) {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 50, Short.MAX_VALUE))
+                .addGap(0, 48, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreActionPerformed
+    private void cNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cNombreActionPerformed
        
-    }//GEN-LAST:event_NombreActionPerformed
+    }//GEN-LAST:event_cNombreActionPerformed
 
-    private void NombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NombreFocusGained
-        validation.placeHolder(true,Nombre,"Nombre (*)");// TODO add your handling code here:
-    }//GEN-LAST:event_NombreFocusGained
+    private void cNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cNombreFocusGained
+        validation.placeHolder(true,cNombre,"Nombre (*)");// TODO add your handling code here:
+    }//GEN-LAST:event_cNombreFocusGained
 
-    private void NombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NombreFocusLost
-       validation.placeHolder(false ,Nombre,"Nombre (*)"); // TODO add your handling code here:
-    }//GEN-LAST:event_NombreFocusLost
+    private void cNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cNombreFocusLost
+       validation.placeHolder(false ,cNombre,"Nombre (*)"); // TODO add your handling code here:
+    }//GEN-LAST:event_cNombreFocusLost
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void RFCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RFCActionPerformed
+    private void cRFCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cRFCActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_RFCActionPerformed
+    }//GEN-LAST:event_cRFCActionPerformed
 
-    private void RFCFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RFCFocusGained
-        validation.placeHolder(true,RFC,"R.F.C."); // TODO add your handling code here:
-    }//GEN-LAST:event_RFCFocusGained
+    private void cRFCFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cRFCFocusGained
+        validation.placeHolder(true,cRFC,"R.F.C."); // TODO add your handling code here:
+    }//GEN-LAST:event_cRFCFocusGained
 
-    private void RFCFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RFCFocusLost
-       validation.placeHolder(false,RFC,"R.F.C."); // TODO add your handling code here:
-    }//GEN-LAST:event_RFCFocusLost
+    private void cRFCFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cRFCFocusLost
+       validation.placeHolder(false,cRFC,"R.F.C."); // TODO add your handling code here:
+    }//GEN-LAST:event_cRFCFocusLost
 
     private void ceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ceFocusGained
        validation.placeHolder(true,ce,"0"); // TODO add your handling code here:
@@ -423,18 +418,17 @@ public ViewClientes(ControllerPaneles controllerPaneles) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ClientesEditar;
     private javax.swing.JLabel ClientesEncontrados;
-    private javax.swing.JTextField Nombre;
-    private javax.swing.JTextField RFC;
+    private javax.swing.JTextField cNombre;
+    private javax.swing.JTextField cRFC;
     private javax.swing.JTextField ce;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
