@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.ControllerPaneles;
 import Controller.ControllerValidation;
 import Controller.ControllerViewVendedor;
 import java.util.ArrayList;
@@ -17,13 +18,19 @@ import javax.swing.JTextField;
 public class ViewCaptInfVendedor extends javax.swing.JPanel {
     ControllerValidation validation;
     ControllerViewVendedor controller;
+    ControllerPaneles controllerPaneles;
 
     /**
      * Creates new form ViewCaptInfVendedor
+     * @param controllerPaneles
      */
-    public ViewCaptInfVendedor() {
-        validation = new ControllerValidation();
+    public ViewCaptInfVendedor(ControllerPaneles controllerPaneles) {
+        this.controllerPaneles = controllerPaneles;
+        this.validation = new ControllerValidation();
+        //this.controllerPaneles = controllerPaneles;
         initComponents();
+        validation();
+        
     }
 
     /**
@@ -36,8 +43,11 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     private void validation(){
         ArrayList components = new ArrayList<>();
         components.add(idCliente);
-        components.add(comboTipoVen);
         components.add(fecha);
+        components.add(fechaPedido); 
+        components.add(fechaEnt); 
+        components.add(lugarEnt); 
+        components.add(horaEnt); 
         components.add(codBarras);
         components.add(descripcion);
         components.add(price);
@@ -47,6 +57,8 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         components.add(subtotal);
         components.add(iva);
         components.add(totalT);
+        components.add(abono);
+        components.add(resto);
         controller = new ControllerViewVendedor(components);
         controller.validations();
     }
@@ -422,17 +434,17 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         codBarras.setForeground(new java.awt.Color(180, 180, 180));
         codBarras.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         codBarras.setText("0");
-        codBarras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                codBarrasActionPerformed(evt);
-            }
-        });
         codBarras.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 codBarrasFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 codBarrasFocusLost(evt);
+            }
+        });
+        codBarras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                codBarrasActionPerformed(evt);
             }
         });
         codBarras.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -598,14 +610,15 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         panelProductoLayout.setHorizontalGroup(
             panelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelProductoLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(panelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelProductoLayout.createSequentialGroup()
-                        .addGap(106, 106, 106)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelProductoLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(codBarras, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelProductoLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(codBarras, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonBuscCod, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelProductoLayout.createSequentialGroup()
                         .addComponent(labelDescripcion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -622,33 +635,28 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(labelDcto)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(descuento, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(descuento, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelProductoLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lableImporte)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(importe, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent($1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(botonAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(botonBuscCod, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lableImporte)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(importe, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent($1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelProductoLayout.setVerticalGroup(
             panelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelProductoLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addGap(18, 18, 18)
                 .addGroup(panelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonBuscCod, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(codBarras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1)))
-                .addGap(13, 13, 13)
+                    .addComponent(codBarras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(botonBuscCod, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonAgregar)
                     .addComponent(labelprecio)
@@ -1057,11 +1065,11 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_fechaActionPerformed
 
     private void fechaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaFocusLost
-        validation.placeHolder(false,fecha,"Fecha");
+        validation.placeHolder(false,fecha,"Fecha(*)");
     }//GEN-LAST:event_fechaFocusLost
 
     private void fechaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaFocusGained
-        validation.placeHolder(true,fecha,"Fecha");
+        validation.placeHolder(true,fecha,"Fecha(*)");
     }//GEN-LAST:event_fechaFocusGained
 
     private void descripcionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descripcionKeyPressed
@@ -1089,11 +1097,11 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_codBarrasActionPerformed
 
     private void codBarrasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codBarrasFocusLost
-        validation.placeHolder(false,codBarras,"Código de Barras");
+        validation.placeHolder(false, codBarras, "0");
     }//GEN-LAST:event_codBarrasFocusLost
 
     private void codBarrasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codBarrasFocusGained
-        validation.placeHolder(true,codBarras,"Código de Barras");
+        validation.placeHolder(true, codBarras, "0");
     }//GEN-LAST:event_codBarrasFocusGained
 
     private void idClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idClienteKeyPressed
@@ -1105,11 +1113,11 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_idClienteActionPerformed
 
     private void idClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idClienteFocusLost
-        validation.placeHolder(false,idCliente,"Código de Cliente");
+        validation.placeHolder(false,idCliente,"Cod. Cliente");
     }//GEN-LAST:event_idClienteFocusLost
 
     private void idClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idClienteFocusGained
-        validation.placeHolder(true,idCliente,"Código de Cliente");
+        validation.placeHolder(true,idCliente,"Cod. Cliente(*)");
     }//GEN-LAST:event_idClienteFocusGained
 
     private void priceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceKeyPressed
@@ -1237,35 +1245,35 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_comboTipoVenFocusLost
 
     private void fechaPedidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaPedidoFocusGained
-        validation.placeHolder(true, fechaPedido, "Fecha pedido");
+        validation.placeHolder(true, fechaPedido, "Fecha pedido.");
     }//GEN-LAST:event_fechaPedidoFocusGained
 
     private void fechaPedidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaPedidoFocusLost
-      validation.placeHolder(false, fechaPedido, "Fecha pedido");
+      validation.placeHolder(false, fechaPedido, "Fecha pedido.");
     }//GEN-LAST:event_fechaPedidoFocusLost
 
     private void fechaEntFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaEntFocusGained
-        validation.placeHolder(true, fechaEnt, "Fecha entrega");
+        validation.placeHolder(true, fechaEnt, "Fecha entrega.");
     }//GEN-LAST:event_fechaEntFocusGained
 
     private void fechaEntFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaEntFocusLost
-        validation.placeHolder(false, fechaEnt, "Fecha entrega");
+        validation.placeHolder(false, fechaEnt, "Fecha entrega.");
     }//GEN-LAST:event_fechaEntFocusLost
 
     private void lugarEntFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lugarEntFocusGained
-        validation.placeHolder(true, lugarEnt, "Lugar entrega");
+        validation.placeHolder(true, lugarEnt, "Lugar entrega.");
     }//GEN-LAST:event_lugarEntFocusGained
 
     private void lugarEntFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lugarEntFocusLost
-        validation.placeHolder(false, lugarEnt, "Lugar entrega");
+        validation.placeHolder(false, lugarEnt, "Lugar entrega.");
     }//GEN-LAST:event_lugarEntFocusLost
 
     private void horaEntFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_horaEntFocusGained
-        validation.placeHolder(true, horaEnt, "Hora entrega");
+        validation.placeHolder(true, horaEnt, "00:00");
     }//GEN-LAST:event_horaEntFocusGained
 
     private void horaEntFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_horaEntFocusLost
-        validation.placeHolder(false, horaEnt, "Hora entrega");
+        validation.placeHolder(false, horaEnt, "00:00");
     }//GEN-LAST:event_horaEntFocusLost
 
     private void abonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_abonoFocusGained

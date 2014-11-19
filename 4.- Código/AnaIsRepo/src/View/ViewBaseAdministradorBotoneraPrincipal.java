@@ -256,7 +256,7 @@ public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
     private void ventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ventasActionPerformed
         // TODO add your handling code here:
         controller.accionButton(7);
-        controllerPaneles.addPanel(panelCentral, new ViewCaptInfVendedor());
+        controllerPaneles.addPanel(panelCentral, new ViewCaptInfVendedor(controllerPaneles));
     }//GEN-LAST:event_ventasActionPerformed
 
     private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
@@ -273,7 +273,7 @@ public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
     private void pedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedidosActionPerformed
         // TODO add your handling code here:
         controller.accionButton(8);
-        controllerPaneles.addPanel(panelCentral,new ViewPedidos());
+        controllerPaneles.addPanel(panelCentral,new ViewPedidos(controllerPaneles));
     }//GEN-LAST:event_pedidosActionPerformed
 
     private void vendedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendedoresActionPerformed

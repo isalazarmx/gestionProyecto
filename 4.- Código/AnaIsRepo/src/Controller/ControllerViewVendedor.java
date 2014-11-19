@@ -54,12 +54,17 @@ public class ControllerViewVendedor {
         this.resto= (JTextField)components.get(16);
     }
     
-    public void validations(){
+        public void validations(){
         ControllerValidation.camposNoNulos(idCliente, "Campo oblagatorio");
+        ControllerValidation.soloNumeros(idCliente);
         ControllerValidation.validarFecha(fecha, null);
+        ControllerValidation.soloNumeros(fecha);
         ControllerValidation.validarFecha(fechaPedido, null);
+        ControllerValidation.soloNumeros(fechaPedido);
         ControllerValidation.validarFecha(fechaEnt, null);
+        ControllerValidation.soloNumeros(fechaEnt);
         ControllerValidation.soloNumeros(horaEnt);
+        ControllerValidation.soloNumeros(codBarras);
         ControllerValidation.limitarCaracteres(descripcion, 250);
         ControllerValidation.soloNumeros(cantidad);
         ControllerValidation.soloNumeros(descuento);

@@ -6,8 +6,11 @@
 package View;
 
 
+import Controller.ControllerPaneles;
 import Controller.ControllerValidation;
+import Controller.ControllerViewPedidos;
 import Controller.ControllerViewSession;
+import Controller.ControllerViewVendedor;
 import java.util.ArrayList;
 
 /**
@@ -17,23 +20,19 @@ import java.util.ArrayList;
 public class ViewPedidos extends javax.swing.JPanel {
 
     ControllerValidation validation;
+    ControllerViewPedidos controller;
+
     
     /**
      * Creates new form ViewClientes
      */
-    public ViewPedidos() {
+    public ViewPedidos(ControllerPaneles controllerPaneles) {
         initComponents();
         this.validation = new ControllerValidation();
 //        validation();
     }
     
-//    private void validation(){
-//        ArrayList components = new ArrayList<>();
-//        components.add(Nombre);
-//        components.add(RFC);
-//        controller = new ControllerViewSession(components);
-//        controller.validations(ce);
-//    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -325,7 +324,7 @@ public class ViewPedidos extends javax.swing.JPanel {
 
         fechaPedido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         fechaPedido.setForeground(new java.awt.Color(180, 180, 180));
-        fechaPedido.setText("Pedido");
+        fechaPedido.setText("Fecha de pedido");
         fechaPedido.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 fechaPedidoFocusGained(evt);
@@ -456,11 +455,11 @@ public class ViewPedidos extends javax.swing.JPanel {
     }//GEN-LAST:event_nombreClienteActionPerformed
 
     private void nombreClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreClienteFocusGained
-        validation.placeHolder(true,nombreCliente,"Nombre (*)");// TODO add your handling code here:
+        validation.placeHolder(true,nombreCliente,"Nombre");// TODO add your handling code here:
     }//GEN-LAST:event_nombreClienteFocusGained
 
     private void nombreClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreClienteFocusLost
-       validation.placeHolder(false ,nombreCliente,"Nombre (*)"); // TODO add your handling code here:
+       validation.placeHolder(false ,nombreCliente,"Nombre"); // TODO add your handling code here:
     }//GEN-LAST:event_nombreClienteFocusLost
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -472,11 +471,11 @@ public class ViewPedidos extends javax.swing.JPanel {
     }//GEN-LAST:event_idClienteActionPerformed
 
     private void idClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idClienteFocusGained
-        validation.placeHolder(true,idCliente,"R.F.C."); // TODO add your handling code here:
+        validation.placeHolder(true,idCliente,"Cod. Cliente"); // TODO add your handling code here:
     }//GEN-LAST:event_idClienteFocusGained
 
     private void idClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idClienteFocusLost
-       validation.placeHolder(false,idCliente,"R.F.C."); // TODO add your handling code here:
+       validation.placeHolder(false,idCliente,"Cod. Cliente"); // TODO add your handling code here:
     }//GEN-LAST:event_idClienteFocusLost
 
     private void pedidosEncFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pedidosEncFocusGained
@@ -496,11 +495,11 @@ public class ViewPedidos extends javax.swing.JPanel {
     }//GEN-LAST:event_botonNuevoPedido1ActionPerformed
 
     private void fechaPedidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaPedidoFocusGained
-        // TODO add your handling code here:
+        validation.placeHolder(true, fechaPedido, "Fecha de pedido");
     }//GEN-LAST:event_fechaPedidoFocusGained
 
     private void fechaPedidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaPedidoFocusLost
-        // TODO add your handling code here:
+        validation.placeHolder(false, fechaPedido, "Fecha de pedido");
     }//GEN-LAST:event_fechaPedidoFocusLost
 
     private void fechaPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaPedidoActionPerformed
