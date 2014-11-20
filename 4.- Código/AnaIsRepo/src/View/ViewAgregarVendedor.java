@@ -30,6 +30,7 @@ public class ViewAgregarVendedor extends javax.swing.JPanel {
         this.modelEmpresa = controllerPaneles.getModelEmpresa();
         initComponents();
         validation();
+        labelStatus.setVisible(false);
     }
 
     private void validation(){
