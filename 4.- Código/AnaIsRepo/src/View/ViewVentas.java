@@ -51,6 +51,9 @@ public class ViewVentas extends javax.swing.JPanel {
         comboRevisarPor = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaVentas = new javax.swing.JTable();
+        labelTotalVentas = new javax.swing.JLabel();
+        totalVentas = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         jPanel7.setBackground(new java.awt.Color(250, 250, 250));
         jPanel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(220, 220, 220), 1, true));
@@ -108,6 +111,11 @@ public class ViewVentas extends javax.swing.JPanel {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
@@ -131,6 +139,18 @@ public class ViewVentas extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tablaVentas);
 
+        labelTotalVentas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelTotalVentas.setText("Total de ventas:");
+
+        totalVentas.setEditable(false);
+        totalVentas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        totalVentas.setForeground(new java.awt.Color(204, 204, 255));
+        totalVentas.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        totalVentas.setText("0");
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setText("$");
+
         javax.swing.GroupLayout panelTablaVentasLayout = new javax.swing.GroupLayout(panelTablaVentas);
         panelTablaVentas.setLayout(panelTablaVentasLayout);
         panelTablaVentasLayout.setHorizontalGroup(
@@ -140,10 +160,18 @@ public class ViewVentas extends javax.swing.JPanel {
                 .addGroup(panelTablaVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
                     .addGroup(panelTablaVentasLayout.createSequentialGroup()
-                        .addComponent(labelRevisar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboRevisarPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 574, Short.MAX_VALUE)))
+                        .addGroup(panelTablaVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelTablaVentasLayout.createSequentialGroup()
+                                .addComponent(labelRevisar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(comboRevisarPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelTablaVentasLayout.createSequentialGroup()
+                                .addComponent(labelTotalVentas)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(totalVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelTablaVentasLayout.setVerticalGroup(
@@ -154,8 +182,13 @@ public class ViewVentas extends javax.swing.JPanel {
                     .addComponent(labelRevisar)
                     .addComponent(comboRevisarPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panelTablaVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTotalVentas)
+                    .addComponent(totalVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -175,19 +208,22 @@ public class ViewVentas extends javax.swing.JPanel {
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelTablaVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox comboRevisarPor;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelRevisar;
+    private javax.swing.JLabel labelTotalVentas;
     private javax.swing.JLabel labelVentas;
     private javax.swing.JPanel panelTablaVentas;
     private javax.swing.JTable tablaVentas;
+    private javax.swing.JTextField totalVentas;
     // End of variables declaration//GEN-END:variables
 }
