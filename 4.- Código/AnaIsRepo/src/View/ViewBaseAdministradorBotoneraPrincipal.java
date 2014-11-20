@@ -279,6 +279,7 @@ public class ViewBaseAdministradorBotoneraPrincipal extends javax.swing.JPanel {
     private void vendedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendedoresActionPerformed
         // TODO add your handling code here:
         controller.accionButton(4);
+        controllerPaneles.addPanel(panelCentral,new ViewVendedores(controllerPaneles));
     }//GEN-LAST:event_vendedoresActionPerformed
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
