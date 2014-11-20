@@ -60,7 +60,8 @@ public class ControllerViewUser {
                                 user.setUsername(username.getText());
                                 user.setPassword(crearPass(pass1));
                                 user.setIdEmpresa(idEmpresa);
-                                 if(ControllerConsults.addUser(user)){
+                                user.setTipo(3);
+                                 if(ControllerConsults.addUser(user,true)){
                                     labelStatus.setText("Datos de administrador agregados");
                                     hilo.resume();
                                 }else

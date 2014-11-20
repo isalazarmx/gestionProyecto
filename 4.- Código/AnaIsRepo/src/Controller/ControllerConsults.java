@@ -129,14 +129,17 @@ public class ControllerConsults {
         return flag;
     }
     
-    public static boolean addUser(ModelUsuario user){
+    public static boolean addUser(ModelUsuario user,boolean admin){
         boolean flag = false;
         ControllerConnDBMS controller = new ControllerConnDBMS();
         Connection conn = controller.connectDB();
         try {
             Statement sta = conn.createStatement();
-            user.setTipo(3);
-            String strQuery = "insert into usuario values "+user.addInfo();
+            String strQuery;
+            if(admin)
+                strQuery = "insert into usuario values "+user.addAdmin();
+            else
+                strQuery = "insert into usuario "+user.addVendedor();
             System.out.println(strQuery);
             sta.executeUpdate(strQuery);
             flag = true;
