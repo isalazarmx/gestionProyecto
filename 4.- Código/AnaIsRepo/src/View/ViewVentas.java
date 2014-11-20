@@ -91,6 +91,7 @@ public class ViewVentas extends javax.swing.JPanel {
         comboRevisarPor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         comboRevisarPor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fecha", "Mes", "Vendedor", "Venta de mostrador", "Venta por pedido", "Última semana", "Últimos tres días" }));
 
+        tablaVentas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tablaVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -110,14 +111,14 @@ public class ViewVentas extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Código Venta", "Fecha", "Total compra", "Vendedor"
+                "Código Venta", "Fecha", "Vendedor", "Total compra"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, false
+                false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
