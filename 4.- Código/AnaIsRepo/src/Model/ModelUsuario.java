@@ -28,8 +28,20 @@ public class ModelUsuario {
                 + "pass:"+getPassword();
     }
     
-    public String addInfo(){
+    public String addAdmin(){
         return "(1,'"
+                +getNombre()+"','"
+                +getaPaterno()+"','"
+                +getaMaterno()+"','"
+                +getUsername()+"','"
+                +getPassword()+"',"
+                +getTipo()+",0,"
+                +getIdEmpresa()+
+                ");";
+    }
+    
+    public String addVendedor(){
+        return "(nombre,aPaterno,aMaterno,username,password,tipo,eliminado,Empresa_idEmpresa) values ('"
                 +getNombre()+"','"
                 +getaPaterno()+"','"
                 +getaMaterno()+"','"

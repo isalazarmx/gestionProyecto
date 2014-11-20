@@ -61,7 +61,7 @@ public class ControllerViewVendedores {
                                 user.setPassword(crearPass(pass1));
                                 user.setTipo(2);
                                 user.setIdEmpresa(idEmpresa);
-                                 if(ControllerConsults.addUser(user)){
+                                 if(ControllerConsults.addUser(user,false)){
                                     labelStatus.setText("Datos de administrador agregados");
                                 }else
                                     labelStatus.setText("Error interno para almacenar la información");
