@@ -24,7 +24,6 @@ public class ControllerViewVendedores {
     JTextField username;
     JPasswordField pass1;
     JPasswordField pass2;
-    JButton userData;
     
     public ControllerViewVendedores(ArrayList components){
         this.name = (JTextField)components.get(0);
@@ -33,8 +32,6 @@ public class ControllerViewVendedores {
         this.username = (JTextField)components.get(3);
         this.pass1 = (JPasswordField)components.get(4);
         this.pass2 = (JPasswordField)components.get(5);
-        if(components.size() > 6)
-            this.userData = (JButton)components.get(6);
     }
     
     public void validations(){
@@ -62,8 +59,9 @@ public class ControllerViewVendedores {
                                 user.setTipo(2);
                                 user.setIdEmpresa(idEmpresa);
                                  if(ControllerConsults.addUser(user,false)){
-                                    labelStatus.setText("Datos de administrador agregados");
-                                }else
+                                    labelStatus.setText("Vendedor agregado con éxito");
+                                    limpiaCampos();
+                                 }else
                                     labelStatus.setText("Error interno para almacenar la información");
                             }
                         }else
@@ -92,7 +90,6 @@ public class ControllerViewVendedores {
                                 user.setPassword(crearPass(pass1));
                                  if(ControllerConsults.modifUser(user)){
                                     labelStatus.setText("Datos almacenados con éxito");
-                                    userData.setText("Bienvenido, "+user.getNombre()+" "+user.getaPaterno());
                                 }else
                                     labelStatus.setText("Error interno para almacenar la información");
                             }
@@ -158,6 +155,24 @@ public class ControllerViewVendedores {
             else
                 return box.getText();
         }
-        
+    }
+    
+    public void limpiaCampos(){
+        limpiaJtextField(name,"Nombre (*)");
+        limpiaJtextField(aPaterno,"Apellido Paterno");
+        limpiaJtextField(aMaterno,"Apellido Materno");
+        limpiaJtextField(username,"Username (*)");
+        limpiaJPasswordField(pass1,"Password-01");
+        limpiaJPasswordField(pass2,"Password-02");
+    }
+    
+    private void limpiaJtextField(JTextField box, String msj){
+        box.setForeground(new Color(180,180,180));
+        box.setText(msj);
+    }
+    
+    private void limpiaJPasswordField(JPasswordField box, String msj){
+        box.setForeground(new Color(180,180,180));
+        box.setText(msj);
     }
 }
