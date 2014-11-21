@@ -160,17 +160,13 @@ public class ControllerCharger extends Thread {
     }
 
     private void identificaPrivilegiosUsuario(){
-        if(modelUsuario.getTipo() == 3){
             principalFrame.dispose();
             /* Create and display the form */
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     new ViewBasePrincipal(modelEmpresa, modelUsuario).setVisible(true);
                 }
-            }); 
-        }else{
-            //Iniciar venta para vendedor
-        }
+            });
         this.interrupt();
         this.suspend();
         this.stop(); 

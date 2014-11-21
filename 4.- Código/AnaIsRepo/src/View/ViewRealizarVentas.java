@@ -15,7 +15,7 @@ import javax.swing.JTextField;
  *
  * @author Teté
  */
-public class ViewCaptInfVendedor extends javax.swing.JPanel {
+public class ViewRealizarVentas extends javax.swing.JPanel {
     ControllerValidation validation;
     ControllerViewVendedor controller;
     ControllerPaneles controllerPaneles;
@@ -24,13 +24,12 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
      * Creates new form ViewCaptInfVendedor
      * @param controllerPaneles
      */
-    public ViewCaptInfVendedor(ControllerPaneles controllerPaneles) {
+    public ViewRealizarVentas(ControllerPaneles controllerPaneles) {
         this.controllerPaneles = controllerPaneles;
         this.validation = new ControllerValidation();
         //this.controllerPaneles = controllerPaneles;
         initComponents();
         validation();
-        
     }
 
     /**
@@ -43,21 +42,22 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     private void validation(){
         ArrayList components = new ArrayList<>();
         components.add(idCliente);
-        components.add(fecha); 
-        components.add(fechaEnt); 
-        components.add(lugarEnt); 
-        components.add(horaEnt); 
+        components.add(tipoVenta);
+        components.add(fecha);
+        components.add(horaEnt);
+        components.add(lugarEnt);
+        components.add(idVentas);
         components.add(codBarras);
         components.add(descripcion);
         components.add(price);
         components.add(cantidad);
         components.add(descuento);
         components.add(importe);
+        components.add(abono);
+        components.add(resto);
         components.add(subtotal);
         components.add(iva);
         components.add(totalT);
-        components.add(abono);
-        components.add(resto);
         controller = new ControllerViewVendedor(components);
         controller.validations();
     }
@@ -72,7 +72,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         labelNombreVenta = new javax.swing.JLabel();
         labelFecha = new javax.swing.JLabel();
         idCliente = new javax.swing.JTextField();
-        comboTipoVen = new javax.swing.JComboBox();
+        tipoVenta = new javax.swing.JComboBox();
         fecha = new javax.swing.JTextField();
         botonClientes = new javax.swing.JButton();
         botonFechaVen = new javax.swing.JButton();
@@ -86,7 +86,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         horaEnt = new javax.swing.JTextField();
         idVenta = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        idVentas = new javax.swing.JTextField();
         labelNota = new javax.swing.JLabel();
         panelProducto = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -178,19 +178,19 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
             }
         });
 
-        comboTipoVen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        comboTipoVen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Venta Mostrador", "Venta Pedido" }));
-        comboTipoVen.addActionListener(new java.awt.event.ActionListener() {
+        tipoVenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tipoVenta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Venta Mostrador", "Venta Pedido" }));
+        tipoVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboTipoVenActionPerformed(evt);
+                tipoVentaActionPerformed(evt);
             }
         });
-        comboTipoVen.addFocusListener(new java.awt.event.FocusAdapter() {
+        tipoVenta.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                comboTipoVenFocusGained(evt);
+                tipoVentaFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                comboTipoVenFocusLost(evt);
+                tipoVentaFocusLost(evt);
             }
         });
 
@@ -219,7 +219,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
 
         botonClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/group.png"))); // NOI18N
         botonClientes.setContentAreaFilled(false);
-        botonClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonClientesActionPerformed(evt);
@@ -264,7 +264,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
 
         botonFechaEnt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/calender.png"))); // NOI18N
         botonFechaEnt.setContentAreaFilled(false);
-        botonFechaEnt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonFechaEnt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         labelLugEnt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelLugEnt.setText("Lugar de entrega");
@@ -304,10 +304,10 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         idVenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         idVenta.setText("Código venta");
 
-        jTextField1.setEditable(false);
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(204, 204, 255));
-        jTextField1.setText("Cod. Venta");
+        idVentas.setEditable(false);
+        idVentas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        idVentas.setForeground(new java.awt.Color(204, 204, 255));
+        idVentas.setText("Cod. Venta");
 
         javax.swing.GroupLayout panelPedidoLayout = new javax.swing.GroupLayout(panelPedido);
         panelPedido.setLayout(panelPedidoLayout);
@@ -331,7 +331,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
                         .addGap(92, 92, 92)
                         .addComponent(idVenta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(idVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lugarEnt, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
@@ -343,7 +343,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
                         .addContainerGap()
                         .addGroup(panelPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(idVenta)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(idVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelPedidoLayout.createSequentialGroup()
                         .addGroup(panelPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -381,7 +381,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
                         .addGap(10, 10, 10)
                         .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelClienteLayout.createSequentialGroup()
-                                .addComponent(comboTipoVen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tipoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel4))
                             .addGroup(panelClienteLayout.createSequentialGroup()
@@ -411,7 +411,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelNombreVenta)
-                            .addComponent(comboTipoVen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tipoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -458,7 +458,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
 
         botonBuscCod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/zoom.png"))); // NOI18N
         botonBuscCod.setContentAreaFilled(false);
-        botonBuscCod.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonBuscCod.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         labelDescripcion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelDescripcion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -606,7 +606,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         botonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/arrow-forward.png"))); // NOI18N
         botonAgregar.setText("Agregar");
         botonAgregar.setContentAreaFilled(false);
-        botonAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout panelProductoLayout = new javax.swing.GroupLayout(panelProducto);
         panelProducto.setLayout(panelProductoLayout);
@@ -744,7 +744,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         labelSub.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelSub.setText("Sub-total");
 
-        subtotal.setBackground(new java.awt.Color(255, 204, 204));
+        subtotal.setBackground(new java.awt.Color(153, 204, 255));
         subtotal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         subtotal.setForeground(new java.awt.Color(180, 180, 180));
         subtotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -769,7 +769,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         labelPrecioT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelPrecioT.setText("IVA");
 
-        iva.setBackground(new java.awt.Color(255, 204, 204));
+        iva.setBackground(new java.awt.Color(153, 204, 255));
         iva.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         iva.setForeground(new java.awt.Color(180, 180, 180));
         iva.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -799,7 +799,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         labelPT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelPT.setText("Total");
 
-        totalT.setBackground(new java.awt.Color(255, 204, 204));
+        totalT.setBackground(new java.awt.Color(153, 204, 255));
         totalT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         totalT.setForeground(new java.awt.Color(180, 180, 180));
         totalT.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -825,14 +825,14 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         botonCanc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         botonCanc.setForeground(new java.awt.Color(52, 73, 94));
         botonCanc.setContentAreaFilled(false);
-        botonCanc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonCanc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonCanc.setLabel("Cancelar");
 
         botonAcep.setBackground(new java.awt.Color(66, 139, 202));
         botonAcep.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         botonAcep.setForeground(new java.awt.Color(52, 73, 94));
         botonAcep.setContentAreaFilled(false);
-        botonAcep.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonAcep.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonAcep.setLabel("Aceptar");
 
         panelRestoAb.setBackground(new java.awt.Color(255, 255, 255));
@@ -840,7 +840,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         labelAbono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelAbono.setText("Abono");
 
-        abono.setBackground(new java.awt.Color(255, 204, 204));
+        abono.setBackground(new java.awt.Color(153, 204, 255));
         abono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         abono.setForeground(new java.awt.Color(204, 204, 255));
         abono.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -860,7 +860,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         labelResto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelResto.setText("Resto");
 
-        resto.setBackground(new java.awt.Color(255, 204, 204));
+        resto.setBackground(new java.awt.Color(153, 204, 255));
         resto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         resto.setForeground(new java.awt.Color(204, 204, 255));
         resto.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -1243,17 +1243,17 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
         validation.placeHolder(false,totalT,"0");
     }//GEN-LAST:event_totalTFocusLost
 
-    private void comboTipoVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoVenActionPerformed
+    private void tipoVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoVentaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_comboTipoVenActionPerformed
+    }//GEN-LAST:event_tipoVentaActionPerformed
 
-    private void comboTipoVenFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_comboTipoVenFocusGained
+    private void tipoVentaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tipoVentaFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_comboTipoVenFocusGained
+    }//GEN-LAST:event_tipoVentaFocusGained
 
-    private void comboTipoVenFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_comboTipoVenFocusLost
+    private void tipoVentaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tipoVentaFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_comboTipoVenFocusLost
+    }//GEN-LAST:event_tipoVentaFocusLost
 
     private void fechaEntFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaEntFocusGained
         validation.placeHolder(true, fechaEnt, "Fecha entrega.");
@@ -1326,7 +1326,6 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     private javax.swing.JButton botonFechaVen1;
     private javax.swing.JTextField cantidad;
     private javax.swing.JTextField codBarras;
-    private javax.swing.JComboBox comboTipoVen;
     private javax.swing.JTextField descripcion;
     private javax.swing.JTextField descuento;
     private javax.swing.JTextField fecha;
@@ -1334,6 +1333,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     private javax.swing.JTextField horaEnt;
     private javax.swing.JTextField idCliente;
     private javax.swing.JLabel idVenta;
+    private javax.swing.JTextField idVentas;
     private javax.swing.JTextField importe;
     private javax.swing.JTextField iva;
     private javax.swing.JLabel jLabel1;
@@ -1344,7 +1344,6 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel label$;
     private javax.swing.JLabel label$1;
     private javax.swing.JLabel label$2;
@@ -1378,6 +1377,7 @@ public class ViewCaptInfVendedor extends javax.swing.JPanel {
     private javax.swing.JTextField resto;
     private javax.swing.JTextField subtotal;
     private javax.swing.JTable tablaVendedor;
+    private javax.swing.JComboBox tipoVenta;
     private javax.swing.JTextField totalT;
     // End of variables declaration//GEN-END:variables
 

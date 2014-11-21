@@ -37,21 +37,22 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         this.modelEmpresa = modelEmpresa;
         this.modelUsuario = modelUsuario;
         initComponents();
+        jLabelFecha.setText(ControllerDatePanel.getFecha());
+        initClock();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Image/Logo_Empresa.png"));
         setIconImage(icon);
         user.setText("Bienvenido, "+modelUsuario.getNombre()+" "+modelUsuario.getaPaterno());
-        initClock();
-        initFecha();
         configInit();
         controllerPaneles = new ControllerPaneles();
+        controllerPaneles.setUserData(user);
         controllerPaneles.setModelEmpresa(modelEmpresa);
         controllerPaneles.setModelUsuario(modelUsuario);
         controllerPaneles.setPanelCentral(panelCentral);
-        controllerPaneles.setUserData(user);
-        controllerPaneles.setPanelBotoneraPrincipal(panelBotoneraPrincipal);
-        controllerPaneles.configPanel(panelBotoneraPrincipal);
         controllerPaneles.configPanel(panelCentral);
-        controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBaseAdministradorBotoneraPrincipal(controllerPaneles,true));
+        if(modelUsuario.getTipo() == 3)
+            cargarModoAdministrador();
+        else if (modelUsuario.getTipo() == 2)
+            cargarModoVendedor();
     }
     
     private void configInit(){
@@ -61,14 +62,22 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         super.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
     }
     
-    private void initFecha(){
-       jLabelFecha.setText(ControllerDatePanel.getFecha());
-    }
-    
     private void initClock(){
         hiloHora = new ControllerClockPanel(jLabelHora);
         Thread clock=new Thread(hiloHora);
         clock.start();
+    }
+    
+    private void cargarModoAdministrador(){
+        controllerPaneles.setPanelBotoneraPrincipal(panelBotoneraPrincipal);
+        controllerPaneles.configPanel(panelBotoneraPrincipal);
+        controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBaseAdministradorBotoneraPrincipal(controllerPaneles,true));
+    }
+    
+    private void cargarModoVendedor(){
+        controllerPaneles.addPanel(panelCentral, new ViewRealizarVentas(controllerPaneles));
+        ajustes.setVisible(false);
+        user.setEnabled(false);
     }
     
     /**
