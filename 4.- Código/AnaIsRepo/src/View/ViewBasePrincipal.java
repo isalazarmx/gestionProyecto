@@ -75,6 +75,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
     }
     
     private void cargarModoVendedor(){
+        panelBotoneraPrincipal.setVisible(false);
         controllerPaneles.addPanel(panelCentral, new ViewRealizarVentas(controllerPaneles));
         ajustes.setVisible(false);
         user.setEnabled(false);
