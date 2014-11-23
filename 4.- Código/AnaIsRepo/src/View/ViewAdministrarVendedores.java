@@ -383,6 +383,7 @@ private void validation(){
 
     private void eliminaVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminaVendedorActionPerformed
         // TODO add your handling code here:
+        controller.eliminaVendedor();
     }//GEN-LAST:event_eliminaVendedorActionPerformed
 
     private void nuevoVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoVendedorActionPerformed

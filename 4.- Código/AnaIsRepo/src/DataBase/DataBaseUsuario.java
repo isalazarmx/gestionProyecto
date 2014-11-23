@@ -249,4 +249,27 @@ public class DataBaseUsuario {
         }
         return modelUser;
     }
+    
+    public static boolean eliminarUsuario(String username){
+        boolean flag = false;
+        ControllerConnDBMS controller = new ControllerConnDBMS();
+        Connection conn = controller.connectDB();
+        try {
+                Statement sta = conn.createStatement();
+                String strQuery = "update usuario set eliminado = 1 where username = '"+username+"';";
+                System.out.println(strQuery);
+                sta.executeUpdate(strQuery);
+                flag = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.DataBaseUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+              try {
+                if (conn != null && !conn.isClosed())
+                    conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return flag;
+    }
 }
