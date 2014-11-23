@@ -616,6 +616,10 @@ public class ViewVendedor extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        agregaModificaUsuario();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public void agregaModificaUsuario(){
         ModelUsuario user = controller.creaModelo(new ModelUsuario());
         user.setIdEmpresa(modelEmpresa.getIdEmpresa());
         user.setTipo(2);
@@ -623,16 +627,12 @@ public class ViewVendedor extends javax.swing.JPanel {
             controller.addUser(labelStatus,user);
         else{
             user.setIdUsuario(usuarioTemporal.getIdUsuario());
-            if(controller.acceptUsername(username.getText(),usuarioTemporal.getUsername()))
+            if(controller.acceptUsername(username.getText(),usuarioTemporal.getUsername())){
                 if(controller.guardarCambios(labelStatus,user))
                         controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewAdministrarVendedores(controllerPaneles)); //asi
-            else
+            }else
                 ControllerViewMsj.muestraMensajeGlobo("El nombre de usuario ya existe", username);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    public void agregaModificaUsuario(){
-        
     }
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
