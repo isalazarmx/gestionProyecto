@@ -5,6 +5,8 @@
  */
 package Model;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Teté
@@ -24,7 +26,29 @@ public class ModelCliente {
     private String ciudad;
     private int codigoPostal;
     private String eMail;
+    //------------------------------
+    private DefaultTableModel modeloTable;
 
+    public DefaultTableModel creaModelTable(){
+        setModeloTable(new DefaultTableModel(){
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return canEdit [column];
+            }
+        });
+        getModeloTable().addColumn("ID");
+        getModeloTable().addColumn("Nombre");
+        getModeloTable().addColumn("Apellido Paterno");
+        getModeloTable().addColumn("Apellido Materno");
+        getModeloTable().addColumn("RFC");
+        getModeloTable().addColumn("Tel.Celular");
+        getModeloTable().addColumn("eMail");
+        return getModeloTable();
+    }
+    
     /**
      * @return the idCliente
      */
@@ -219,6 +243,20 @@ public class ModelCliente {
      */
     public void seteMail(String eMail) {
         this.eMail = eMail;
+    }
+
+    /**
+     * @return the modeloTable
+     */
+    public DefaultTableModel getModeloTable() {
+        return modeloTable;
+    }
+
+    /**
+     * @param modeloTable the modeloTable to set
+     */
+    public void setModeloTable(DefaultTableModel modeloTable) {
+        this.modeloTable = modeloTable;
     }
     
     

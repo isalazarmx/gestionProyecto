@@ -214,7 +214,7 @@ private void validation(){
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        nuevoVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/newUser.png"))); // NOI18N
+        nuevoVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/new.png"))); // NOI18N
         nuevoVendedor.setToolTipText("Nuevo vendedor");
         nuevoVendedor.setContentAreaFilled(false);
         nuevoVendedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -224,7 +224,7 @@ private void validation(){
             }
         });
 
-        eliminaVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/removeUser.png"))); // NOI18N
+        eliminaVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/eliminar.png"))); // NOI18N
         eliminaVendedor.setToolTipText("Elimina vendedor");
         eliminaVendedor.setContentAreaFilled(false);
         eliminaVendedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

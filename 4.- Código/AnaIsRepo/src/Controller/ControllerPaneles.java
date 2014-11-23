@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.ModelCliente;
 import Model.ModelEmpresa;
 import Model.ModelUsuario;
 import java.awt.GridBagLayout;
@@ -19,6 +20,8 @@ import javax.swing.JPanel;
 public class ControllerPaneles {
     private ModelEmpresa modelEmpresa;
     private ModelUsuario modelUsuario;
+    private ModelCliente modelCliente;
+    //---------------------------------------
     private JPanel panelUserData;
     private JButton botonDatosUsuario;
     private JPanel panelBotoneraPrincipal;
@@ -26,6 +29,7 @@ public class ControllerPaneles {
     //--------------------------------------
     private JPanel panelInicio;
     private JPanel panelVendedores;
+    private JPanel panelClientes;
     
     public void configPanel(JPanel panel){
         panel.setLayout(new GridBagLayout());
@@ -149,5 +153,33 @@ public class ControllerPaneles {
      */
     public void setPanelVendedores(JPanel panelVendedores) {
         this.panelVendedores = panelVendedores;
+    }
+
+    /**
+     * @return the panelClientes
+     */
+    public JPanel getPanelClientes() {
+        return panelClientes;
+    }
+
+    /**
+     * @param panelClientes the panelClientes to set
+     */
+    public void setPanelClientes(JPanel panelClientes) {
+        this.panelClientes = panelClientes;
+    }
+
+    /**
+     * @return the modelCliente
+     */
+    public ModelCliente getModelCliente() {
+        return modelCliente;
+    }
+
+    /**
+     * @param modelCliente the modelCliente to set
+     */
+    public void setModelCliente(ModelCliente modelCliente) {
+        this.modelCliente = modelCliente;
     }
 }

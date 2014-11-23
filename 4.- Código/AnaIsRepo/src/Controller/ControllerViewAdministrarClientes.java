@@ -10,7 +10,6 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JLabel;
-import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -19,33 +18,33 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Jesus
  */
-public class ControllerViewAdministrarVendedores {
+public class ControllerViewAdministrarClientes {
     JTextField nombre;
-    JTextField username;
+    JTextField rfc;
     JLabel labelCount;
     ControllerTables controllerTable;
     
-    public ControllerViewAdministrarVendedores(ArrayList components){
+    public ControllerViewAdministrarClientes(ArrayList components){
         this.controllerTable = new ControllerTables();
         this.nombre = (JTextField)components.get(0);
-        this.username = (JTextField)components.get(1);
+        this.rfc = (JTextField)components.get(1);
         this.labelCount = (JLabel)components.get(2);
         controllerTable.setTabla((JTable)components.get(3));
         controllerTable.setModelTable((DefaultTableModel)components.get(4));
     }
     
     public void validations(){
-        ControllerValidation.limitarCaracteres(nombre, 50);
-        ControllerValidation.limitarCaracteres(username, 25);
+        ControllerValidation.limitarCaracteres(nombre, 25);
+        ControllerValidation.limitarCaracteres(rfc, 15);
         controllerTable.getTabla().setModel(controllerTable.getModelTable());
     }
     
     public void buscaUsuario(boolean flag){
         if(flag || ((!nombre.getText().equals("Nombre") && !nombre.getText().isEmpty())
-            || (!username.getText().equals("Username") && !username.getText().isEmpty()))){
+            || (!rfc.getText().equals("Username") && !rfc.getText().isEmpty()))){
             limpiaBusqueda();
             String nom = reviewInfo(nombre,"Nombre",true);
-            String user = reviewInfo(username,"Username",true);
+            String user = reviewInfo(rfc,"Username",true);
             List list = DataBase.DataBaseUsuario.buscaUsuario(nom, user, flag);
             int count = list.size();
             if(!list.isEmpty()){
@@ -133,7 +132,7 @@ public class ControllerViewAdministrarVendedores {
     
     public void limpiaCampos(){
         limpiaJtextField(nombre,"Nombre");
-        limpiaJtextField(username,"Username");
+        limpiaJtextField(rfc,"Username");
     }
     
     private void limpiaJtextField(JTextField box, String msj){

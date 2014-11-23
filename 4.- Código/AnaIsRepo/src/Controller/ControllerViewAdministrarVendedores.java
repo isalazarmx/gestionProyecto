@@ -10,7 +10,6 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JLabel;
-import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -35,7 +34,7 @@ public class ControllerViewAdministrarVendedores {
     }
     
     public void validations(){
-        ControllerValidation.limitarCaracteres(nombre, 50);
+        ControllerValidation.limitarCaracteres(nombre, 25);
         ControllerValidation.limitarCaracteres(username, 25);
         controllerTable.getTabla().setModel(controllerTable.getModelTable());
     }

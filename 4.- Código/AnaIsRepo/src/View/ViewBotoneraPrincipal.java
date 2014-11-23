@@ -41,6 +41,7 @@ public class ViewBotoneraPrincipal extends javax.swing.JPanel {
     
     private void initPanelesBotones(){
         controllerPaneles.setPanelVendedores(new ViewAdministrarVendedores(controllerPaneles));
+        controllerPaneles.setPanelClientes(new ViewAdministrarClientes(controllerPaneles));
     }
     
      private void initController(){
@@ -82,7 +83,7 @@ public class ViewBotoneraPrincipal extends javax.swing.JPanel {
         inicio.setForeground(new java.awt.Color(51, 51, 51));
         inicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/inicioDisable.png"))); // NOI18N
         inicio.setContentAreaFilled(false);
-        inicio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        inicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         inicio.setSelected(true);
         inicio.addActionListener(new java.awt.event.ActionListener() {
@@ -95,7 +96,7 @@ public class ViewBotoneraPrincipal extends javax.swing.JPanel {
         productos.setForeground(new java.awt.Color(51, 51, 51));
         productos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/productoDisable.png"))); // NOI18N
         productos.setContentAreaFilled(false);
-        productos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        productos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         productos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         productos.setSelected(true);
         productos.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +109,7 @@ public class ViewBotoneraPrincipal extends javax.swing.JPanel {
         inventario.setForeground(new java.awt.Color(51, 51, 51));
         inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/inventarioDisable.png"))); // NOI18N
         inventario.setContentAreaFilled(false);
-        inventario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        inventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inventario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         inventario.setSelected(true);
         inventario.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +122,7 @@ public class ViewBotoneraPrincipal extends javax.swing.JPanel {
         clientes.setForeground(new java.awt.Color(51, 51, 51));
         clientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clientesDisable.png"))); // NOI18N
         clientes.setContentAreaFilled(false);
-        clientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        clientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         clientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         clientes.setSelected(true);
         clientes.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +135,7 @@ public class ViewBotoneraPrincipal extends javax.swing.JPanel {
         proveedores.setForeground(new java.awt.Color(51, 51, 51));
         proveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/proveedoresDisable.png"))); // NOI18N
         proveedores.setContentAreaFilled(false);
-        proveedores.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        proveedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         proveedores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         proveedores.setSelected(true);
         proveedores.addActionListener(new java.awt.event.ActionListener() {
@@ -147,7 +148,7 @@ public class ViewBotoneraPrincipal extends javax.swing.JPanel {
         ventas.setForeground(new java.awt.Color(51, 51, 51));
         ventas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/ventasDisable.png"))); // NOI18N
         ventas.setContentAreaFilled(false);
-        ventas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ventas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ventas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ventas.setSelected(true);
         ventas.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +161,7 @@ public class ViewBotoneraPrincipal extends javax.swing.JPanel {
         pedidos.setForeground(new java.awt.Color(51, 51, 51));
         pedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pedidosDisable.png"))); // NOI18N
         pedidos.setContentAreaFilled(false);
-        pedidos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        pedidos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pedidos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         pedidos.setSelected(true);
         pedidos.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +174,7 @@ public class ViewBotoneraPrincipal extends javax.swing.JPanel {
         reportes.setForeground(new java.awt.Color(51, 51, 51));
         reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/reportesDisable.png"))); // NOI18N
         reportes.setContentAreaFilled(false);
-        reportes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        reportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         reportes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         reportes.setSelected(true);
         reportes.addActionListener(new java.awt.event.ActionListener() {
@@ -186,7 +187,7 @@ public class ViewBotoneraPrincipal extends javax.swing.JPanel {
         vendedores.setForeground(new java.awt.Color(51, 51, 51));
         vendedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/vendedoresDisable.png"))); // NOI18N
         vendedores.setContentAreaFilled(false);
-        vendedores.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        vendedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         vendedores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         vendedores.setSelected(true);
         vendedores.addActionListener(new java.awt.event.ActionListener() {
@@ -272,7 +273,7 @@ public class ViewBotoneraPrincipal extends javax.swing.JPanel {
     private void clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientesActionPerformed
         // TODO add your handling code here:
         controller.accionButton(5);
-        controllerPaneles.addPanel(panelCentral, new ViewClientes(controllerPaneles));
+        controllerPaneles.addPanel(panelCentral, controllerPaneles.getPanelClientes());
     }//GEN-LAST:event_clientesActionPerformed
 
     private void pedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedidosActionPerformed

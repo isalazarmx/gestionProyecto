@@ -324,7 +324,7 @@
             <Component class="javax.swing.JButton" name="nuevoVendedor">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Image/newUser.png"/>
+                  <Image iconType="3" name="/Image/new.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Nuevo vendedor"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -339,7 +339,7 @@
             <Component class="javax.swing.JButton" name="eliminaVendedor">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Image/removeUser.png"/>
+                  <Image iconType="3" name="/Image/eliminar.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Elimina vendedor"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>

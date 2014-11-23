@@ -7,8 +7,9 @@ package View;
 
 import Controller.ControllerPaneles;
 import Controller.ControllerValidation;
-import Controller.ControllerViewAdministrarVendedores;
-import Controller.ControllerViewMsj;
+import Controller.ControllerViewAdministrarClientes;
+import Model.ModelCliente;
+import Model.ModelEmpresa;
 import Model.ModelUsuario;
 import java.util.ArrayList;
 
@@ -16,19 +17,19 @@ import java.util.ArrayList;
  *
  * @author Carolina
  */
-public class ViewAdministrarVendedores extends javax.swing.JPanel {
-    ControllerViewAdministrarVendedores controller;
+public class ViewAdministrarClientes extends javax.swing.JPanel {
+    ControllerViewAdministrarClientes controller;
     ControllerValidation validation;
     ControllerPaneles controllerPaneles;
-    ModelUsuario modelUsuario;
-    
+    ModelCliente modelCliente;
    
-public ViewAdministrarVendedores(ControllerPaneles controllerPaneles) {
+public ViewAdministrarClientes(ControllerPaneles controllerPaneles) {
         this.validation = new ControllerValidation();
         this.controllerPaneles = controllerPaneles;//asi
-        this.modelUsuario = controllerPaneles.getModelUsuario();
+        controllerPaneles.setModelCliente(new ModelCliente());
+        this.modelCliente = controllerPaneles.getModelCliente();
         initComponents();
-        modelUsuario.creaModelTable();
+        modelCliente.creaModelTable();
         validation();
         controller.buscaUsuario(true);
     }
@@ -36,11 +37,11 @@ public ViewAdministrarVendedores(ControllerPaneles controllerPaneles) {
 private void validation(){
         ArrayList components = new ArrayList<>();
         components.add(Nombre);
-        components.add(username);
+        components.add(rfc);
         components.add(labelCount);
-        components.add(tableVendedores);
-        components.add(modelUsuario.getModeloTable());
-        controller = new ControllerViewAdministrarVendedores(components);
+        components.add(tableClientes);
+        components.add(modelCliente.getModeloTable());
+        controller = new ControllerViewAdministrarClientes(components);
         controller.validations();
     }    
 
@@ -55,9 +56,9 @@ private void validation(){
         jLabel4 = new javax.swing.JLabel();
         Nombre = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        username = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        rfc = new javax.swing.JTextField();
+        buttonBuscaCliente = new javax.swing.JButton();
+        buttonVerTodos = new javax.swing.JButton();
         panelRsultadoBusqueda = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         nuevoVendedor = new javax.swing.JButton();
@@ -65,7 +66,7 @@ private void validation(){
         modificaVendedor = new javax.swing.JButton();
         limipaBusqueda = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tableVendedores = new javax.swing.JTable();
+        tableClientes = new javax.swing.JTable();
         panelCantidadResultados = new javax.swing.JPanel();
         labelCount = new javax.swing.JLabel();
 
@@ -79,7 +80,7 @@ private void validation(){
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(53, 107, 161));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/vendedorInfo.png"))); // NOI18N
-        jLabel1.setText("Administración de vendedores");
+        jLabel1.setText("Administración de clientes");
 
         javax.swing.GroupLayout panelTituloLayout = new javax.swing.GroupLayout(panelTitulo);
         panelTitulo.setLayout(panelTituloLayout);
@@ -126,53 +127,53 @@ private void validation(){
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setText("Username:");
+        jLabel5.setText("R.F.C.");
         jLabel5.setPreferredSize(new java.awt.Dimension(66, 26));
 
-        username.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        username.setForeground(new java.awt.Color(180, 180, 180));
-        username.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        username.setText("Username");
-        username.addFocusListener(new java.awt.event.FocusAdapter() {
+        rfc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        rfc.setForeground(new java.awt.Color(180, 180, 180));
+        rfc.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        rfc.setText("R.F.C.");
+        rfc.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                usernameFocusGained(evt);
+                rfcFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                usernameFocusLost(evt);
+                rfcFocusLost(evt);
             }
         });
-        username.addActionListener(new java.awt.event.ActionListener() {
+        rfc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameActionPerformed(evt);
+                rfcActionPerformed(evt);
             }
         });
-        username.addKeyListener(new java.awt.event.KeyAdapter() {
+        rfc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                usernameKeyPressed(evt);
+                rfcKeyPressed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/findUser.png"))); // NOI18N
-        jButton1.setText("Busca Vendedor");
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setPreferredSize(new java.awt.Dimension(119, 26));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonBuscaCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        buttonBuscaCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/findUser.png"))); // NOI18N
+        buttonBuscaCliente.setText("Busca Cliente");
+        buttonBuscaCliente.setContentAreaFilled(false);
+        buttonBuscaCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonBuscaCliente.setPreferredSize(new java.awt.Dimension(119, 26));
+        buttonBuscaCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonBuscaClienteActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/verTodo.png"))); // NOI18N
-        jButton2.setText("Ver todos");
-        jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setPreferredSize(new java.awt.Dimension(119, 26));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonVerTodos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        buttonVerTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/verTodo.png"))); // NOI18N
+        buttonVerTodos.setText("Ver todos");
+        buttonVerTodos.setContentAreaFilled(false);
+        buttonVerTodos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonVerTodos.setPreferredSize(new java.awt.Dimension(119, 26));
+        buttonVerTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buttonVerTodosActionPerformed(evt);
             }
         });
 
@@ -188,11 +189,11 @@ private void validation(){
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(rfc, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonBuscaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonVerTodos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelBusquedaLayout.setVerticalGroup(
@@ -203,9 +204,9 @@ private void validation(){
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Nombre)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rfc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonBuscaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonVerTodos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -214,8 +215,8 @@ private void validation(){
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        nuevoVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/newUser.png"))); // NOI18N
-        nuevoVendedor.setToolTipText("Nuevo vendedor");
+        nuevoVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/new.png"))); // NOI18N
+        nuevoVendedor.setToolTipText("Nuevo cliente");
         nuevoVendedor.setContentAreaFilled(false);
         nuevoVendedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nuevoVendedor.addActionListener(new java.awt.event.ActionListener() {
@@ -224,8 +225,8 @@ private void validation(){
             }
         });
 
-        eliminaVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/removeUser.png"))); // NOI18N
-        eliminaVendedor.setToolTipText("Elimina vendedor");
+        eliminaVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/eliminar.png"))); // NOI18N
+        eliminaVendedor.setToolTipText("Elimina cliente");
         eliminaVendedor.setContentAreaFilled(false);
         eliminaVendedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         eliminaVendedor.addActionListener(new java.awt.event.ActionListener() {
@@ -235,7 +236,7 @@ private void validation(){
         });
 
         modificaVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/edit.png"))); // NOI18N
-        modificaVendedor.setToolTipText("Mdifica vendedor");
+        modificaVendedor.setToolTipText("Mdifica cliente");
         modificaVendedor.setContentAreaFilled(false);
         modificaVendedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         modificaVendedor.addActionListener(new java.awt.event.ActionListener() {
@@ -276,8 +277,8 @@ private void validation(){
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tableVendedores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tableVendedores.setModel(new javax.swing.table.DefaultTableModel(
+        tableClientes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tableClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -311,7 +312,7 @@ private void validation(){
 
             }
         ));
-        jScrollPane2.setViewportView(tableVendedores);
+        jScrollPane2.setViewportView(tableClientes);
 
         javax.swing.GroupLayout panelRsultadoBusquedaLayout = new javax.swing.GroupLayout(panelRsultadoBusqueda);
         panelRsultadoBusqueda.setLayout(panelRsultadoBusquedaLayout);
@@ -405,29 +406,29 @@ private void validation(){
         // TODO add your handling code here:
     }//GEN-LAST:event_NombreActionPerformed
 
-    private void usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusGained
+    private void rfcFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rfcFocusGained
         // TODO add your handling code here:
-        validation.placeHolder(true, username,"Username");
-    }//GEN-LAST:event_usernameFocusGained
+        validation.placeHolder(true, rfc,"R.F.C.");
+    }//GEN-LAST:event_rfcFocusGained
 
-    private void usernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusLost
+    private void rfcFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rfcFocusLost
         // TODO add your handling code here:
-        validation.placeHolder(false, username,"Username");
-    }//GEN-LAST:event_usernameFocusLost
+        validation.placeHolder(false, rfc,"R.F.C.");
+    }//GEN-LAST:event_rfcFocusLost
 
-    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
+    private void rfcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rfcActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usernameActionPerformed
+    }//GEN-LAST:event_rfcActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonBuscaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscaClienteActionPerformed
         // TODO add your handling code here:
         controller.buscaUsuario(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttonBuscaClienteActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void buttonVerTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVerTodosActionPerformed
         // TODO add your handling code here:
         controller.buscaUsuario(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_buttonVerTodosActionPerformed
 
     private void limipaBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limipaBusquedaActionPerformed
         // TODO add your handling code here:
@@ -443,11 +444,11 @@ private void validation(){
         }
     }//GEN-LAST:event_modificaVendedorActionPerformed
 
-    private void usernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameKeyPressed
+    private void rfcKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rfcKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
             controller.buscaUsuario(false);
-    }//GEN-LAST:event_usernameKeyPressed
+    }//GEN-LAST:event_rfcKeyPressed
 
     private void NombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreKeyPressed
         // TODO add your handling code here:
@@ -458,9 +459,9 @@ private void validation(){
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Nombre;
+    private javax.swing.JButton buttonBuscaCliente;
+    private javax.swing.JButton buttonVerTodos;
     private javax.swing.JButton eliminaVendedor;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -474,7 +475,7 @@ private void validation(){
     private javax.swing.JPanel panelCantidadResultados;
     private javax.swing.JPanel panelRsultadoBusqueda;
     private javax.swing.JPanel panelTitulo;
-    private javax.swing.JTable tableVendedores;
-    private javax.swing.JTextField username;
+    private javax.swing.JTextField rfc;
+    private javax.swing.JTable tableClientes;
     // End of variables declaration//GEN-END:variables
 }
