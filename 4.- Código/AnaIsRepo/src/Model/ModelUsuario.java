@@ -5,6 +5,9 @@
  */
 package Model;
 
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Teté
@@ -18,7 +21,18 @@ public class ModelUsuario {
     private String password;
     private int tipo;
     private int idEmpresa;
+    private DefaultTableModel modeloTable;
 
+    public DefaultTableModel creaModelTable(){
+        modeloTable = new DefaultTableModel();
+        modeloTable.addColumn("Nombre");
+        modeloTable.addColumn("Apellido Paterno");
+        modeloTable.addColumn("Apellido Materno");
+        modeloTable.addColumn("Username");
+        modeloTable.addColumn("Contraseña");
+        return modeloTable;
+    }
+    
     public String despAttribute(){
         return "--- Reporte de Atributos ---\n"
                 + "Nombre: "+getNombre()+"\n"
@@ -170,6 +184,20 @@ public class ModelUsuario {
      */
     public void setIdEmpresa(int idEmpresa) {
         this.idEmpresa = idEmpresa;
+    }
+
+    /**
+     * @return the modeloTable
+     */
+    public DefaultTableModel getModeloTable() {
+        return modeloTable;
+    }
+
+    /**
+     * @param modeloTable the modeloTable to set
+     */
+    public void setModeloTable(DefaultTableModel modeloTable) {
+        this.modeloTable = modeloTable;
     }
     
 }

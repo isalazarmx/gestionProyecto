@@ -70,7 +70,8 @@ public class ViewBaseAdministrador extends javax.swing.JPanel {
         tituloBienvenida.setBackground(new java.awt.Color(255, 51, 51));
         tituloBienvenida.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         tituloBienvenida.setForeground(new java.awt.Color(30, 30, 30));
-        tituloBienvenida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloBienvenida.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        tituloBienvenida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logoDesarrollador.png"))); // NOI18N
         tituloBienvenida.setText("POS Cake agradece tu preferencía");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -81,7 +82,9 @@ public class ViewBaseAdministrador extends javax.swing.JPanel {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tituloBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(tituloBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(250, 250, 250));

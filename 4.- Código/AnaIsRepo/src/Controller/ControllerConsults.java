@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -234,4 +236,66 @@ public class ControllerConsults {
         return flag;
     }
     
+    public static List buscaUsuario(String nombre,String username,boolean cond){
+        boolean flag = false;
+        ControllerConnDBMS controller = new ControllerConnDBMS();
+        Connection conn = controller.connectDB();
+        List<ModelUsuario> list = new ArrayList<>();
+        try {
+            Statement sta = conn.createStatement();
+            if(cond){
+                String strQuery = "select * from usuario where (eliminado!=1 && tipo!=3) order by nombre;";
+                System.out.println(strQuery);
+                ResultSet res = sta.executeQuery(strQuery);
+                while(res.next())
+                    list.add(creaModeloUsuario(res));
+            }else{
+                String strQuery = "select * from usuario where (nombre='"+nombre+"' || username='"+username+"') && (eliminado!=1 && tipo!=3) order by nombre;";
+                System.out.println(strQuery);
+                ResultSet res = sta.executeQuery(strQuery);
+                while(res.next()){
+                    flag = true;
+                    list.add(creaModeloUsuario(res));
+                }
+                if(!flag){
+                    if(!nombre.equals("") && !username.equals(""))
+                        strQuery = "select * from usuario where (nombre like '%"+nombre.charAt(0)+"%' || username like '%"+username.charAt(0)+"%') && (eliminado!=1 && tipo!=3) order by nombre;";
+                    if(username.equals(""))
+                        strQuery = "select * from usuario where (nombre like '%"+nombre.charAt(0)+"%') && (eliminado!=1 && tipo!=3) order by nombre;";
+                    else if(nombre.equals(""))
+                        strQuery = "select * from usuario where (username like '%"+username.charAt(0)+"%') && (eliminado!=1 && tipo!=3) order by nombre;";
+                    System.out.println(strQuery);
+                    res = sta.executeQuery(strQuery);
+                    while(res.next())
+                        list.add(creaModeloUsuario(res));    
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ControllerConsults.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+              try {
+                if (conn != null && !conn.isClosed())
+                    conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return list;
+    }
+    
+    private static ModelUsuario creaModeloUsuario(ResultSet res){
+        ModelUsuario modelUser = new ModelUsuario();
+        try {
+            modelUser.setIdUsuario(Integer.parseInt(res.getString("idusuario")));
+            modelUser.setNombre(res.getString("nombre"));
+            modelUser.setaPaterno(res.getString("aPaterno"));
+            modelUser.setaMaterno(res.getString("aMaterno"));
+            modelUser.setUsername(res.getString("username"));
+            modelUser.setPassword(res.getString("password"));
+            modelUser.setIdEmpresa(Integer.parseInt(res.getString("Empresa_idEmpresa")));
+        } catch (SQLException ex) {
+            Logger.getLogger(ControllerConsults.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return modelUser;
+    }
 }

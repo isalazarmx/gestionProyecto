@@ -8,7 +8,6 @@ package Controller;
 import Model.ModelUsuario;
 import java.awt.Color;
 import java.util.ArrayList;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -17,7 +16,7 @@ import javax.swing.JTextField;
  *
  * @author Jesus
  */
-public class ControllerViewVendedores {
+public class ControllerViewAgregarVendedores {
     JTextField name;
     JTextField aPaterno;
     JTextField aMaterno;
@@ -25,7 +24,7 @@ public class ControllerViewVendedores {
     JPasswordField pass1;
     JPasswordField pass2;
     
-    public ControllerViewVendedores(ArrayList components){
+    public ControllerViewAgregarVendedores(ArrayList components){
         this.name = (JTextField)components.get(0);
         this.aPaterno = (JTextField)components.get(1);
         this.aMaterno = (JTextField)components.get(2);
