@@ -44,7 +44,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         user.setText("Bienvenido, "+modelUsuario.getNombre()+" "+modelUsuario.getaPaterno());
         configInit();
         controllerPaneles = new ControllerPaneles();
-        controllerPaneles.setUserData(user);
+        controllerPaneles.setBotonDatosUsuario(user);
         controllerPaneles.setModelEmpresa(modelEmpresa);
         controllerPaneles.setModelUsuario(modelUsuario);
         controllerPaneles.setPanelCentral(panelCentral);
@@ -71,7 +71,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
     private void cargarModoAdministrador(){
         controllerPaneles.setPanelBotoneraPrincipal(panelBotoneraPrincipal);
         controllerPaneles.configPanel(panelBotoneraPrincipal);
-        controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBaseAdministradorBotoneraPrincipal(controllerPaneles,true));
+        controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBotoneraPrincipal(controllerPaneles,true));
     }
     
     private void cargarModoVendedor(){
@@ -323,13 +323,13 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
 
     private void ajustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajustesActionPerformed
         controllerPaneles.addPanel(panelCentral, new ViewBaseAjustes(controllerPaneles));
-        controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBaseAdministradorBotoneraPrincipal(controllerPaneles,false));
+        controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBotoneraPrincipal(controllerPaneles,false));
     }//GEN-LAST:event_ajustesActionPerformed
 
     private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
         // TODO add your handling code here:
         controllerPaneles.addPanel(panelCentral, new ViewBaseDatosUsuario(controllerPaneles));
-        controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBaseAdministradorBotoneraPrincipal(controllerPaneles,false));
+        controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBotoneraPrincipal(controllerPaneles,false));
     }//GEN-LAST:event_userActionPerformed
 
     public void agregaJPanel(JPanel panelBase, JPanel panelAdd){

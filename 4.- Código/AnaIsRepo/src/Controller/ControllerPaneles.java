@@ -20,9 +20,12 @@ public class ControllerPaneles {
     private ModelEmpresa modelEmpresa;
     private ModelUsuario modelUsuario;
     private JPanel panelUserData;
+    private JButton botonDatosUsuario;
     private JPanel panelBotoneraPrincipal;
     private JPanel panelCentral;
-    private JButton userData;
+    //--------------------------------------
+    private JPanel panelInicio;
+    private JPanel panelVendedores;
     
     public void configPanel(JPanel panel){
         panel.setLayout(new GridBagLayout());
@@ -107,16 +110,44 @@ public class ControllerPaneles {
     }
 
     /**
-     * @return the userData
+     * @return the botonDatosUsuario
      */
-    public JButton getUserData() {
-        return userData;
+    public JButton getBotonDatosUsuario() {
+        return botonDatosUsuario;
     }
 
     /**
-     * @param userData the userData to set
+     * @param userData the botonDatosUsuario to set
      */
-    public void setUserData(JButton userData) {
-        this.userData = userData;
+    public void setBotonDatosUsuario(JButton userData) {
+        this.botonDatosUsuario = userData;
+    }
+
+    /**
+     * @return the panelInicio
+     */
+    public JPanel getPanelInicio() {
+        return panelInicio;
+    }
+
+    /**
+     * @param panelInicio the panelInicio to set
+     */
+    public void setPanelInicio(JPanel panelInicio) {
+        this.panelInicio = panelInicio;
+    }
+
+    /**
+     * @return the panelVendedores
+     */
+    public JPanel getPanelVendedores() {
+        return panelVendedores;
+    }
+
+    /**
+     * @param panelVendedores the panelVendedores to set
+     */
+    public void setPanelVendedores(JPanel panelVendedores) {
+        this.panelVendedores = panelVendedores;
     }
 }

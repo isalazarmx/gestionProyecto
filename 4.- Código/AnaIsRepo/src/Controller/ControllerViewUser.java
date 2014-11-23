@@ -46,12 +46,12 @@ public class ControllerViewUser {
         ControllerValidation.limitarCaracteres(pass2, 16);
     }
     
-    public void next(JLabel labelStatus,Thread hilo,int idEmpresa,ModelUsuario user){
+    public void agregarAdministrador(JLabel labelStatus,Thread hilo,int idEmpresa,ModelUsuario user){
         if(!name.getText().equals("Nombre (*)") && !name.getText().isEmpty()){
             if(!username.getText().equals("Username (*)") && !username.getText().isEmpty()){
                 if(!crearPass(pass1).equals("Password-01") && !pass1.getText().isEmpty()){
                     if(!crearPass(pass2).equals("Password-02") && !pass2.getText().isEmpty()){
-                        if(!ControllerConsults.checkExistUser(username.getText())){
+                        if(!DataBase.DataBaseUsuario.checkExistUser(username.getText())){
                             if(ControllerValidation.validarContrasenias(pass1,pass2)){
                                 user = new ModelUsuario();
                                 user.setNombre(name.getText());
@@ -61,7 +61,7 @@ public class ControllerViewUser {
                                 user.setPassword(crearPass(pass1));
                                 user.setIdEmpresa(idEmpresa);
                                 user.setTipo(3);
-                                 if(ControllerConsults.addUser(user,true)){
+                                 if(DataBase.DataBaseUsuario.addUser(user,true)){
                                     labelStatus.setText("Datos de administrador agregados");
                                     hilo.resume();
                                 }else
@@ -91,7 +91,7 @@ public class ControllerViewUser {
                                 user.setaMaterno(reviewInfo(aMaterno,"Apellido materno",true));
                                 user.setUsername(username.getText());
                                 user.setPassword(crearPass(pass1));
-                                 if(ControllerConsults.modifUser(user)){
+                                 if(DataBase.DataBaseUsuario.modifUser(user)){
                                     labelStatus.setText("Datos almacenados con éxito");
                                     userData.setText("Bienvenido, "+user.getNombre()+" "+user.getaPaterno());
                                 }else
@@ -110,11 +110,8 @@ public class ControllerViewUser {
     }
     
     public boolean acceptUsername(ModelUsuario user){
-        if(ControllerConsults.checkExistUser(username.getText())){
-            if(user.getUsername().equals(username.getText()))
-                return true;
-            else
-                return false;
+        if(DataBase.DataBaseUsuario.checkExistUser(username.getText())){
+            return user.getUsername().equals(username.getText());
         }else
             return true;
     }

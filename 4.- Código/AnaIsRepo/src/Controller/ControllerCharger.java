@@ -3,8 +3,8 @@ package Controller;
 import Model.ModelEmpresa;
 import Model.ModelUsuario;
 import View.ViewBasePrincipal;
-import View.ViewCaptInfoBussines;
-import View.ViewCaptInfoUser;
+import View.ViewCapturaDatosEmpresa;
+import View.ViewCapturaDatosAdministrador;
 import java.awt.Color;
 import java.awt.GridBagLayout;
 import javax.swing.BorderFactory;
@@ -86,7 +86,7 @@ public class ControllerCharger extends Thread {
         panelBase.setLayout(new GridBagLayout());
         panelBase.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         panelBase.setVisible(true);
-        lanzarPantalla(viewLoading, "Cargando . . .",false);
+        lanzarPantalla(viewLoading, "Cargando",false);
     }
 
     private void testConexion() throws InterruptedException {
@@ -97,7 +97,7 @@ public class ControllerCharger extends Thread {
         conn.closeConect();
         if (!"".equals(test)) {
             panelBase.setVisible(false);
-            String aux = "";
+            String aux;
             switch (test) {
                 case "08S01":
                     aux = "La comunicación con el servidor falló";
@@ -118,11 +118,11 @@ public class ControllerCharger extends Thread {
     private void findDatBussines() {
         lanzarPantalla(viewLoading, "Buscando datos de la empresa",false);
         principalFrame.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
-        if (ControllerConsults.findInfoBussines(modelEmpresa).getIdEmpresa() != 0)
+        if (DataBase.DataBaseEmpresa.buscaEmpresa(modelEmpresa).getIdEmpresa() != 0)
             lanzarPantalla(viewLoading, "Verificando usuarios", false);
         else {
-            ViewCaptInfoBussines viewCapInfoBussines = new ViewCaptInfoBussines(labelStatus,this,modelEmpresa);
-            lanzarPantalla(viewCapInfoBussines, "Datos de la empresa",true);
+            ViewCapturaDatosEmpresa viewCapturaDatos = new ViewCapturaDatosEmpresa(labelStatus,this,modelEmpresa);
+            lanzarPantalla(viewCapturaDatos, "Datos de la empresa",true);
             try {
                 panelBase.setVisible(false);
                 Thread.sleep(1000);
@@ -137,11 +137,11 @@ public class ControllerCharger extends Thread {
     private void findUser() {
         lanzarPantalla(viewLoading, "Verificando usuario",false);
         principalFrame.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
-        if (ControllerConsults.findUser(modelUsuario).getTipo() != 0)
+        if (DataBase.DataBaseUsuario.buscaAdministrador(modelUsuario).getTipo() != 0)
             lanzarPantalla(viewLoading, "Iniciando pantalla", false);
         else {
-            JPanel viewCapInfoUser = new ViewCaptInfoUser(labelStatus,this,modelEmpresa.getIdEmpresa(),modelUsuario);
-            lanzarPantalla(viewCapInfoUser, "Datos de usuario administrador",true);
+            JPanel ViewCapturaDatosAdministrador = new ViewCapturaDatosAdministrador(labelStatus,this,modelEmpresa.getIdEmpresa(),modelUsuario);
+            lanzarPantalla(ViewCapturaDatosAdministrador, "Datos de usuario administrador",true);
             try {
                 panelBase.setVisible(false);
                 Thread.sleep(1000);

@@ -5,10 +5,10 @@
  */
 package View;
 
-
 import Controller.ControllerPaneles;
 import Controller.ControllerValidation;
-import Controller.ControllerViewVendedores;
+import Controller.ControllerViewAdministrarVendedores;
+import Controller.ControllerViewMsj;
 import Model.ModelUsuario;
 import java.util.ArrayList;
 
@@ -16,20 +16,21 @@ import java.util.ArrayList;
  *
  * @author Carolina
  */
-public class ViewVendedores extends javax.swing.JPanel {
-    ControllerViewVendedores controller;
+public class ViewAdministrarVendedores extends javax.swing.JPanel {
+    ControllerViewAdministrarVendedores controller;
     ControllerValidation validation;
     ControllerPaneles controllerPaneles;
     ModelUsuario modelUsuario;
     
    
-public ViewVendedores(ControllerPaneles controllerPaneles) {
+public ViewAdministrarVendedores(ControllerPaneles controllerPaneles) {
         this.validation = new ControllerValidation();
         this.controllerPaneles = controllerPaneles;//asi
         this.modelUsuario = controllerPaneles.getModelUsuario();
         initComponents();
         modelUsuario.creaModelTable();
         validation();
+        controller.buscaUsuario(true);
     }
 
 private void validation(){
@@ -39,7 +40,7 @@ private void validation(){
         components.add(labelCount);
         components.add(tableVendedores);
         components.add(modelUsuario.getModeloTable());
-        controller = new ControllerViewVendedores(components);
+        controller = new ControllerViewAdministrarVendedores(components);
         controller.validations();
     }    
 
@@ -59,10 +60,10 @@ private void validation(){
         jButton2 = new javax.swing.JButton();
         panelRsultadoBusqueda = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        ClientesEditar = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        nuevoVendedor = new javax.swing.JButton();
+        eliminaVendedor = new javax.swing.JButton();
+        modificaVendedor = new javax.swing.JButton();
+        limipaBusqueda = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableVendedores = new javax.swing.JTable();
         panelCantidadResultados = new javax.swing.JPanel();
@@ -117,6 +118,11 @@ private void validation(){
                 NombreActionPerformed(evt);
             }
         });
+        Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NombreKeyPressed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -138,6 +144,11 @@ private void validation(){
         username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameActionPerformed(evt);
+            }
+        });
+        username.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                usernameKeyPressed(evt);
             }
         });
 
@@ -203,33 +214,43 @@ private void validation(){
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        ClientesEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/edit.png"))); // NOI18N
-        ClientesEditar.setToolTipText("Mdifica vendedor");
-        ClientesEditar.setContentAreaFilled(false);
-        ClientesEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/newUser.png"))); // NOI18N
-        jButton4.setToolTipText("Nuevo vendedor");
-        jButton4.setContentAreaFilled(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        nuevoVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/newUser.png"))); // NOI18N
+        nuevoVendedor.setToolTipText("Nuevo vendedor");
+        nuevoVendedor.setContentAreaFilled(false);
+        nuevoVendedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        nuevoVendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                nuevoVendedorActionPerformed(evt);
             }
         });
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/refresh.png"))); // NOI18N
-        jButton5.setToolTipText("Limpia busqueda");
-        jButton5.setContentAreaFilled(false);
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/removeUser.png"))); // NOI18N
-        jButton3.setToolTipText("Elimina vendedor");
-        jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        eliminaVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/removeUser.png"))); // NOI18N
+        eliminaVendedor.setToolTipText("Elimina vendedor");
+        eliminaVendedor.setContentAreaFilled(false);
+        eliminaVendedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        eliminaVendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                eliminaVendedorActionPerformed(evt);
+            }
+        });
+
+        modificaVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/edit.png"))); // NOI18N
+        modificaVendedor.setToolTipText("Mdifica vendedor");
+        modificaVendedor.setContentAreaFilled(false);
+        modificaVendedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        modificaVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificaVendedorActionPerformed(evt);
+            }
+        });
+
+        limipaBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/refresh.png"))); // NOI18N
+        limipaBusqueda.setToolTipText("Limpia busqueda");
+        limipaBusqueda.setContentAreaFilled(false);
+        limipaBusqueda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        limipaBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limipaBusquedaActionPerformed(evt);
             }
         });
 
@@ -237,21 +258,21 @@ private void validation(){
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(ClientesEditar, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(limipaBusqueda, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(modificaVendedor, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(eliminaVendedor, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(nuevoVendedor, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nuevoVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(eliminaVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ClientesEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(modificaVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(limipaBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -360,14 +381,14 @@ private void validation(){
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void eliminaVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminaVendedorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_eliminaVendedorActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void nuevoVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoVendedorActionPerformed
         // TODO add your handling code here:
-        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewAgregarVendedor(controllerPaneles) ); //asi
-    }//GEN-LAST:event_jButton4ActionPerformed
+        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewVendedor(controllerPaneles,null)); //asi
+    }//GEN-LAST:event_nuevoVendedorActionPerformed
 
     private void NombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NombreFocusGained
         // TODO add your handling code here:
@@ -407,21 +428,47 @@ private void validation(){
         controller.buscaUsuario(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void limipaBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limipaBusquedaActionPerformed
+        // TODO add your handling code here:
+        controller.limpiaBusqueda();
+        controller.limpiaCampos();
+    }//GEN-LAST:event_limipaBusquedaActionPerformed
+
+    private void modificaVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaVendedorActionPerformed
+        // TODO add your handling code here:
+        if(controller.tablaSeleccionada()){
+            ModelUsuario user = DataBase.DataBaseUsuario.findUser(controller.vendedorModificar());
+            controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewVendedor(controllerPaneles,user));
+        }
+    }//GEN-LAST:event_modificaVendedorActionPerformed
+
+    private void usernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyChar()==10)
+            controller.buscaUsuario(false);
+    }//GEN-LAST:event_usernameKeyPressed
+
+    private void NombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyChar()==10)
+            controller.buscaUsuario(false);
+    }//GEN-LAST:event_NombreKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ClientesEditar;
     private javax.swing.JTextField Nombre;
+    private javax.swing.JButton eliminaVendedor;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelCount;
+    private javax.swing.JButton limipaBusqueda;
+    private javax.swing.JButton modificaVendedor;
+    private javax.swing.JButton nuevoVendedor;
     private javax.swing.JPanel panelBusqueda;
     private javax.swing.JPanel panelCantidadResultados;
     private javax.swing.JPanel panelRsultadoBusqueda;

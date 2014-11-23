@@ -5,7 +5,6 @@
  */
 package Model;
 
-import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,7 +23,15 @@ public class ModelUsuario {
     private DefaultTableModel modeloTable;
 
     public DefaultTableModel creaModelTable(){
-        modeloTable = new DefaultTableModel();
+        modeloTable = new DefaultTableModel(){
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return canEdit [column];
+            }
+        };
         modeloTable.addColumn("Nombre");
         modeloTable.addColumn("Apellido Paterno");
         modeloTable.addColumn("Apellido Materno");

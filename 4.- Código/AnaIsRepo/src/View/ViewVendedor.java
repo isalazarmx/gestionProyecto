@@ -7,32 +7,43 @@ package View;
 
 import Controller.ControllerPaneles;
 import Controller.ControllerValidation;
-import Controller.ControllerViewAgregarVendedores;
+import Controller.ControllerViewMsj;
+import Controller.ControllerViewVendedores;
 import Model.ModelEmpresa;
+import Model.ModelUsuario;
 import java.util.ArrayList;
 
 /**
  *
  * @author Jesus
  */
-public class ViewAgregarVendedor extends javax.swing.JPanel {
+public class ViewVendedor extends javax.swing.JPanel {
     ControllerPaneles controllerPaneles;
     ControllerValidation validation;
     ModelEmpresa modelEmpresa;
-    ControllerViewAgregarVendedores controller;
+    ControllerViewVendedores controller;
+    ModelUsuario usuarioTemporal;
     /**
      * Creates new form ViewBaseAdministrador
      * @param controllerPaneles
+     * @param user
      */
-    public ViewAgregarVendedor(ControllerPaneles controllerPaneles) {
-        validation = new ControllerValidation();
+    public ViewVendedor(ControllerPaneles controllerPaneles, ModelUsuario user) {
+        this.usuarioTemporal = user;
+        this.validation = new ControllerValidation();
         this.controllerPaneles = controllerPaneles;
         this.modelEmpresa = controllerPaneles.getModelEmpresa();
         initComponents();
         validation();
+        if(user==null)
+            labelRuta.setText("Administración de vendedores / Nuevo Vendedor");   
+        else{
+            controller.identificaInfo(user);
+            labelRuta.setText("Administración de vendedores / Modifica Vendedor");
+        }
         labelStatus.setText("");
     }
-
+    
     private void validation(){
         ArrayList components = new ArrayList<>();
         components.add(name);
@@ -41,7 +52,7 @@ public class ViewAgregarVendedor extends javax.swing.JPanel {
         components.add(username);
         components.add(pass01);
         components.add(pass02);
-        controller = new ControllerViewAgregarVendedores(components);
+        controller = new ControllerViewVendedores(components);
         controller.validations();
     }
     
@@ -55,7 +66,7 @@ public class ViewAgregarVendedor extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel4 = new javax.swing.JPanel();
-        jLabel20 = new javax.swing.JLabel();
+        labelRuta = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
@@ -88,21 +99,21 @@ public class ViewAgregarVendedor extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(250, 250, 250));
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true));
 
-        jLabel20.setBackground(new java.awt.Color(250, 250, 250));
-        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(53, 107, 161));
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/vendedorInfo.png"))); // NOI18N
-        jLabel20.setText("Administración de vendedores / Nuevo Vendedor");
+        labelRuta.setBackground(new java.awt.Color(250, 250, 250));
+        labelRuta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelRuta.setForeground(new java.awt.Color(53, 107, 161));
+        labelRuta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/vendedorInfo.png"))); // NOI18N
+        labelRuta.setText("Administración de vendedores / Nuevo Vendedor");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(labelRuta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(labelRuta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -340,6 +351,9 @@ public class ViewAgregarVendedor extends javax.swing.JPanel {
             }
         });
         pass01.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pass01KeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 pass01KeyTyped(evt);
             }
@@ -357,6 +371,9 @@ public class ViewAgregarVendedor extends javax.swing.JPanel {
             }
         });
         pass02.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pass02KeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 pass02KeyTyped(evt);
             }
@@ -408,7 +425,7 @@ public class ViewAgregarVendedor extends javax.swing.JPanel {
         jButton3.setText("Limpiar");
         jButton3.setToolTipText("Limpia formulario");
         jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setPreferredSize(new java.awt.Dimension(107, 33));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -419,9 +436,9 @@ public class ViewAgregarVendedor extends javax.swing.JPanel {
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/cancelar.png"))); // NOI18N
         jButton2.setText("Cancelar");
-        jButton2.setToolTipText("Cancelar");
+        jButton2.setToolTipText("Cancelar registro");
         jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -431,9 +448,9 @@ public class ViewAgregarVendedor extends javax.swing.JPanel {
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar.png"))); // NOI18N
         jButton1.setText("Aceptar");
-        jButton1.setToolTipText("Aceptar");
+        jButton1.setToolTipText("Ingresa registro");
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -452,9 +469,9 @@ public class ViewAgregarVendedor extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(29, 29, 29)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(33, 33, 33)
                 .addComponent(jButton1)
                 .addGap(243, 243, 243))
             .addComponent(labelStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -537,8 +554,8 @@ public class ViewAgregarVendedor extends javax.swing.JPanel {
 
     private void usernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameKeyPressed
         // TODO add your handling code here:
-//        if(evt.getKeyChar()==10)
-//            next();
+        if(evt.getKeyChar()==10)
+            agregaModificaUsuario();
     }//GEN-LAST:event_usernameKeyPressed
 
     private void aMaternoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_aMaternoFocusGained
@@ -557,6 +574,8 @@ public class ViewAgregarVendedor extends javax.swing.JPanel {
 
     private void aMaternoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_aMaternoKeyPressed
         // TODO add your handling code here:
+        if(evt.getKeyChar()==10)
+            agregaModificaUsuario();
     }//GEN-LAST:event_aMaternoKeyPressed
 
     private void aMaternoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_aMaternoKeyTyped
@@ -564,7 +583,7 @@ public class ViewAgregarVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_aMaternoKeyTyped
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewVendedores(controllerPaneles)); //asi
+        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), controllerPaneles.getPanelVendedores()); //asi
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void pass01FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pass01FocusGained
@@ -579,8 +598,6 @@ public class ViewAgregarVendedor extends javax.swing.JPanel {
 
     private void pass01KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pass01KeyTyped
         // TODO add your handling code here:
-//        if(evt.getKeyChar()==10)
-//        next();
     }//GEN-LAST:event_pass01KeyTyped
 
     private void pass02FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pass02FocusGained
@@ -599,22 +616,37 @@ public class ViewAgregarVendedor extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        controller.addUser(labelStatus,modelEmpresa.getIdEmpresa());
+        ModelUsuario user = controller.creaModelo(new ModelUsuario());
+        user.setIdEmpresa(modelEmpresa.getIdEmpresa());
+        user.setTipo(2);
+        if(usuarioTemporal == null)
+            controller.addUser(labelStatus,user);
+        else{
+            user.setIdUsuario(usuarioTemporal.getIdUsuario());
+            if(controller.acceptUsername(username.getText(),usuarioTemporal.getUsername()))
+                if(controller.guardarCambios(labelStatus,user))
+                        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewAdministrarVendedores(controllerPaneles)); //asi
+            else
+                ControllerViewMsj.muestraMensajeGlobo("El nombre de usuario ya existe", username);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public void agregaModificaUsuario(){
+        
+    }
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         controller.limpiaCampos();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void aPaternoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_aPaternoKeyTyped
-
+        
     }//GEN-LAST:event_aPaternoKeyTyped
 
     private void aPaternoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_aPaternoKeyPressed
-        // TODO add your handling code here:
-        //        if(evt.getKeyChar()==10)
-        //            next();
+        if(evt.getKeyChar()==10)
+            agregaModificaUsuario();
     }//GEN-LAST:event_aPaternoKeyPressed
 
     private void aPaternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aPaternoActionPerformed
@@ -630,9 +662,8 @@ public class ViewAgregarVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_aPaternoFocusGained
 
     private void nameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameKeyPressed
-        // TODO add your handling code here:
-        //        if(evt.getKeyChar()==10)
-        //            next();
+        if(evt.getKeyChar()==10)
+            agregaModificaUsuario();
     }//GEN-LAST:event_nameKeyPressed
 
     private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
@@ -649,8 +680,20 @@ public class ViewAgregarVendedor extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewVendedores(controllerPaneles)); //asi
+        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), controllerPaneles.getPanelVendedores()); //asi
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void pass01KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pass01KeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyChar()==10)
+            agregaModificaUsuario();
+    }//GEN-LAST:event_pass01KeyPressed
+
+    private void pass02KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pass02KeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyChar()==10)
+            agregaModificaUsuario();
+    }//GEN-LAST:event_pass02KeyPressed
 
     
        
@@ -664,7 +707,6 @@ public class ViewAgregarVendedor extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -677,6 +719,7 @@ public class ViewAgregarVendedor extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel labelNota;
+    private javax.swing.JLabel labelRuta;
     private javax.swing.JLabel labelStatus;
     private javax.swing.JTextField name;
     private javax.swing.JPasswordField pass01;

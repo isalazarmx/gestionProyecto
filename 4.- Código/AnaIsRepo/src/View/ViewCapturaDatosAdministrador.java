@@ -15,7 +15,7 @@ import javax.swing.JLabel;
  *
  * @author Jesus
  */
-public class ViewCaptInfoUser extends javax.swing.JPanel {
+public class ViewCapturaDatosAdministrador extends javax.swing.JPanel {
     JLabel labelStatus;
     Thread hilo;
     ControllerValidation validation;
@@ -29,7 +29,7 @@ public class ViewCaptInfoUser extends javax.swing.JPanel {
      * @param idEmpresa
      * @param modelUsuario
      */
-    public ViewCaptInfoUser(JLabel labelStatus, Thread hilo,int idEmpresa,ModelUsuario modelUsuario) {
+    public ViewCapturaDatosAdministrador(JLabel labelStatus, Thread hilo,int idEmpresa,ModelUsuario modelUsuario) {
         this.validation = new ControllerValidation();
         this.labelStatus = labelStatus;
         this.hilo = hilo;
@@ -314,16 +314,16 @@ public class ViewCaptInfoUser extends javax.swing.JPanel {
     private void nameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
-            next();
+            agregarAdministrador();
     }//GEN-LAST:event_nameKeyPressed
 
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
         // TODO add your handling code here:
-        next();
+        agregarAdministrador();
     }//GEN-LAST:event_nextActionPerformed
 
-    private void next(){
-        controller.next(labelStatus,hilo,idEmpresa,modelUsuario);
+    private void agregarAdministrador(){
+        controller.agregarAdministrador(labelStatus,hilo,idEmpresa,modelUsuario);
     }
     private void aPaternoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_aPaternoFocusGained
         // TODO add your handling code here:
@@ -342,7 +342,7 @@ public class ViewCaptInfoUser extends javax.swing.JPanel {
     private void aPaternoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_aPaternoKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
-            next();
+            agregarAdministrador();
     }//GEN-LAST:event_aPaternoKeyPressed
 
     private void aMaternoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_aMaternoFocusGained
@@ -362,7 +362,7 @@ public class ViewCaptInfoUser extends javax.swing.JPanel {
     private void aMaternoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_aMaternoKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
-            next();
+            agregarAdministrador();
     }//GEN-LAST:event_aMaternoKeyPressed
 
     private void usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusGained
@@ -382,7 +382,7 @@ public class ViewCaptInfoUser extends javax.swing.JPanel {
     private void usernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
-            next();
+            agregarAdministrador();
     }//GEN-LAST:event_usernameKeyPressed
 
     private void pass02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pass02ActionPerformed
@@ -412,13 +412,13 @@ public class ViewCaptInfoUser extends javax.swing.JPanel {
     private void pass01KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pass01KeyTyped
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
-            next();
+            agregarAdministrador();
     }//GEN-LAST:event_pass01KeyTyped
 
     private void pass02KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pass02KeyTyped
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
-            next();
+            agregarAdministrador();
     }//GEN-LAST:event_pass02KeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

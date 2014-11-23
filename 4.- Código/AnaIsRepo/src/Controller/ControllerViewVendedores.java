@@ -16,7 +16,7 @@ import javax.swing.JTextField;
  *
  * @author Jesus
  */
-public class ControllerViewAgregarVendedores {
+public class ControllerViewVendedores {
     JTextField name;
     JTextField aPaterno;
     JTextField aMaterno;
@@ -24,7 +24,7 @@ public class ControllerViewAgregarVendedores {
     JPasswordField pass1;
     JPasswordField pass2;
     
-    public ControllerViewAgregarVendedores(ArrayList components){
+    public ControllerViewVendedores(ArrayList components){
         this.name = (JTextField)components.get(0);
         this.aPaterno = (JTextField)components.get(1);
         this.aMaterno = (JTextField)components.get(2);
@@ -42,22 +42,14 @@ public class ControllerViewAgregarVendedores {
         ControllerValidation.limitarCaracteres(pass2, 16);
     }
     
-    public void addUser(JLabel labelStatus,int idEmpresa){
+    public void addUser(JLabel labelStatus,ModelUsuario user){
         if(!name.getText().equals("Nombre (*)") && !name.getText().isEmpty()){
             if(!username.getText().equals("Username (*)") && !username.getText().isEmpty()){
                 if(!crearPass(pass1).equals("Password-01") && !pass1.getText().isEmpty()){
                     if(!crearPass(pass2).equals("Password-02") && !pass2.getText().isEmpty()){
-                        if(!ControllerConsults.checkExistUser(username.getText())){
+                        if(!DataBase.DataBaseUsuario.checkExistUser(username.getText())){
                             if(ControllerValidation.validarContrasenias(pass1,pass2)){
-                                ModelUsuario user = new ModelUsuario();
-                                user.setNombre(name.getText());
-                                user.setaPaterno(reviewInfo(aPaterno,"Apellido paterno",true));
-                                user.setaMaterno(reviewInfo(aMaterno,"Apellido materno",true));
-                                user.setUsername(username.getText());
-                                user.setPassword(crearPass(pass1));
-                                user.setTipo(2);
-                                user.setIdEmpresa(idEmpresa);
-                                 if(ControllerConsults.addUser(user,false)){
+                                 if(DataBase.DataBaseUsuario.addUser(user,false)){
                                     labelStatus.setText("Vendedor agregado con éxito");
                                     limpiaCampos();
                                  }else
@@ -75,25 +67,19 @@ public class ControllerViewAgregarVendedores {
             ControllerViewMsj.muestraMensajeGlobo("Agrega un nombre de usuario", name);
     }
     
-    public void guardarCambios(JLabel labelStatus,int idEmpresa,ModelUsuario user){
+    public boolean guardarCambios(JLabel labelStatus,ModelUsuario user){
+        boolean flag = false;
         if(!name.getText().equals("Nombre (*)") && !name.getText().isEmpty()){
             if(!username.getText().equals("Username (*)") && !username.getText().isEmpty()){
                 if(!crearPass(pass1).equals("Password-01") && !pass1.getText().isEmpty()){
                     if(!crearPass(pass2).equals("Password-02") && !pass2.getText().isEmpty()){
-                        if(acceptUsername(user)){
-                            if(ControllerValidation.validarContrasenias(pass1,pass2)){
-                                user.setNombre(name.getText());
-                                user.setaPaterno(reviewInfo(aPaterno,"Apellido paterno",true));
-                                user.setaMaterno(reviewInfo(aMaterno,"Apellido materno",true));
-                                user.setUsername(username.getText());
-                                user.setPassword(crearPass(pass1));
-                                 if(ControllerConsults.modifUser(user)){
-                                    labelStatus.setText("Datos almacenados con éxito");
-                                }else
-                                    labelStatus.setText("Error interno para almacenar la información");
-                            }
-                        }else
-                            ControllerViewMsj.muestraMensajeGlobo("El nombre de usuario ya existe", username);
+                        if(ControllerValidation.validarContrasenias(pass1,pass2)){
+                             if(DataBase.DataBaseUsuario.modifUser(user)){
+                                ControllerViewMsj.informacion(name.getText()+" modificado con éxito","Modificación de usuario");
+                                flag = true;
+                            }else
+                                labelStatus.setText("Error interno para almacenar la información");
+                        }
                     }else
                         ControllerViewMsj.muestraMensajeGlobo("Completa el formulario para la contraseña", pass2);
                 }else
@@ -102,14 +88,12 @@ public class ControllerViewAgregarVendedores {
                 ControllerViewMsj.muestraMensajeGlobo("Agrega un username", username);
         }else
             ControllerViewMsj.muestraMensajeGlobo("Agrega un nombre de usuario", name);
+        return flag;
     }
     
-    public boolean acceptUsername(ModelUsuario user){
-        if(ControllerConsults.checkExistUser(username.getText())){
-            if(user.getUsername().equals(username.getText()))
-                return true;
-            else
-                return false;
+    public boolean acceptUsername(String user,String username2){
+        if(DataBase.DataBaseUsuario.checkExistUser(user)){
+            return user.equals(username2);
         }else
             return true;
     }
@@ -173,5 +157,14 @@ public class ControllerViewAgregarVendedores {
     private void limpiaJPasswordField(JPasswordField box, String msj){
         box.setForeground(new Color(180,180,180));
         box.setText(msj);
+    }
+    
+     public ModelUsuario creaModelo(ModelUsuario model){
+            model.setNombre(reviewInfo(name,"Nombre (*)", true));
+            model.setaPaterno(reviewInfo(aPaterno,"Apellido Paterno", true));
+            model.setaMaterno(reviewInfo(aMaterno,"Apellido Materno", true));
+            model.setUsername(reviewInfo(username,"Username (*)", true));
+            model.setPassword(reviewInfo(pass1,"Password-01", true));
+            return model;
     }
 }

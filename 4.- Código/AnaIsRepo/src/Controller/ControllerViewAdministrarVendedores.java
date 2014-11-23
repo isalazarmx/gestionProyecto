@@ -19,13 +19,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Jesus
  */
-public class ControllerViewVendedores {
+public class ControllerViewAdministrarVendedores {
     JTextField nombre;
     JTextField username;
     JLabel labelCount;
     ControllerTables controllerTable;
     
-    public ControllerViewVendedores(ArrayList components){
+    public ControllerViewAdministrarVendedores(ArrayList components){
         this.controllerTable = new ControllerTables();
         this.nombre = (JTextField)components.get(0);
         this.username = (JTextField)components.get(1);
@@ -46,7 +46,7 @@ public class ControllerViewVendedores {
             limpiaBusqueda();
             String nom = reviewInfo(nombre,"Nombre",true);
             String user = reviewInfo(username,"Username",true);
-            List list = ControllerConsults.buscaUsuario(nom, user, flag);
+            List list = DataBase.DataBaseUsuario.buscaUsuario(nom, user, flag);
             int count = list.size();
             if(!list.isEmpty()){
                 for (int i = 0; i < list.size(); i++) {
@@ -54,12 +54,22 @@ public class ControllerViewVendedores {
                     String[] datos = {usuario.getNombre(),usuario.getaPaterno(),usuario.getaMaterno(),usuario.getUsername(),usuario.getPassword()};
                     controllerTable.agregarDatos(datos);
                 }
-                if(list.size() > 1)
-                    labelCount.setText("Lo sentimos, no hay coincidencias con la busqueda, pero encontramos "+count+" posibles resutaldos");
-                else if ((((ModelUsuario)list.get(0)).getNombre().equals(nom) || ((ModelUsuario)list.get(0)).getUsername().equals(user)))
-                    labelCount.setText("Busqueda realizada con éxito");
+                if(!flag){
+                    String msj;
+                    if(count>1)
+                        msj = count+" posibles resutaldos";
+                    else
+                        msj = count+" posible resutaldo";
+                    if(list.size() > 1)
+                        labelCount.setText("Lo sentimos, no hay coincidencias con la busqueda, pero encontramos "+msj);
+                    else if ((((ModelUsuario)list.get(0)).getNombre().equals(nom) || ((ModelUsuario)list.get(0)).getUsername().equals(user)))
+                        labelCount.setText("Busqueda realizada con éxito");
+                    else
+                        labelCount.setText("Lo sentimos, no hay coincidencias con la busqueda, pero encontramos "+msj);
+                }else if(count > 1)
+                    labelCount.setText("Existen "+count+" registros en el sistema");
                 else
-                    labelCount.setText("Lo sentimos, no hay coincidencias con la busqueda, pero encontramos "+count+" posibles resutaldos");
+                    labelCount.setText("Existe "+count+" registro en el sistema");
             }else
                 labelCount.setText("Lo sentimos, no se encontro ninguna coincidencía");
         }else{
@@ -71,6 +81,23 @@ public class ControllerViewVendedores {
         int cantidadEliminar = controllerTable.getTabla().getRowCount();
         for (int i = cantidadEliminar-1;i>=0;i--)
             controllerTable.getModelTable().removeRow(i);
+    }
+    
+    public String vendedorModificar(){
+        int seleccion = controllerTable.getTabla().getSelectedRow();
+        return (String)controllerTable.getModelTable().getValueAt(seleccion, 3);
+    }
+    
+    public boolean tablaSeleccionada(){
+        boolean flag = false;
+        if(controllerTable.getModelTable().getRowCount()>0)
+            if(controllerTable.getTabla().getSelectedRow()>-1)
+                flag = true;
+            else
+                ControllerViewMsj.aviso(controllerTable.getTabla(),"Lo sentimos, debes de seleccionar un registro","Mensaje para modificar vendedor");
+        else
+            ControllerViewMsj.aviso(controllerTable.getTabla(),"Lo sentimos, no existe ningún registro","Mensaje para modificar vendedor");
+        return flag;
     }
     
 //    public void addUser(JLabel labelStatus,int idEmpresa){
