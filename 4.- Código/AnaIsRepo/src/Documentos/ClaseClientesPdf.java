@@ -23,7 +23,8 @@ import java.sql.Statement;
  *
  * @author Teté
  */
-public class ClaseProveedorPdf {
+public class ClaseClientesPdf {
+    
      Fechas fecha = new Fechas();
     java.awt.Font fuente = new java.awt.Font("Normal", Font.BOLD, 12);
     Color grisClaro = new Color(230, 230, 230);
@@ -105,7 +106,7 @@ public class ClaseProveedorPdf {
         cell0.setHorizontalAlignment(Element.ALIGN_CENTER);
         
         PdfPCell cell = new PdfPCell(new Paragraph("Reporte sobre ventas"));
-        cell.setColspan(5);
+        cell.setColspan(4);
         cell.setBackgroundColor(new BaseColor (49,176,213));
         //Centrar contenido de celda
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -124,7 +125,7 @@ public class ClaseProveedorPdf {
                 tabla.addCell(cell);
             }
             
-            Class.forName("com.mysql.jdbc.Driver");
+             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/reposteria", "root", "");
 
             // Creamos un Statement para poder hacer peticiones a la bd
@@ -183,5 +184,6 @@ public class ClaseProveedorPdf {
     //Llamamos por el método para generar el pdf
     new ClaseProveedorPdf().GenerarPDF();
   }
+    
     
 }
