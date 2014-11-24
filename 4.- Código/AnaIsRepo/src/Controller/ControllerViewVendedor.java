@@ -72,7 +72,6 @@ public class ControllerViewVendedor {
 //        ControllerValidation.soloNumeros(importe);
 //        ControllerValidation.soloNumeros(iva);
 //        ControllerValidation.soloNumeros(abono);
-//       
     }
     
     public void next(JLabel labelStatus,Thread hilo,ModelVenta emp){

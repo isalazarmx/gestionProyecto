@@ -24,15 +24,52 @@ public class ModelCliente {
     private int numExt;
     private String colonia;
     private String ciudad;
+    private String estado;
     private int codigoPostal;
     private String eMail;
     //------------------------------
     private DefaultTableModel modeloTable;
 
+    public String addCliente(){
+        return "(nombre,aPaterno,aMaterno,rfc,telfijo,telcel,calle,numInt,numExt,colonia,ciudad,estado,codigopostal,email,eliminado) values ('"
+                +getNombre()+"','"
+                +getaPaterno()+"','"
+                +getaMaterno()+"','"
+                +getRFC()+"',"
+                +getTelFijo()+","
+                +getTelCel()+",'"
+                +getCalle()+"',"
+                +getNumInt()+","
+                +getNumExt()+",'"
+                +getColonia()+"','"
+                +getCiudad()+"','"
+                +getEstado()+"',"+
+                +getCodigoPostal()+",'"
+                +geteMail()+"',0"+
+                ");";
+    }
+    
+    public String modInfo(){
+        return "set nombre = '"+getNombre()+"',"+ 
+               "aPaterno = '"+getaPaterno()+"',"+
+               "aMaterno = '"+getaMaterno()+"',"+
+               "RFC = '"+getRFC()+"',"+
+               "telfijo = "+getTelFijo()+","+
+               "telcel = "+getTelCel()+","+
+               "calle = '"+getCalle()+"',"+
+               "numInt = "+getNumInt()+","+
+               "numExt = "+getNumExt()+","+
+               "colonia = '"+getColonia()+"',"+
+               "ciudad = '"+getCiudad()+"',"+
+               "estado = '"+getEstado()+"',"+
+               "codigopostal = "+getCodigoPostal()+","+
+               "email = '"+geteMail()+"'";
+    }
+        
     public DefaultTableModel creaModelTable(){
         setModeloTable(new DefaultTableModel(){
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
             @Override
             public boolean isCellEditable(int row, int column){
@@ -42,7 +79,6 @@ public class ModelCliente {
         getModeloTable().addColumn("ID");
         getModeloTable().addColumn("Nombre");
         getModeloTable().addColumn("Apellido Paterno");
-        getModeloTable().addColumn("Apellido Materno");
         getModeloTable().addColumn("RFC");
         getModeloTable().addColumn("Tel.Celular");
         getModeloTable().addColumn("eMail");
@@ -257,6 +293,20 @@ public class ModelCliente {
      */
     public void setModeloTable(DefaultTableModel modeloTable) {
         this.modeloTable = modeloTable;
+    }
+
+    /**
+     * @return the estado
+     */
+    public String getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
     
     

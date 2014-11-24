@@ -159,7 +159,7 @@ public class ControllerViewVendedores {
         box.setText(msj);
     }
     
-     public ModelUsuario creaModelo(ModelUsuario model){
+    public ModelUsuario creaModelo(ModelUsuario model){
             model.setNombre(reviewInfo(name,"Nombre (*)", true));
             model.setaPaterno(reviewInfo(aPaterno,"Apellido Paterno", true));
             model.setaMaterno(reviewInfo(aMaterno,"Apellido Materno", true));

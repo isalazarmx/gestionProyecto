@@ -89,11 +89,11 @@ public class ControllerViewAdministrarVendedores {
     
     public boolean tablaSeleccionada(){
         boolean flag = false;
-        if(controllerTable.getModelTable().getRowCount()>0)
+        if(controllerTable.getTabla().getRowCount()>0)
             if(controllerTable.getTabla().getSelectedRow()>-1)
                 flag = true;
             else
-                ControllerViewMsj.aviso(controllerTable.getTabla(),"Lo sentimos, no existe ningún registro","Mensaje para modificar vendedor");
+                ControllerViewMsj.aviso(controllerTable.getTabla(),"Lo sentimos, debes de seleccionar un vendedor","Mensaje para modificar vendedor");
         else
             ControllerViewMsj.aviso(controllerTable.getTabla(),"Lo sentimos, no existe ningún registro","Mensaje para modificar vendedor");
         return flag;
