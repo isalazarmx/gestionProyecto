@@ -78,8 +78,9 @@ public class ViewBotoneraPrincipal extends javax.swing.JPanel {
         reportes = new javax.swing.JButton();
         vendedores = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(20, 20, 20));
+        setBackground(new java.awt.Color(51, 51, 51));
 
+        inicio.setBackground(new java.awt.Color(153, 0, 153));
         inicio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         inicio.setForeground(new java.awt.Color(51, 51, 51));
         inicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/inicioDisable.png"))); // NOI18N
@@ -123,7 +124,7 @@ public class ViewBotoneraPrincipal extends javax.swing.JPanel {
         clientes.setForeground(new java.awt.Color(51, 51, 51));
         clientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clientesDisable.png"))); // NOI18N
         clientes.setContentAreaFilled(false);
-        clientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        clientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         clientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         clientes.setSelected(true);
         clientes.addActionListener(new java.awt.event.ActionListener() {
@@ -230,10 +231,8 @@ public class ViewBotoneraPrincipal extends javax.swing.JPanel {
             .addComponent(ventas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(inicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(vendedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(reportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(pedidos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(reportes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

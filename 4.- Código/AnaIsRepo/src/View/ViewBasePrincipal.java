@@ -120,7 +120,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         BCerrar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         BCerrar.setBorderPainted(false);
         BCerrar.setContentAreaFilled(false);
-        BCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         BCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BCerrarActionPerformed(evt);
@@ -133,7 +133,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         BMin.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         BMin.setBorderPainted(false);
         BMin.setContentAreaFilled(false);
-        BMin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BMin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         BMin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BMinActionPerformed(evt);
@@ -176,7 +176,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/settings.png"))); // NOI18N
         ajustes.setToolTipText("Ajustes");
         ajustes.setContentAreaFilled(false);
-        ajustes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ajustes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ajustes.setSelected(true);
         ajustes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,7 +189,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         user.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/user.png"))); // NOI18N
         user.setText("Mensaje de bienvenida");
         user.setContentAreaFilled(false);
-        user.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        user.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         user.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         user.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         user.setSelected(true);
@@ -227,7 +227,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
             .addComponent(jLabelFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        panelBotoneraPrincipal.setBackground(new java.awt.Color(20, 20, 20));
+        panelBotoneraPrincipal.setBackground(new java.awt.Color(51, 51, 51));
 
         javax.swing.GroupLayout panelBotoneraPrincipalLayout = new javax.swing.GroupLayout(panelBotoneraPrincipal);
         panelBotoneraPrincipal.setLayout(panelBotoneraPrincipalLayout);
@@ -311,26 +311,26 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCerrarActionPerformed
+    private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_BCerrarActionPerformed
-
-    private void BMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BMinActionPerformed
-        // TODO add your handling code here:
-        setExtendedState(ViewBasePrincipal.CROSSHAIR_CURSOR); 
-    }//GEN-LAST:event_BMinActionPerformed
+        controllerPaneles.addPanel(panelCentral, new ViewBaseDatosUsuario(controllerPaneles));
+        controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBotoneraPrincipal(controllerPaneles,false));
+    }//GEN-LAST:event_userActionPerformed
 
     private void ajustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajustesActionPerformed
         controllerPaneles.addPanel(panelCentral, new ViewBaseAjustes(controllerPaneles));
         controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBotoneraPrincipal(controllerPaneles,false));
     }//GEN-LAST:event_ajustesActionPerformed
 
-    private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
+    private void BMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BMinActionPerformed
         // TODO add your handling code here:
-        controllerPaneles.addPanel(panelCentral, new ViewBaseDatosUsuario(controllerPaneles));
-        controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBotoneraPrincipal(controllerPaneles,false));
-    }//GEN-LAST:event_userActionPerformed
+        setExtendedState(ViewBasePrincipal.CROSSHAIR_CURSOR);
+    }//GEN-LAST:event_BMinActionPerformed
+
+    private void BCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCerrarActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_BCerrarActionPerformed
 
     public void agregaJPanel(JPanel panelBase, JPanel panelAdd){
         panelBase.removeAll();
@@ -342,15 +342,25 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
     private javax.swing.JButton BCerrar;
     private javax.swing.JButton BMin;
     private javax.swing.JButton ajustes;
+    private javax.swing.JButton ajustes1;
+    private javax.swing.JButton ajustes2;
     private javax.swing.JLabel jLabelFecha;
+    private javax.swing.JLabel jLabelFecha1;
+    private javax.swing.JLabel jLabelFecha2;
     private javax.swing.JLabel jLabelHora;
+    private javax.swing.JLabel jLabelHora1;
+    private javax.swing.JLabel jLabelHora2;
     private javax.swing.JPanel jPanelBase;
     private javax.swing.JLabel labelTituloSoftware;
     private javax.swing.JPanel panelBase;
     private javax.swing.JPanel panelBotoneraPrincipal;
     private javax.swing.JPanel panelCentral;
     private javax.swing.JPanel panelDataUser;
+    private javax.swing.JPanel panelDataUser1;
+    private javax.swing.JPanel panelDataUser2;
     private javax.swing.JPanel panelTitulo;
     private javax.swing.JButton user;
+    private javax.swing.JButton user1;
+    private javax.swing.JButton user3;
     // End of variables declaration//GEN-END:variables
 }
