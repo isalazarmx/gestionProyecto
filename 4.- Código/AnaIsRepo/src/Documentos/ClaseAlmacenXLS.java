@@ -62,6 +62,7 @@ public class ClaseAlmacenXLS {
             // creo una nueva fila
             Row trow = sheet1.createRow((short) 0);
             createTituloCell(wb, trow, 0, CellStyle.ALIGN_CENTER, CellStyle.VERTICAL_CENTER, "Productos en almacén");
+           
             
             Fechas fec = new Fechas();
             
@@ -168,6 +169,7 @@ public class ClaseAlmacenXLS {
         CreationHelper ch = wb.getCreationHelper();
         Cell cell = row.createCell(column);
         cell.setCellValue(ch.createRichTextString(strContenido));
+        
 
         HSSFFont cellFont = wb.createFont();
         cellFont.setFontHeightInPoints((short) 11);
@@ -179,6 +181,9 @@ public class ClaseAlmacenXLS {
         cellStyle.setVerticalAlignment(valign);
         cellStyle.setFont(cellFont);
         cell.setCellStyle(cellStyle);
+   
+        
+       
     }
 
     private static void creandoCelda(Workbook wb, Row row, int column, String strContenido) {
@@ -186,6 +191,7 @@ public class ClaseAlmacenXLS {
 
         Cell cell = row.createCell(column);
         cell.setCellValue(ch.createRichTextString(strContenido));
+        
     }
 
     private static void createCell(Workbook wb, Row row, int column, short halign, short valign, String strContenido, boolean booBorde, boolean booCabecera) {
@@ -195,6 +201,7 @@ public class ClaseAlmacenXLS {
         CellStyle cellStyle = wb.createCellStyle();
         cellStyle.setAlignment(halign);
         cellStyle.setVerticalAlignment(valign);
+    
         if (booBorde) {
             cellStyle.setBorderBottom(HSSFCellStyle.BORDER_DOTTED);
             cellStyle.setBottomBorderColor((short) 8);
@@ -215,7 +222,7 @@ public class ClaseAlmacenXLS {
             cellStyle.setBorderTop(HSSFCellStyle.BORDER_MEDIUM);
             cellStyle.setTopBorderColor((short) 8);
 
-            cellStyle.setFillForegroundColor(HSSFColor.BLUE_GREY.index);
+            cellStyle.setFillForegroundColor(HSSFColor.ROYAL_BLUE.index);
             cellStyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
         }
         cell.setCellStyle(cellStyle);

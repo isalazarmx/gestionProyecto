@@ -66,12 +66,16 @@ public class ClaseVentasPdf {
 
         // AGREGAMOS LA IMAGEN
         try {
-            Image foto = Image.getInstance("C:\\Users\\Teté\\Documents\\GitHub\\gestionProyecto\\4.- Código\\AnaIsRepo\\src\\Image\\ventasInfo.png");
-            foto.scaleToFit(50, 50);
+            Image foto = Image.getInstance("C:\\Users\\Teté\\Documents\\GitHub\\gestionProyecto\\4.- Código\\AnaIsRepo\\src\\Image\\reposteriaANaIS.png");
+            foto.setAlignment(Element.ALIGN_LEFT);
+            Image foto2 = Image.getInstance("C:\\Users\\Teté\\Documents\\GitHub\\gestionProyecto\\4.- Código\\AnaIsRepo\\src\\Image\\logo_empresa.png");
+            foto2.setAlignment(Element.ALIGN_RIGHT);
+            ParrafoHoja.add(foto2);
             ParrafoHoja.add(foto);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
 
         //Agregar  lineas en blanco
         agregarLineasEnBlanco(ParrafoHoja, 1);
@@ -101,13 +105,13 @@ public class ClaseVentasPdf {
         //agregar celda que ocupa las  columnas de los rotulos
         PdfPCell cell0 = new PdfPCell(new Paragraph("Repostería AnaIs"));
         cell0.setColspan(5);
-        cell0.setBackgroundColor(BaseColor.PINK);
+        cell0.setBackgroundColor(new BaseColor (66,139,202));
         //Centrar contenido de celda
         cell0.setHorizontalAlignment(Element.ALIGN_CENTER);
         
         PdfPCell cell = new PdfPCell(new Paragraph("Reporte sobre ventas"));
         cell.setColspan(4);
-        cell.setBackgroundColor(BaseColor.GRAY);
+        cell.setBackgroundColor(new BaseColor (49,176,213));
         //Centrar contenido de celda
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         //Color de fondo de la celda
@@ -121,7 +125,7 @@ public class ClaseVentasPdf {
                 cell = new PdfPCell(new Paragraph(rotulosColumnas[i]));
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                cell.setBackgroundColor(new BaseColor (248,248,248));
                 tabla.addCell(cell);
             }
             

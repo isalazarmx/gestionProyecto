@@ -98,18 +98,19 @@ public class ClaseProveedorPdf {
         tabla.setHorizontalAlignment(Element.ALIGN_CENTER);
         
         //agregar celda que ocupa las  columnas de los rotulos
-        PdfPCell cell0 = new PdfPCell(new Paragraph("Repostería AnaIs"));
+         PdfPCell cell0 = new PdfPCell(new Paragraph("Repostería AnaIs"));
         cell0.setColspan(5);
-        cell0.setBackgroundColor(BaseColor.PINK);
+        cell0.setBackgroundColor(new BaseColor (66,139,202));
         //Centrar contenido de celda
         cell0.setHorizontalAlignment(Element.ALIGN_CENTER);
         
-        PdfPCell cell = new PdfPCell(new Paragraph("Contacto de Proveedores"));
-        cell.setColspan(5);
-        cell.setBackgroundColor(BaseColor.GRAY);
+        PdfPCell cell = new PdfPCell(new Paragraph("Reporte sobre ventas"));
+        cell.setColspan(4);
+        cell.setBackgroundColor(new BaseColor (49,176,213));
         //Centrar contenido de celda
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-       
+        //Color de fondo de la celda
+//        cell.setBackgroundColor (azulClaro);        
         tabla.addCell(cell0);
         tabla.addCell(cell);
 
@@ -119,7 +120,7 @@ public class ClaseProveedorPdf {
                 cell = new PdfPCell(new Paragraph(rotulosColumnas[i]));
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                cell.setBackgroundColor(new BaseColor (248,248,248));
                 tabla.addCell(cell);
             }
             
