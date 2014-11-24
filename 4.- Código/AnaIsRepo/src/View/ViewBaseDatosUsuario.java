@@ -45,7 +45,7 @@ public class ViewBaseDatosUsuario extends javax.swing.JPanel {
         components.add(username);
         components.add(pass01);
         components.add(pass02);
-        components.add(controllerPaneles.getUserData());
+        components.add(controllerPaneles.getBotonDatosUsuario());
         controller = new ControllerViewUser(components);
         controller.validations();
     }

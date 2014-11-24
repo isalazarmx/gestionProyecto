@@ -34,7 +34,22 @@ public void validations(){
     ControllerValidation.limitarCaracteres(nombreCliente, 25);
     ControllerValidation.soloTexto(nombreCliente);
     ControllerValidation.validarFecha(fechaPedido, null);
+    ControllerValidation.soloNumeros(fechaPedido);
 }
     
+private String reviewInfo(JTextField box, String value,boolean flag){
+        if(flag){
+            if(box.getText().equals(value))
+                return "";
+            else
+                return box.getText();
+        }else{
+            if(box.getText().equals(value))
+                return "0";
+            else
+                return box.getText();
+        }
+        
+    }
     
 }

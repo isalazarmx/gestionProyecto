@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.ModelCliente;
 import Model.ModelEmpresa;
 import Model.ModelUsuario;
 import java.awt.GridBagLayout;
@@ -19,10 +20,16 @@ import javax.swing.JPanel;
 public class ControllerPaneles {
     private ModelEmpresa modelEmpresa;
     private ModelUsuario modelUsuario;
+    private ModelCliente modelCliente;
+    //---------------------------------------
     private JPanel panelUserData;
+    private JButton botonDatosUsuario;
     private JPanel panelBotoneraPrincipal;
     private JPanel panelCentral;
-    private JButton userData;
+    //--------------------------------------
+    private JPanel panelInicio;
+    private JPanel panelVendedores;
+    private JPanel panelClientes;
     
     public void configPanel(JPanel panel){
         panel.setLayout(new GridBagLayout());
@@ -107,16 +114,72 @@ public class ControllerPaneles {
     }
 
     /**
-     * @return the userData
+     * @return the botonDatosUsuario
      */
-    public JButton getUserData() {
-        return userData;
+    public JButton getBotonDatosUsuario() {
+        return botonDatosUsuario;
     }
 
     /**
-     * @param userData the userData to set
+     * @param userData the botonDatosUsuario to set
      */
-    public void setUserData(JButton userData) {
-        this.userData = userData;
+    public void setBotonDatosUsuario(JButton userData) {
+        this.botonDatosUsuario = userData;
+    }
+
+    /**
+     * @return the panelInicio
+     */
+    public JPanel getPanelInicio() {
+        return panelInicio;
+    }
+
+    /**
+     * @param panelInicio the panelInicio to set
+     */
+    public void setPanelInicio(JPanel panelInicio) {
+        this.panelInicio = panelInicio;
+    }
+
+    /**
+     * @return the panelVendedores
+     */
+    public JPanel getPanelVendedores() {
+        return panelVendedores;
+    }
+
+    /**
+     * @param panelVendedores the panelVendedores to set
+     */
+    public void setPanelVendedores(JPanel panelVendedores) {
+        this.panelVendedores = panelVendedores;
+    }
+
+    /**
+     * @return the panelClientes
+     */
+    public JPanel getPanelClientes() {
+        return panelClientes;
+    }
+
+    /**
+     * @param panelClientes the panelClientes to set
+     */
+    public void setPanelClientes(JPanel panelClientes) {
+        this.panelClientes = panelClientes;
+    }
+
+    /**
+     * @return the modelCliente
+     */
+    public ModelCliente getModelCliente() {
+        return modelCliente;
+    }
+
+    /**
+     * @param modelCliente the modelCliente to set
+     */
+    public void setModelCliente(ModelCliente modelCliente) {
+        this.modelCliente = modelCliente;
     }
 }

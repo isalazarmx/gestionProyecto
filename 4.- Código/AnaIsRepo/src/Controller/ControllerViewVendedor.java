@@ -8,6 +8,7 @@ package Controller;
 import Model.ModelVenta;
 import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -17,56 +18,61 @@ import javax.swing.JTextField;
  */
 public class ControllerViewVendedor {
     JTextField idCliente;
+    JComboBox tipoVenta;
     JTextField fecha;
     JTextField fechaPedido;
-    JTextField fechaEnt;
-    JTextField lugarEnt;
     JTextField horaEnt;
+    JTextField lugarEnt;
+    JTextField idVentas;
     JTextField codBarras;
     JTextField descripcion;
     JTextField price;
     JTextField cantidad;
     JTextField descuento;
     JTextField importe;
+    JTextField abono;
+    JTextField resto;
     JTextField subtotal;
     JTextField iva;
     JTextField totalT;
-    JTextField abono;
-    JTextField resto;
+    
     
     public ControllerViewVendedor(ArrayList components){
         this.idCliente = (JTextField)components.get(0);
-        this.fecha = (JTextField)components.get(1);
-        this.fechaPedido = (JTextField)components.get(2);
-        this.fechaEnt = (JTextField)components.get(3);
+        this.tipoVenta = (JComboBox)components.get(1);
+        this.fecha = (JTextField)components.get(2);
+        this.horaEnt = (JTextField)components.get(3);
         this.lugarEnt = (JTextField)components.get(4);
-        this.horaEnt = (JTextField)components.get(5);
+        this.idVentas = (JTextField)components.get(5);
         this.codBarras = (JTextField)components.get(6);
-        this.descripcion= (JTextField)components.get(7);
+        this.descripcion = (JTextField)components.get(7);
         this.price = (JTextField)components.get(8);
         this.cantidad = (JTextField)components.get(9);
         this.descuento = (JTextField)components.get(10);
         this.importe = (JTextField)components.get(11);
-        this.subtotal = (JTextField)components.get(12);
-        this.iva = (JTextField)components.get(13);
-        this.totalT = (JTextField)components.get(14);
-        this.abono = (JTextField)components.get(15);
-        this.resto= (JTextField)components.get(16);
+        this.abono = (JTextField)components.get(12);
+        this.resto= (JTextField)components.get(13);
+        this.subtotal = (JTextField)components.get(14);
+        this.iva = (JTextField)components.get(15);
+        this.totalT = (JTextField)components.get(16);
     }
     
-    public void validations(){
-        ControllerValidation.camposNoNulos(idCliente, "Campo oblagatorio");
-        ControllerValidation.validarFecha(fecha, null);
-        ControllerValidation.validarFecha(fechaPedido, null);
-        ControllerValidation.validarFecha(fechaEnt, null);
-        ControllerValidation.soloNumeros(horaEnt);
-        ControllerValidation.limitarCaracteres(descripcion, 250);
-        ControllerValidation.soloNumeros(cantidad);
-        ControllerValidation.soloNumeros(descuento);
-        ControllerValidation.soloNumeros(importe);
-        ControllerValidation.soloNumeros(iva);
-        ControllerValidation.soloNumeros(abono);
-       
+        public void validations(){
+//        ControllerValidation.camposNoNulos(idCliente, "Campo oblagatorio");
+//        ControllerValidation.soloNumeros(idCliente);
+//        ControllerValidation.validarFecha(fecha, null);
+//        ControllerValidation.soloNumeros(fecha);
+//        ControllerValidation.validarFecha(fechaPedido, null);
+//        ControllerValidation.soloNumeros(fechaPedido);
+//        ControllerValidation.soloNumeros(horaEnt);
+//        ControllerValidation.soloNumeros(codBarras);
+//        ControllerValidation.limitarCaracteres(descripcion, 250);
+//        ControllerValidation.soloNumeros(cantidad);
+//        ControllerValidation.soloNumeros(descuento);
+//        ControllerValidation.soloNumeros(importe);
+//        ControllerValidation.soloNumeros(iva);
+//        ControllerValidation.soloNumeros(abono);
+//       
     }
     
     public void next(JLabel labelStatus,Thread hilo,ModelVenta emp){

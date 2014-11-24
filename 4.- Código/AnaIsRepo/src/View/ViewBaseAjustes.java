@@ -677,7 +677,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
     private void nameBussinesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameBussinesKeyPressed
         // TODO add your handling code here:
 //        if(evt.getKeyChar()==10)
-//            next();
+//            agregaEmpresa();
     }//GEN-LAST:event_nameBussinesKeyPressed
 
     private void rfcFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rfcFocusGained
@@ -695,7 +695,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
     private void rfcKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rfcKeyPressed
         // TODO add your handling code here:
 //        if(evt.getKeyChar()==10)
-//            next();
+//            agregaEmpresa();
     }//GEN-LAST:event_rfcKeyPressed
 
     private void rfcKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rfcKeyTyped
@@ -719,7 +719,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
     private void ciudadKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ciudadKeyPressed
         // TODO add your handling code here:
 //        if(evt.getKeyChar()==10)
-//            next();
+//            agregaEmpresa();
     }//GEN-LAST:event_ciudadKeyPressed
 
     private void streetFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_streetFocusGained
@@ -736,7 +736,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
 
     private void streetKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_streetKeyPressed
 //        if(evt.getKeyChar()==10)
-//            next();
+//            agregaEmpresa();
     }//GEN-LAST:event_streetKeyPressed
 
     private void codePostFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codePostFocusGained
@@ -754,7 +754,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
     private void codePostKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codePostKeyPressed
         // TODO add your handling code here:
 //        if(evt.getKeyChar()==10)
-//            next();
+//            agregaEmpresa();
     }//GEN-LAST:event_codePostKeyPressed
 
     private void numIntFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numIntFocusGained
@@ -772,7 +772,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
     private void numIntKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numIntKeyPressed
         // TODO add your handling code here:
 //        if(evt.getKeyChar()==10)
-//            next();
+//            agregaEmpresa();
     }//GEN-LAST:event_numIntKeyPressed
 
     private void numExtFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numExtFocusGained
@@ -790,7 +790,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
     private void numExtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numExtKeyPressed
         // TODO add your handling code here:
 //        if(evt.getKeyChar()==10)
-//            next();
+//            agregaEmpresa();
     }//GEN-LAST:event_numExtKeyPressed
 
     private void colFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_colFocusGained
@@ -808,7 +808,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
     private void colKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_colKeyPressed
         // TODO add your handling code here:
 //        if(evt.getKeyChar()==10)
-//        next();
+//        agregaEmpresa();
     }//GEN-LAST:event_colKeyPressed
 
     private void pagWebFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pagWebFocusGained
@@ -826,7 +826,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
     private void pagWebKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pagWebKeyPressed
         // TODO add your handling code here:
 //        if(evt.getKeyChar()==10)
-//        next();
+//        agregaEmpresa();
     }//GEN-LAST:event_pagWebKeyPressed
 
     private void eMailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_eMailFocusGained
@@ -844,7 +844,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
     private void eMailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_eMailKeyPressed
         // TODO add your handling code here:
 //        if(evt.getKeyChar()==10)
-//        next();
+//        agregaEmpresa();
     }//GEN-LAST:event_eMailKeyPressed
 
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed

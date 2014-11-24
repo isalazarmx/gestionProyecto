@@ -37,21 +37,22 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         this.modelEmpresa = modelEmpresa;
         this.modelUsuario = modelUsuario;
         initComponents();
+        jLabelFecha.setText(ControllerDatePanel.getFecha());
+        initClock();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Image/Logo_Empresa.png"));
         setIconImage(icon);
         user.setText("Bienvenido, "+modelUsuario.getNombre()+" "+modelUsuario.getaPaterno());
-        initClock();
-        initFecha();
         configInit();
         controllerPaneles = new ControllerPaneles();
+        controllerPaneles.setBotonDatosUsuario(user);
         controllerPaneles.setModelEmpresa(modelEmpresa);
         controllerPaneles.setModelUsuario(modelUsuario);
         controllerPaneles.setPanelCentral(panelCentral);
-        controllerPaneles.setUserData(user);
-        controllerPaneles.setPanelBotoneraPrincipal(panelBotoneraPrincipal);
-        controllerPaneles.configPanel(panelBotoneraPrincipal);
         controllerPaneles.configPanel(panelCentral);
-        controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBaseAdministradorBotoneraPrincipal(controllerPaneles,true));
+        if(modelUsuario.getTipo() == 3)
+            cargarModoAdministrador();
+        else if (modelUsuario.getTipo() == 2)
+            cargarModoVendedor();
     }
     
     private void configInit(){
@@ -61,14 +62,23 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         super.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
     }
     
-    private void initFecha(){
-       jLabelFecha.setText(ControllerDatePanel.getFecha());
-    }
-    
     private void initClock(){
         hiloHora = new ControllerClockPanel(jLabelHora);
         Thread clock=new Thread(hiloHora);
         clock.start();
+    }
+    
+    private void cargarModoAdministrador(){
+        controllerPaneles.setPanelBotoneraPrincipal(panelBotoneraPrincipal);
+        controllerPaneles.configPanel(panelBotoneraPrincipal);
+        controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBotoneraPrincipal(controllerPaneles,true));
+    }
+    
+    private void cargarModoVendedor(){
+        panelBotoneraPrincipal.setVisible(false);
+        controllerPaneles.addPanel(panelCentral, new ViewRealizarVentas(controllerPaneles));
+        ajustes.setVisible(false);
+        user.setEnabled(false);
     }
     
     /**
@@ -99,6 +109,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanelBase.setBackground(new java.awt.Color(245, 246, 247));
+        jPanelBase.setPreferredSize(new java.awt.Dimension(1000, 700));
 
         panelTitulo.setBackground(new java.awt.Color(230, 230, 230));
         panelTitulo.setForeground(new java.awt.Color(0, 51, 51));
@@ -233,6 +244,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         panelBase.setForeground(new java.awt.Color(204, 204, 204));
 
         panelCentral.setBackground(new java.awt.Color(245, 246, 247));
+        panelCentral.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true));
 
         javax.swing.GroupLayout panelCentralLayout = new javax.swing.GroupLayout(panelCentral);
         panelCentral.setLayout(panelCentralLayout);
@@ -242,7 +254,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         );
         panelCentralLayout.setVerticalGroup(
             panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 549, Short.MAX_VALUE)
+            .addGap(0, 568, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panelBaseLayout = new javax.swing.GroupLayout(panelBase);
@@ -250,14 +262,14 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         panelBaseLayout.setHorizontalGroup(
             panelBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBaseLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(50, 50, 50)
                 .addComponent(panelCentral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(26, 26, 26))
+                .addGap(50, 50, 50))
         );
         panelBaseLayout.setVerticalGroup(
             panelBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBaseLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addContainerGap()
                 .addComponent(panelCentral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -279,9 +291,8 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
                 .addComponent(panelDataUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(panelBotoneraPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 0, 0)
+                .addComponent(panelBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -312,13 +323,13 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
 
     private void ajustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajustesActionPerformed
         controllerPaneles.addPanel(panelCentral, new ViewBaseAjustes(controllerPaneles));
-        controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBaseAdministradorBotoneraPrincipal(controllerPaneles,false));
+        controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBotoneraPrincipal(controllerPaneles,false));
     }//GEN-LAST:event_ajustesActionPerformed
 
     private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
         // TODO add your handling code here:
         controllerPaneles.addPanel(panelCentral, new ViewBaseDatosUsuario(controllerPaneles));
-        controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBaseAdministradorBotoneraPrincipal(controllerPaneles,false));
+        controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBotoneraPrincipal(controllerPaneles,false));
     }//GEN-LAST:event_userActionPerformed
 
     public void agregaJPanel(JPanel panelBase, JPanel panelAdd){

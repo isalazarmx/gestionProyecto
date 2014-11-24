@@ -5,6 +5,8 @@
  */
 package Model;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Teté
@@ -18,7 +20,26 @@ public class ModelUsuario {
     private String password;
     private int tipo;
     private int idEmpresa;
+    private DefaultTableModel modeloTable;
 
+    public DefaultTableModel creaModelTable(){
+        modeloTable = new DefaultTableModel(){
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return canEdit [column];
+            }
+        };
+        modeloTable.addColumn("Nombre");
+        modeloTable.addColumn("Apellido Paterno");
+        modeloTable.addColumn("Apellido Materno");
+        modeloTable.addColumn("Username");
+        modeloTable.addColumn("Contraseña");
+        return modeloTable;
+    }
+    
     public String despAttribute(){
         return "--- Reporte de Atributos ---\n"
                 + "Nombre: "+getNombre()+"\n"
@@ -28,8 +49,20 @@ public class ModelUsuario {
                 + "pass:"+getPassword();
     }
     
-    public String addInfo(){
+    public String addAdmin(){
         return "(1,'"
+                +getNombre()+"','"
+                +getaPaterno()+"','"
+                +getaMaterno()+"','"
+                +getUsername()+"','"
+                +getPassword()+"',"
+                +getTipo()+",0,"
+                +getIdEmpresa()+
+                ");";
+    }
+    
+    public String addVendedor(){
+        return "(nombre,aPaterno,aMaterno,username,password,tipo,eliminado,Empresa_idEmpresa) values ('"
                 +getNombre()+"','"
                 +getaPaterno()+"','"
                 +getaMaterno()+"','"
@@ -158,6 +191,20 @@ public class ModelUsuario {
      */
     public void setIdEmpresa(int idEmpresa) {
         this.idEmpresa = idEmpresa;
+    }
+
+    /**
+     * @return the modeloTable
+     */
+    public DefaultTableModel getModeloTable() {
+        return modeloTable;
+    }
+
+    /**
+     * @param modeloTable the modeloTable to set
+     */
+    public void setModeloTable(DefaultTableModel modeloTable) {
+        this.modeloTable = modeloTable;
     }
     
 }

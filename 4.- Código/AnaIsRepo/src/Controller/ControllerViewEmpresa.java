@@ -59,7 +59,7 @@ public class ControllerViewEmpresa {
         ControllerValidation.limitarCaracteres(eMail, 45);
     }
     
-    public void next(JLabel labelStatus,Thread hilo,ModelEmpresa emp){
+    public void agregaEmpresa(JLabel labelStatus,Thread hilo,ModelEmpresa emp){
         if(!nameBussines.getText().equals("Nombre de la empresa (*)") && !nameBussines.getText().isEmpty()){
             if(!rfc.getText().equals("R.F.C. (*)") && !rfc.getText().isEmpty()){
                 emp.setNombre(nameBussines.getText());
@@ -76,7 +76,7 @@ public class ControllerViewEmpresa {
                     ControllerViewMsj.muestraMensajeGlobo("Debes ingresar un correo electronico valido", eMail);
                 else{
                     emp.seteMail(reviewInfo(eMail,"E-mail",true));
-                    if(ControllerConsults.addInfoBussines(emp)){
+                    if(DataBase.DataBaseEmpresa.agregaDatosEmpresa(emp)){
                         labelStatus.setText("Los datos se han agregado con éxito");
                         hilo.resume();
                     }else
@@ -105,7 +105,7 @@ public class ControllerViewEmpresa {
                     ControllerViewMsj.muestraMensajeGlobo("Debes ingresar un correo electronico valido", eMail);
                 else{
                     emp.seteMail(reviewInfo(eMail,"E-mail",true));
-                    if(ControllerConsults.modifEmpresa(emp)){
+                    if(DataBase.DataBaseEmpresa.modifEmpresa(emp)){
                         labelStatus.setText("Los datos se han agregado con éxito");
                     }else
                         labelStatus.setText("Error interno para almacenar la información");

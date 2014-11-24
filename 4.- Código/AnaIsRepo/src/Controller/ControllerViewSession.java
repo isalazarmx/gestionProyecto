@@ -32,7 +32,7 @@ public class ControllerViewSession {
     public void next(JLabel labelStatus,Thread hilo, ModelUsuario user){
         if(!username.getText().equals("Nombre de usuario") && !username.getText().isEmpty()){
             if(!crearPass(pass1).equals("Password-01") && !pass1.getText().isEmpty()){
-                if(ControllerConsults.validateSession(user)){
+                if(DataBase.DataBaseUsuario.validateSession(user)){
                     labelStatus.setText("Iniciando sistema");
                     hilo.resume();
                 }else
