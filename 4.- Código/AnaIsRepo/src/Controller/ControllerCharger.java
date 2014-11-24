@@ -3,8 +3,8 @@ package Controller;
 import Model.ModelEmpresa;
 import Model.ModelUsuario;
 import View.ViewBasePrincipal;
-import View.ViewCapturaDatosEmpresa;
-import View.ViewCapturaDatosAdministrador;
+import View.ViewLogginEmpresa;
+import View.ViewLogginAdministrador;
 import java.awt.Color;
 import java.awt.GridBagLayout;
 import javax.swing.BorderFactory;
@@ -121,7 +121,7 @@ public class ControllerCharger extends Thread {
         if (DataBase.DataBaseEmpresa.buscaEmpresa(modelEmpresa).getIdEmpresa() != 0)
             lanzarPantalla(viewLoading, "Verificando usuarios", false);
         else {
-            ViewCapturaDatosEmpresa viewCapturaDatos = new ViewCapturaDatosEmpresa(labelStatus,this,modelEmpresa);
+            ViewLogginEmpresa viewCapturaDatos = new ViewLogginEmpresa(labelStatus,this,modelEmpresa);
             lanzarPantalla(viewCapturaDatos, "Datos de la empresa",true);
             try {
                 panelBase.setVisible(false);
@@ -140,7 +140,7 @@ public class ControllerCharger extends Thread {
         if (DataBase.DataBaseUsuario.buscaAdministrador(modelUsuario).getTipo() != 0)
             lanzarPantalla(viewLoading, "Iniciando pantalla", false);
         else {
-            JPanel ViewCapturaDatosAdministrador = new ViewCapturaDatosAdministrador(labelStatus,this,modelEmpresa.getIdEmpresa(),modelUsuario);
+            JPanel ViewCapturaDatosAdministrador = new ViewLogginAdministrador(labelStatus,this,modelEmpresa.getIdEmpresa(),modelUsuario);
             lanzarPantalla(ViewCapturaDatosAdministrador, "Datos de usuario administrador",true);
             try {
                 panelBase.setVisible(false);

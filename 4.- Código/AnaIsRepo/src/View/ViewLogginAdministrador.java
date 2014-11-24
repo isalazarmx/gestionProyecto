@@ -15,7 +15,7 @@ import javax.swing.JLabel;
  *
  * @author Jesus
  */
-public class ViewCapturaDatosAdministrador extends javax.swing.JPanel {
+public class ViewLogginAdministrador extends javax.swing.JPanel {
     JLabel labelStatus;
     Thread hilo;
     ControllerValidation validation;
@@ -29,7 +29,7 @@ public class ViewCapturaDatosAdministrador extends javax.swing.JPanel {
      * @param idEmpresa
      * @param modelUsuario
      */
-    public ViewCapturaDatosAdministrador(JLabel labelStatus, Thread hilo,int idEmpresa,ModelUsuario modelUsuario) {
+    public ViewLogginAdministrador(JLabel labelStatus, Thread hilo,int idEmpresa,ModelUsuario modelUsuario) {
         this.validation = new ControllerValidation();
         this.labelStatus = labelStatus;
         this.hilo = hilo;

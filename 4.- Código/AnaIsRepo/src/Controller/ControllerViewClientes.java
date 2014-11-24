@@ -12,7 +12,7 @@ import javax.swing.JTextField;
  *
  * @author Carolina
  */
-public class ControllerViewCliente {
+public class ControllerViewClientes {
     JTextField Nombre;
     JTextField acApellidoPaterno;
     JTextField acApellidoMaterno;
@@ -28,7 +28,7 @@ public class ControllerViewCliente {
     JTextField acNoExt;
     JTextField acNoInt;
     
-    public ControllerViewCliente(ArrayList components){
+    public ControllerViewClientes(ArrayList components){
         this.Nombre = (JTextField)components.get(0);
         this.acApellidoPaterno = (JTextField)components.get(1);
         this.acApellidoMaterno = (JTextField)components.get(2);

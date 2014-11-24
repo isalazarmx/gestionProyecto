@@ -7,7 +7,7 @@ package View;
 
 import Controller.ControllerPaneles;
 import Controller.ControllerValidation;
-import Controller.ControllerViewCliente;
+import Controller.ControllerViewClientes;
 import Model.ModelCliente;
 import Model.ModelEmpresa;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class ViewCliente extends javax.swing.JPanel {
     ControllerPaneles controllerPaneles;
     ControllerValidation validation;
     ModelEmpresa modelEmpresa;
-    ControllerViewCliente controller;
+    ControllerViewClientes controller;
     ModelCliente usuarioTemporal;
     /**
      * Creates new form ViewBaseAdministrador
@@ -61,7 +61,7 @@ public class ViewCliente extends javax.swing.JPanel {
         components.add (acCP);
         components.add (acNoExt);
         components.add (acNoInt);
-        controller = new ControllerViewCliente(components);
+        controller = new ControllerViewClientes(components);
         controller.validations();
     }
     
