@@ -42,6 +42,7 @@ public class ViewBotoneraPrincipal extends javax.swing.JPanel {
     private void initPanelesBotones(){
         controllerPaneles.setPanelVendedores(new ViewAdministrarVendedores(controllerPaneles));
         controllerPaneles.setPanelClientes(new ViewAdministrarClientes(controllerPaneles));
+        controllerPaneles.setPanelProveedores(new ViewAdministrarProveedores(controllerPaneles));
     }
     
      private void initController(){
@@ -255,7 +256,7 @@ public class ViewBotoneraPrincipal extends javax.swing.JPanel {
     private void proveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proveedoresActionPerformed
             // TODO add your handling code here:
         controller.accionButton(6);
-        controllerPaneles.addPanel(panelCentral, new ViewProveedor(controllerPaneles));
+        controllerPaneles.addPanel(panelCentral, controllerPaneles.getPanelProveedores());
         
     }//GEN-LAST:event_proveedoresActionPerformed
 
