@@ -9,8 +9,6 @@ import Controller.ControllerPaneles;
 import Controller.ControllerValidation;
 import Controller.ControllerViewAdministrarClientes;
 import Model.ModelCliente;
-import Model.ModelEmpresa;
-import Model.ModelUsuario;
 import java.util.ArrayList;
 
 /**
@@ -31,7 +29,7 @@ public ViewAdministrarClientes(ControllerPaneles controllerPaneles) {
         initComponents();
         modelCliente.creaModelTable();
         validation();
-        controller.buscaUsuario(true);
+        controller.buscaCliente(true);
     }
 
 private void validation(){
@@ -384,12 +382,12 @@ private void validation(){
 
     private void eliminaVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminaVendedorActionPerformed
         // TODO add your handling code here:
-        controller.eliminaVendedor();
+        controller.eliminaCliente();
     }//GEN-LAST:event_eliminaVendedorActionPerformed
 
     private void nuevoVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoVendedorActionPerformed
         // TODO add your handling code here:
-        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewVendedor(controllerPaneles,null)); //asi
+        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewCliente(controllerPaneles,null)); //asi
     }//GEN-LAST:event_nuevoVendedorActionPerformed
 
     private void NombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NombreFocusGained
@@ -422,12 +420,12 @@ private void validation(){
 
     private void buttonBuscaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscaClienteActionPerformed
         // TODO add your handling code here:
-        controller.buscaUsuario(false);
+        controller.buscaCliente(false);
     }//GEN-LAST:event_buttonBuscaClienteActionPerformed
 
     private void buttonVerTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVerTodosActionPerformed
         // TODO add your handling code here:
-        controller.buscaUsuario(true);
+        controller.buscaCliente(true);
     }//GEN-LAST:event_buttonVerTodosActionPerformed
 
     private void limipaBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limipaBusquedaActionPerformed
@@ -439,21 +437,21 @@ private void validation(){
     private void modificaVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaVendedorActionPerformed
         // TODO add your handling code here:
         if(controller.tablaSeleccionada()){
-            ModelUsuario user = DataBase.DataBaseUsuario.findUser(controller.vendedorModificar());
-            controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewVendedor(controllerPaneles,user));
+            ModelCliente cliente = DataBase.DataBaseCliente.findCliente(controller.clienteModificar());
+            controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewCliente(controllerPaneles,cliente));
         }
     }//GEN-LAST:event_modificaVendedorActionPerformed
 
     private void rfcKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rfcKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
-            controller.buscaUsuario(false);
+            controller.buscaCliente(false);
     }//GEN-LAST:event_rfcKeyPressed
 
     private void NombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
-            controller.buscaUsuario(false);
+            controller.buscaCliente(false);
     }//GEN-LAST:event_NombreKeyPressed
 
 

@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.ModelCliente;
 import Model.ModelUsuario;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -39,18 +40,18 @@ public class ControllerViewAdministrarClientes {
         controllerTable.getTabla().setModel(controllerTable.getModelTable());
     }
     
-    public void buscaUsuario(boolean flag){
+    public void buscaCliente(boolean flag){
         if(flag || ((!nombre.getText().equals("Nombre") && !nombre.getText().isEmpty())
-            || (!rfc.getText().equals("Username") && !rfc.getText().isEmpty()))){
+            || (!rfc.getText().equals("R.F.C.") && !rfc.getText().isEmpty()))){
             limpiaBusqueda();
             String nom = reviewInfo(nombre,"Nombre",true);
-            String user = reviewInfo(rfc,"Username",true);
-            List list = DataBase.DataBaseUsuario.buscaUsuario(nom, user, flag);
+            String datRFC = reviewInfo(rfc,"R.F.C.",true);
+            List list = DataBase.DataBaseCliente.buscaCliente(nom, datRFC, flag);
             int count = list.size();
             if(!list.isEmpty()){
                 for (int i = 0; i < list.size(); i++) {
-                    ModelUsuario usuario = (ModelUsuario)list.get(i);
-                    String[] datos = {usuario.getNombre(),usuario.getaPaterno(),usuario.getaMaterno(),usuario.getUsername(),usuario.getPassword()};
+                    ModelCliente cliente = (ModelCliente)list.get(i);
+                    String[] datos = {""+cliente.getIdCliente(),cliente.getNombre(), cliente.getaPaterno(),cliente.getRFC(),""+cliente.getTelCel(),cliente.geteMail()};
                     controllerTable.agregarDatos(datos);
                 }
                 if(!flag){
@@ -61,7 +62,7 @@ public class ControllerViewAdministrarClientes {
                         msj = count+" posible resutaldo";
                     if(list.size() > 1)
                         labelCount.setText("Lo sentimos, no hay coincidencias con la busqueda, pero encontramos "+msj);
-                    else if ((((ModelUsuario)list.get(0)).getNombre().equals(nom) || ((ModelUsuario)list.get(0)).getUsername().equals(user)))
+                    else if ((((ModelUsuario)list.get(0)).getNombre().equals(nom) || ((ModelUsuario)list.get(0)).getUsername().equals(datRFC)))
                         labelCount.setText("Busqueda realizada con éxito");
                     else
                         labelCount.setText("Lo sentimos, no hay coincidencias con la busqueda, pero encontramos "+msj);
@@ -72,7 +73,7 @@ public class ControllerViewAdministrarClientes {
             }else
                 labelCount.setText("Lo sentimos, no se encontro ninguna coincidencía");
         }else{
-            ControllerViewMsj.muestraMensajeGlobo("Agrega un nombre o un username para iniciar la busqueda", nombre);
+            ControllerViewMsj.muestraMensajeGlobo("Agrega un nombre o un R.F.C. para iniciar la busqueda", nombre);
         }
     }
     
@@ -82,33 +83,33 @@ public class ControllerViewAdministrarClientes {
             controllerTable.getModelTable().removeRow(i);
     }
     
-    public String vendedorModificar(){
+    public String clienteModificar(){
         int seleccion = controllerTable.getTabla().getSelectedRow();
-        return (String)controllerTable.getModelTable().getValueAt(seleccion, 3);
+        return (String)controllerTable.getModelTable().getValueAt(seleccion, 0);
     }
     
     public boolean tablaSeleccionada(){
         boolean flag = false;
-        if(controllerTable.getModelTable().getRowCount()>0)
+        if(controllerTable.getTabla().getRowCount()>0)
             if(controllerTable.getTabla().getSelectedRow()>-1)
                 flag = true;
             else
-                ControllerViewMsj.aviso(controllerTable.getTabla(),"Lo sentimos, no existe ningún registro","Mensaje para modificar vendedor");
+                ControllerViewMsj.aviso(controllerTable.getTabla(),"Lo sentimos, debes de seleccionar un cliente","Mensaje para modificar cliente");
         else
-            ControllerViewMsj.aviso(controllerTable.getTabla(),"Lo sentimos, no existe ningún registro","Mensaje para modificar vendedor");
+            ControllerViewMsj.aviso(controllerTable.getTabla(),"Lo sentimos, no existe ningún registro","Mensaje para modificar cliente");
         return flag;
     }
     
-    public void eliminaVendedor(){
+    public void eliminaCliente(){
         int eliminar = controllerTable.getTabla().getSelectedRow();
         if(eliminar != -1){
             String[] dat = new String[2];
             dat[0]="Si";
             dat[1]="No";
-            if(ControllerViewMsj.pregunta("Estás seguro de quere eliminar al este vendedor?", dat, controllerTable.getTabla())==0){
-                String username = vendedorModificar();
+            if(ControllerViewMsj.pregunta("Estás seguro de quere eliminar al este cliente?", dat, controllerTable.getTabla())==0){
+                String idCliente = clienteModificar();
                 labelCount.setText("Vendedor eliminado con éxito");
-                DataBase.DataBaseUsuario.eliminarUsuario(username);
+                DataBase.DataBaseCliente.eliminarCliente(idCliente);
                 controllerTable.getModelTable().removeRow(controllerTable.getTabla().getSelectedRow());
             }else
                 labelCount.setText("Eliminación de usuario cancelada");
@@ -132,7 +133,7 @@ public class ControllerViewAdministrarClientes {
     
     public void limpiaCampos(){
         limpiaJtextField(nombre,"Nombre");
-        limpiaJtextField(rfc,"Username");
+        limpiaJtextField(rfc,"R.F.C.");
     }
     
     private void limpiaJtextField(JTextField box, String msj){

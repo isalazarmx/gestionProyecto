@@ -8,7 +8,6 @@ package View;
 import Controller.ControllerPaneles;
 import Controller.ControllerValidation;
 import Controller.ControllerViewAdministrarVendedores;
-import Controller.ControllerViewMsj;
 import Model.ModelUsuario;
 import java.util.ArrayList;
 
