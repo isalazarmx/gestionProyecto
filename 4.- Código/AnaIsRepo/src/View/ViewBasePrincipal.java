@@ -7,7 +7,7 @@
 package View;
 
 import Controller.ControllerClockPanel;
-import Controller.ControllerDatePanel;
+import Controller.ControllerFechas;
 import Controller.ControllerPaneles;
 import Controller.ControllerViewAdministradorBotoneraPrincipal;
 import Model.ModelEmpresa;
@@ -37,7 +37,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         this.modelEmpresa = modelEmpresa;
         this.modelUsuario = modelUsuario;
         initComponents();
-        jLabelFecha.setText(ControllerDatePanel.getFecha());
+        jLabelFecha.setText(ControllerFechas.getFecha());
         initClock();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Image/Logo_Empresa.png"));
         setIconImage(icon);

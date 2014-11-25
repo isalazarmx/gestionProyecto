@@ -22,6 +22,16 @@ public class ModelUsuario {
     private int idEmpresa;
     private DefaultTableModel modeloTable;
 
+    public String[] rotuloPDF(){
+        String rotulo[] = new String[5];
+        rotulo[0]="Código proveedor";
+        rotulo[1]="Nombre";
+        rotulo[2]="Apellido paterno";
+        rotulo[3]="Apellido materno";
+        rotulo[4]="username";
+        return rotulo;
+    }
+    
     public DefaultTableModel creaModelTable(){
         modeloTable = new DefaultTableModel(){
             boolean[] canEdit = new boolean [] {
