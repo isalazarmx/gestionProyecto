@@ -77,7 +77,7 @@ private void validation(){
         jLabel1.setBackground(new java.awt.Color(250, 250, 250));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(53, 107, 161));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/vendedorInfo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/userInfo.png"))); // NOI18N
         jLabel1.setText("Administración de clientes");
 
         javax.swing.GroupLayout panelTituloLayout = new javax.swing.GroupLayout(panelTitulo);
@@ -153,7 +153,7 @@ private void validation(){
 
         buttonBuscaCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         buttonBuscaCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/findUser.png"))); // NOI18N
-        buttonBuscaCliente.setText("Busca Cliente");
+        buttonBuscaCliente.setText("Busca cliente");
         buttonBuscaCliente.setContentAreaFilled(false);
         buttonBuscaCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonBuscaCliente.setPreferredSize(new java.awt.Dimension(119, 26));
@@ -339,7 +339,7 @@ private void validation(){
         labelCount.setBackground(new java.awt.Color(53, 107, 161));
         labelCount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelCount.setForeground(new java.awt.Color(53, 107, 161));
-        labelCount.setText("Ingresa un nombre de usuario y/o username para iniciar la busqueda");
+        labelCount.setText("Ingresa un nombre de usuario y/o RFC para iniciar la busqueda");
 
         javax.swing.GroupLayout panelCantidadResultadosLayout = new javax.swing.GroupLayout(panelCantidadResultados);
         panelCantidadResultados.setLayout(panelCantidadResultadosLayout);

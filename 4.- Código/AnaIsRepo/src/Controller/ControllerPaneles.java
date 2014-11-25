@@ -30,6 +30,7 @@ public class ControllerPaneles {
     private JPanel panelInicio;
     private JPanel panelVendedores;
     private JPanel panelClientes;
+    private JPanel panelProveedores;
     
     public void configPanel(JPanel panel){
         panel.setLayout(new GridBagLayout());
@@ -181,5 +182,19 @@ public class ControllerPaneles {
      */
     public void setModelCliente(ModelCliente modelCliente) {
         this.modelCliente = modelCliente;
+    }
+
+    /**
+     * @return the panelProveedores
+     */
+    public JPanel getPanelProveedores() {
+        return panelProveedores;
+    }
+
+    /**
+     * @param panelProveedores the panelProveedores to set
+     */
+    public void setPanelProveedores(JPanel panelProveedores) {
+        this.panelProveedores = panelProveedores;
     }
 }

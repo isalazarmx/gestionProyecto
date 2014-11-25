@@ -11,7 +11,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import View.ViewLoading;
+import View.ViewLoggin;
 import View.ViewInitSession;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,7 +39,7 @@ public class ControllerCharger extends Thread {
         this.principalFrame = principalFrame;
         this.labelStatus = labelStatus;
         this.panelBase = panelBase;
-        this.viewLoading = new ViewLoading();
+        this.viewLoading = new ViewLoggin();
         this.modelEmpresa = new ModelEmpresa();
         this.modelUsuario = new ModelUsuario();
     }
