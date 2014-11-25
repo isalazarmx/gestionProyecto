@@ -57,4 +57,18 @@ public class ModelCategoria {
     }
     
     
+    public String addInfo(){
+        return "('"
+                +getNombre()+"','"
+                +getDescripcion()+"'"                
+                +",0);";
+    }
+    
+    
+    public String modInfo(){
+        return "set nombre = '"+getNombre()+"',"+ 
+               "descripcion = '"+getDescripcion()+"'";     
+    }
+    
+    
 }
