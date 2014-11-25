@@ -5,6 +5,8 @@
  */
 package Model;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Teté
@@ -26,6 +28,37 @@ public class ModelProveedor {
     private String ciudad;
     private int codigoPostal;
     private String eMail;
+    private DefaultTableModel modeloTable;
+
+    public String[] rotuloPDF(){
+        String rotulo[] = new String[5];
+        rotulo[0]="Código proveedor";
+        rotulo[1]="Nombre";
+        rotulo[2]="Apellido paterno";
+        rotulo[3]="Apellido materno";
+        rotulo[4]="Marca";
+        rotulo[5]="e-Mail";
+        return rotulo;
+    }
+    
+    public DefaultTableModel creaModelTable(){
+        modeloTable = new DefaultTableModel(){
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return canEdit [column];
+            }
+        };
+        modeloTable.addColumn("Código de proveedor");
+        modeloTable.addColumn("Nombre");
+        modeloTable.addColumn("Apellido Paterno");
+        modeloTable.addColumn("Apellido Materno");
+        modeloTable.addColumn("Marca");
+        modeloTable.addColumn("e-Mail");
+        return modeloTable;
+    }
 
     /**
      * @return the idProveedor
@@ -235,6 +268,20 @@ public class ModelProveedor {
      */
     public void seteMail(String eMail) {
         this.eMail = eMail;
+    }
+    
+     /**
+     * @return the modeloTable
+     */
+    public DefaultTableModel getModeloTable() {
+        return modeloTable;
+    }
+
+    /**
+     * @param modeloTable the modeloTable to set
+     */
+    public void setModeloTable(DefaultTableModel modeloTable) {
+        this.modeloTable = modeloTable;
     }
     
 }

@@ -22,6 +22,17 @@ public class ModelVenta {
     private int idProducto;
     private int idUsuario;
     private int idCliente;
+    
+    
+    public String[] rotuloPDF(){
+        String rotulo[] = new String[5];
+        rotulo[0]="Código venta";
+        rotulo[1]="Tipo de venta";
+        rotulo[2]="Fecha de venta";
+        rotulo[3]="Precio total";
+        rotulo[4]="Vendedor";
+        return rotulo;
+    }
 
     /**
      * @return the idVenta

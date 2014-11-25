@@ -112,6 +112,8 @@ public class ReportesPDF {
             }
             switch(numReport){
                 case 1:DataBase.DataBasePDF.pdfVendedores(cell, tabla);break;
+                case 2:DataBase.DataBasePDF.pdfVendedores(cell, tabla);break;
+                case 3:DataBase.DataBasePDF.pdfClientes(cell, tabla);break;
             }
             
         //Agregar la tabla con los datos al parrafo que nos llego como entrada

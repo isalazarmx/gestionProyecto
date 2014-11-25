@@ -55,4 +55,118 @@ public class DataBasePDF {
         }
         return id;
     }
+    
+    
+    
+        public static String pdfProveedores(PdfPCell cell, PdfPTable tabla){
+        String id = "";
+        ControllerConnDBMS controller = new ControllerConnDBMS();
+        Connection conn = controller.connectDB();
+        try {
+            Statement sta = conn.createStatement();
+            String strQuery = "select * from proveedor;";
+            System.out.println(strQuery);
+            ResultSet res = sta.executeQuery(strQuery);
+            while(res.next()){
+                cell = new PdfPCell(new Paragraph(res.getString("idProveedor")));
+                tabla.addCell(cell);
+                cell = new PdfPCell(new Paragraph(res.getString("nombre")));
+                tabla.addCell(cell);
+                cell = new PdfPCell(new Paragraph(res.getString("aPaterno")));
+                tabla.addCell(cell);
+                cell = new PdfPCell(new Paragraph(res.getString("aMaterno")));
+                tabla.addCell(cell);
+                cell = new PdfPCell(new Paragraph(res.getString("marca")));
+                tabla.addCell(cell);
+                cell = new PdfPCell(new Paragraph(res.getString("email")));
+                tabla.addCell(cell);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.DataBaseCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+              try {
+                if (conn != null && !conn.isClosed())
+                    conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return id;
+    }
+        
+        
+        public static String pdfClientes(PdfPCell cell, PdfPTable tabla){
+        String id = "";
+        ControllerConnDBMS controller = new ControllerConnDBMS();
+        Connection conn = controller.connectDB();
+        try {
+            Statement sta = conn.createStatement();
+            String strQuery = "select * from cliente;";
+            System.out.println(strQuery);
+            ResultSet res = sta.executeQuery(strQuery);
+            while(res.next()){
+                cell = new PdfPCell(new Paragraph(res.getString("idCliente")));
+                tabla.addCell(cell);
+                cell = new PdfPCell(new Paragraph(res.getString("nombre")));
+                tabla.addCell(cell);
+                cell = new PdfPCell(new Paragraph(res.getString("aPaterno")));
+                tabla.addCell(cell);
+                cell = new PdfPCell(new Paragraph(res.getString("aMaterno")));
+                tabla.addCell(cell);
+                cell = new PdfPCell(new Paragraph(res.getString("telFijo")));
+                tabla.addCell(cell);
+                cell = new PdfPCell(new Paragraph(res.getString("telCel")));
+                tabla.addCell(cell);
+                cell = new PdfPCell(new Paragraph(res.getString("email")));
+                tabla.addCell(cell);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.DataBaseCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+              try {
+                if (conn != null && !conn.isClosed())
+                    conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return id;
+    }
+  
+   
+        public static String pdfVentas(PdfPCell cell, PdfPTable tabla){
+        String id = "";
+        ControllerConnDBMS controller = new ControllerConnDBMS();
+        Connection conn = controller.connectDB();
+        try {
+            Statement sta = conn.createStatement();
+            String strQuery = "select * from ventas;";
+            System.out.println(strQuery);
+            ResultSet res = sta.executeQuery(strQuery);
+            while(res.next()){
+                cell = new PdfPCell(new Paragraph(res.getString("idVenta")));
+                tabla.addCell(cell);
+                cell = new PdfPCell(new Paragraph(res.getString("tipoVenta")));
+                tabla.addCell(cell);
+                cell = new PdfPCell(new Paragraph(res.getString("fechaVenta")));
+                tabla.addCell(cell);
+                cell = new PdfPCell(new Paragraph(res.getString("precioTotal")));
+                tabla.addCell(cell);
+                cell = new PdfPCell(new Paragraph(res.getString("usuario_idusuario")));
+                tabla.addCell(cell);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.DataBaseCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+              try {
+                if (conn != null && !conn.isClosed())
+                    conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return id;
+    }
+        
+        
 }
