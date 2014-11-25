@@ -71,6 +71,7 @@ public class ViewReportes extends javax.swing.JPanel {
         botonVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/vendedoresEnable.png"))); // NOI18N
         botonVendedor.setBorder(null);
         botonVendedor.setContentAreaFilled(false);
+        botonVendedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonVendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVendedorActionPerformed(evt);
@@ -82,6 +83,7 @@ public class ViewReportes extends javax.swing.JPanel {
         botonCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clientesEnable.png"))); // NOI18N
         botonCliente.setBorder(null);
         botonCliente.setContentAreaFilled(false);
+        botonCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonClienteActionPerformed(evt);
@@ -92,6 +94,7 @@ public class ViewReportes extends javax.swing.JPanel {
         botonAlmacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/inventarioEnable.png"))); // NOI18N
         botonAlmacen.setBorder(null);
         botonAlmacen.setContentAreaFilled(false);
+        botonAlmacen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonAlmacen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAlmacenActionPerformed(evt);
@@ -103,6 +106,7 @@ public class ViewReportes extends javax.swing.JPanel {
         botonProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/proveedoresEnable.png"))); // NOI18N
         botonProveedor.setBorder(null);
         botonProveedor.setContentAreaFilled(false);
+        botonProveedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonProveedorActionPerformed(evt);
@@ -113,6 +117,7 @@ public class ViewReportes extends javax.swing.JPanel {
         botonVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/ventasEnable.png"))); // NOI18N
         botonVenta.setBorder(null);
         botonVenta.setContentAreaFilled(false);
+        botonVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVentaActionPerformed(evt);
@@ -123,6 +128,7 @@ public class ViewReportes extends javax.swing.JPanel {
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pedidosEnable.png"))); // NOI18N
         jButton6.setBorder(null);
         jButton6.setContentAreaFilled(false);
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         labelReportesPdf1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         labelReportesPdf1.setForeground(new java.awt.Color(66, 139, 202));
@@ -133,6 +139,12 @@ public class ViewReportes extends javax.swing.JPanel {
         botonProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/productoEnable.png"))); // NOI18N
         botonProducto.setBorder(null);
         botonProducto.setContentAreaFilled(false);
+        botonProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonProductoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -270,6 +282,10 @@ public class ViewReportes extends javax.swing.JPanel {
         ReportesPDF pdf = new ReportesPDF();
         //pdf.GenerarPDF(controllerPaneles., ERROR);
     }//GEN-LAST:event_botonVentaActionPerformed
+
+    private void botonProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonProductoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
