@@ -29,7 +29,7 @@
     <Container class="javax.swing.JPanel" name="panelCharger">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="a1" green="6b" red="35" type="rgb"/>
+          <Color blue="3f" green="3e" red="44" type="rgb"/>
         </Property>
       </Properties>
 

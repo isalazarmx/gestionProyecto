@@ -164,7 +164,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
             .addComponent(labelTituloSoftware, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        panelDataUser.setBackground(new java.awt.Color(53, 107, 161));
+        panelDataUser.setBackground(new java.awt.Color(68, 62, 63));
 
         jLabelFecha.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabelFecha.setForeground(new java.awt.Color(245, 246, 247));
@@ -186,7 +186,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
 
         user.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         user.setForeground(new java.awt.Color(245, 246, 247));
-        user.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/user.png"))); // NOI18N
+        user.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/userLoggin.png"))); // NOI18N
         user.setText("Mensaje de bienvenida");
         user.setContentAreaFilled(false);
         user.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

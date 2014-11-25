@@ -75,7 +75,7 @@ public class ViewLogginEmpresa extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(245, 246, 247));
 
-        jPanel1.setBackground(new java.awt.Color(53, 107, 161));
+        jPanel1.setBackground(new java.awt.Color(68, 62, 63));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         labelNota.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
@@ -96,7 +96,7 @@ public class ViewLogginEmpresa extends javax.swing.JPanel {
             }
         });
 
-        jPanel4.setBackground(new java.awt.Color(53, 107, 161));
+        jPanel4.setBackground(new java.awt.Color(68, 62, 63));
 
         house.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         house.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/home.png"))); // NOI18N
@@ -176,7 +176,7 @@ public class ViewLogginEmpresa extends javax.swing.JPanel {
                         .addComponent(rfc, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
-        jPanel6.setBackground(new java.awt.Color(53, 107, 161));
+        jPanel6.setBackground(new java.awt.Color(68, 62, 63));
 
         contacs.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         contacs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/contacts.png"))); // NOI18N
@@ -236,7 +236,7 @@ public class ViewLogginEmpresa extends javax.swing.JPanel {
             .addComponent(contacs, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jPanel7.setBackground(new java.awt.Color(53, 107, 161));
+        jPanel7.setBackground(new java.awt.Color(68, 62, 63));
 
         contacs1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         contacs1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/contacts.png"))); // NOI18N
@@ -307,7 +307,7 @@ public class ViewLogginEmpresa extends javax.swing.JPanel {
                 .addComponent(codePost, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel8.setBackground(new java.awt.Color(53, 107, 161));
+        jPanel8.setBackground(new java.awt.Color(68, 62, 63));
 
         contacs4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         contacs4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/contacts.png"))); // NOI18N
@@ -405,7 +405,7 @@ public class ViewLogginEmpresa extends javax.swing.JPanel {
                 .addComponent(col, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel9.setBackground(new java.awt.Color(53, 107, 161));
+        jPanel9.setBackground(new java.awt.Color(68, 62, 63));
 
         web1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         web1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clipboard.png"))); // NOI18N
@@ -451,7 +451,7 @@ public class ViewLogginEmpresa extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel10.setBackground(new java.awt.Color(53, 107, 161));
+        jPanel10.setBackground(new java.awt.Color(68, 62, 63));
 
         mail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mail.png"))); // NOI18N

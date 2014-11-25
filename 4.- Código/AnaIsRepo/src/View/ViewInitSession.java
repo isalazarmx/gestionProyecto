@@ -66,13 +66,13 @@ public class ViewInitSession extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(53, 107, 161));
 
-        jPanel1.setBackground(new java.awt.Color(53, 107, 161));
+        jPanel1.setBackground(new java.awt.Color(68, 62, 63));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logoSoftware.png"))); // NOI18N
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jPanel2.setBackground(new java.awt.Color(53, 107, 161));
+        jPanel2.setBackground(new java.awt.Color(68, 62, 63));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(153, 153, 153))); // NOI18N
 
         jLabel1.setBackground(new java.awt.Color(102, 102, 102));
