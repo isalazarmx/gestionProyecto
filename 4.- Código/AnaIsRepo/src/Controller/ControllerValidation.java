@@ -289,6 +289,21 @@ public class ControllerValidation {
     static void validarFecha(JTextField fecha, Object object) {
          
     }
+    
+    //Area de texo
+    public void placeHolder(boolean flag, JTextArea boxText, String text) {
+        if (flag) {
+            if (boxText.getText().equals(text)) {
+                boxText.setForeground(new Color(0, 0, 0));
+                boxText.setText("");
+            }
+        } else {
+            if (boxText.getText().equals("")) {
+                boxText.setForeground(new Color(180, 180, 180));
+                boxText.setText(text);
+            }
+        }
+    }
 
     public void placeHolder(boolean flag, JTextField boxText, String text) {
         if (flag) {
