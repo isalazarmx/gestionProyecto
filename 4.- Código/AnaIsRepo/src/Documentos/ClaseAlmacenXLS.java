@@ -5,14 +5,12 @@
  */
 package Documentos;
 
+import Controller.ControllerFechas;
 import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
@@ -62,9 +60,6 @@ public class ClaseAlmacenXLS {
             // creo una nueva fila
             Row trow = sheet1.createRow((short) 0);
             createTituloCell(wb, trow, 0, CellStyle.ALIGN_CENTER, CellStyle.VERTICAL_CENTER, "Productos en almacén");
-           
-            
-            Fechas fec = new Fechas();
             
             // Creo la cabecera de mi listado en Excel
             Row fil4 = sheet1.createRow((short) 4);
@@ -74,7 +69,7 @@ public class ClaseAlmacenXLS {
             createCell(wb, fil4, 0, CellStyle.ALIGN_LEFT, CellStyle.ALIGN_LEFT, "Repostería AnaIS", false, false);
             createCell(wb, fil5, 0, CellStyle.ALIGN_LEFT, CellStyle.ALIGN_LEFT, "Reporte de Almacén", false, false);
             createCell(wb, fil6, 0, CellStyle.ALIGN_LEFT, CellStyle.ALIGN_LEFT, "generado el dia:", false, false);
-            createCell(wb, fil7, 0, CellStyle.ALIGN_LEFT, CellStyle.ALIGN_LEFT, fec.getFechaActual(), false, false);
+            createCell(wb, fil7, 0, CellStyle.ALIGN_LEFT, CellStyle.ALIGN_LEFT, ControllerFechas.getFechaActual(), false, false);
 
             // Creo la cabecera de mi listado en Excel
             Row row = sheet1.createRow((short) 2);
@@ -91,40 +86,39 @@ public class ClaseAlmacenXLS {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/reposteria", "root", "");
 
-            // Creamos un Statement para poder hacer peticiones a la bd
-            Statement stat = con.createStatement();
-            ResultSet resultado = stat.executeQuery("select idInsumo, nombre, unidadExistencia, minStock, maxStock, Proveedor_idProveedor, eliminado, "
-                                                   + "precioUnidad from insumo order by nombre");
-            while (resultado.next()) {
-
-                //creamos la fila
-                Row fila = sheet1.createRow(3 + i);
-
-                String idInsumo = String.valueOf(resultado.getInt("idInsumo"));
-                String nombre = String.valueOf(resultado.getString("nombre"));
-                String existencia = String.valueOf(resultado.getInt("unidadExistencia"));
-                String minS = String.valueOf(resultado.getInt("minStock"));
-                String maxS = String.valueOf(resultado.getInt("maxStock"));
-                String idProv = String.valueOf(resultado.getInt("Proveedor_idProveedor"));
-                String eliminado = String.valueOf(resultado.getBoolean("eliminado"));
-                String precioU = String.valueOf(resultado.getFloat("precioUnidad"));
-                // Creo las celdas de mi fila, se puede poner un diseño a la celda
-                System.out.println(i + " /// " + idInsumo + " - " + nombre + " - " + existencia + " - " + minS + " - " + maxS + " - " + idProv + 
-                                     " - " + eliminado + " - " + precioU);
-
-                creandoCelda(wb, fila, 0, idInsumo);
-                creandoCelda(wb, fila, 1, nombre);
-                creandoCelda(wb, fila, 2, existencia);
-                creandoCelda(wb, fila, 3, minS);
-                creandoCelda(wb, fila, 4, maxS);
-                creandoCelda(wb, fila, 5, idProv);
-                creandoCelda(wb, fila, 6, eliminado);
-                creandoCelda(wb, fila, 7, precioU);
-
-                i++;
+            try ( // Creamos un Statement para poder hacer peticiones a la bd
+                    Statement stat = con.createStatement()) {
+                ResultSet resultado = stat.executeQuery("select idInsumo, nombre, unidadExistencia, minStock, maxStock, Proveedor_idProveedor, eliminado, "
+                        + "precioUnidad from insumo order by nombre");
+                while (resultado.next()) {
+                    
+                    //creamos la fila
+                    Row fila = sheet1.createRow(3 + i);
+                    
+                    String idInsumo = String.valueOf(resultado.getInt("idInsumo"));
+                    String nombre = String.valueOf(resultado.getString("nombre"));
+                    String existencia = String.valueOf(resultado.getInt("unidadExistencia"));
+                    String minS = String.valueOf(resultado.getInt("minStock"));
+                    String maxS = String.valueOf(resultado.getInt("maxStock"));
+                    String idProv = String.valueOf(resultado.getInt("Proveedor_idProveedor"));
+                    String eliminado = String.valueOf(resultado.getBoolean("eliminado"));
+                    String precioU = String.valueOf(resultado.getFloat("precioUnidad"));
+                    // Creo las celdas de mi fila, se puede poner un diseño a la celda
+                    System.out.println(i + " /// " + idInsumo + " - " + nombre + " - " + existencia + " - " + minS + " - " + maxS + " - " + idProv +
+                            " - " + eliminado + " - " + precioU);
+                    
+                    creandoCelda(wb, fila, 0, idInsumo);
+                    creandoCelda(wb, fila, 1, nombre);
+                    creandoCelda(wb, fila, 2, existencia);
+                    creandoCelda(wb, fila, 3, minS);
+                    creandoCelda(wb, fila, 4, maxS);
+                    creandoCelda(wb, fila, 5, idProv);
+                    creandoCelda(wb, fila, 6, eliminado);
+                    creandoCelda(wb, fila, 7, precioU);
+                    
+                    i++;
+                }
             }
-
-              stat.close();
               con.close();
 
 
@@ -151,12 +145,11 @@ public class ClaseAlmacenXLS {
             //Area de impresion
             wb.setPrintArea(0, 0, 1, 0, 9);
 
-            String strRuta = "C:\\Users\\Teté\\Documents\\GitHub\\gestionProyecto\\4.- Código\\AnaIsRepo" + fec.getFechaActual() + ".xls";
+            String strRuta = "C:\\Users\\Teté\\Documents\\GitHub\\gestionProyecto\\4.- Código\\AnaIsRepo" + ControllerFechas.getFechaActual() + ".xls";
 
-            FileOutputStream fileOut = new FileOutputStream(strRuta);
-            wb.write(fileOut);
-
-            fileOut.close();
+            try (FileOutputStream fileOut = new FileOutputStream(strRuta)) {
+                wb.write(fileOut);
+            }
             JOptionPane.showMessageDialog(null, "Ha terminado!\nSu archivo es:\n" + strRuta);
 
         } catch (Exception e) {
