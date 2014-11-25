@@ -6,7 +6,6 @@
 package DataBase;
 
 import Controller.ControllerConnDBMS;
-import Controller.ControllerConsults;
 import Model.ModelProducto;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -31,7 +30,7 @@ public class DataBaseProducto
 //            sta.executeUpdate(strQuery);
             flag = true;
         } catch (SQLException ex) {
-            Logger.getLogger(ControllerConsults.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
               try {
                 if (conn != null && !conn.isClosed())
@@ -55,7 +54,7 @@ public class DataBaseProducto
             if(res.next())
                 flag = true;
         } catch (SQLException ex) {
-            Logger.getLogger(ControllerConsults.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
               try {
                 if (conn != null && !conn.isClosed())
@@ -77,7 +76,7 @@ public class DataBaseProducto
             sta.executeUpdate(strQuery);            
             flag = true;
         } catch (SQLException ex) {
-            Logger.getLogger(ControllerConsults.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
               try {
                 if (conn != null && !conn.isClosed())

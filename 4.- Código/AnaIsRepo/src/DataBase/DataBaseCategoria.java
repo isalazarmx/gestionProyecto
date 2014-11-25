@@ -6,7 +6,6 @@
 package DataBase;
 
 import Controller.ControllerConnDBMS;
-import Controller.ControllerConsults;
 import Model.ModelCategoria;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -35,7 +34,7 @@ public class DataBaseCategoria
             sta.executeUpdate(strQuery);
             flag = true;
         } catch (SQLException ex) {
-            Logger.getLogger(ControllerConsults.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
               try {
                 if (conn != null && !conn.isClosed())
@@ -59,7 +58,7 @@ public class DataBaseCategoria
             if(res.next())
                 flag = true;
         } catch (SQLException ex) {
-            Logger.getLogger(ControllerConsults.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
               try {
                 if (conn != null && !conn.isClosed())
@@ -91,7 +90,7 @@ public class DataBaseCategoria
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(ControllerConsults.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
               try {
                 if (conn != null && !conn.isClosed())
@@ -115,7 +114,7 @@ public class DataBaseCategoria
             sta.executeUpdate(strQuery);            
             flag = true;
         } catch (SQLException ex) {
-            Logger.getLogger(ControllerConsults.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
               try {
                 if (conn != null && !conn.isClosed())
@@ -141,7 +140,7 @@ public class DataBaseCategoria
                 idCategoria=Integer.parseInt(res.getString("idCategoria"));                
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ControllerConsults.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
               try {
                 if (conn != null && !conn.isClosed())
@@ -169,7 +168,7 @@ public class DataBaseCategoria
                 categoria.setDescripcion(res.getString("descripcion"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ControllerConsults.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
               try {
                 if (conn != null && !conn.isClosed())
@@ -192,7 +191,7 @@ public class DataBaseCategoria
             sta.executeUpdate(strQuery);
             flag = true;
         } catch (SQLException ex) {
-            Logger.getLogger(ControllerConsults.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
               try {
                 if (conn != null && !conn.isClosed())

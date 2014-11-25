@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -131,7 +130,7 @@ public class ControllerViewCategoria
      
             bandera=false;
             ModelCategoria categoria = new ModelCategoria();
-            ControllerConsults.getCategoria(categoria, combo.getSelectedItem().toString());            
+            DataBase.DataBaseCategoria.getCategoria(categoria, combo.getSelectedItem().toString());            
             nombre.setForeground(new Color(0, 0, 0));
             nombre.setText(categoria.getNombre());
             eliminar.setEnabled(false);
@@ -154,8 +153,8 @@ public class ControllerViewCategoria
         if (!nombre.getText().equals("Nombre de la categoria(*)") && !nombre.getText().isEmpty()) {
             emp.setNombre(nombre.getText().toUpperCase());
             emp.setDescripcion(reviewInfo(descripcion, "Descripcion de la categoria", true));
-            if (!ControllerConsults.checkExistCategoria(nombre.getText().toUpperCase())) {
-                if (ControllerConsults.modifCategoria(emp,nombreCat)) {
+            if (!DataBase.DataBaseCategoria.checkExistCategoria(nombre.getText().toUpperCase())) {
+                if (DataBase.DataBaseCategoria.modifCategoria(emp,nombreCat)) {
                     bandera=true;
                     eli.setEnabled(true);
                     cance.setVisible(false);
