@@ -53,14 +53,14 @@ public class ViewInit extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 158, 73));
         setUndecorated(true);
 
-        principal.setBackground(new java.awt.Color(53, 107, 161));
+        principal.setBackground(new java.awt.Color(68, 62, 63));
 
         labelStatus.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         labelStatus.setForeground(new java.awt.Color(245, 246, 247));
         labelStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelStatus.setText("Bienvenido");
 
-        panelUser.setBackground(new java.awt.Color(53, 107, 161));
+        panelUser.setBackground(new java.awt.Color(68, 62, 63));
 
         javax.swing.GroupLayout panelUserLayout = new javax.swing.GroupLayout(panelUser);
         panelUser.setLayout(panelUserLayout);

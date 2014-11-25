@@ -24,7 +24,7 @@ public class ModelUsuario {
 
     public String[] rotuloPDF(){
         String rotulo[] = new String[5];
-        rotulo[0]="Código proveedor";
+        rotulo[0]="Código vendedor";
         rotulo[1]="Nombre";
         rotulo[2]="Apellido paterno";
         rotulo[3]="Apellido materno";
@@ -42,11 +42,11 @@ public class ModelUsuario {
                 return canEdit [column];
             }
         };
+        modeloTable.addColumn("Código vendedor");
         modeloTable.addColumn("Nombre");
         modeloTable.addColumn("Apellido Paterno");
         modeloTable.addColumn("Apellido Materno");
-        modeloTable.addColumn("Username");
-        modeloTable.addColumn("Contraseña");
+        modeloTable.addColumn("username");
         return modeloTable;
     }
     

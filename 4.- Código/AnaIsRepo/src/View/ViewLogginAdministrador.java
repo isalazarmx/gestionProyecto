@@ -62,7 +62,7 @@ public class ViewLogginAdministrador extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(245, 246, 247));
 
-        jPanelUser.setBackground(new java.awt.Color(53, 107, 161));
+        jPanelUser.setBackground(new java.awt.Color(68, 62, 63));
         jPanelUser.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         contact.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/contacts.png"))); // NOI18N
@@ -136,7 +136,7 @@ public class ViewLogginAdministrador extends javax.swing.JPanel {
             }
         });
 
-        user.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/user.png"))); // NOI18N
+        user.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/userLoggin.png"))); // NOI18N
 
         username.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         username.setForeground(new java.awt.Color(180, 180, 180));

@@ -269,6 +269,7 @@ public class ViewBotoneraPrincipal extends javax.swing.JPanel {
     private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
         // TODO add your handling code here:
         controller.accionButton(9);
+        controllerPaneles.addPanel(panelCentral, new ViewReportes(controllerPaneles));
     }//GEN-LAST:event_reportesActionPerformed
 
     private void clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientesActionPerformed

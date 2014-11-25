@@ -31,7 +31,7 @@ public class ViewLoggin extends javax.swing.JPanel {
         panelCharger = new javax.swing.JPanel();
         logoCarga = new javax.swing.JLabel();
 
-        panelCharger.setBackground(new java.awt.Color(53, 107, 161));
+        panelCharger.setBackground(new java.awt.Color(68, 62, 63));
 
         logoCarga.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logoCarga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logoCharger.gif"))); // NOI18N

@@ -33,7 +33,7 @@ public class ClaseAlmacenXLS {
         public static void main(String[] args) {
 //        ClaseAlmacenXLS objPruebaBlog = new ClaseAlmacenXLS();
 //        objPruebaBlog.crearExcel();
-            new ClaseAlmacenXLS().crearExcel();
+            //new ClaseAlmacenXLS().crearExcel();
     }
     int i;
     String nombre_archivo;

@@ -29,6 +29,18 @@ public class ModelCliente {
     private String eMail;
     //------------------------------
     private DefaultTableModel modeloTable;
+    
+    public String[] rotuloPDF(){
+        String rotulo[] = new String[7];
+        rotulo[0]="Código cliente";
+        rotulo[1]="Nombre";
+        rotulo[2]="Apellido paterno";
+        rotulo[3]="Apellido materno";
+        rotulo[4]="Teléfono fijo";
+        rotulo[5]="Teléfono celular";
+        rotulo[6]="e-Mail";
+        return rotulo;
+    }
 
     public String addCliente(){
         return "(nombre,aPaterno,aMaterno,rfc,telfijo,telcel,calle,numInt,numExt,colonia,ciudad,estado,codigopostal,email,eliminado) values ('"
