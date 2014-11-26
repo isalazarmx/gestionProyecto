@@ -36,7 +36,7 @@ public class ReportesPDF {
     
 
     //Metodo principal del ejemplo
-    public void GenerarPDF(String[] rotulosColumnas,int numReport, float[] anchosFilas) {
+    public void GenerarPDF(String[] rotulosColumnas,int numReport) {
         this.rotulosColumnas = rotulosColumnas;
         this.numReport = numReport;
         
@@ -71,7 +71,7 @@ public class ReportesPDF {
         }
         //Agregar  lineas en blanco
         agregarLineasEnBlanco(ParrafoHoja, 1);
-        agregarTabla(ParrafoHoja);
+        agregarTabla(ParrafoHoja,anchosFilas);
         try {
             document.add(ParrafoHoja);
         } catch (DocumentException ex) {
@@ -82,7 +82,7 @@ public class ReportesPDF {
 
     //Se conecta la DB , obtiene los datos de la tabla (SELECT) y los acomoda en una tabla JTable de iText.
     // Espera como entrada el parrafo donde agregara la tabla
-    private void agregarTabla(Paragraph parrafo){
+    public void agregarTabla(Paragraph parrafo, float[] anchosFilas){
         this.anchosFilas = anchosFilas;
         //Anchos de las columnas
         //float anchosFilas[] = {1.5f, 1f, 1.5f, 1.5f, 1.5f, 2f};
@@ -103,7 +103,7 @@ public class ReportesPDF {
         //Centrar contenido de celda
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         //Color de fondo de la celda
-//        cell.setBackgroundColor (azulClaro);        
+        //cell.setBackgroundColor (azulClaro);        
         tabla.addCell(cell0);
         tabla.addCell(cell);
             // Mostrar los rotulos de las columnas
@@ -153,6 +153,13 @@ public class ReportesPDF {
         }
         return System.getProperty("user.dir")+ System.getProperty("file.separator") 
                            + "reports"+System.getProperty("file.separator")+nomReporte+ControllerFechas.getFechaActual()+".pdf";
+    }
+    
+    private static float verificaAncho(float[] anchosFilas){
+    
+        
+        
+    return    
     }
 
 }
