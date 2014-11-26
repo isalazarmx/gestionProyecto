@@ -16,6 +16,7 @@ import java.awt.HeadlessException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,8 +37,9 @@ public class ReportesPDF {
     
 
     //Metodo principal del ejemplo
-    public void GenerarPDF(String[] rotulosColumnas,int numReport) {
-        this.rotulosColumnas = rotulosColumnas;
+    public void GenerarPDF(ArrayList components, int numReport) {
+        this.rotulosColumnas = (String[])components.get(0);
+        this.anchosFilas = (float[])components.get(1);
         this.numReport = numReport;
         
         String ruta = verificaReporte(numReport);
@@ -71,7 +73,7 @@ public class ReportesPDF {
         }
         //Agregar  lineas en blanco
         agregarLineasEnBlanco(ParrafoHoja, 1);
-        agregarTabla(ParrafoHoja,anchosFilas);
+        agregarTabla(ParrafoHoja);
         try {
             document.add(ParrafoHoja);
         } catch (DocumentException ex) {
@@ -82,8 +84,7 @@ public class ReportesPDF {
 
     //Se conecta la DB , obtiene los datos de la tabla (SELECT) y los acomoda en una tabla JTable de iText.
     // Espera como entrada el parrafo donde agregara la tabla
-    public void agregarTabla(Paragraph parrafo, float[] anchosFilas){
-        this.anchosFilas = anchosFilas;
+    public void agregarTabla(Paragraph parrafo){
         //Anchos de las columnas
         //float anchosFilas[] = {1.5f, 1f, 1.5f, 1.5f, 1.5f, 2f};
         PdfPTable tabla = new PdfPTable(anchosFilas);
@@ -154,12 +155,4 @@ public class ReportesPDF {
         return System.getProperty("user.dir")+ System.getProperty("file.separator") 
                            + "reports"+System.getProperty("file.separator")+nomReporte+ControllerFechas.getFechaActual()+".pdf";
     }
-    
-    private static float verificaAncho(float[] anchosFilas){
-    
-        
-        
-    return    
-    }
-
 }

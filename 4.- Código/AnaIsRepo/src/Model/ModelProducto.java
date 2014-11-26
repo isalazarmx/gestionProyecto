@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Teté
@@ -20,8 +22,14 @@ public class ModelProducto {
     private int idCategoria;
     private int idEmpresa;
     
+    public ArrayList componentesPDF(){
+        ArrayList comp = new ArrayList();
+        comp.add(rotuloPDF());
+        comp.add(anchoFilas());
+        return comp;
+    }
     
-        public String[] rotuloPDF(){
+        private String[] rotuloPDF(){
         String rotulo[] = new String[5];
         rotulo[0]="Código producto";
         rotulo[1]="Nombre";
@@ -31,7 +39,7 @@ public class ModelProducto {
         return rotulo;
     }
         
-        public float[] anchoFilas(){
+        private float[] anchoFilas(){
         float ancho[] = new float[5];
         ancho[0] = 1f;
         ancho[1] = 1f;

@@ -5,6 +5,7 @@
  */
 package Model;
 
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -30,7 +31,14 @@ public class ModelCliente {
     //------------------------------
     private DefaultTableModel modeloTable;
     
-    public String[] rotuloPDF(){
+    public ArrayList componentesPDF(){
+        ArrayList comp = new ArrayList();
+        comp.add(rotuloPDF());
+        comp.add(anchoFilas());
+        return comp;
+    }
+    
+    private String[] rotuloPDF(){
         String rotulo[] = new String[7];
         rotulo[0]="Código cliente";
         rotulo[1]="Nombre";
@@ -42,7 +50,7 @@ public class ModelCliente {
         return rotulo;
     }
     
-    public float[] anchoFilas(){
+    private float[] anchoFilas(){
         float ancho[] = new float[7];
         ancho[0] = 1f;
         ancho[1] = 1f;
