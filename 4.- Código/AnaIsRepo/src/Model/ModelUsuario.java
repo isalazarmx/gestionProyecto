@@ -32,6 +32,16 @@ public class ModelUsuario {
         return rotulo;
     }
     
+        public float[] anchoFilas(){
+        float ancho[] = new float[5];
+        ancho[0] = 1f;
+        ancho[1] = 1f;
+        ancho[2] = 1f;
+        ancho[3] = 1f;
+        ancho[4] = 1f;
+        return ancho; 
+    }
+    
     public DefaultTableModel creaModelTable(){
         modeloTable = new DefaultTableModel(){
             boolean[] canEdit = new boolean [] {

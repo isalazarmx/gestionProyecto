@@ -32,11 +32,14 @@ public class ReportesPDF {
     String strRotuloPDF;
     private String[] rotulosColumnas;
     private int numReport;
+    private float[] anchosFilas;
+    
 
     //Metodo principal del ejemplo
-    public void GenerarPDF(String[] rotulosColumnas,int numReport) {
+    public void GenerarPDF(String[] rotulosColumnas,int numReport, float[] anchosFilas) {
         this.rotulosColumnas = rotulosColumnas;
         this.numReport = numReport;
+        
         String ruta = verificaReporte(numReport);
         try { //Hoja tamaño carta, rotarla (cambiar a horizontal)
             System.out.println(ruta);
@@ -80,8 +83,9 @@ public class ReportesPDF {
     //Se conecta la DB , obtiene los datos de la tabla (SELECT) y los acomoda en una tabla JTable de iText.
     // Espera como entrada el parrafo donde agregara la tabla
     private void agregarTabla(Paragraph parrafo){
+        this.anchosFilas = anchosFilas;
         //Anchos de las columnas
-        float anchosFilas[] = {1f, 1f, 1f, 1f, 1f};
+        //float anchosFilas[] = {1.5f, 1f, 1.5f, 1.5f, 1.5f, 2f};
         PdfPTable tabla = new PdfPTable(anchosFilas);
         // Porcentaje que ocupa a lo ancho de la pagina del PDF
         tabla.setWidthPercentage(90);
@@ -115,6 +119,7 @@ public class ReportesPDF {
                 case 2:DataBase.DataBasePDF.pdfProveedores(cell, tabla);break;
                 case 3:DataBase.DataBasePDF.pdfClientes(cell, tabla);break;
                 case 4:DataBase.DataBasePDF.pdfVentas(cell, tabla);break;
+                case 5:DataBase.DataBasePDF.pdfProductos(cell, tabla);break;
             }
             
         //Agregar la tabla con los datos al parrafo que nos llego como entrada
@@ -144,8 +149,10 @@ public class ReportesPDF {
             case 2:nomReporte = "Proveedor";break;
             case 3:nomReporte = "Clientes";break;
             case 4:nomReporte = "Ventas";break;
+            case 5:nomReporte = "Productos";break;
         }
         return System.getProperty("user.dir")+ System.getProperty("file.separator") 
                            + "reports"+System.getProperty("file.separator")+nomReporte+ControllerFechas.getFechaActual()+".pdf";
     }
+
 }

@@ -46,7 +46,7 @@ public class ViewReportes extends javax.swing.JPanel {
         botonAlmacen = new javax.swing.JButton();
         botonProveedor = new javax.swing.JButton();
         botonVenta = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        botonPedido = new javax.swing.JButton();
         labelReportesPdf1 = new javax.swing.JLabel();
         botonProducto = new javax.swing.JButton();
         panelStatus = new javax.swing.JPanel();
@@ -124,11 +124,16 @@ public class ViewReportes extends javax.swing.JPanel {
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(255, 255, 255));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pedidosEnable.png"))); // NOI18N
-        jButton6.setBorder(null);
-        jButton6.setContentAreaFilled(false);
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonPedido.setBackground(new java.awt.Color(255, 255, 255));
+        botonPedido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pedidosEnable.png"))); // NOI18N
+        botonPedido.setBorder(null);
+        botonPedido.setContentAreaFilled(false);
+        botonPedido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonPedidoActionPerformed(evt);
+            }
+        });
 
         labelReportesPdf1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         labelReportesPdf1.setForeground(new java.awt.Color(66, 139, 202));
@@ -154,7 +159,7 @@ public class ViewReportes extends javax.swing.JPanel {
                 .addGap(390, 390, 390)
                 .addComponent(botonVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(95, 95, 95))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -201,7 +206,7 @@ public class ViewReportes extends javax.swing.JPanel {
                         .addComponent(botonVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botonPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(50, 50, 50)
                 .addComponent(labelReportesPdf1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -268,7 +273,7 @@ public class ViewReportes extends javax.swing.JPanel {
     private void botonProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProveedorActionPerformed
         // TODO add your handling code here:
         ReportesPDF pdf = new ReportesPDF();
-        //pdf.GenerarPDF(controllerPaneles);
+        pdf.GenerarPDF(controllerPaneles.getModelProveedor().rotuloPDF(),1);
     }//GEN-LAST:event_botonProveedorActionPerformed
 
     private void botonClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonClienteActionPerformed
@@ -280,22 +285,28 @@ public class ViewReportes extends javax.swing.JPanel {
     private void botonVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVentaActionPerformed
         // TODO add your handling code here:
         ReportesPDF pdf = new ReportesPDF();
-        //pdf.GenerarPDF(controllerPaneles., ERROR);
+        pdf.GenerarPDF(controllerPaneles.getModelVenta().rotuloPDF(),1);
     }//GEN-LAST:event_botonVentaActionPerformed
 
     private void botonProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProductoActionPerformed
         // TODO add your handling code here:
+        ReportesPDF pdf = new ReportesPDF();
+        pdf.GenerarPDF(controllerPaneles.getModelProducto().rotuloPDF(),1);
     }//GEN-LAST:event_botonProductoActionPerformed
+
+    private void botonPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPedidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonPedidoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAlmacen;
     private javax.swing.JButton botonCliente;
+    private javax.swing.JButton botonPedido;
     private javax.swing.JButton botonProducto;
     private javax.swing.JButton botonProveedor;
     private javax.swing.JButton botonVendedor;
     private javax.swing.JButton botonVenta;
-    private javax.swing.JButton jButton6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelReportes;
     private javax.swing.JLabel labelReportesPdf;

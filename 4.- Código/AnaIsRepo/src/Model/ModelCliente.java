@@ -41,6 +41,18 @@ public class ModelCliente {
         rotulo[6]="e-Mail";
         return rotulo;
     }
+    
+    public float[] anchoFilas(){
+        float ancho[] = new float[7];
+        ancho[0] = 1f;
+        ancho[1] = 1f;
+        ancho[2] = 1f;
+        ancho[3] = 1f;
+        ancho[4] = 1f;
+        ancho[5] = 1f;
+        ancho[6] = 1f;
+        return ancho; 
+    }
 
     public String addCliente(){
         return "(nombre,aPaterno,aMaterno,rfc,telfijo,telcel,calle,numInt,numExt,colonia,ciudad,estado,codigopostal,email,eliminado) values ('"

@@ -19,6 +19,27 @@ public class ModelProducto {
     private double precioUnitario;
     private int idCategoria;
     private int idEmpresa;
+    
+    
+        public String[] rotuloPDF(){
+        String rotulo[] = new String[5];
+        rotulo[0]="Código producto";
+        rotulo[1]="Nombre";
+        rotulo[2]="Kilos";
+        rotulo[3]="Precio unitario";
+        rotulo[4]="Categoria";
+        return rotulo;
+    }
+        
+        public float[] anchoFilas(){
+        float ancho[] = new float[5];
+        ancho[0] = 1f;
+        ancho[1] = 1f;
+        ancho[2] = 1f;
+        ancho[3] = 1f;
+        ancho[4] = 1f;
+        return ancho; 
+    }
 
     /**
      * @return the idProducto

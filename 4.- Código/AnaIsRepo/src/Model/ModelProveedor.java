@@ -31,7 +31,7 @@ public class ModelProveedor {
     private DefaultTableModel modeloTable;
 
     public String[] rotuloPDF(){
-        String rotulo[] = new String[5];
+        String rotulo[] = new String[6];
         rotulo[0]="Código proveedor";
         rotulo[1]="Nombre";
         rotulo[2]="Apellido paterno";
@@ -39,6 +39,17 @@ public class ModelProveedor {
         rotulo[4]="Marca";
         rotulo[5]="e-Mail";
         return rotulo;
+    }
+    
+        public float[] anchoFilas(){
+        float ancho[] = new float[6];
+        ancho[0] = 1f;
+        ancho[1] = 1f;
+        ancho[2] = 1f;
+        ancho[3] = 1f;
+        ancho[4] = 1f;
+        ancho[5] = 1f;
+        return ancho; 
     }
     
     public DefaultTableModel creaModelTable(){
