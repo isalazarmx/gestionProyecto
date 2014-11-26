@@ -76,13 +76,7 @@ public class ControllerViewProveedores {
         ControllerValidation.limitarCaracteres(pNoExt,6 );
         ControllerValidation.soloNumeros(pNoExt);
         ControllerValidation.limitarCaracteres(pNoInt, 6);     
-        ControllerValidation.soloNumeros(pNoInt);
-        
-        
-        
-        
-        
-        
+        ControllerValidation.soloNumeros(pNoInt);  
     }
     
 //    public void next(JLabel labelStatus,Thread hilo,ModelEmpresa emp){

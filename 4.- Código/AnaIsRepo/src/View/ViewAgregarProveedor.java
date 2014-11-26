@@ -812,7 +812,7 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
     }//GEN-LAST:event_pColoniaActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewProveedor(controllerPaneles)); //asi
+       controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewProveedoreli(controllerPaneles)); //asi
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void pMarcaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pMarcaFocusGained

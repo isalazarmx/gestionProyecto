@@ -7,8 +7,9 @@ package View;
 
 import Controller.ControllerPaneles;
 import Controller.ControllerValidation;
-import Controller.ControllerViewAdministrarClientes;
+import Controller.ControllerViewAdministrarProveedores;
 import Model.ModelCliente;
+import Model.ModelProveedor;
 import java.util.ArrayList;
 
 /**
@@ -16,20 +17,20 @@ import java.util.ArrayList;
  * @author Carolina
  */
 public class ViewAdministrarProveedores extends javax.swing.JPanel {
-    ControllerViewAdministrarClientes controller;
+    ControllerViewAdministrarProveedores controller;
     ControllerValidation validation;
     ControllerPaneles controllerPaneles;
-    ModelCliente modelCliente;
+    ModelProveedor modelProveedor;
    
 public ViewAdministrarProveedores(ControllerPaneles controllerPaneles) {
         this.validation = new ControllerValidation();
         this.controllerPaneles = controllerPaneles;//asi
-        controllerPaneles.setModelCliente(new ModelCliente());
-        this.modelCliente = controllerPaneles.getModelCliente();
+        controllerPaneles.setModelProveedor(new ModelProveedor());
+        this.modelProveedor = controllerPaneles.getModelProveedor();
         initComponents();
-        modelCliente.creaModelTable();
+        modelProveedor.creaModelTable();
         validation();
-        controller.buscaCliente(true);
+        controller.buscaProveedor(true);
     }
 
 private void validation(){
@@ -38,8 +39,8 @@ private void validation(){
         components.add(rfc);
         components.add(labelCount);
         components.add(tableClientes);
-        components.add(modelCliente.getModeloTable());
-        controller = new ControllerViewAdministrarClientes(components);
+        components.add(modelProveedor.getModeloTable());
+        controller = new ControllerViewAdministrarProveedores(components);
         controller.validations();
     }    
 
@@ -214,7 +215,7 @@ private void validation(){
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         nuevoVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/new.png"))); // NOI18N
-        nuevoVendedor.setToolTipText("Nuevo cliente");
+        nuevoVendedor.setToolTipText("Nuevo proveedor");
         nuevoVendedor.setContentAreaFilled(false);
         nuevoVendedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nuevoVendedor.addActionListener(new java.awt.event.ActionListener() {
@@ -224,7 +225,7 @@ private void validation(){
         });
 
         eliminaVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/eliminar.png"))); // NOI18N
-        eliminaVendedor.setToolTipText("Elimina cliente");
+        eliminaVendedor.setToolTipText("Elimina proveedor");
         eliminaVendedor.setContentAreaFilled(false);
         eliminaVendedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         eliminaVendedor.addActionListener(new java.awt.event.ActionListener() {
@@ -234,7 +235,7 @@ private void validation(){
         });
 
         modificaVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/edit.png"))); // NOI18N
-        modificaVendedor.setToolTipText("Mdifica cliente");
+        modificaVendedor.setToolTipText("Mdifica proveedor ");
         modificaVendedor.setContentAreaFilled(false);
         modificaVendedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         modificaVendedor.addActionListener(new java.awt.event.ActionListener() {
@@ -382,12 +383,12 @@ private void validation(){
 
     private void eliminaVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminaVendedorActionPerformed
         // TODO add your handling code here:
-        controller.eliminaCliente();
+        controller.eliminaProveedor();
     }//GEN-LAST:event_eliminaVendedorActionPerformed
 
     private void nuevoVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoVendedorActionPerformed
         // TODO add your handling code here:
-        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewCliente(controllerPaneles,null)); //asi
+        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewProveedor(controllerPaneles,null)); //asi
     }//GEN-LAST:event_nuevoVendedorActionPerformed
 
     private void NombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NombreFocusGained
@@ -420,12 +421,12 @@ private void validation(){
 
     private void buttonBuscaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscaClienteActionPerformed
         // TODO add your handling code here:
-        controller.buscaCliente(false);
+        controller.buscaProveedor(false);
     }//GEN-LAST:event_buttonBuscaClienteActionPerformed
 
     private void buttonVerTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVerTodosActionPerformed
         // TODO add your handling code here:
-        controller.buscaCliente(true);
+        controller.buscaProveedor(true);
     }//GEN-LAST:event_buttonVerTodosActionPerformed
 
     private void limipaBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limipaBusquedaActionPerformed
@@ -437,7 +438,7 @@ private void validation(){
     private void modificaVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaVendedorActionPerformed
         // TODO add your handling code here:
         if(controller.tablaSeleccionada()){
-            ModelCliente cliente = DataBase.DataBaseCliente.findCliente(controller.clienteModificar());
+            ModelCliente cliente = DataBase.DataBaseCliente.findCliente(controller.modificaProveedor());
             controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewCliente(controllerPaneles,cliente));
         }
     }//GEN-LAST:event_modificaVendedorActionPerformed
@@ -445,13 +446,13 @@ private void validation(){
     private void rfcKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rfcKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
-            controller.buscaCliente(false);
+            controller.buscaProveedor(false);
     }//GEN-LAST:event_rfcKeyPressed
 
     private void NombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
-            controller.buscaCliente(false);
+            controller.buscaProveedor(false);
     }//GEN-LAST:event_NombreKeyPressed
 
 

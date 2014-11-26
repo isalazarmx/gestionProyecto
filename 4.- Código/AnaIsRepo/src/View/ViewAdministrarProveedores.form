@@ -326,7 +326,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Image/new.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Nuevo cliente"/>
+                <Property name="toolTipText" type="java.lang.String" value="Nuevo proveedor"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
@@ -341,7 +341,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Image/eliminar.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Elimina cliente"/>
+                <Property name="toolTipText" type="java.lang.String" value="Elimina proveedor"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
@@ -356,7 +356,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Image/edit.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Mdifica cliente"/>
+                <Property name="toolTipText" type="java.lang.String" value="Mdifica proveedor "/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
