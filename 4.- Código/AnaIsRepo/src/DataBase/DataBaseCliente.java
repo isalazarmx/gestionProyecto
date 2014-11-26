@@ -147,8 +147,8 @@ public class DataBaseCliente {
             modelCliente.setaPaterno(res.getString("aPaterno"));
             modelCliente.setaMaterno(res.getString("aMaterno"));
             modelCliente.setRFC(res.getString("RFC"));
-            modelCliente.setTelFijo(Integer.parseInt(res.getString("telFijo")));
-            modelCliente.setTelCel(Integer.parseInt(res.getString("telCel")));
+            modelCliente.setTelFijo(res.getString("telFijo"));
+            modelCliente.setTelCel(res.getString("telCel"));
             modelCliente.setCalle(res.getString("calle"));
             modelCliente.setNumInt(Integer.parseInt(res.getString("numInt")));
             modelCliente.setNumExt(Integer.parseInt(res.getString("numExt")));

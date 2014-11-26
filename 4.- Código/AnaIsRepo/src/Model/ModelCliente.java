@@ -18,8 +18,8 @@ public class ModelCliente {
     private String aPaterno;
     private String aMaterno;
     private String RFC;
-    private int telFijo;
-    private int telCel;
+    private String telFijo;
+    private String telCel;
     private String calle;
     private int numInt;
     private int numExt;
@@ -67,9 +67,9 @@ public class ModelCliente {
                 +getNombre()+"','"
                 +getaPaterno()+"','"
                 +getaMaterno()+"','"
-                +getRFC()+"',"
-                +getTelFijo()+","
-                +getTelCel()+",'"
+                +getRFC()+"','"
+                +getTelFijo()+"','"
+                +getTelCel()+"','"
                 +getCalle()+"',"
                 +getNumInt()+","
                 +getNumExt()+",'"
@@ -86,8 +86,8 @@ public class ModelCliente {
                "aPaterno = '"+getaPaterno()+"',"+
                "aMaterno = '"+getaMaterno()+"',"+
                "RFC = '"+getRFC()+"',"+
-               "telfijo = "+getTelFijo()+","+
-               "telcel = "+getTelCel()+","+
+               "telfijo = '"+getTelFijo()+"',"+
+               "telcel = '"+getTelCel()+"',"+
                "calle = '"+getCalle()+"',"+
                "numInt = "+getNumInt()+","+
                "numExt = "+getNumExt()+","+
@@ -190,28 +190,28 @@ public class ModelCliente {
     /**
      * @return the telFijo
      */
-    public int getTelFijo() {
+    public String getTelFijo() {
         return telFijo;
     }
 
     /**
      * @param telFijo the telFijo to set
      */
-    public void setTelFijo(int telFijo) {
+    public void setTelFijo(String telFijo) {
         this.telFijo = telFijo;
     }
 
     /**
      * @return the telCel
      */
-    public int getTelCel() {
+    public String getTelCel() {
         return telCel;
     }
 
     /**
      * @param telCel the telCel to set
      */
-    public void setTelCel(int telCel) {
+    public void setTelCel(String telCel) {
         this.telCel = telCel;
     }
 

@@ -110,7 +110,7 @@ public class ControllerViewClientes {
                     }else
                         ControllerViewMsj.muestraMensajeGlobo("Agrega un teléfono móvil", acTelCelular);
                 }else
-                    ControllerViewMsj.muestraMensajeGlobo("Agrega un email", acTelCelular);
+                    ControllerViewMsj.muestraMensajeGlobo("Agrega un email", acEmail);
             }else
                 ControllerViewMsj.muestraMensajeGlobo("Agrega un apellido paterno",acApellidoPaterno);
         }else
@@ -131,10 +131,10 @@ public class ControllerViewClientes {
         }if(!model.getRFC().equals("")){
             acRFC.setText(model.getRFC());
             acRFC.setForeground(Color.black);
-        }if(model.getTelFijo()!=0){
+        }if(!model.getTelFijo().equals("")){
             acTelefono.setForeground(Color.black);
             acTelefono.setText(""+model.getTelFijo());
-        }if(model.getTelCel()!=0){
+        }if(!model.getTelCel().equals("")){
             acTelCelular.setForeground(Color.black);
             acTelCelular.setText(""+model.getTelCel());
         }if(!model.geteMail().equals("")){
@@ -170,12 +170,13 @@ public class ControllerViewClientes {
     }
     
     public ModelCliente creaModelo(ModelCliente model){
+        int a = Integer.parseInt("724185676");
             model.setNombre(reviewInfo(Nombre,"Nombre (*)", true));
             model.setaPaterno(reviewInfo(acApellidoPaterno,"Apellido Paterno (*)", true));
             model.setaMaterno(reviewInfo(acApellidoMaterno,"Apellido Materno", true));
             model.setRFC(reviewInfo(acRFC,"R.F.C.", true));
-            model.setTelFijo(Integer.parseInt(reviewInfo(acTelefono,"xx-xxx-xxxxxxx", false)));
-            model.setTelCel(Integer.parseInt(reviewInfo(acTelCelular,"xx-xxx-xxxxxxx (*)", false)));
+            model.setTelFijo(reviewInfo(acTelefono,"xx-xxx-xxxxxxx", true));
+            model.setTelCel(reviewInfo(acTelCelular,"xx-xxx-xxxxxxx (*)", true));
             model.seteMail(reviewInfo(acEmail,"cliente@anais.com (*)", true));
             model.setCalle(reviewInfo(acCalle,"Calle", true));
             model.setCiudad(reviewInfo(acCiudad,"Ciudad", true));
@@ -186,8 +187,9 @@ public class ControllerViewClientes {
             model.setNumInt(Integer.parseInt(reviewInfo(acNoInt,"No.Int.", false)));
             return model;
     }
-         
+    
     private String reviewInfo(JTextField box, String value,boolean flag){
+        String as = box.getText();
         if(flag){
            if(box.getText().equals(value) || box.getText().equals(""))
                return "";

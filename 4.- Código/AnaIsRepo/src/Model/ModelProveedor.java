@@ -20,8 +20,8 @@ public class ModelProveedor {
     private String marca;
     private String empresa;
     private String RFC;
-    private int telFijo;
-    private int telCel;
+    private String telFijo;
+    private String telCel;
     private String calle;
     private int numInt;
     private int numExt;
@@ -180,28 +180,28 @@ public class ModelProveedor {
     /**
      * @return the telFijo
      */
-    public int getTelFijo() {
+    public String getTelFijo() {
         return telFijo;
     }
 
     /**
      * @param telFijo the telFijo to set
      */
-    public void setTelFijo(int telFijo) {
+    public void setTelFijo(String telFijo) {
         this.telFijo = telFijo;
     }
 
     /**
      * @return the telCel
      */
-    public int getTelCel() {
+    public String getTelCel() {
         return telCel;
     }
 
     /**
      * @param telCel the telCel to set
      */
-    public void setTelCel(int telCel) {
+    public void setTelCel(String telCel) {
         this.telCel = telCel;
     }
 
