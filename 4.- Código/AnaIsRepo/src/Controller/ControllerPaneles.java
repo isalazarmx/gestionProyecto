@@ -5,9 +5,15 @@
  */
 package Controller;
 
+import Model.ModelCategoria;
 import Model.ModelCliente;
 import Model.ModelEmpresa;
+import Model.ModelInsumo;
+import Model.ModelInsumo_has_Producto;
+import Model.ModelProducto;
+import Model.ModelProveedor;
 import Model.ModelUsuario;
+import Model.ModelVenta;
 import java.awt.GridBagLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -21,6 +27,12 @@ public class ControllerPaneles {
     private ModelEmpresa modelEmpresa;
     private ModelUsuario modelUsuario;
     private ModelCliente modelCliente;
+    private ModelProveedor modelProveedor;
+    private ModelProducto modelProducto;
+    private ModelCategoria modelCategoria;
+    private ModelInsumo modelInsumo;
+    private ModelInsumo_has_Producto modelInsumoProducto;
+    private ModelVenta modelVenta;
     //---------------------------------------
     private JPanel panelUserData;
     private JButton botonDatosUsuario;
@@ -196,5 +208,89 @@ public class ControllerPaneles {
      */
     public void setPanelProveedores(JPanel panelProveedores) {
         this.panelProveedores = panelProveedores;
+    }
+
+    /**
+     * @return the modelProveedor
+     */
+    public ModelProveedor getModelProveedor() {
+        return modelProveedor;
+    }
+
+    /**
+     * @param modelProveedor the modelProveedor to set
+     */
+    public void setModelProveedor(ModelProveedor modelProveedor) {
+        this.modelProveedor = modelProveedor;
+    }
+
+    /**
+     * @return the modelProducto
+     */
+    public ModelProducto getModelProducto() {
+        return modelProducto;
+    }
+
+    /**
+     * @param modelProducto the modelProducto to set
+     */
+    public void setModelProducto(ModelProducto modelProducto) {
+        this.modelProducto = modelProducto;
+    }
+
+    /**
+     * @return the modelCategoria
+     */
+    public ModelCategoria getModelCategoria() {
+        return modelCategoria;
+    }
+
+    /**
+     * @param modelCategoria the modelCategoria to set
+     */
+    public void setModelCategoria(ModelCategoria modelCategoria) {
+        this.modelCategoria = modelCategoria;
+    }
+
+    /**
+     * @return the modelInsumo
+     */
+    public ModelInsumo getModelInsumo() {
+        return modelInsumo;
+    }
+
+    /**
+     * @param modelInsumo the modelInsumo to set
+     */
+    public void setModelInsumo(ModelInsumo modelInsumo) {
+        this.modelInsumo = modelInsumo;
+    }
+
+    /**
+     * @return the modelInsumoProducto
+     */
+    public ModelInsumo_has_Producto getModelInsumoProducto() {
+        return modelInsumoProducto;
+    }
+
+    /**
+     * @param modelInsumoProducto the modelInsumoProducto to set
+     */
+    public void setModelInsumoProducto(ModelInsumo_has_Producto modelInsumoProducto) {
+        this.modelInsumoProducto = modelInsumoProducto;
+    }
+
+    /**
+     * @return the modelVenta
+     */
+    public ModelVenta getModelVenta() {
+        return modelVenta;
+    }
+
+    /**
+     * @param modelVenta the modelVenta to set
+     */
+    public void setModelVenta(ModelVenta modelVenta) {
+        this.modelVenta = modelVenta;
     }
 }
