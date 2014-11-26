@@ -32,7 +32,7 @@ public class ReportesPDF {
     PdfWriter writer;
     String strRotuloPDF;
     private String[] rotulosColumnas;
-    private int numReport;
+    private static int numReport;
     private float[] anchosFilas;
     
 
@@ -94,11 +94,11 @@ public class ReportesPDF {
         tabla.setHorizontalAlignment(Element.ALIGN_CENTER);
         //agregar celda que ocupa las  columnas de los rotulos
          PdfPCell cell0 = new PdfPCell(new Paragraph("Repostería AnaIs"));
-        cell0.setColspan(5);
+        cell0.setColspan(anchosFilas.length);
         cell0.setBackgroundColor(new BaseColor (66,139,202));
         //Centrar contenido de celda
         cell0.setHorizontalAlignment(Element.ALIGN_CENTER);
-        PdfPCell cell = new PdfPCell(new Paragraph("Reporte sobre ventas"));
+        PdfPCell cell = new PdfPCell(new Paragraph(tituloReporte()));
         cell.setColspan(5);
         cell.setBackgroundColor(new BaseColor (49,176,213));
         //Centrar contenido de celda
@@ -155,4 +155,18 @@ public class ReportesPDF {
         return System.getProperty("user.dir")+ System.getProperty("file.separator") 
                            + "reports"+System.getProperty("file.separator")+nomReporte+ControllerFechas.getFechaActual()+".pdf";
     }
+    
+    private static String tituloReporte(){
+        String nomReporte = "";
+        switch (numReport) {
+            case 1:nomReporte = "Relación de vendedor";break;
+            case 2:nomReporte = "Relación de Proveedores";break;
+            case 3:nomReporte = "Relación de Clientes";break;
+            case 4:nomReporte = "Reporte de Ventas";break;
+            case 5:nomReporte = "Relación de Productos";break;
+        }
+        return nomReporte;
+    }
+    
+    
 }
