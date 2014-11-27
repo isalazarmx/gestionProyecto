@@ -121,6 +121,7 @@ public class ReportesPDF {
                 case 3:DataBase.DataBasePDF.pdfClientes(cell, tabla);break;
                 case 4:DataBase.DataBasePDF.pdfVentas(cell, tabla);break;
                 case 5:DataBase.DataBasePDF.pdfProductos(cell, tabla);break;
+                case 6:DataBase.DataBasePDF.pdfPedidos(cell, tabla); break;
             }
             
         //Agregar la tabla con los datos al parrafo que nos llego como entrada
@@ -151,6 +152,7 @@ public class ReportesPDF {
             case 3:nomReporte = "Clientes";break;
             case 4:nomReporte = "Ventas";break;
             case 5:nomReporte = "Productos";break;
+            case 6:nomReporte = "Pedidos";break;
         }
         return System.getProperty("user.dir")+ System.getProperty("file.separator") 
                            + "reports"+System.getProperty("file.separator")+nomReporte+ControllerFechas.getFechaActual()+".pdf";
@@ -159,11 +161,12 @@ public class ReportesPDF {
     private static String tituloReporte(){
         String nomReporte = "";
         switch (numReport) {
-            case 1:nomReporte = "Relación de vendedor";break;
+            case 1:nomReporte = "Relación de vendedores";break;
             case 2:nomReporte = "Relación de Proveedores";break;
             case 3:nomReporte = "Relación de Clientes";break;
             case 4:nomReporte = "Reporte de Ventas";break;
             case 5:nomReporte = "Relación de Productos";break;
+            case 6:nomReporte = "Relación de Pedidos";break;
         }
         return nomReporte;
     }

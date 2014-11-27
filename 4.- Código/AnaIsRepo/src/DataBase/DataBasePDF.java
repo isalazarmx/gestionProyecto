@@ -28,7 +28,7 @@ public class DataBasePDF {
         Connection conn = controller.connectDB();
         try {
             Statement sta = conn.createStatement();
-            String strQuery = "select * from usuario;";
+            String strQuery = "select * from usuario where eliminado!= 1 && tipo!=3;";
             System.out.println(strQuery);
             ResultSet res = sta.executeQuery(strQuery);
             while(res.next()){
@@ -176,6 +176,41 @@ public class DataBasePDF {
         try {
             Statement sta = conn.createStatement();
             String strQuery = "select * from producto;";
+            System.out.println(strQuery);
+            ResultSet res = sta.executeQuery(strQuery);
+            while(res.next()){
+                cell = new PdfPCell(new Paragraph(res.getString("idProducto")));
+                tabla.addCell(cell);
+                cell = new PdfPCell(new Paragraph(res.getString("nombre")));
+                tabla.addCell(cell);
+                cell = new PdfPCell(new Paragraph(res.getString("kilos")));
+                tabla.addCell(cell);
+                cell = new PdfPCell(new Paragraph(res.getString("precioUnitario")));
+                tabla.addCell(cell);
+                cell = new PdfPCell(new Paragraph(res.getString("Categoria_idCategoria")));
+                tabla.addCell(cell);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.DataBaseCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+              try {
+                if (conn != null && !conn.isClosed())
+                    conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return id;
+    }
+            
+            
+            public static String pdfPedidos(PdfPCell cell, PdfPTable tabla){
+        String id = "";
+        ControllerConnDBMS controller = new ControllerConnDBMS();
+        Connection conn = controller.connectDB();
+        try {
+            Statement sta = conn.createStatement();
+            String strQuery = "select v.idVenta, ventapedido;";
             System.out.println(strQuery);
             ResultSet res = sta.executeQuery(strQuery);
             while(res.next()){

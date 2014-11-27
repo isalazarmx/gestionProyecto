@@ -275,25 +275,25 @@ public class ViewReportes extends javax.swing.JPanel {
     private void botonProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProveedorActionPerformed
         // TODO add your handling code here:
         ReportesPDF pdf = new ReportesPDF();
-        pdf.GenerarPDF(new Model.ModelProveedor().componentesPDF() ,1);
+        pdf.GenerarPDF(new Model.ModelProveedor().componentesPDF() ,2);
     }//GEN-LAST:event_botonProveedorActionPerformed
 
     private void botonClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonClienteActionPerformed
         // TODO add your handling code here:
         ReportesPDF pdf = new ReportesPDF();
-        pdf.GenerarPDF(new Model.ModelCliente().componentesPDF(),1);
+        pdf.GenerarPDF(new Model.ModelCliente().componentesPDF(),3);
     }//GEN-LAST:event_botonClienteActionPerformed
 
     private void botonVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVentaActionPerformed
         // TODO add your handling code here:
         ReportesPDF pdf = new ReportesPDF();
-        pdf.GenerarPDF(new Model.ModelVenta().componentesPDF(),1);
+        pdf.GenerarPDF(new Model.ModelVenta().componentesPDF(),4);
     }//GEN-LAST:event_botonVentaActionPerformed
 
     private void botonProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProductoActionPerformed
         // TODO add your handling code here:
         ReportesPDF pdf = new ReportesPDF();
-        pdf.GenerarPDF(new Model.ModelProducto().componentesPDF(),1);
+        pdf.GenerarPDF(new Model.ModelProducto().componentesPDF(),5);
     }//GEN-LAST:event_botonProductoActionPerformed
 
     private void botonPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPedidoActionPerformed
