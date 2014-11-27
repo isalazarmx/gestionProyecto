@@ -7,9 +7,9 @@ package View;
 
 import Controller.ControllerPaneles;
 import Controller.ControllerValidation;
-import Controller.ControllerViewClientes;
-import Model.ModelCliente;
+import Controller.ControllerViewProveedor;
 import Model.ModelEmpresa;
+import Model.ModelProveedor;
 import java.util.ArrayList;
 
 /**
@@ -20,27 +20,27 @@ public class ViewProveedor extends javax.swing.JPanel {
     ControllerPaneles controllerPaneles;
     ControllerValidation validation;
     ModelEmpresa modelEmpresa;
-    ControllerViewClientes controller;
-    ModelCliente usuarioTemporal;
+    ControllerViewProveedor controller;
+    ModelProveedor usuarioTemporal;
     /**
      * Creates new form ViewBaseAdministrador
      * @param controllerPaneles
-     * @param cliente
+     * @param proveedor
      */
-    public ViewProveedor(ControllerPaneles controllerPaneles, ModelCliente cliente) {
-        this.usuarioTemporal = cliente;
+    public ViewProveedor(ControllerPaneles controllerPaneles, ModelProveedor proveedor) {
+        this.usuarioTemporal = proveedor;
         this.validation = new ControllerValidation();
         this.controllerPaneles = controllerPaneles;
         this.modelEmpresa = controllerPaneles.getModelEmpresa();
         initComponents();
         validation();
-        if(cliente==null){
-            labelRuta.setText("Administración de clientes / Nuevo cliente");   
+        if(proveedor==null){
+            labelRuta.setText("Administración de proveedores / Nuevo proveedor");   
             acID.setText(DataBase.DataBaseCliente.verProximoID());
         }else{
-            controller.identificaInfo(cliente);
-            acID.setText(""+usuarioTemporal.getIdCliente());
-            labelRuta.setText("Administración de clientes / Modifica cliente");
+            controller.identificaInfo(proveedor);
+            acID.setText(""+usuarioTemporal.getIdProveedor());
+            labelRuta.setText("Administración de proveedores / Modifica proveedor");
         }
         labelStatus.setText("");
     }
@@ -51,6 +51,8 @@ public class ViewProveedor extends javax.swing.JPanel {
         components.add (acApellidoPaterno);
         components.add (acApellidoMaterno);
         components.add (acRFC);
+        components.add (apMarca);
+        components.add (apEmpresa);
         components.add (acTelefono);
         components.add (acTelCelular);
         components.add (acEmail);
@@ -61,7 +63,7 @@ public class ViewProveedor extends javax.swing.JPanel {
         components.add (acCP);
         components.add (acNoExt);
         components.add (acNoInt);
-        controller = new ControllerViewClientes(components);
+        controller = new ControllerViewProveedor(components);
         controller.validations();
     }
     
@@ -98,6 +100,10 @@ public class ViewProveedor extends javax.swing.JPanel {
         acTelCelular = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         acEmail = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        apMarca = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        apEmpresa = new javax.swing.JTextField();
         jPanel12 = new javax.swing.JPanel();
         acCalle = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -130,7 +136,7 @@ public class ViewProveedor extends javax.swing.JPanel {
         labelRuta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelRuta.setForeground(new java.awt.Color(53, 107, 161));
         labelRuta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/proveedoresInfo.png"))); // NOI18N
-        labelRuta.setText("Administración de clientes / Nuevo proveedor");
+        labelRuta.setText("Administración de proveedores / Nuevo proveedor");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -392,6 +398,50 @@ public class ViewProveedor extends javax.swing.JPanel {
             }
         });
 
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel22.setText("Marca:");
+
+        apMarca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        apMarca.setForeground(new java.awt.Color(180, 180, 180));
+        apMarca.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        apMarca.setText("Marca (*)");
+        apMarca.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                apMarcaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                apMarcaFocusLost(evt);
+            }
+        });
+        apMarca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                apMarcaKeyPressed(evt);
+            }
+        });
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel23.setText("Empresa:");
+
+        apEmpresa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        apEmpresa.setForeground(new java.awt.Color(180, 180, 180));
+        apEmpresa.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        apEmpresa.setText("Empresa (*)");
+        apEmpresa.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                apEmpresaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                apEmpresaFocusLost(evt);
+            }
+        });
+        apEmpresa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                apEmpresaKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -423,17 +473,25 @@ public class ViewProveedor extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel11Layout.createSequentialGroup()
-                                        .addComponent(acApellidoPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel5))
-                                    .addComponent(acTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(acTelCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(acApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(acTelCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addComponent(acTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addComponent(acApellidoPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(acApellidoMaterno, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                .addComponent(apMarca))
+                            .addComponent(apEmpresa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
@@ -452,18 +510,22 @@ public class ViewProveedor extends javax.swing.JPanel {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(acApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(apMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(acRFC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(acTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(acTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(acEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(acTelCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(acTelCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(apEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -846,7 +908,7 @@ public class ViewProveedor extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), controllerPaneles.getPanelClientes()); //asi
+        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), controllerPaneles.getPanelProveedores()); //asi
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -855,13 +917,13 @@ public class ViewProveedor extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void agregaModificaUsuario(){
-        ModelCliente cliente = controller.creaModelo(new ModelCliente());
+        ModelProveedor proveedor = controller.creaModelo(new ModelProveedor());
         if(usuarioTemporal == null)
-            controller.addUser(acID,labelStatus,cliente);
+            controller.addProveedor(acID,labelStatus,proveedor);
         else{
-            cliente.setIdCliente(usuarioTemporal.getIdCliente());
-                if(controller.modificaCliente(labelStatus,cliente))
-                        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewAdministrarClientes(controllerPaneles)); //asi
+            proveedor.setIdProveedor(usuarioTemporal.getIdProveedor());
+                if(controller.modificaProveedor(labelStatus,proveedor))
+                        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewAdministrarProveedores(controllerPaneles)); //asi
         }
     }
     
@@ -872,13 +934,13 @@ public class ViewProveedor extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), controllerPaneles.getPanelClientes()); //asi
+        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), controllerPaneles.getPanelProveedores()); //asi
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void acCalleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_acCalleKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
-        agregaModificaUsuario();
+            agregaModificaUsuario();
     }//GEN-LAST:event_acCalleKeyPressed
 
     private void acCalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acCalleActionPerformed
@@ -893,6 +955,7 @@ public class ViewProveedor extends javax.swing.JPanel {
     private void acCalleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acCalleFocusGained
         // TODO add your handling code here:
         validation.placeHolder(true,acCalle,"Calle");
+        labelStatus.setText("");
     }//GEN-LAST:event_acCalleFocusGained
 
     private void acApellidoMaternoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_acApellidoMaternoKeyTyped
@@ -917,6 +980,7 @@ public class ViewProveedor extends javax.swing.JPanel {
     private void acApellidoMaternoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acApellidoMaternoFocusGained
         // TODO add your handling code here:
         validation.placeHolder(true,acApellidoMaterno,"Apellido Materno");
+        labelStatus.setText("");
     }//GEN-LAST:event_acApellidoMaternoFocusGained
 
     private void acApellidoPaternoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_acApellidoPaternoKeyTyped
@@ -938,6 +1002,7 @@ public class ViewProveedor extends javax.swing.JPanel {
 
     private void acApellidoPaternoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acApellidoPaternoFocusGained
         validation.placeHolder(true,acApellidoPaterno,"Apellido Paterno (*)");
+        labelStatus.setText("");
     }//GEN-LAST:event_acApellidoPaternoFocusGained
 
     private void NombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreKeyPressed
@@ -955,6 +1020,7 @@ public class ViewProveedor extends javax.swing.JPanel {
 
     private void NombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NombreFocusGained
         validation.placeHolder(true,Nombre,"Nombre (*)");
+        labelStatus.setText("");
     }//GEN-LAST:event_NombreFocusGained
 
     private void acRFCFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acRFCFocusGained
@@ -967,6 +1033,7 @@ public class ViewProveedor extends javax.swing.JPanel {
 
     private void acTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acTelefonoFocusGained
         validation.placeHolder(true,acTelefono,"xx-xxx-xxxxxxx");        // TODO add your handling code here:
+        labelStatus.setText("");
     }//GEN-LAST:event_acTelefonoFocusGained
 
     private void acTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acTelefonoFocusLost
@@ -975,7 +1042,8 @@ public class ViewProveedor extends javax.swing.JPanel {
 
     private void acTelCelularFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acTelCelularFocusGained
         // TODO add your handling code here:
-        validation.placeHolder(true,acTelCelular,"xx-xxx-xxxxxxx (*)");   
+        validation.placeHolder(true,acTelCelular,"xx-xxx-xxxxxxx (*)");
+        labelStatus.setText("");
     }//GEN-LAST:event_acTelCelularFocusGained
 
     private void acTelCelularFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acTelCelularFocusLost
@@ -985,7 +1053,8 @@ public class ViewProveedor extends javax.swing.JPanel {
 
     private void acEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acEmailFocusGained
         // TODO add your handling code here:
-        validation.placeHolder(true,acEmail,"cliente@anais.com (*)");   
+        validation.placeHolder(true,acEmail,"cliente@anais.com (*)");
+        labelStatus.setText("");
     }//GEN-LAST:event_acEmailFocusGained
 
     private void acEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acEmailFocusLost
@@ -996,6 +1065,7 @@ public class ViewProveedor extends javax.swing.JPanel {
     private void acNoExtFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acNoExtFocusGained
         // TODO add your handling code here:
         validation.placeHolder(true,acNoExt,"No.Ext.");
+        labelStatus.setText("");
     }//GEN-LAST:event_acNoExtFocusGained
 
     private void acNoExtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acNoExtFocusLost
@@ -1016,6 +1086,7 @@ public class ViewProveedor extends javax.swing.JPanel {
     private void acNoIntFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acNoIntFocusGained
         // TODO add your handling code here:
         validation.placeHolder(true,acNoInt,"No.Int.");
+        labelStatus.setText("");
     }//GEN-LAST:event_acNoIntFocusGained
 
     private void acNoIntFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acNoIntFocusLost
@@ -1036,6 +1107,7 @@ public class ViewProveedor extends javax.swing.JPanel {
     private void acCPFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acCPFocusGained
         // TODO add your handling code here:
         validation.placeHolder(true,acCP,"xxxxx (*)");
+        labelStatus.setText("");
     }//GEN-LAST:event_acCPFocusGained
 
     private void acCPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acCPFocusLost
@@ -1049,11 +1121,14 @@ public class ViewProveedor extends javax.swing.JPanel {
 
     private void acCPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_acCPKeyPressed
         // TODO add your handling code here:
+        if(evt.getKeyChar()==10)
+            agregaModificaUsuario();
     }//GEN-LAST:event_acCPKeyPressed
 
     private void acColoniaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acColoniaFocusGained
         // TODO add your handling code here:
         validation.placeHolder(true,acColonia,"Colonia");
+        labelStatus.setText("");
     }//GEN-LAST:event_acColoniaFocusGained
 
     private void acColoniaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acColoniaFocusLost
@@ -1074,6 +1149,7 @@ public class ViewProveedor extends javax.swing.JPanel {
     private void acCiudadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acCiudadFocusGained
         // TODO add your handling code here:
         validation.placeHolder(true,acCiudad,"Ciudad");
+        labelStatus.setText("");
     }//GEN-LAST:event_acCiudadFocusGained
 
     private void acCiudadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acCiudadFocusLost
@@ -1097,6 +1173,7 @@ public class ViewProveedor extends javax.swing.JPanel {
 
     private void acIDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acIDFocusGained
         validation.placeHolder(true,acID,"Id Cliente"); // TODO add your handling code here:
+        labelStatus.setText("");
     }//GEN-LAST:event_acIDFocusGained
 
     private void acIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acIDFocusLost
@@ -1135,6 +1212,40 @@ public class ViewProveedor extends javax.swing.JPanel {
             agregaModificaUsuario();         // TODO add your handling code here:
     }//GEN-LAST:event_acEstadosKeyPressed
 
+    private void apMarcaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_apMarcaFocusGained
+        // TODO add your handling code here:
+        validation.placeHolder(true,apMarca,"Marca (*)");
+        labelStatus.setText("");
+    }//GEN-LAST:event_apMarcaFocusGained
+
+    private void apMarcaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_apMarcaFocusLost
+        // TODO add your handling code here:
+        validation.placeHolder(false,apMarca,"Marca (*)");
+    }//GEN-LAST:event_apMarcaFocusLost
+
+    private void apMarcaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apMarcaKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyChar()==10)
+            agregaModificaUsuario();        
+    }//GEN-LAST:event_apMarcaKeyPressed
+
+    private void apEmpresaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_apEmpresaFocusGained
+        // TODO add your handling code here:
+        validation.placeHolder(true,apEmpresa,"Empresa (*)");
+        labelStatus.setText("");
+    }//GEN-LAST:event_apEmpresaFocusGained
+
+    private void apEmpresaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_apEmpresaFocusLost
+        // TODO add your handling code here:
+        validation.placeHolder(false,apEmpresa,"Empresa (*)");
+    }//GEN-LAST:event_apEmpresaFocusLost
+
+    private void apEmpresaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apEmpresaKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyChar()==10)
+            agregaModificaUsuario();        
+    }//GEN-LAST:event_apEmpresaKeyPressed
+
     
        
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1153,6 +1264,8 @@ public class ViewProveedor extends javax.swing.JPanel {
     private javax.swing.JTextField acRFC;
     private javax.swing.JTextField acTelCelular;
     private javax.swing.JTextField acTelefono;
+    private javax.swing.JTextField apEmpresa;
+    private javax.swing.JTextField apMarca;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -1169,6 +1282,8 @@ public class ViewProveedor extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

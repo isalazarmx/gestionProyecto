@@ -438,8 +438,8 @@ private void validation(){
     private void modificaVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaVendedorActionPerformed
         // TODO add your handling code here:
         if(controller.tablaSeleccionada()){
-            ModelCliente cliente = DataBase.DataBaseCliente.findCliente(controller.modificaProveedor());
-            controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewCliente(controllerPaneles,cliente));
+            ModelProveedor proveedor = DataBase.DataBaseProveedor.findProveedor(controller.modificaProveedor());
+            controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewProveedor(controllerPaneles,proveedor));
         }
     }//GEN-LAST:event_modificaVendedorActionPerformed
 

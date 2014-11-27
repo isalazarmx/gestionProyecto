@@ -5,8 +5,7 @@
  */
 package Controller;
 
-import Model.ModelCliente;
-import Model.ModelUsuario;
+import Model.ModelProveedor;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,12 +45,12 @@ public class ControllerViewAdministrarProveedores {
             limpiaBusqueda();
             String nom = reviewInfo(nombre,"Nombre",true);
             String datRFC = reviewInfo(rfc,"R.F.C.",true);
-            List list = DataBase.DataBaseCliente.buscaCliente(nom, datRFC, flag);
+            List list = DataBase.DataBaseProveedor.buscaProveedor(nom, datRFC, flag);
             int count = list.size();
             if(!list.isEmpty()){
                 for (int i = 0; i < list.size(); i++) {
-                    ModelCliente cliente = (ModelCliente)list.get(i);
-                    String[] datos = {""+cliente.getIdCliente(),cliente.getNombre(), cliente.getaPaterno(),cliente.getRFC(),""+cliente.getTelCel(),cliente.geteMail()};
+                    ModelProveedor proveedor = (ModelProveedor)list.get(i);
+                    String[] datos = {""+proveedor.getIdProveedor(),proveedor.getNombre(), proveedor.getaPaterno(),proveedor.getaMaterno(),proveedor.getMarca(),proveedor.geteMail()};
                     controllerTable.agregarDatos(datos);
                 }
                 if(!flag){
@@ -62,7 +61,7 @@ public class ControllerViewAdministrarProveedores {
                         msj = count+" posible resutaldo";
                     if(list.size() > 1)
                         labelCount.setText("Lo sentimos, no hay coincidencias con la busqueda, pero encontramos "+msj);
-                    else if ((((ModelUsuario)list.get(0)).getNombre().equals(nom) || ((ModelUsuario)list.get(0)).getUsername().equals(datRFC)))
+                    else if ((((ModelProveedor)list.get(0)).getNombre().equals(nom) || ((ModelProveedor)list.get(0)).getRFC().equals(datRFC)))
                         labelCount.setText("Busqueda realizada con éxito");
                     else
                         labelCount.setText("Lo sentimos, no hay coincidencias con la busqueda, pero encontramos "+msj);
@@ -107,9 +106,9 @@ public class ControllerViewAdministrarProveedores {
             dat[0]="Si";
             dat[1]="No";
             if(ControllerViewMsj.pregunta("Estás seguro de quere eliminar al este cliente?", dat, controllerTable.getTabla())==0){
-                String idCliente = modificaProveedor();
+                String idProveedor = modificaProveedor();
                 labelCount.setText("Vendedor eliminado con éxito");
-                DataBase.DataBaseCliente.eliminarCliente(idCliente);
+                DataBase.DataBaseProveedor.eliminarProveedor(idProveedor);
                 controllerTable.getModelTable().removeRow(controllerTable.getTabla().getSelectedRow());
             }else
                 labelCount.setText("Eliminación de usuario cancelada");

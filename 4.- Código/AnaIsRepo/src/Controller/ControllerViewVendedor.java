@@ -58,20 +58,20 @@ public class ControllerViewVendedor {
     }
     
         public void validations(){
-//        ControllerValidation.camposNoNulos(idCliente, "Campo oblagatorio");
-//        ControllerValidation.soloNumeros(idCliente);
-//        ControllerValidation.validarFecha(fecha, null);
-//        ControllerValidation.soloNumeros(fecha);
-//        ControllerValidation.validarFecha(fechaPedido, null);
-//        ControllerValidation.soloNumeros(fechaPedido);
-//        ControllerValidation.soloNumeros(horaEnt);
-//        ControllerValidation.soloNumeros(codBarras);
-//        ControllerValidation.limitarCaracteres(descripcion, 250);
-//        ControllerValidation.soloNumeros(cantidad);
-//        ControllerValidation.soloNumeros(descuento);
-//        ControllerValidation.soloNumeros(importe);
-//        ControllerValidation.soloNumeros(iva);
-//        ControllerValidation.soloNumeros(abono);
+        ControllerValidation.camposNoNulos(idCliente, "Campo oblagatorio");
+        ControllerValidation.soloNumeros(idCliente);
+        ControllerValidation.validarFecha(fecha, null);
+        ControllerValidation.soloNumeros(fecha);
+        ControllerValidation.validarFecha(fechaPedido, null);
+        ControllerValidation.soloNumeros(fechaPedido);
+        ControllerValidation.soloNumeros(horaEnt);
+        ControllerValidation.soloNumeros(codBarras);
+        ControllerValidation.limitarCaracteres(descripcion, 250);
+        ControllerValidation.soloNumeros(cantidad);
+        ControllerValidation.soloNumeros(descuento);
+        ControllerValidation.soloNumeros(importe);
+        ControllerValidation.soloNumeros(iva);
+        ControllerValidation.soloNumeros(abono);
     }
     
     public void next(JLabel labelStatus,Thread hilo,ModelVenta emp){

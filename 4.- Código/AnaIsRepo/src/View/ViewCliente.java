@@ -857,7 +857,7 @@ public class ViewCliente extends javax.swing.JPanel {
     public void agregaModificaUsuario(){
         ModelCliente cliente = controller.creaModelo(new ModelCliente());
         if(usuarioTemporal == null)
-            controller.addUser(acID,labelStatus,cliente);
+            controller.addCliente(acID,labelStatus,cliente);
         else{
             cliente.setIdCliente(usuarioTemporal.getIdCliente());
                 if(controller.modificaCliente(labelStatus,cliente))
