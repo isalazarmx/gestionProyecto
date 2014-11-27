@@ -7,7 +7,7 @@ package View;
 import Controller.ControllerPaneles;
 import Controller.ControllerValidation;
 import Controller.ControllerViewSession;
-import Controller.ControllerViewProveedores;
+import Controller.ControllerViewProveedor;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 public class ViewAgregarProveedor extends javax.swing.JPanel {
     ControllerValidation validation;
     ControllerPaneles controllerPaneles;
-    ControllerViewProveedores controller;
+    ControllerViewProveedor controller;
 
     /**
      * Creates new form ViewAgregarCliente
@@ -50,7 +50,7 @@ public class ViewAgregarProveedor extends javax.swing.JPanel {
         components.add (pNoExt);
         components.add (pNoInt);
         
-        controller = new ControllerViewProveedores(components);
+        controller = new ControllerViewProveedor(components);
         controller.validations();
     }
 

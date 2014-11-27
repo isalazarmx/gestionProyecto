@@ -69,7 +69,7 @@ public class ControllerViewClientes {
         ControllerValidation.soloNumeros(acCP);
     }
     
-    public void addUser(JTextField acID,JLabel labelStatus,ModelCliente cliente){
+    public void addCliente(JTextField acID,JLabel labelStatus,ModelCliente cliente){
         if(!Nombre.getText().equals("Nombre (*)") && !Nombre.getText().isEmpty()){
             if(!acApellidoPaterno.getText().equals("Apellido Paterno (*)") && !acApellidoPaterno.getText().isEmpty()){
                 if(!acEmail.getText().equals("cliente@anais.com (*)") && !acEmail.getText().isEmpty()){
@@ -170,7 +170,6 @@ public class ControllerViewClientes {
     }
     
     public ModelCliente creaModelo(ModelCliente model){
-        int a = Integer.parseInt("724185676");
             model.setNombre(reviewInfo(Nombre,"Nombre (*)", true));
             model.setaPaterno(reviewInfo(acApellidoPaterno,"Apellido Paterno (*)", true));
             model.setaMaterno(reviewInfo(acApellidoMaterno,"Apellido Materno", true));
@@ -189,7 +188,6 @@ public class ControllerViewClientes {
     }
     
     private String reviewInfo(JTextField box, String value,boolean flag){
-        String as = box.getText();
         if(flag){
            if(box.getText().equals(value) || box.getText().equals(""))
                return "";

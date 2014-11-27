@@ -27,6 +27,7 @@ public class ModelProveedor {
     private int numExt;
     private String colonia;
     private String ciudad;
+    private String estado;
     private int codigoPostal;
     private String eMail;
     private DefaultTableModel modeloTable;
@@ -63,7 +64,7 @@ public class ModelProveedor {
     public DefaultTableModel creaModelTable(){
         modeloTable = new DefaultTableModel(){
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
             @Override
             public boolean isCellEditable(int row, int column){
@@ -79,6 +80,46 @@ public class ModelProveedor {
         return modeloTable;
     }
 
+    public String addProveedor(){
+        return "(nombre,aPaterno,aMaterno,marca,empresa,rfc,telfijo,telcel,calle,numInt,numExt,colonia,ciudad,estado,codigopostal,email,eliminado) values ('"
+                +getNombre()+"','"
+                +getaPaterno()+"','"
+                +getaMaterno()+"','"
+                +getMarca()+"','"
+                +getEmpresa()+"','"
+                +getRFC()+"','"
+                +getTelFijo()+"','"
+                +getTelCel()+"','"
+                +getCalle()+"',"
+                +getNumInt()+","
+                +getNumExt()+",'"
+                +getColonia()+"','"
+                +getCiudad()+"','"
+                +getEstado()+"',"+
+                +getCodigoPostal()+",'"
+                +geteMail()+"',0"+
+                ");";
+    }
+    
+    public String modInfo(){
+        return "set nombre = '"+getNombre()+"',"+ 
+               "aPaterno = '"+getaPaterno()+"',"+
+               "aMaterno = '"+getaMaterno()+"',"+
+               "marca = '"+getMarca()+"',"+
+               "empresa = '"+getEmpresa()+"',"+
+               "RFC = '"+getRFC()+"',"+
+               "telfijo = '"+getTelFijo()+"',"+
+               "telcel = '"+getTelCel()+"',"+
+               "calle = '"+getCalle()+"',"+
+               "numInt = "+getNumInt()+","+
+               "numExt = "+getNumExt()+","+
+               "colonia = '"+getColonia()+"',"+
+               "ciudad = '"+getCiudad()+"',"+
+               "estado = '"+getEstado()+"',"+
+               "codigopostal = "+getCodigoPostal()+","+
+               "email = '"+geteMail()+"'";
+    }
+    
     /**
      * @return the idProveedor
      */
@@ -301,6 +342,34 @@ public class ModelProveedor {
      */
     public void setModeloTable(DefaultTableModel modeloTable) {
         this.modeloTable = modeloTable;
+    }
+
+    /**
+     * @return the numInt
+     */
+    public int getNumInt() {
+        return numInt;
+    }
+
+    /**
+     * @param numInt the numInt to set
+     */
+    public void setNumInt(int numInt) {
+        this.numInt = numInt;
+    }
+
+    /**
+     * @return the estado
+     */
+    public String getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
     
 }

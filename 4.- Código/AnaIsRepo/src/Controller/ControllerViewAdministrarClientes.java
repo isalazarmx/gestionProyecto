@@ -6,7 +6,6 @@
 package Controller;
 
 import Model.ModelCliente;
-import Model.ModelUsuario;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +61,7 @@ public class ControllerViewAdministrarClientes {
                         msj = count+" posible resutaldo";
                     if(list.size() > 1)
                         labelCount.setText("Lo sentimos, no hay coincidencias con la busqueda, pero encontramos "+msj);
-                    else if ((((ModelUsuario)list.get(0)).getNombre().equals(nom) || ((ModelUsuario)list.get(0)).getUsername().equals(datRFC)))
+                    else if ((((ModelCliente)list.get(0)).getNombre().equals(nom) || ((ModelCliente)list.get(0)).getRFC().equals(datRFC)))
                         labelCount.setText("Busqueda realizada con éxito");
                     else
                         labelCount.setText("Lo sentimos, no hay coincidencias con la busqueda, pero encontramos "+msj);

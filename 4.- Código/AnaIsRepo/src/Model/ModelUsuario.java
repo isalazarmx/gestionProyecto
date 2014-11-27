@@ -65,6 +65,7 @@ public class ModelUsuario {
         modeloTable.addColumn("Apellido Paterno");
         modeloTable.addColumn("Apellido Materno");
         modeloTable.addColumn("username");
+        modeloTable.addColumn("Password");
         return modeloTable;
     }
     

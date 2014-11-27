@@ -50,7 +50,7 @@ public class ControllerViewAdministrarVendedores {
             if(!list.isEmpty()){
                 for (int i = 0; i < list.size(); i++) {
                     ModelUsuario usuario = (ModelUsuario)list.get(i);
-                    String[] datos = {usuario.getNombre(),usuario.getaPaterno(),usuario.getaMaterno(),usuario.getUsername(),usuario.getPassword()};
+                    String[] datos = {""+usuario.getIdUsuario(),usuario.getNombre(),usuario.getaPaterno(),usuario.getaMaterno(),usuario.getUsername(),usuario.getPassword()};
                     controllerTable.agregarDatos(datos);
                 }
                 if(!flag){
