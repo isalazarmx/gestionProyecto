@@ -298,7 +298,8 @@ public class ViewReportes extends javax.swing.JPanel {
 
     private void botonPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPedidoActionPerformed
         // TODO add your handling code here:
-        
+        ReportesPDF pdf = new ReportesPDF();
+        pdf.GenerarPDF(new Model.ModeloPedidos().componentesPDF(),6);
     }//GEN-LAST:event_botonPedidoActionPerformed
 
 

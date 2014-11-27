@@ -210,7 +210,7 @@ public class DataBasePDF {
         Connection conn = controller.connectDB();
         try {
             Statement sta = conn.createStatement();
-            String strQuery = "select v.idVenta, ventapedido;";
+            String strQuery = "select * from ventapedido;";
             System.out.println(strQuery);
             ResultSet res = sta.executeQuery(strQuery);
             while(res.next()){
