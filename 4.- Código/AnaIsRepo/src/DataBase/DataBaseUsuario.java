@@ -32,9 +32,9 @@ public class DataBaseUsuario {
             System.out.println(strQuery);
             ResultSet res = sta.executeQuery(strQuery);
             if(res.next())
-                id = res.getString("Auto_increment");
+                id = res.getString("auto_increment");
         } catch (SQLException ex) {
-            Logger.getLogger(DataBase.DataBaseCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataBase.DataBaseUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
               try {
                 if (conn != null && !conn.isClosed())
@@ -216,7 +216,7 @@ public class DataBaseUsuario {
         try {
             Statement sta = conn.createStatement();
             if(cond){
-                String strQuery = "select * from usuario where (eliminado!=1 && tipo!=3);";
+                String strQuery = "select * from usuario where (eliminado!=1 && tipo!=3) order by idusuario;";
                 System.out.println(strQuery);
                 ResultSet res = sta.executeQuery(strQuery);
                 while(res.next())

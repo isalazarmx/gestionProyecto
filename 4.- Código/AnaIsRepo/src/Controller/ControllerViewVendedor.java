@@ -62,8 +62,6 @@ public class ControllerViewVendedor {
         ControllerValidation.soloNumeros(idCliente);
         ControllerValidation.validarFecha(fecha, null);
         ControllerValidation.soloNumeros(fecha);
-        ControllerValidation.validarFecha(fechaPedido, null);
-        ControllerValidation.soloNumeros(fechaPedido);
         ControllerValidation.soloNumeros(horaEnt);
         ControllerValidation.soloNumeros(codBarras);
         ControllerValidation.limitarCaracteres(descripcion, 250);

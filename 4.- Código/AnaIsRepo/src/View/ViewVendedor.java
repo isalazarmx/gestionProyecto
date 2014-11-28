@@ -574,6 +574,7 @@ public class ViewVendedor extends javax.swing.JPanel {
     private void usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusGained
         // TODO add your handling code here:
         validation.placeHolder(true,username,"Username (*)");
+        labelStatus.setText("");
     }//GEN-LAST:event_usernameFocusGained
 
     private void usernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusLost
@@ -594,6 +595,7 @@ public class ViewVendedor extends javax.swing.JPanel {
     private void aMaternoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_aMaternoFocusGained
         // TODO add your handling code here:
         validation.placeHolder(true,aMaterno,"Apellido Materno");
+        labelStatus.setText("");
     }//GEN-LAST:event_aMaternoFocusGained
 
     private void aMaternoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_aMaternoFocusLost
@@ -622,6 +624,7 @@ public class ViewVendedor extends javax.swing.JPanel {
     private void pass01FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pass01FocusGained
         // TODO add your handling code here:
         validation.placeHolderPass(true,pass01,"Password-01");
+        labelStatus.setText("");
     }//GEN-LAST:event_pass01FocusGained
 
     private void pass01FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pass01FocusLost
@@ -636,6 +639,7 @@ public class ViewVendedor extends javax.swing.JPanel {
     private void pass02FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pass02FocusGained
         // TODO add your handling code here:
         validation.placeHolderPass(true,pass02,"Password-02");
+        labelStatus.setText("");
     }//GEN-LAST:event_pass02FocusGained
 
     private void pass02FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pass02FocusLost
@@ -650,15 +654,16 @@ public class ViewVendedor extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         agregaModificaUsuario();
-        acID.setText(DataBase.DataBaseUsuario.verProximoID());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void agregaModificaUsuario(){
         ModelUsuario user = controller.creaModelo(new ModelUsuario());
         user.setIdEmpresa(modelEmpresa.getIdEmpresa());
         user.setTipo(2);
-        if(usuarioTemporal == null)
+        if(usuarioTemporal == null){
             controller.addUser(labelStatus,user);
+            acID.setText(DataBase.DataBaseUsuario.verProximoID());
+        }
         else{
             user.setIdUsuario(usuarioTemporal.getIdUsuario());
             if(controller.acceptUsername(username.getText(),usuarioTemporal.getUsername())){
@@ -693,6 +698,7 @@ public class ViewVendedor extends javax.swing.JPanel {
 
     private void aPaternoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_aPaternoFocusGained
         validation.placeHolder(true,aPaterno,"Apellido Paterno");
+        labelStatus.setText("");
     }//GEN-LAST:event_aPaternoFocusGained
 
     private void nameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameKeyPressed
@@ -710,6 +716,7 @@ public class ViewVendedor extends javax.swing.JPanel {
 
     private void nameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameFocusGained
         validation.placeHolder(true,name,"Nombre (*)");
+        labelStatus.setText("");
     }//GEN-LAST:event_nameFocusGained
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -731,7 +738,6 @@ public class ViewVendedor extends javax.swing.JPanel {
 
     private void acIDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acIDFocusGained
         validation.placeHolder(true,acID,"Id Cliente"); // TODO add your handling code here:
-        labelStatus.setText("");
     }//GEN-LAST:event_acIDFocusGained
 
     private void acIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acIDFocusLost

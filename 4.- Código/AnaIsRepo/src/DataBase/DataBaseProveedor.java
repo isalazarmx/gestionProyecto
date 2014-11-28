@@ -34,7 +34,7 @@ public class DataBaseProveedor {
             if(res.next())
                 id = res.getString("Auto_increment");
         } catch (SQLException ex) {
-            Logger.getLogger(DataBase.DataBaseCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataBase.DataBaseProveedor.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
               try {
                 if (conn != null && !conn.isClosed())
