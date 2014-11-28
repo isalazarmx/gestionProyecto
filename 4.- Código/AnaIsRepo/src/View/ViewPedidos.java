@@ -512,8 +512,8 @@ public class ViewPedidos extends javax.swing.JPanel {
     private void ClientesEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesEditarActionPerformed
         // TODO add your handling code here:
               if(con.tablaSeleccionada()){
-           // ModeloPedidos ped = DataBase.DataBasePedido.findPedido(con.pedidoModificar());
-            //controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewRealizarVentas(controllerPaneles,ped));
+            //ModeloPedidos ped = DataBase.DataBasePedido.findPedido(con.pedidoModificar());
+           // controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewRealizarVentas(controllerPaneles,ped));
         }
     }//GEN-LAST:event_ClientesEditarActionPerformed
 

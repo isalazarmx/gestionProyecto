@@ -8,6 +8,7 @@ package View;
 import Controller.ControllerPaneles;
 import Controller.ControllerValidation;
 import Controller.ControllerViewVendedor;
+import Model.ModeloPedidos;
 import java.util.ArrayList;
 import javax.swing.JTextField;
 
@@ -24,7 +25,7 @@ public class ViewRealizarVentas extends javax.swing.JPanel {
      * Creates new form ViewCaptInfVendedor
      * @param controllerPaneles
      */
-    public ViewRealizarVentas(ControllerPaneles controllerPaneles) {
+    public ViewRealizarVentas(ControllerPaneles controllerPaneles /*,ModeloPedidos ped */) {
         this.controllerPaneles = controllerPaneles;
         this.validation = new ControllerValidation();
         //this.controllerPaneles = controllerPaneles;
