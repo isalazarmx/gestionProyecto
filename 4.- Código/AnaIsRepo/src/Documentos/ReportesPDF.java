@@ -65,7 +65,7 @@ public class ReportesPDF {
         Paragraph ParrafoHoja = new Paragraph();
         // AGREGAMOS LA IMAGEN
         try {
-            Image foto = Image.getInstance(getClass().getResource("/Image/logoAnaIS.png"));
+            Image foto = Image.getInstance(getClass().getResource("/Image/logoAnaIS_1.png"));
             foto.scaleToFit(40, 40);
             ParrafoHoja.add(foto);
         } catch (BadElementException | IOException e) {
@@ -86,7 +86,6 @@ public class ReportesPDF {
     // Espera como entrada el parrafo donde agregara la tabla
     public void agregarTabla(Paragraph parrafo){
         //Anchos de las columnas
-        //float anchosFilas[] = {1.5f, 1f, 1.5f, 1.5f, 1.5f, 2f};
         PdfPTable tabla = new PdfPTable(anchosFilas);
         // Porcentaje que ocupa a lo ancho de la pagina del PDF
         tabla.setWidthPercentage(90);
@@ -99,12 +98,11 @@ public class ReportesPDF {
         //Centrar contenido de celda
         cell0.setHorizontalAlignment(Element.ALIGN_CENTER);
         PdfPCell cell = new PdfPCell(new Paragraph(tituloReporte()));
-        cell.setColspan(5);
+        cell.setColspan(anchosFilas.length);
         cell.setBackgroundColor(new BaseColor (49,176,213));
         //Centrar contenido de celda
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-        //Color de fondo de la celda
-        //cell.setBackgroundColor (azulClaro);        
+        //Color de fondo de la celda     
         tabla.addCell(cell0);
         tabla.addCell(cell);
             // Mostrar los rotulos de las columnas

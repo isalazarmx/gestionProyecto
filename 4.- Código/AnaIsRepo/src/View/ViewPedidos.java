@@ -177,6 +177,8 @@ public class ViewPedidos extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tablaPedidos.setShowHorizontalLines(false);
+        tablaPedidos.setShowVerticalLines(false);
         jScrollPane2.setViewportView(tablaPedidos);
 
         ClientesEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/edit.png"))); // NOI18N

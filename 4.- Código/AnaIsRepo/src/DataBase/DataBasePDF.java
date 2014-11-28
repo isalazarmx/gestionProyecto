@@ -210,21 +210,23 @@ public class DataBasePDF {
         Connection conn = controller.connectDB();
         try {
             Statement sta = conn.createStatement();
-            String strQuery = "select * from ventapedido;";
+            String strQuery = "select v.ventaPedido_idventaPedido,v.precioTotal,p.abono,p.resto,p.entregado,p.descripcion"
+                    + "       where v.ventaPedido_idventaPedido=p.idventaPedido from venta;";
             System.out.println(strQuery);
             ResultSet res = sta.executeQuery(strQuery);
             while(res.next()){
-                cell = new PdfPCell(new Paragraph(res.getString("idProducto")));
+                cell = new PdfPCell(new Paragraph(res.getString("ventaPedido_idventaPedido")));
                 tabla.addCell(cell);
-                cell = new PdfPCell(new Paragraph(res.getString("nombre")));
+                cell = new PdfPCell(new Paragraph(res.getString("precioTotal")));
                 tabla.addCell(cell);
-                cell = new PdfPCell(new Paragraph(res.getString("kilos")));
+                cell = new PdfPCell(new Paragraph(res.getString("abono")));
                 tabla.addCell(cell);
-                cell = new PdfPCell(new Paragraph(res.getString("precioUnitario")));
+                cell = new PdfPCell(new Paragraph(res.getString("resto")));
                 tabla.addCell(cell);
-                cell = new PdfPCell(new Paragraph(res.getString("Categoria_idCategoria")));
+                cell = new PdfPCell(new Paragraph(res.getString("entregado")));
                 tabla.addCell(cell);
-            }
+            }   cell = new PdfPCell(new Paragraph(res.getString("descripción")));
+                tabla.addCell(cell);
         } catch (SQLException ex) {
             Logger.getLogger(DataBase.DataBaseCliente.class.getName()).log(Level.SEVERE, null, ex);
         }finally{

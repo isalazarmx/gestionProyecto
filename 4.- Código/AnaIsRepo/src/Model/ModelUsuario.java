@@ -36,7 +36,7 @@ public class ModelUsuario {
         rotulo[1]="Nombre";
         rotulo[2]="Apellido paterno";
         rotulo[3]="Apellido materno";
-        rotulo[4]="username";
+        rotulo[4]="Username";
         return rotulo;
     }
     
