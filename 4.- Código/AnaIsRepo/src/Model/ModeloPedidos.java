@@ -140,6 +140,24 @@ public class ModeloPedidos {
         this.descripcion = descripcion;
     }
     
+     public String addInfo(){
+        return "('"
+                +getIdventaPedido()+"','"
+                +getDescripcion()+"','"                
+                +getAbono()+"',"
+                +getResto()+","
+                +",01"
+                + ");";
+    }
+    
+    public String modInfo(){
+        return "set id = '"+getIdventaPedido()+"',"+ 
+               "descripcion = '"+getDescripcion()+"',"+
+               "abono = '"+getAbono()+"',"+
+               "resto = "+getResto()
+                ;     
+    }
+    
     
     
 }

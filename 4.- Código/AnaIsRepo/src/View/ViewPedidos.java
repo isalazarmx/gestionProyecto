@@ -8,9 +8,11 @@ package View;
 
 import Controller.ControllerPaneles;
 import Controller.ControllerValidation;
+import Controller.ControllerViewAdministradorPedidos;
 import Controller.ControllerViewPedidos;
 import Controller.ControllerViewSession;
 import Controller.ControllerViewVendedor;
+import Model.ModeloPedidos;
 import java.awt.event.FocusEvent;
 import java.util.ArrayList;
 
@@ -22,6 +24,7 @@ public class ViewPedidos extends javax.swing.JPanel {
 
     ControllerValidation validation;
     ControllerViewPedidos controller;
+    ControllerViewAdministradorPedidos con;
     ControllerPaneles controllerPaneles;
 
     
@@ -184,6 +187,11 @@ public class ViewPedidos extends javax.swing.JPanel {
         ClientesEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/edit.png"))); // NOI18N
         ClientesEditar.setContentAreaFilled(false);
         ClientesEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ClientesEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClientesEditarActionPerformed(evt);
+            }
+        });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/times-outline.png"))); // NOI18N
         jButton3.setContentAreaFilled(false);
@@ -466,19 +474,12 @@ public class ViewPedidos extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        con.eliminaPedido();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void idClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idClienteActionPerformed
-
-    private void idClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idClienteFocusGained
-        validation.placeHolder(true,idCliente,"Cod. Cliente"); // TODO add your handling code here:
-    }//GEN-LAST:event_idClienteFocusGained
-
-    private void idClienteFocusLoscodigoVentaent.FocusEvent evt) {//GEN-FIRST:event_idClienteFocusLost
-       validation.placeHolder(false,idCliente,"Cod. Cliente"); // TODO add your handling code here
-    }//GEN-LAST:event_idClienteFocusLost
 
     private void pedidosEncFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pedidosEncFocusGained
        validation.placeHolder(true,pedidosEnc,"0"); // TODO add your handling code here:
@@ -490,12 +491,31 @@ public class ViewPedidos extends javax.swing.JPanel {
 
     private void botonNuevoPedido1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoPedido1ActionPerformed
         // TODO add your handling code here:
+       
     }//GEN-LAST:event_botonNuevoPedido1ActionPerformed
 
     private void verTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTodosActionPerformed
         // TODO add your handling code here:
-        controller.buscaPedido(true);
+        con.buscaPedido(true);
     }//GEN-LAST:event_verTodosActionPerformed
+
+    private void idClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idClienteFocusGained
+        // TODO add your handling code here:
+        validation.placeHolder(true, idCliente, "Cod. Cliente");
+    }//GEN-LAST:event_idClienteFocusGained
+
+    private void idClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idClienteFocusLost
+        // TODO add your handling code here:
+        validation.placeHolder(false, idCliente, "Cod. Cliente");
+    }//GEN-LAST:event_idClienteFocusLost
+
+    private void ClientesEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesEditarActionPerformed
+        // TODO add your handling code here:
+              if(con.tablaSeleccionada()){
+           // ModeloPedidos ped = DataBase.DataBasePedido.findPedido(con.pedidoModificar());
+            //controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewRealizarVentas(controllerPaneles,ped));
+        }
+    }//GEN-LAST:event_ClientesEditarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

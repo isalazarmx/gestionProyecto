@@ -77,7 +77,7 @@ public void buscaPedido(boolean flag){
             controllerTable.getModelTable().removeRow(i);
     }
     
-    public String vendedorModificar(){
+    public String pedidoModificar(){
         int seleccion = controllerTable.getTabla().getSelectedRow();
         return (String)controllerTable.getModelTable().getValueAt(seleccion, 3);
     }
@@ -88,27 +88,27 @@ public void buscaPedido(boolean flag){
             if(controllerTable.getTabla().getSelectedRow()>-1)
                 flag = true;
             else
-                ControllerViewMsj.aviso(controllerTable.getTabla(),"Lo sentimos, debes de seleccionar un vendedor","Mensaje para modificar vendedor");
+                ControllerViewMsj.aviso(controllerTable.getTabla(),"Lo sentimos, debes de seleccionar un pedido","Mensaje para modificar pedido");
         else
-            ControllerViewMsj.aviso(controllerTable.getTabla(),"Lo sentimos, no existe ningún registro","Mensaje para modificar vendedor");
+            ControllerViewMsj.aviso(controllerTable.getTabla(),"Lo sentimos, no existe ningún registro","Mensaje para modificar pedido");
         return flag;
     }
     
-    public void eliminaVendedor(){
+    public void eliminaPedido(){
         int eliminar = controllerTable.getTabla().getSelectedRow();
         if(eliminar != -1){
             String[] dat = new String[2];
             dat[0]="Si";
             dat[1]="No";
-            if(ControllerViewMsj.pregunta("Estás seguro de quere eliminar al este vendedor?", dat, controllerTable.getTabla())==0){
-                String username = vendedorModificar();
-                labelCount1.setText("Vendedor eliminado con éxito");
-                DataBase.DataBaseUsuario.eliminarUsuario(username);
+            if(ControllerViewMsj.pregunta("Estás seguro de quere eliminar al este pedido?", dat, controllerTable.getTabla())==0){
+                String idventaPedido = pedidoModificar();
+                labelCount1.setText("Pedido eliminado con éxito");
+                DataBase.DataBaseUsuario.eliminarUsuario(idventaPedido);
                 controllerTable.getModelTable().removeRow(controllerTable.getTabla().getSelectedRow());
             }else
-                labelCount1.setText("Eliminación de usuario cancelada");
+                labelCount1.setText("Eliminación de pedido cancelada");
         }else
-            ControllerViewMsj.aviso(controllerTable.getTabla(),"Lo sentimos, debes de seleccionar un vendedor","Mensaje para modificar vendedor");
+            ControllerViewMsj.aviso(controllerTable.getTabla(),"Lo sentimos, debes de seleccionar un pedido","Mensaje para modificar pedido");
     }
     
     
