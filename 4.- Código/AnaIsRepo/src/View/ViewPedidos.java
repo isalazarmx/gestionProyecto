@@ -11,6 +11,7 @@ import Controller.ControllerValidation;
 import Controller.ControllerViewPedidos;
 import Controller.ControllerViewSession;
 import Controller.ControllerViewVendedor;
+import java.awt.event.FocusEvent;
 import java.util.ArrayList;
 
 /**
@@ -46,8 +47,7 @@ public class ViewPedidos extends javax.swing.JPanel {
     private void validation(){
         ArrayList components = new ArrayList<>();
         components.add(idCliente);
-        components.add(fechaPedido);
-        components.add(nombreCliente);
+        components.add(codigoVenta);
 
         controller = new ControllerViewPedidos(components);
         controller.validations();
@@ -68,17 +68,17 @@ public class ViewPedidos extends javax.swing.JPanel {
         pedidosEnc = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         labelNombre = new javax.swing.JLabel();
-        nombreCliente = new javax.swing.JTextField();
+        codigoVenta = new javax.swing.JTextField();
         labelcodCliente = new javax.swing.JLabel();
         idCliente = new javax.swing.JTextField();
         labelBuscar = new javax.swing.JLabel();
-        botonNuevoPedido = new javax.swing.JButton();
         botonNuevoPedido1 = new javax.swing.JButton();
-        labelFecha = new javax.swing.JLabel();
-        fechaPedido = new javax.swing.JTextField();
         botonFecha = new javax.swing.JButton();
+        verTodos = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
+        panelCantidadResultados1 = new javax.swing.JPanel();
+        labelCount1 = new javax.swing.JLabel();
 
         labelVentas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         labelVentas.setForeground(new java.awt.Color(66, 139, 202));
@@ -183,11 +183,11 @@ public class ViewPedidos extends javax.swing.JPanel {
 
         ClientesEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/edit.png"))); // NOI18N
         ClientesEditar.setContentAreaFilled(false);
-        ClientesEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ClientesEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/times-outline.png"))); // NOI18N
         jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -254,22 +254,22 @@ public class ViewPedidos extends javax.swing.JPanel {
 
         labelNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        labelNombre.setText("Nombre");
+        labelNombre.setText("Código Venta");
 
-        nombreCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        nombreCliente.setForeground(new java.awt.Color(180, 180, 180));
-        nombreCliente.setText("Nombre");
-        nombreCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+        codigoVenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        codigoVenta.setForeground(new java.awt.Color(180, 180, 180));
+        codigoVenta.setText("Cod. Venta");
+        codigoVenta.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                nombreClienteFocusGained(evt);
+                codigoVentaFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                nombreClienteFocusLost(evt);
+                codigoVentaFocusLost(evt);
             }
         });
-        nombreCliente.addActionListener(new java.awt.event.ActionListener() {
+        codigoVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreClienteActionPerformed(evt);
+                codigoVentaActionPerformed(evt);
             }
         });
 
@@ -299,48 +299,15 @@ public class ViewPedidos extends javax.swing.JPanel {
         labelBuscar.setForeground(new java.awt.Color(66, 193, 202));
         labelBuscar.setText("Buscar por:");
 
-        botonNuevoPedido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        botonNuevoPedido.setForeground(new java.awt.Color(52, 73, 94));
-        botonNuevoPedido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/user-add-outline_1.png"))); // NOI18N
-        botonNuevoPedido.setText("Nuevo");
-        botonNuevoPedido.setContentAreaFilled(false);
-        botonNuevoPedido.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        botonNuevoPedido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonNuevoPedidoActionPerformed(evt);
-            }
-        });
-
         botonNuevoPedido1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         botonNuevoPedido1.setForeground(new java.awt.Color(52, 73, 94));
-        botonNuevoPedido1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/zoom.png"))); // NOI18N
+        botonNuevoPedido1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/findUser.png"))); // NOI18N
         botonNuevoPedido1.setText("Consultar");
         botonNuevoPedido1.setContentAreaFilled(false);
-        botonNuevoPedido1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        botonNuevoPedido1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonNuevoPedido1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonNuevoPedido1ActionPerformed(evt);
-            }
-        });
-
-        labelFecha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelFecha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        labelFecha.setText("Fecha");
-
-        fechaPedido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        fechaPedido.setForeground(new java.awt.Color(180, 180, 180));
-        fechaPedido.setText("Fecha de pedido");
-        fechaPedido.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fechaPedidoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fechaPedidoFocusLost(evt);
-            }
-        });
-        fechaPedido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fechaPedidoActionPerformed(evt);
             }
         });
 
@@ -348,61 +315,63 @@ public class ViewPedidos extends javax.swing.JPanel {
         botonFecha.setContentAreaFilled(false);
         botonFecha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        verTodos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        verTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/verTodo.png"))); // NOI18N
+        verTodos.setText("Ver todos");
+        verTodos.setContentAreaFilled(false);
+        verTodos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        verTodos.setPreferredSize(new java.awt.Dimension(119, 26));
+        verTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verTodosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(labelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(labelBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(252, 252, 252)
+                        .addComponent(botonFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(labelNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(labelcodCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(labelFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(idCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(fechaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(botonFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(55, 55, 55)
+                        .addComponent(codigoVenta)
+                        .addGap(18, 18, 18)
+                        .addComponent(labelcodCliente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(idCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(botonNuevoPedido1)
-                        .addGap(70, 70, 70)
-                        .addComponent(botonNuevoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(151, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(verTodos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(43, 43, 43))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labelBuscar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelcodCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(idCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(labelFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(fechaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonNuevoPedido1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonNuevoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(botonFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(codigoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelcodCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonNuevoPedido1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(idCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(verTodos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
 
         jPanel13.setBackground(new java.awt.Color(250, 250, 250));
@@ -428,6 +397,31 @@ public class ViewPedidos extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        panelCantidadResultados1.setBackground(new java.awt.Color(255, 255, 255));
+        panelCantidadResultados1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(220, 220, 220), 1, true));
+
+        labelCount1.setBackground(new java.awt.Color(53, 107, 161));
+        labelCount1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelCount1.setForeground(new java.awt.Color(53, 107, 161));
+        labelCount1.setText("Ingresa un nombre de cliente y/o código de cliente para iniciar la busqueda");
+
+        javax.swing.GroupLayout panelCantidadResultados1Layout = new javax.swing.GroupLayout(panelCantidadResultados1);
+        panelCantidadResultados1.setLayout(panelCantidadResultados1Layout);
+        panelCantidadResultados1Layout.setHorizontalGroup(
+            panelCantidadResultados1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCantidadResultados1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelCount1, javax.swing.GroupLayout.PREFERRED_SIZE, 878, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelCantidadResultados1Layout.setVerticalGroup(
+            panelCantidadResultados1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCantidadResultados1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelCount1)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -437,7 +431,8 @@ public class ViewPedidos extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCantidadResultados1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -449,23 +444,25 @@ public class ViewPedidos extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(panelCantidadResultados1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreClienteActionPerformed
+    private void codigoVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoVentaActionPerformed
        // TODO add your handling code here:
-    }//GEN-LAST:event_nombreClienteActionPerformed
+    }//GEN-LAST:event_codigoVentaActionPerformed
 
-    private void nombreClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreClienteFocusGained
-        validation.placeHolder(true,nombreCliente,"Nombre");// TODO add your handling code here:
-    }//GEN-LAST:event_nombreClienteFocusGained
+    private void codigoVentaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codigoVentaFocusGained
+        validation.placeHolder(true,codigoVenta,"Cod. Venta");// TODO add your handling code here:
+    }//GEN-LAST:event_codigoVentaFocusGained
 
-    private void nombreClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreClienteFocusLost
-       validation.placeHolder(false ,nombreCliente,"Nombre"); // TODO add your handling code here:
-    }//GEN-LAST:event_nombreClienteFocusLost
+    private void codigoVentaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codigoVentaFocusLost
+       validation.placeHolder(false ,codigoVenta,"Cod. Venta"); // TODO add your handling code here:
+    }//GEN-LAST:event_codigoVentaFocusLost
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -479,8 +476,8 @@ public class ViewPedidos extends javax.swing.JPanel {
         validation.placeHolder(true,idCliente,"Cod. Cliente"); // TODO add your handling code here:
     }//GEN-LAST:event_idClienteFocusGained
 
-    private void idClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idClienteFocusLost
-       validation.placeHolder(false,idCliente,"Cod. Cliente"); // TODO add your handling code here:
+    private void idClienteFocusLoscodigoVentaent.FocusEvent evt) {//GEN-FIRST:event_idClienteFocusLost
+       validation.placeHolder(false,idCliente,"Cod. Cliente"); // TODO add your handling code here
     }//GEN-LAST:event_idClienteFocusLost
 
     private void pedidosEncFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pedidosEncFocusGained
@@ -491,33 +488,21 @@ public class ViewPedidos extends javax.swing.JPanel {
         validation.placeHolder(false,pedidosEnc,"0");        // TODO add your handling code here:
     }//GEN-LAST:event_pedidosEncFocusLost
 
-    private void botonNuevoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoPedidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonNuevoPedidoActionPerformed
-
     private void botonNuevoPedido1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoPedido1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonNuevoPedido1ActionPerformed
 
-    private void fechaPedidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaPedidoFocusGained
-        validation.placeHolder(true, fechaPedido, "Fecha de pedido");
-    }//GEN-LAST:event_fechaPedidoFocusGained
-
-    private void fechaPedidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaPedidoFocusLost
-        validation.placeHolder(false, fechaPedido, "Fecha de pedido");
-    }//GEN-LAST:event_fechaPedidoFocusLost
-
-    private void fechaPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaPedidoActionPerformed
+    private void verTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTodosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fechaPedidoActionPerformed
+        controller.buscaPedido(true);
+    }//GEN-LAST:event_verTodosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ClientesEditar;
     private javax.swing.JButton botonFecha;
-    private javax.swing.JButton botonNuevoPedido;
     private javax.swing.JButton botonNuevoPedido1;
-    private javax.swing.JTextField fechaPedido;
+    private javax.swing.JTextField codigoVenta;
     private javax.swing.JTextField idCliente;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel24;
@@ -529,13 +514,16 @@ public class ViewPedidos extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelBuscar;
-    private javax.swing.JLabel labelFecha;
+    private javax.swing.JLabel labelCount;
+    private javax.swing.JLabel labelCount1;
     private javax.swing.JLabel labelNombre;
     private javax.swing.JLabel labelVentas;
     private javax.swing.JLabel labelcodCliente;
-    private javax.swing.JTextField nombreCliente;
+    private javax.swing.JPanel panelCantidadResultados;
+    private javax.swing.JPanel panelCantidadResultados1;
     private javax.swing.JTextField pedidosEnc;
     private javax.swing.JLabel pedidosEncontrados;
     private javax.swing.JTable tablaPedidos;
+    private javax.swing.JButton verTodos;
     // End of variables declaration//GEN-END:variables
 }
