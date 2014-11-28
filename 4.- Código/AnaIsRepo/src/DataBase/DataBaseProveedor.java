@@ -28,7 +28,7 @@ public class DataBaseProveedor {
         Connection conn = controller.connectDB();
         try {
             Statement sta = conn.createStatement();
-            String strQuery = "select auto_increment from information_schema.tables where table_schema='reposteria' and table_name='proveedor';";
+            String strQuery = "select auto_increment from information_schema.tables where table_schema='poscakeapp' and table_name='proveedor';";
             System.out.println(strQuery);
             ResultSet res = sta.executeQuery(strQuery);
             if(res.next())

@@ -21,6 +21,31 @@ import java.util.logging.Logger;
  * @author Jesus
  */
 public class DataBaseUsuario {
+    
+    public static String verProximoID(){
+        String id = "";
+        ControllerConnDBMS controller = new ControllerConnDBMS();
+        Connection conn = controller.connectDB();
+        try {
+            Statement sta = conn.createStatement();
+            String strQuery = "select auto_increment from information_schema.tables where table_schema='poscakeapp' and table_name='proveedor';";
+            System.out.println(strQuery);
+            ResultSet res = sta.executeQuery(strQuery);
+            if(res.next())
+                id = res.getString("Auto_increment");
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.DataBaseCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+              try {
+                if (conn != null && !conn.isClosed())
+                    conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return id;
+    }
+    
     public static ModelUsuario buscaAdministrador(ModelUsuario user){
         ControllerConnDBMS controller = new ControllerConnDBMS();
         Connection conn = controller.connectDB();
@@ -105,17 +130,13 @@ public class DataBaseUsuario {
         return flag;
     }
     
-    public static boolean addUser(ModelUsuario user,boolean admin){
+    public static boolean addUser(ModelUsuario user){
         boolean flag = false;
         ControllerConnDBMS controller = new ControllerConnDBMS();
         Connection conn = controller.connectDB();
         try {
             Statement sta = conn.createStatement();
-            String strQuery;
-            if(admin)
-                strQuery = "insert into usuario values "+user.addAdmin();
-            else
-                strQuery = "insert into usuario "+user.addVendedor();
+            String strQuery = "insert into usuario "+user.addVendedor();
             System.out.println(strQuery);
             sta.executeUpdate(strQuery);
             flag = true;

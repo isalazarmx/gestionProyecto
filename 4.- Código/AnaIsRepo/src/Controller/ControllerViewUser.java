@@ -61,7 +61,7 @@ public class ControllerViewUser {
                                 user.setPassword(crearPass(pass1));
                                 user.setIdEmpresa(idEmpresa);
                                 user.setTipo(3);
-                                 if(DataBase.DataBaseUsuario.addUser(user,true)){
+                                 if(DataBase.DataBaseUsuario.addUser(user)){
                                     labelStatus.setText("Datos de administrador agregados");
                                     hilo.resume();
                                 }else

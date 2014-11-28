@@ -66,10 +66,10 @@ public class ControllerConnDBMS {
     }
     
     private void initDataConnection(){
-        setIp("localhost");
-        setDb("reposteria");
-        setUser("root");
-        setPass("");
+        setIp("us-cdbr-azure-west-a.cloudapp.net");
+        setDb("poscakeapp");
+        setUser("b9db5cb2bfa3a1");
+        setPass("a6089785");
     }
     
     public void closeConect(){

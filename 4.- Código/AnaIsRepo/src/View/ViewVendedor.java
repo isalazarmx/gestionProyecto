@@ -35,10 +35,12 @@ public class ViewVendedor extends javax.swing.JPanel {
         this.modelEmpresa = controllerPaneles.getModelEmpresa();
         initComponents();
         validation();
-        if(user==null)
+        if(user==null){
             labelRuta.setText("Administración de vendedores / Nuevo Vendedor");   
-        else{
+            acID.setText(DataBase.DataBaseCliente.verProximoID());
+        }else{
             controller.identificaInfo(user);
+            acID.setText(""+usuarioTemporal.getIdUsuario());
             labelRuta.setText("Administración de vendedores / Modifica Vendedor");
         }
         labelStatus.setText("");
@@ -70,6 +72,8 @@ public class ViewVendedor extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
+        acID = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         name = new javax.swing.JTextField();
@@ -135,17 +139,46 @@ public class ViewVendedor extends javax.swing.JPanel {
             }
         });
 
+        acID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        acID.setForeground(new java.awt.Color(180, 180, 180));
+        acID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        acID.setText("Id Vendedor");
+        acID.setEnabled(false);
+        acID.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                acIDFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                acIDFocusLost(evt);
+            }
+        });
+        acID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acIDActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/user.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(acID, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(acID, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
@@ -695,11 +728,25 @@ public class ViewVendedor extends javax.swing.JPanel {
             agregaModificaUsuario();
     }//GEN-LAST:event_pass02KeyPressed
 
+    private void acIDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acIDFocusGained
+        validation.placeHolder(true,acID,"Id Cliente"); // TODO add your handling code here:
+        labelStatus.setText("");
+    }//GEN-LAST:event_acIDFocusGained
+
+    private void acIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acIDFocusLost
+        validation.placeHolder(false,acID,"Id Cliente");// TODO add your handling code here:
+    }//GEN-LAST:event_acIDFocusLost
+
+    private void acIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_acIDActionPerformed
+
     
        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField aMaterno;
     private javax.swing.JTextField aPaterno;
+    private javax.swing.JTextField acID;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -707,6 +754,7 @@ public class ViewVendedor extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

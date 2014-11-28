@@ -49,7 +49,8 @@ public class ControllerViewVendedores {
                     if(!crearPass(pass2).equals("Password-02") && !pass2.getText().isEmpty()){
                         if(!DataBase.DataBaseUsuario.checkExistUser(username.getText())){
                             if(ControllerValidation.validarContrasenias(pass1,pass2)){
-                                 if(DataBase.DataBaseUsuario.addUser(user,false)){
+                                user.setTipo(2);
+                                 if(DataBase.DataBaseUsuario.addUser(user)){
                                     labelStatus.setText("Vendedor agregado con éxito");
                                     limpiaCampos();
                                  }else
