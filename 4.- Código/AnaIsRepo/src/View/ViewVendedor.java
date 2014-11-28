@@ -37,7 +37,7 @@ public class ViewVendedor extends javax.swing.JPanel {
         validation();
         if(user==null){
             labelRuta.setText("Administración de vendedores / Nuevo Vendedor");   
-            acID.setText(DataBase.DataBaseCliente.verProximoID());
+            acID.setText(DataBase.DataBaseUsuario.verProximoID());
         }else{
             controller.identificaInfo(user);
             acID.setText(""+usuarioTemporal.getIdUsuario());
@@ -650,6 +650,7 @@ public class ViewVendedor extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         agregaModificaUsuario();
+        acID.setText(DataBase.DataBaseUsuario.verProximoID());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void agregaModificaUsuario(){
