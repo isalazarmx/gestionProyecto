@@ -174,6 +174,32 @@ public class ModelProducto {
     public void setIdEmpresa(int idEmpresa) {
         this.idEmpresa = idEmpresa;
     }
+    
+    
+    public String addInfo(){
+        return "('"
+                +getNombre()+"','"
+                +getDescripcion()+"','"                
+                +getLinkFoto()+"',"
+                +getKilos()+","
+                +getNumPersonas()+","
+                +getPrecioUnitario()+","
+                +",0,"
+                +getIdCategoria()+""
+                +",01"
+                + ");";
+    }
+    
+    public String modInfo(){
+        return "set nombre = '"+getNombre()+"',"+ 
+               "descripcion = '"+getDescripcion()+"',"+
+               "linkFoto = '"+getLinkFoto()+"',"+
+               "kilos = "+getKilos()+","+
+               "numPersonas = "+getNumPersonas()+","+
+               "precioUnitario = "+getPrecioUnitario()+","+
+                "Categoria_idCategoria = "+getIdCategoria()+""
+                ;     
+    }
           
     
 }
