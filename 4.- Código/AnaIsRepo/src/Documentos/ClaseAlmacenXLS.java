@@ -31,9 +31,7 @@ import org.apache.poi.ss.util.CellRangeAddress;
  */
 public class ClaseAlmacenXLS {
         public static void main(String[] args) {
-//        ClaseAlmacenXLS objPruebaBlog = new ClaseAlmacenXLS();
-//        objPruebaBlog.crearExcel();
-            //new ClaseAlmacenXLS().crearExcel();
+
     }
     int i;
     String nombre_archivo;
@@ -84,7 +82,7 @@ public class ClaseAlmacenXLS {
             createCell(wb, row, 7, CellStyle.ALIGN_CENTER, CellStyle.VERTICAL_CENTER, "Precio por unidad", true, true);
 
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/reposteria", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/poscakeapp", "root", "");
 
             try ( // Creamos un Statement para poder hacer peticiones a la bd
                     Statement stat = con.createStatement()) {
@@ -145,7 +143,9 @@ public class ClaseAlmacenXLS {
             //Area de impresion
             wb.setPrintArea(0, 0, 1, 0, 9);
 
-            String strRuta = "C:\\Users\\Teté\\Documents\\GitHub\\gestionProyecto\\4.- Código\\AnaIsRepo" + ControllerFechas.getFechaActual() + ".xls";
+            String strRuta = System.getProperty("user.dir")+ System.getProperty("file.separator") 
+                           + "reports"+System.getProperty("file.separator")+"Almacen"+ControllerFechas.getFechaActual()+".xls";
+                    //"C:\\Users\\Teté\\Documents\\GitHub\\gestionProyecto\\4.- Código\\AnaIsRepo" + ControllerFechas.getFechaActual() + ".xls";
 
             try (FileOutputStream fileOut = new FileOutputStream(strRuta)) {
                 wb.write(fileOut);
@@ -154,7 +154,7 @@ public class ClaseAlmacenXLS {
 
         } catch (Exception e) {
             e.printStackTrace();
-//            JOptionPane.showMessageDialog(null, "El archivo no se ha creado debido a que otro usuario esta haciendo uso de el.\nSe recomienda cerrar el archivo");
+            //JOptionPane.showMessageDialog(null, "El archivo no se ha creado debido a que otro usuario esta haciendo uso de el.\nSe recomienda cerrar el archivo");
         }
     }
 
