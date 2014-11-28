@@ -66,10 +66,10 @@ public class ControllerConnDBMS {
     }
     
     private void initDataConnection(){
-        setIp("us-cdbr-azure-west-a.cloudapp.net");
+        setIp("localhost");
         setDb("poscakeapp");
-        setUser("b9db5cb2bfa3a1");
-        setPass("a6089785");
+        setUser("root");
+        setPass("");
     }
     
     public void closeConect(){
