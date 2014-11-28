@@ -120,7 +120,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         BCerrar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         BCerrar.setBorderPainted(false);
         BCerrar.setContentAreaFilled(false);
-        BCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         BCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BCerrarActionPerformed(evt);
@@ -133,7 +133,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         BMin.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         BMin.setBorderPainted(false);
         BMin.setContentAreaFilled(false);
-        BMin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BMin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         BMin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BMinActionPerformed(evt);
@@ -176,7 +176,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/settings.png"))); // NOI18N
         ajustes.setToolTipText("Ajustes");
         ajustes.setContentAreaFilled(false);
-        ajustes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ajustes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ajustes.setSelected(true);
         ajustes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,7 +189,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         user.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/userLoggin.png"))); // NOI18N
         user.setText("Mensaje de bienvenida");
         user.setContentAreaFilled(false);
-        user.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        user.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         user.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         user.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         user.setSelected(true);
