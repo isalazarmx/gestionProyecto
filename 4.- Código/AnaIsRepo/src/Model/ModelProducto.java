@@ -184,7 +184,7 @@ public class ModelProducto {
                 +getKilos()+","
                 +getNumPersonas()+","
                 +getPrecioUnitario()+","
-                +",0,"
+                +"0,"
                 +getIdCategoria()+""
                 +",01"
                 + ");";

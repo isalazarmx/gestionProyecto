@@ -86,6 +86,28 @@ public class ControllerViewCategoria
         }        
     }
     
+    
+    public void cargaComboCategoria(JComboBox combo,String cadena,JButton bt1)
+    {
+        if (cadena.equals("Buscar Categoria")) 
+        {
+            cadena="";
+        }
+        combo.removeAllItems();
+        LinkedList lista=DataBaseCategoria.findCategoria(cadena);
+        if (lista.isEmpty()) 
+        {
+            bt1.setEnabled(false);            
+        }else
+        {
+            bt1.setEnabled(true);            
+            for (int i = 0; i < lista.size(); i++) {
+                ModelCategoria tmp = (ModelCategoria) lista.get(i);
+                combo.addItem(tmp.getNombre());
+            }
+        }        
+    }
+    
     public void cargaTextoCategoria(JComboBox combo,JTextArea area)
     {       
         if (!(combo.getSelectedItem() == null)) 

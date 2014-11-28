@@ -185,13 +185,13 @@ public class DataBaseProducto
             String strQuery = "select * from producto where nombre = '"+cadena+"';";
             ResultSet res = sta.executeQuery(strQuery);
             if(res.next()){
-                categoria.setIdCategoria(Integer.parseInt(res.getString("idCategoria")));
+                categoria.setIdCategoria(Integer.parseInt(res.getString("idproducto")));
                 categoria.setNombre(res.getString("nombre"));
                 categoria.setDescripcion(res.getString("descripcion"));
                 categoria.setLinkFoto(res.getString("linkFoto"));
                 categoria.setKilos(Integer.parseInt(res.getString("kilos")));
                 categoria.setNumPersonas(Integer.parseInt(res.getString("numPersonas")));
-                categoria.setPrecioUnitario(Integer.parseInt(res.getString("precioUnitario")));
+                categoria.setPrecioUnitario(Double.parseDouble(res.getString("precioUnitario")));
             }
         } catch (SQLException ex) {
             Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);

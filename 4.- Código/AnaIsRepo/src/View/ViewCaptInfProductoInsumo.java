@@ -12,7 +12,9 @@ import Model.ModelCategoria;
 import Model.ModelProducto;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.io.File;
 import java.util.ArrayList;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -26,6 +28,7 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
     ControllerViewCategoria controllerCategoria;
     ControllerViewProducto controllerproducto;
     String categoriaActualizar;
+    String prodcutoActualizar;
     boolean banderaActualiza;
     boolean banderaActualiza2;
     /**
@@ -67,8 +70,8 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
         components2.add(TextPrecioUnitario);
         controllerproducto= new ControllerViewProducto(components2);
         controllerproducto.validations();
-        controllerCategoria.cargaComboCategoria(ComboCategoriaProducto,TextBuscaCategoria.getText(),BotonEditarCategoria,BotonEliminarCategoria);
-        
+        controllerCategoria.cargaComboCategoria(ComboCategoriaProducto,TextBuscaCategoria.getText(),BotonAgregarProducto);
+        controllerproducto.cargaComboProducto(ComboProducto, TextBuscaProducto.getText(), BotonEditarProducto, BotonEliminarProducto);
     }
 //    
 //    private void validationProducto(){
@@ -95,6 +98,7 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFileChooser1 = new javax.swing.JFileChooser();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         panelCliente = new javax.swing.JPanel();
@@ -133,12 +137,14 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
         TextBuscaCategoria = new javax.swing.JTextField();
         ComboCategoriaProducto = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
+        botonCancelarActualizacion1 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         LabelNombreProd = new javax.swing.JLabel();
         TextBuscaProducto = new javax.swing.JTextField();
         ComboProducto = new javax.swing.JComboBox();
         BotonEditarProducto = new javax.swing.JButton();
         BotonEliminarProducto = new javax.swing.JButton();
+        labelNota = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -197,7 +203,7 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
         });
 
         BotonAgregarCategoria.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        BotonAgregarCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/filesave.png"))); // NOI18N
+        BotonAgregarCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/new.png"))); // NOI18N
         BotonAgregarCategoria.setToolTipText("Guardar categoria");
         BotonAgregarCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,6 +230,11 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
         NombreCategoriaEditDelete.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         NombreCategoriaEditDelete.setForeground(new java.awt.Color(204, 204, 255));
         NombreCategoriaEditDelete.setText("Buscar Categoria");
+        NombreCategoriaEditDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NombreCategoriaEditDeleteActionPerformed(evt);
+            }
+        });
         NombreCategoriaEditDelete.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 NombreCategoriaEditDeleteFocusGained(evt);
@@ -248,7 +259,7 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
         });
 
         BotonEliminarCategoria.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        BotonEliminarCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/trash.png"))); // NOI18N
+        BotonEliminarCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/times-outline.png"))); // NOI18N
         BotonEliminarCategoria.setToolTipText("Eliminar categoria");
         BotonEliminarCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,7 +267,7 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
             }
         });
 
-        botonCancelarActualizacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/times.png"))); // NOI18N
+        botonCancelarActualizacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/regresar.png"))); // NOI18N
         botonCancelarActualizacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCancelarActualizacionActionPerformed(evt);
@@ -282,7 +293,7 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
                 .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(NombreCategoriaEditDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ComboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panelClienteLayout.createSequentialGroup()
                 .addGap(173, 173, 173)
                 .addComponent(BotonAgregarCategoria)
@@ -290,9 +301,9 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
                 .addComponent(botonCancelarActualizacion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BotonEditarCategoria)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(38, 38, 38)
                 .addComponent(BotonEliminarCategoria)
-                .addGap(146, 146, 146))
+                .addGap(67, 67, 67))
         );
         panelClienteLayout.setVerticalGroup(
             panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,11 +320,11 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
                     .addComponent(labelNombreCategoria1)
                     .addComponent(ComboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(BotonAgregarCategoria)
-                    .addComponent(BotonEditarCategoria)
-                    .addComponent(BotonEliminarCategoria)
-                    .addComponent(botonCancelarActualizacion))
+                    .addComponent(BotonEliminarCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonCancelarActualizacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BotonEditarCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -334,12 +345,12 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane2)
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -349,17 +360,14 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(panelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -373,7 +381,7 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
 
         TextNombreProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         TextNombreProducto.setForeground(new java.awt.Color(204, 204, 255));
-        TextNombreProducto.setText("Nombre del producto");
+        TextNombreProducto.setText("Nombre del producto(*)");
         TextNombreProducto.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 TextNombreProductoFocusGained(evt);
@@ -405,7 +413,7 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
         labelDescripcionProducto.setText("Descripcion");
 
         BotonAgregarProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        BotonAgregarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/filesave.png"))); // NOI18N
+        BotonAgregarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/new.png"))); // NOI18N
         BotonAgregarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonAgregarProductoActionPerformed(evt);
@@ -497,7 +505,12 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
         ComboCategoriaProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         ComboCategoriaProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/zoom.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/findproducto.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -564,6 +577,13 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        botonCancelarActualizacion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/regresar.png"))); // NOI18N
+        botonCancelarActualizacion1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarActualizacion1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -576,19 +596,25 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(198, 198, 198)
-                        .addComponent(BotonAgregarProducto))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(labelNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(TextNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(TextNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(BotonAgregarProducto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonCancelarActualizacion1)
+                        .addGap(92, 92, 92)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -600,10 +626,10 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
                         .addComponent(TextNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(BotonAgregarProducto)
-                .addContainerGap())
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BotonAgregarProducto)
+                    .addComponent(botonCancelarActualizacion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
@@ -623,17 +649,40 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
                 TextBuscaProductoFocusLost(evt);
             }
         });
+        TextBuscaProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TextBuscaProductoKeyReleased(evt);
+            }
+        });
 
         ComboProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         ComboProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboProducto.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ComboProductoItemStateChanged(evt);
+            }
+        });
 
         BotonEditarProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        BotonEditarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/tick.png"))); // NOI18N
-        BotonEditarProducto.setText("Editar");
+        BotonEditarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/edit.png"))); // NOI18N
+        BotonEditarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonEditarProductoActionPerformed(evt);
+            }
+        });
 
         BotonEliminarProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        BotonEliminarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/times.png"))); // NOI18N
-        BotonEliminarProducto.setText("Eliminar");
+        BotonEliminarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/times-outline.png"))); // NOI18N
+        BotonEliminarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonEliminarProductoActionPerformed(evt);
+            }
+        });
+
+        labelNota.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        labelNota.setForeground(new java.awt.Color(66, 139, 202));
+        labelNota.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelNota.setText("Nota: (*) Campos obligatorios");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -642,18 +691,22 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(BotonEditarProducto)
-                        .addGap(34, 34, 34)
-                        .addComponent(BotonEliminarProducto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(LabelNombreProd, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(TextBuscaProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
-                    .addComponent(ComboProducto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(98, 98, 98)
+                        .addComponent(labelNota, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(BotonEditarProducto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BotonEliminarProducto))
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(TextBuscaProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+                        .addComponent(ComboProducto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(83, 83, 83))
         );
         jPanel8Layout.setVerticalGroup(
@@ -665,10 +718,13 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
                     .addComponent(TextBuscaProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ComboProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelNota))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonEditarProducto)
-                    .addComponent(BotonEliminarProducto)
-                    .addComponent(ComboProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                    .addComponent(BotonEliminarProducto))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -691,7 +747,7 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -700,8 +756,8 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3)
-                .addContainerGap())
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -720,15 +776,15 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(48, 48, 48))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -739,7 +795,7 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -748,8 +804,8 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 438, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -758,14 +814,15 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1205, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1258, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -865,6 +922,8 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
         {
             banderaActualiza=controllerCategoria.updateCategoria(modelCategoria,categoriaActualizar,botonCancelarActualizacion,BotonEliminarCategoria);
             controllerCategoria.cargaComboCategoria(ComboCategoria,NombreCategoriaEditDelete.getText(),BotonEditarCategoria,BotonEliminarCategoria);
+            controllerCategoria.cargaComboCategoria(ComboCategoriaProducto,TextBuscaCategoria.getText(),BotonAgregarProducto);
+            
         }
         
     }//GEN-LAST:event_BotonAgregarCategoriaActionPerformed
@@ -894,6 +953,7 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
     private void BotonEliminarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarCategoriaActionPerformed
         controllerCategoria.deleteCategoria(ComboCategoria.getSelectedItem().toString(),NombreCategoriaEditDelete);
         controllerCategoria.cargaComboCategoria(ComboCategoria,NombreCategoriaEditDelete.getText(),BotonEditarCategoria,BotonEliminarCategoria);
+        controllerCategoria.cargaComboCategoria(ComboCategoriaProducto,TextBuscaCategoria.getText(),BotonAgregarProducto);
     }//GEN-LAST:event_BotonEliminarCategoriaActionPerformed
 
     private void ComboCategoriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboCategoriaItemStateChanged
@@ -911,23 +971,68 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
 
     
     private void BotonAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAgregarProductoActionPerformed
-        if (banderaActualiza) 
+        if (banderaActualiza2) 
         {
             next2();
         }else
         {
-            banderaActualiza=controllerCategoria.updateCategoria(modelCategoria,categoriaActualizar,botonCancelarActualizacion,BotonEliminarCategoria);
-            controllerCategoria.cargaComboCategoria(ComboCategoria,NombreCategoriaEditDelete.getText(),BotonEditarCategoria,BotonEliminarCategoria);
+            controllerproducto.updateProducto(modelProducto,ComboProducto.getSelectedItem().toString(),botonCancelarActualizacion1, BotonEliminarProducto, ComboCategoriaProducto.getSelectedItem().toString());
+            controllerproducto.cargaComboProducto(ComboProducto, TextBuscaProducto.getText(), BotonEditarProducto, BotonEliminarProducto);
         }
     }//GEN-LAST:event_BotonAgregarProductoActionPerformed
+
+    private void BotonEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarProductoActionPerformed
+        
+        controllerproducto.deleteProducto(ComboProducto.getSelectedItem().toString(), TextBuscaProducto);
+        controllerproducto.cargaComboProducto(ComboProducto, TextBuscaProducto.getText(), BotonEditarProducto, BotonEliminarProducto);
+    }//GEN-LAST:event_BotonEliminarProductoActionPerformed
+
+    private void NombreCategoriaEditDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreCategoriaEditDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NombreCategoriaEditDeleteActionPerformed
+
+    private void TextBuscaProductoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextBuscaProductoKeyReleased
+        controllerproducto.cargaComboProducto(ComboProducto, TextBuscaProducto.getText(), BotonEditarProducto, BotonEliminarProducto);
+    }//GEN-LAST:event_TextBuscaProductoKeyReleased
+
+    private void botonCancelarActualizacion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActualizacion1ActionPerformed
+        banderaActualiza2=controllerproducto.cancelaActu(botonCancelarActualizacion1,BotonEliminarProducto, TextNombreProducto, AreaTextDescripcionProducto, TextLinkFoto, TextKilos, TextNumPersonas, TextPrecioUnitario, banderaActualiza2);
+    }//GEN-LAST:event_botonCancelarActualizacion1ActionPerformed
+
+    private void BotonEditarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEditarProductoActionPerformed
+        
+        banderaActualiza2=controllerproducto.updateProducto(ComboProducto, TextNombreProducto,AreaTextDescripcionProducto, TextLinkFoto, TextKilos, TextNumPersonas, TextPrecioUnitario,BotonEliminarProducto, botonCancelarActualizacion1, banderaActualiza2);
+        prodcutoActualizar=ComboProducto.getSelectedItem().toString();        
+    }//GEN-LAST:event_BotonEditarProductoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jFileChooser1.setCurrentDirectory(new java.io.File("."));
+        jFileChooser1.setDialogTitle("Imagen del producto");
+        int status = jFileChooser1.showOpenDialog(null);// Da un entero
+        if (status == jFileChooser1.APPROVE_OPTION) {
+            File selectedFile = jFileChooser1.getSelectedFile();
+            System.out.println(selectedFile.getPath());
+            String  hola=selectedFile.getName();
+            TextLinkFoto.setText(hola);
+            TextLinkFoto.setForeground(new Color(0, 0, 0));
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ComboProductoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboProductoItemStateChanged
+        controllerproducto.cargaTextoProducto(ComboProducto, jTextArea2, jLabel1);
+        this.repaint();
+    }//GEN-LAST:event_ComboProductoItemStateChanged
 
     private void next(){
         controllerCategoria.next(modelCategoria);
         controllerCategoria.cargaComboCategoria(ComboCategoria,NombreCategoriaEditDelete.getText(),BotonEditarCategoria,BotonEliminarCategoria);
+        controllerCategoria.cargaComboCategoria(ComboCategoriaProducto,TextBuscaCategoria.getText(),BotonAgregarProducto);
     }
     private void next2(){
-        controllerCategoria.next(modelCategoria);
-        controllerCategoria.cargaComboCategoria(ComboCategoria,NombreCategoriaEditDelete.getText(),BotonEditarCategoria,BotonEliminarCategoria);
+        controllerproducto.next(modelProducto, ComboCategoriaProducto.getSelectedItem().toString());
+        controllerproducto.cargaComboProducto(ComboProducto, TextBuscaProducto.getText(), BotonEditarProducto, BotonEliminarProducto);
+        //controllerCategoria.cargaComboCategoria(ComboCategoria,NombreCategoriaEditDelete.getText(),BotonEditarCategoria,BotonEliminarCategoria);
+        //controllerCategoria.cargaComboCategoria(ComboCategoriaProducto,TextBuscaCategoria.getText(),BotonAgregarProducto);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -957,7 +1062,9 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
     private javax.swing.JTextField TextNumPersonas;
     private javax.swing.JTextField TextPrecioUnitario;
     private javax.swing.JButton botonCancelarActualizacion;
+    private javax.swing.JButton botonCancelarActualizacion1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -978,6 +1085,7 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
     private javax.swing.JLabel labelNombreCategoria;
     private javax.swing.JLabel labelNombreCategoria1;
     private javax.swing.JLabel labelNombreProducto;
+    private javax.swing.JLabel labelNota;
     private javax.swing.JPanel panelCliente;
     // End of variables declaration//GEN-END:variables
 }
