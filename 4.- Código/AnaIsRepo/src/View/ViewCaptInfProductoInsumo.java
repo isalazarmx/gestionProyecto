@@ -7,7 +7,7 @@ package View;
 
 import Controller.ControllerValidation;
 import Controller.ControllerViewCategoria;
-import Controller.ControllerViewProducto;
+import Controller.ControllerViewProductos;
 import Model.ModelCategoria;
 import Model.ModelProducto;
 import java.awt.Color;
@@ -26,7 +26,7 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
     ModelCategoria modelCategoria;
     ModelProducto modelProducto;
     ControllerViewCategoria controllerCategoria;
-    ControllerViewProducto controllerproducto;
+    ControllerViewProductos controllerproducto;
     String categoriaActualizar;
     String prodcutoActualizar;
     boolean banderaActualiza;
@@ -68,7 +68,7 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
         components2.add(TextKilos);
         components2.add(TextNumPersonas);
         components2.add(TextPrecioUnitario);
-        controllerproducto= new ControllerViewProducto(components2);
+        controllerproducto= new ControllerViewProductos(components2);
         controllerproducto.validations();
         controllerCategoria.cargaComboCategoria(ComboCategoriaProducto,TextBuscaCategoria.getText(),BotonAgregarProducto);
         controllerproducto.cargaComboProducto(ComboProducto, TextBuscaProducto.getText(), BotonEditarProducto, BotonEliminarProducto);

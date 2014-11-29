@@ -41,6 +41,7 @@ public class ControllerPaneles {
     //--------------------------------------
     private JPanel panelInicio;
     private JPanel panelProductos;
+    private JPanel panelAlmacen;
     private JPanel panelVendedores;
     private JPanel panelClientes;
     private JPanel panelProveedores;
@@ -307,5 +308,19 @@ public class ControllerPaneles {
      */
     public void setPanelProductos(JPanel panelProductos) {
         this.panelProductos = panelProductos;
+    }
+
+    /**
+     * @return the panelAlmacen
+     */
+    public JPanel getPanelAlmacen() {
+        return panelAlmacen;
+    }
+
+    /**
+     * @param panelAlmacen the panelAlmacen to set
+     */
+    public void setPanelAlmacen(JPanel panelAlmacen) {
+        this.panelAlmacen = panelAlmacen;
     }
 }

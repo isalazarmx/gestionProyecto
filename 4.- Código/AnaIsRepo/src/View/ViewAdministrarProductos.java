@@ -15,13 +15,13 @@ import java.util.ArrayList;
  *
  * @author Carolina
  */
-public class ViewAdministrarAlmacen extends javax.swing.JPanel {
+public class ViewAdministrarProductos extends javax.swing.JPanel {
     ControllerViewAdministrarClientes controller;
     ControllerValidation validation;
     ControllerPaneles controllerPaneles;
     ModelCliente modelCliente;
    
-public ViewAdministrarAlmacen(ControllerPaneles controllerPaneles) {
+public ViewAdministrarProductos(ControllerPaneles controllerPaneles) {
         this.validation = new ControllerValidation();
         this.controllerPaneles = controllerPaneles;//asi
         controllerPaneles.setModelCliente(new ModelCliente());
@@ -34,8 +34,8 @@ public ViewAdministrarAlmacen(ControllerPaneles controllerPaneles) {
 
 private void validation(){
         ArrayList components = new ArrayList<>();
-        components.add(Nombre);
-        components.add(rfc);
+        components.add(idProducto);
+        components.add(nomProducto);
         components.add(labelCount);
         components.add(tableClientes);
         components.add(modelCliente.getModeloTable());
@@ -52,16 +52,16 @@ private void validation(){
         jLabel1 = new javax.swing.JLabel();
         panelBusqueda = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        Nombre = new javax.swing.JTextField();
+        idProducto = new javax.swing.JTextField();
+        idProveedor = new javax.swing.JTextField();
+        nomProducto = new javax.swing.JTextField();
+        nomProveedor = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        rfc = new javax.swing.JTextField();
-        buttonBuscaCliente = new javax.swing.JButton();
+        buttonBuscaProducto = new javax.swing.JButton();
+        buttonBuscaProveedor = new javax.swing.JButton();
         buttonVerTodos = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        Nombre1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        rfc1 = new javax.swing.JTextField();
-        buttonBuscaCliente1 = new javax.swing.JButton();
         panelRsultadoBusqueda = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         nuevoVendedor = new javax.swing.JButton();
@@ -106,25 +106,93 @@ private void validation(){
         jLabel4.setText("ID producto:");
         jLabel4.setPreferredSize(new java.awt.Dimension(50, 26));
 
-        Nombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Nombre.setForeground(new java.awt.Color(180, 180, 180));
-        Nombre.setText("ID producto");
-        Nombre.addFocusListener(new java.awt.event.FocusAdapter() {
+        idProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        idProducto.setForeground(new java.awt.Color(180, 180, 180));
+        idProducto.setText("ID producto");
+        idProducto.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                NombreFocusGained(evt);
+                idProductoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                NombreFocusLost(evt);
+                idProductoFocusLost(evt);
             }
         });
-        Nombre.addActionListener(new java.awt.event.ActionListener() {
+        idProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NombreActionPerformed(evt);
+                idProductoActionPerformed(evt);
             }
         });
-        Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+        idProducto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                NombreKeyPressed(evt);
+                idProductoKeyPressed(evt);
+            }
+        });
+
+        idProveedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        idProveedor.setForeground(new java.awt.Color(180, 180, 180));
+        idProveedor.setText("ID proveedor");
+        idProveedor.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                idProveedorFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                idProveedorFocusLost(evt);
+            }
+        });
+        idProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idProveedorActionPerformed(evt);
+            }
+        });
+        idProveedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                idProveedorKeyPressed(evt);
+            }
+        });
+
+        nomProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nomProducto.setForeground(new java.awt.Color(180, 180, 180));
+        nomProducto.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        nomProducto.setText("Nombre del producto");
+        nomProducto.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nomProductoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nomProductoFocusLost(evt);
+            }
+        });
+        nomProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomProductoActionPerformed(evt);
+            }
+        });
+        nomProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nomProductoKeyPressed(evt);
+            }
+        });
+
+        nomProveedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nomProveedor.setForeground(new java.awt.Color(180, 180, 180));
+        nomProveedor.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        nomProveedor.setText("Nombre del proveedor");
+        nomProveedor.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nomProveedorFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nomProveedorFocusLost(evt);
+            }
+        });
+        nomProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomProveedorActionPerformed(evt);
+            }
+        });
+        nomProveedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nomProveedorKeyPressed(evt);
             }
         });
 
@@ -133,38 +201,27 @@ private void validation(){
         jLabel5.setText("Nombre:");
         jLabel5.setPreferredSize(new java.awt.Dimension(66, 26));
 
-        rfc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        rfc.setForeground(new java.awt.Color(180, 180, 180));
-        rfc.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        rfc.setText("Nombre");
-        rfc.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                rfcFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                rfcFocusLost(evt);
-            }
-        });
-        rfc.addActionListener(new java.awt.event.ActionListener() {
+        buttonBuscaProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        buttonBuscaProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/findproducto.png"))); // NOI18N
+        buttonBuscaProducto.setText("Busca producto");
+        buttonBuscaProducto.setContentAreaFilled(false);
+        buttonBuscaProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonBuscaProducto.setPreferredSize(new java.awt.Dimension(119, 26));
+        buttonBuscaProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rfcActionPerformed(evt);
-            }
-        });
-        rfc.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                rfcKeyPressed(evt);
+                buttonBuscaProductoActionPerformed(evt);
             }
         });
 
-        buttonBuscaCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        buttonBuscaCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/findproducto.png"))); // NOI18N
-        buttonBuscaCliente.setText("Busca producto");
-        buttonBuscaCliente.setContentAreaFilled(false);
-        buttonBuscaCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        buttonBuscaCliente.setPreferredSize(new java.awt.Dimension(119, 26));
-        buttonBuscaCliente.addActionListener(new java.awt.event.ActionListener() {
+        buttonBuscaProveedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        buttonBuscaProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/findUser.png"))); // NOI18N
+        buttonBuscaProveedor.setText("Busca proveedor");
+        buttonBuscaProveedor.setContentAreaFilled(false);
+        buttonBuscaProveedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonBuscaProveedor.setPreferredSize(new java.awt.Dimension(119, 26));
+        buttonBuscaProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonBuscaClienteActionPerformed(evt);
+                buttonBuscaProveedorActionPerformed(evt);
             }
         });
 
@@ -185,67 +242,10 @@ private void validation(){
         jLabel6.setText("ID proveedor:");
         jLabel6.setPreferredSize(new java.awt.Dimension(50, 26));
 
-        Nombre1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Nombre1.setForeground(new java.awt.Color(180, 180, 180));
-        Nombre1.setText("ID proveedor");
-        Nombre1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                Nombre1FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                Nombre1FocusLost(evt);
-            }
-        });
-        Nombre1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Nombre1ActionPerformed(evt);
-            }
-        });
-        Nombre1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nombre1KeyPressed(evt);
-            }
-        });
-
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Nombre:");
         jLabel7.setPreferredSize(new java.awt.Dimension(66, 26));
-
-        rfc1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        rfc1.setForeground(new java.awt.Color(180, 180, 180));
-        rfc1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        rfc1.setText("Nombre");
-        rfc1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                rfc1FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                rfc1FocusLost(evt);
-            }
-        });
-        rfc1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rfc1ActionPerformed(evt);
-            }
-        });
-        rfc1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                rfc1KeyPressed(evt);
-            }
-        });
-
-        buttonBuscaCliente1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        buttonBuscaCliente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/findUser.png"))); // NOI18N
-        buttonBuscaCliente1.setText("Busca proveedor");
-        buttonBuscaCliente1.setContentAreaFilled(false);
-        buttonBuscaCliente1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        buttonBuscaCliente1.setPreferredSize(new java.awt.Dimension(119, 26));
-        buttonBuscaCliente1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonBuscaCliente1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout panelBusquedaLayout = new javax.swing.GroupLayout(panelBusqueda);
         panelBusqueda.setLayout(panelBusquedaLayout);
@@ -256,27 +256,26 @@ private void validation(){
                 .addGroup(panelBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelBusquedaLayout.createSequentialGroup()
-                        .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(idProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rfc, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nomProducto)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonBuscaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
-                        .addComponent(buttonVerTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(buttonBuscaProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelBusquedaLayout.createSequentialGroup()
-                        .addComponent(Nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(idProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rfc1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buttonBuscaCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(nomProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonBuscaProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonVerTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         panelBusquedaLayout.setVerticalGroup(
@@ -285,18 +284,18 @@ private void validation(){
                 .addContainerGap()
                 .addGroup(panelBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rfc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonBuscaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonBuscaProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonVerTodos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rfc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonBuscaCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nomProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonBuscaProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -431,7 +430,7 @@ private void validation(){
         labelCount.setBackground(new java.awt.Color(53, 107, 161));
         labelCount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelCount.setForeground(new java.awt.Color(53, 107, 161));
-        labelCount.setText("Ingresa un nombre de usuario y/o RFC para iniciar la busqueda");
+        labelCount.setText("Ingresa un ID y/o Nombre para iniciar la busqueda");
 
         javax.swing.GroupLayout panelCantidadResultadosLayout = new javax.swing.GroupLayout(panelCantidadResultados);
         panelCantidadResultados.setLayout(panelCantidadResultadosLayout);
@@ -479,41 +478,41 @@ private void validation(){
 
     private void nuevoVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoVendedorActionPerformed
         // TODO add your handling code here:
-        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewCliente(controllerPaneles,null)); //asi
+        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewProducto(controllerPaneles,null)); //asi
     }//GEN-LAST:event_nuevoVendedorActionPerformed
 
-    private void NombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NombreFocusGained
+    private void idProductoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idProductoFocusGained
         // TODO add your handling code here:
-        validation.placeHolder(true, Nombre,"Nombre");
-    }//GEN-LAST:event_NombreFocusGained
+        validation.placeHolder(true, idProducto,"ID producto");
+    }//GEN-LAST:event_idProductoFocusGained
 
-    private void NombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NombreFocusLost
+    private void idProductoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idProductoFocusLost
         // TODO add your handling code here:
-        validation.placeHolder(false, Nombre,"Nombre");
-    }//GEN-LAST:event_NombreFocusLost
+        validation.placeHolder(false, idProducto,"ID producto");
+    }//GEN-LAST:event_idProductoFocusLost
 
-    private void NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreActionPerformed
+    private void idProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idProductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NombreActionPerformed
+    }//GEN-LAST:event_idProductoActionPerformed
 
-    private void rfcFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rfcFocusGained
+    private void nomProductoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomProductoFocusGained
         // TODO add your handling code here:
-        validation.placeHolder(true, rfc,"R.F.C.");
-    }//GEN-LAST:event_rfcFocusGained
+        validation.placeHolder(true, nomProducto,"Nombre del producto");
+    }//GEN-LAST:event_nomProductoFocusGained
 
-    private void rfcFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rfcFocusLost
+    private void nomProductoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomProductoFocusLost
         // TODO add your handling code here:
-        validation.placeHolder(false, rfc,"R.F.C.");
-    }//GEN-LAST:event_rfcFocusLost
+        validation.placeHolder(false, nomProducto,"Nombre del producto");
+    }//GEN-LAST:event_nomProductoFocusLost
 
-    private void rfcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rfcActionPerformed
+    private void nomProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomProductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rfcActionPerformed
+    }//GEN-LAST:event_nomProductoActionPerformed
 
-    private void buttonBuscaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscaClienteActionPerformed
+    private void buttonBuscaProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscaProductoActionPerformed
         // TODO add your handling code here:
         controller.buscaCliente(false);
-    }//GEN-LAST:event_buttonBuscaClienteActionPerformed
+    }//GEN-LAST:event_buttonBuscaProductoActionPerformed
 
     private void buttonVerTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVerTodosActionPerformed
         // TODO add your handling code here:
@@ -534,62 +533,66 @@ private void validation(){
         }
     }//GEN-LAST:event_modificaVendedorActionPerformed
 
-    private void rfcKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rfcKeyPressed
+    private void nomProductoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomProductoKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
             controller.buscaCliente(false);
-    }//GEN-LAST:event_rfcKeyPressed
+    }//GEN-LAST:event_nomProductoKeyPressed
 
-    private void NombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreKeyPressed
+    private void idProductoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idProductoKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
             controller.buscaCliente(false);
-    }//GEN-LAST:event_NombreKeyPressed
+    }//GEN-LAST:event_idProductoKeyPressed
 
-    private void Nombre1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Nombre1FocusGained
+    private void idProveedorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idProveedorFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nombre1FocusGained
+        validation.placeHolder(true, idProveedor,"ID proveedor");
+    }//GEN-LAST:event_idProveedorFocusGained
 
-    private void Nombre1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Nombre1FocusLost
+    private void idProveedorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idProveedorFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nombre1FocusLost
+        validation.placeHolder(false,idProveedor,"ID proveedor");
+    }//GEN-LAST:event_idProveedorFocusLost
 
-    private void Nombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Nombre1ActionPerformed
+    private void idProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idProveedorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nombre1ActionPerformed
+    }//GEN-LAST:event_idProveedorActionPerformed
 
-    private void Nombre1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nombre1KeyPressed
+    private void idProveedorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idProveedorKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nombre1KeyPressed
+    }//GEN-LAST:event_idProveedorKeyPressed
 
-    private void rfc1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rfc1FocusGained
+    private void nomProveedorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomProveedorFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_rfc1FocusGained
+        validation.placeHolder(true, nomProveedor,"Nombre del proveedor");
+    }//GEN-LAST:event_nomProveedorFocusGained
 
-    private void rfc1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rfc1FocusLost
+    private void nomProveedorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomProveedorFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_rfc1FocusLost
+        validation.placeHolder(false, nomProveedor,"Nombre del proveedor");
+    }//GEN-LAST:event_nomProveedorFocusLost
 
-    private void rfc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rfc1ActionPerformed
+    private void nomProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomProveedorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rfc1ActionPerformed
+    }//GEN-LAST:event_nomProveedorActionPerformed
 
-    private void rfc1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rfc1KeyPressed
+    private void nomProveedorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomProveedorKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rfc1KeyPressed
+    }//GEN-LAST:event_nomProveedorKeyPressed
 
-    private void buttonBuscaCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscaCliente1ActionPerformed
+    private void buttonBuscaProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscaProveedorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonBuscaCliente1ActionPerformed
+    }//GEN-LAST:event_buttonBuscaProveedorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Nombre;
-    private javax.swing.JTextField Nombre1;
-    private javax.swing.JButton buttonBuscaCliente;
-    private javax.swing.JButton buttonBuscaCliente1;
+    private javax.swing.JButton buttonBuscaProducto;
+    private javax.swing.JButton buttonBuscaProveedor;
     private javax.swing.JButton buttonVerTodos;
     private javax.swing.JButton eliminaVendedor;
+    private javax.swing.JTextField idProducto;
+    private javax.swing.JTextField idProveedor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -600,13 +603,13 @@ private void validation(){
     private javax.swing.JLabel labelCount;
     private javax.swing.JButton limipaBusqueda;
     private javax.swing.JButton modificaVendedor;
+    private javax.swing.JTextField nomProducto;
+    private javax.swing.JTextField nomProveedor;
     private javax.swing.JButton nuevoVendedor;
     private javax.swing.JPanel panelBusqueda;
     private javax.swing.JPanel panelCantidadResultados;
     private javax.swing.JPanel panelRsultadoBusqueda;
     private javax.swing.JPanel panelTitulo;
-    private javax.swing.JTextField rfc;
-    private javax.swing.JTextField rfc1;
     private javax.swing.JTable tableClientes;
     // End of variables declaration//GEN-END:variables
 }

@@ -28,7 +28,7 @@ import javax.swing.JTextField;
  *
  * @author nel
  */
-public class ControllerViewProducto 
+public class ControllerViewProductos 
 {
     JTextField nombre;
     JTextArea descripcion;
@@ -38,7 +38,7 @@ public class ControllerViewProducto
     JTextField precioUnitario;
     
 
-    public ControllerViewProducto(ArrayList components) { 
+    public ControllerViewProductos(ArrayList components) { 
         this.nombre = (JTextField)components.get(0);
         this.descripcion = (JTextArea)components.get(1);
         this.link = (JTextField)components.get(2);
