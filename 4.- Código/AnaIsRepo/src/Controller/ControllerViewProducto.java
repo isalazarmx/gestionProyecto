@@ -16,35 +16,86 @@ import javax.swing.JTextField;
 public class ControllerViewProducto {
     JTextField ID;
     JTextField nombre;
-    JTextField cantidad;
+    JTextField cantidad01;
+    JTextField cantidad02;
     JComboBox tipoUnidad;
     JTextField unidadExistencia;
     JSpinner minStock;
     JSpinner maxStock;
-    JTextField precioCompra;
+    JTextField precioCompra01;
+    JTextField precioCompra02;
     JSpinner incrementoVenta;
     JTextField precioVenta;
     JLabel imagen;
     JComboBox idCategoria;
+    JTextField gananciaIndividual;
+    JTextField gananciaTotal;
+    JTextField inversion;
+    ControllerCuentas cuentas;
     
     public ControllerViewProducto(ArrayList components){
+        cuentas = new ControllerCuentas();
         this.ID = (JTextField)components.get(0);
         this.nombre = (JTextField)components.get(1);
-        this.cantidad = (JTextField)components.get(2);
-        this.tipoUnidad = (JComboBox)components.get(3);
-        this.unidadExistencia = (JTextField)components.get(4);
-        this.minStock = (JSpinner)components.get(5);
-        this.maxStock = (JSpinner)components.get(6);
-        this.precioCompra = (JTextField)components.get(7);
-        this.incrementoVenta = (JSpinner)components.get(8);
-        this.precioVenta = (JTextField)components.get(9);
-        this.imagen = (JLabel)components.get(10);
-        this.idCategoria = (JComboBox)components.get(11);
+        this.cantidad01 = (JTextField)components.get(2);
+        this.cantidad02 = (JTextField)components.get(3);
+        this.tipoUnidad = (JComboBox)components.get(4);
+        this.unidadExistencia = (JTextField)components.get(5);
+        this.minStock = (JSpinner)components.get(6);
+        this.maxStock = (JSpinner)components.get(7);
+        this.precioCompra01 = (JTextField)components.get(8);
+        this.precioCompra02 = (JTextField)components.get(9);
+        this.incrementoVenta = (JSpinner)components.get(10);
+        this.precioVenta = (JTextField)components.get(11);
+        this.imagen = (JLabel)components.get(12);
+        this.idCategoria = (JComboBox)components.get(13);
+        this.gananciaIndividual = (JTextField)components.get(14);
+        this.gananciaTotal = (JTextField)components.get(15);
+        this.inversion = (JTextField)components.get(16);
+    }
+    
+    private double incremento(){
+        double temp2 = (Integer)incrementoVenta.getValue();
+        double temp = temp2/100;
+        return temp;
+    }
+    
+    private double buscaValor(double parteEntera,double parteDecimal){
+        return parteEntera+(parteDecimal/100);
+    }
+    
+    private double precioCompra(){
+        return buscaValor(
+                        Integer.parseInt(precioCompra01.getText()),
+                        Integer.parseInt(precioCompra02.getText())
+                        );
+    }
+    
+    private double cantidadProductos(){
+        return Integer.parseInt(unidadExistencia.getText());
+    }
+    
+    public void despliegaCuentas(){ 
+        double temp = cuentas.gananciaIndividual(precioCompra(),incremento());
+        gananciaIndividual.setText(cuentas.formatoNumero(""+temp));
+        gananciaTotal.setText(""+cuentas.formatoNumero(""+cuentas.gananciaTotal(temp, cantidadProductos())));
+        precioVenta.setText(""+cuentas.formatoNumero(""+cuentas.precioVenta(precioCompra(),incremento())));
+        inversion.setText(""+cuentas.formatoNumero(""+cuentas.cantidadInvertida(cantidadProductos(), precioCompra())));
     }
     
     public void validations(){
         ControllerValidation.limitarCaracteres(ID,30);
         ControllerValidation.limitarCaracteres(nombre,45);
+        ControllerValidation.limitarCaracteres(cantidad01,9);
+        ControllerValidation.soloNumeros(cantidad01);
+        ControllerValidation.limitarCaracteres(cantidad02,2);
+        ControllerValidation.soloNumeros(cantidad02);
+        ControllerValidation.limitarCaracteres(unidadExistencia,9);
+        ControllerValidation.soloNumeros(unidadExistencia);
+        ControllerValidation.limitarCaracteres(precioCompra01,9);
+        ControllerValidation.soloNumeros(precioCompra01);
+        ControllerValidation.limitarCaracteres(precioCompra02,2);
+        ControllerValidation.soloNumeros(precioCompra02);
     }
     
     public void addCliente(JTextField acID,JLabel labelStatus,ModelCliente cliente){

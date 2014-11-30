@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.ControllerCuentas;
 import Controller.ControllerPaneles;
 import Controller.ControllerValidation;
 import Controller.ControllerViewProducto;
@@ -53,16 +54,21 @@ public class ViewProducto extends javax.swing.JPanel {
         ArrayList components = new ArrayList<>();
         components.add(ID);
         components.add(nombre);
-        components.add(cantidad);
+        components.add(cantidad01);
+        components.add(cantidad02);
         components.add(tipoUnidad);
         components.add(unidadExistencia);
         components.add(minStock);
         components.add(maxStock);
-        components.add(precioCompra);
+        components.add(precioCompra01);
+        components.add(precioCompra02);
         components.add(incrementoVenta);
-        components.add(precioVenta);
+        components.add(precioVenta01);
         components.add(imagen);
         components.add(idCategoria);
+        components.add(gananciaIndividual);
+        components.add(gananciaTotal);
+        components.add(inversion);
         controller = new ControllerViewProducto(components);
         controller.validations();
     }
@@ -89,7 +95,7 @@ public class ViewProducto extends javax.swing.JPanel {
         jLabel21 = new javax.swing.JLabel();
         nombre = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
-        cantidad = new javax.swing.JTextField();
+        cantidad01 = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
         tipoUnidad = new javax.swing.JComboBox();
         jLabel25 = new javax.swing.JLabel();
@@ -97,11 +103,9 @@ public class ViewProducto extends javax.swing.JPanel {
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        precioCompra = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         incrementoVenta = new javax.swing.JSpinner();
         jLabel30 = new javax.swing.JLabel();
-        precioVenta = new javax.swing.JTextField();
         minStock = new javax.swing.JSpinner();
         maxStock = new javax.swing.JSpinner();
         jLabel22 = new javax.swing.JLabel();
@@ -112,6 +116,18 @@ public class ViewProducto extends javax.swing.JPanel {
         jLabel23 = new javax.swing.JLabel();
         idCategoria = new javax.swing.JComboBox();
         labelNota = new javax.swing.JLabel();
+        cantidad02 = new javax.swing.JTextField();
+        jLabel31 = new javax.swing.JLabel();
+        precioCompra01 = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
+        precioCompra02 = new javax.swing.JTextField();
+        precioVenta01 = new javax.swing.JTextField();
+        jLabel33 = new javax.swing.JLabel();
+        gananciaIndividual = new javax.swing.JTextField();
+        gananciaTotal = new javax.swing.JTextField();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        inversion = new javax.swing.JTextField();
         labelStatus = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(245, 246, 247));
@@ -246,27 +262,27 @@ public class ViewProducto extends javax.swing.JPanel {
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel24.setText("Peso:");
 
-        cantidad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cantidad.setForeground(new java.awt.Color(180, 180, 180));
-        cantidad.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        cantidad.setText("0.0");
-        cantidad.setPreferredSize(new java.awt.Dimension(49, 28));
-        cantidad.addFocusListener(new java.awt.event.FocusAdapter() {
+        cantidad01.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cantidad01.setForeground(new java.awt.Color(180, 180, 180));
+        cantidad01.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        cantidad01.setText("0");
+        cantidad01.setPreferredSize(new java.awt.Dimension(49, 28));
+        cantidad01.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                cantidadFocusGained(evt);
+                cantidad01FocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                cantidadFocusLost(evt);
+                cantidad01FocusLost(evt);
             }
         });
-        cantidad.addActionListener(new java.awt.event.ActionListener() {
+        cantidad01.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cantidadActionPerformed(evt);
+                cantidad01ActionPerformed(evt);
             }
         });
-        cantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+        cantidad01.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                cantidadKeyPressed(evt);
+                cantidad01KeyPressed(evt);
             }
         });
 
@@ -303,7 +319,7 @@ public class ViewProducto extends javax.swing.JPanel {
 
         unidadExistencia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         unidadExistencia.setForeground(new java.awt.Color(180, 180, 180));
-        unidadExistencia.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        unidadExistencia.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         unidadExistencia.setText("0");
         unidadExistencia.setPreferredSize(new java.awt.Dimension(49, 28));
         unidadExistencia.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -337,30 +353,6 @@ public class ViewProducto extends javax.swing.JPanel {
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel28.setText("Precio compra: $");
 
-        precioCompra.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        precioCompra.setForeground(new java.awt.Color(180, 180, 180));
-        precioCompra.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        precioCompra.setText("0.0");
-        precioCompra.setPreferredSize(new java.awt.Dimension(49, 28));
-        precioCompra.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                precioCompraFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                precioCompraFocusLost(evt);
-            }
-        });
-        precioCompra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                precioCompraActionPerformed(evt);
-            }
-        });
-        precioCompra.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                precioCompraKeyPressed(evt);
-            }
-        });
-
         jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel29.setText("Incremento venta: %");
@@ -368,6 +360,27 @@ public class ViewProducto extends javax.swing.JPanel {
         incrementoVenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         incrementoVenta.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 5));
         incrementoVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        incrementoVenta.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                incrementoVentaStateChanged(evt);
+            }
+        });
+        incrementoVenta.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                incrementoVentaFocusLost(evt);
+            }
+        });
+        incrementoVenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                incrementoVentaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                incrementoVentaMouseEntered(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                incrementoVentaMousePressed(evt);
+            }
+        });
         incrementoVenta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 incrementoVentaKeyPressed(evt);
@@ -376,32 +389,7 @@ public class ViewProducto extends javax.swing.JPanel {
 
         jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel30.setText("Precio: $");
-
-        precioVenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        precioVenta.setForeground(new java.awt.Color(180, 180, 180));
-        precioVenta.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        precioVenta.setText("0.0");
-        precioVenta.setEnabled(false);
-        precioVenta.setPreferredSize(new java.awt.Dimension(49, 28));
-        precioVenta.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                precioVentaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                precioVentaFocusLost(evt);
-            }
-        });
-        precioVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                precioVentaActionPerformed(evt);
-            }
-        });
-        precioVenta.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                precioVentaKeyPressed(evt);
-            }
-        });
+        jLabel30.setText("Precio venta: $");
 
         minStock.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         minStock.setModel(new javax.swing.SpinnerNumberModel(5, 0, 9999, 1));
@@ -499,6 +487,198 @@ public class ViewProducto extends javax.swing.JPanel {
         labelNota.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         labelNota.setText("Nota: Todos los campos son obligatorios.");
 
+        cantidad02.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cantidad02.setForeground(new java.awt.Color(180, 180, 180));
+        cantidad02.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        cantidad02.setText("00");
+        cantidad02.setPreferredSize(new java.awt.Dimension(49, 28));
+        cantidad02.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cantidad02FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cantidad02FocusLost(evt);
+            }
+        });
+        cantidad02.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cantidad02ActionPerformed(evt);
+            }
+        });
+        cantidad02.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cantidad02KeyPressed(evt);
+            }
+        });
+
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(66, 139, 202));
+        jLabel31.setText(".");
+
+        precioCompra01.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        precioCompra01.setForeground(new java.awt.Color(180, 180, 180));
+        precioCompra01.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        precioCompra01.setText("0");
+        precioCompra01.setPreferredSize(new java.awt.Dimension(49, 28));
+        precioCompra01.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                precioCompra01FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                precioCompra01FocusLost(evt);
+            }
+        });
+        precioCompra01.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                precioCompra01ActionPerformed(evt);
+            }
+        });
+        precioCompra01.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                precioCompra01KeyPressed(evt);
+            }
+        });
+
+        jLabel32.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(66, 139, 202));
+        jLabel32.setText(".");
+
+        precioCompra02.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        precioCompra02.setForeground(new java.awt.Color(180, 180, 180));
+        precioCompra02.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        precioCompra02.setText("00");
+        precioCompra02.setPreferredSize(new java.awt.Dimension(49, 28));
+        precioCompra02.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                precioCompra02FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                precioCompra02FocusLost(evt);
+            }
+        });
+        precioCompra02.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                precioCompra02ActionPerformed(evt);
+            }
+        });
+        precioCompra02.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                precioCompra02KeyPressed(evt);
+            }
+        });
+
+        precioVenta01.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        precioVenta01.setForeground(new java.awt.Color(180, 180, 180));
+        precioVenta01.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        precioVenta01.setText("0");
+        precioVenta01.setEnabled(false);
+        precioVenta01.setPreferredSize(new java.awt.Dimension(49, 28));
+        precioVenta01.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                precioVenta01FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                precioVenta01FocusLost(evt);
+            }
+        });
+        precioVenta01.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                precioVenta01ActionPerformed(evt);
+            }
+        });
+        precioVenta01.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                precioVenta01KeyPressed(evt);
+            }
+        });
+
+        jLabel33.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel33.setText("Ganancía c/u: $");
+
+        gananciaIndividual.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        gananciaIndividual.setForeground(new java.awt.Color(180, 180, 180));
+        gananciaIndividual.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        gananciaIndividual.setText("0");
+        gananciaIndividual.setEnabled(false);
+        gananciaIndividual.setPreferredSize(new java.awt.Dimension(49, 28));
+        gananciaIndividual.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                gananciaIndividualFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                gananciaIndividualFocusLost(evt);
+            }
+        });
+        gananciaIndividual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gananciaIndividualActionPerformed(evt);
+            }
+        });
+        gananciaIndividual.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                gananciaIndividualKeyPressed(evt);
+            }
+        });
+
+        gananciaTotal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        gananciaTotal.setForeground(new java.awt.Color(180, 180, 180));
+        gananciaTotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        gananciaTotal.setText("0");
+        gananciaTotal.setEnabled(false);
+        gananciaTotal.setPreferredSize(new java.awt.Dimension(49, 28));
+        gananciaTotal.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                gananciaTotalFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                gananciaTotalFocusLost(evt);
+            }
+        });
+        gananciaTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gananciaTotalActionPerformed(evt);
+            }
+        });
+        gananciaTotal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                gananciaTotalKeyPressed(evt);
+            }
+        });
+
+        jLabel34.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel34.setText("Ganancía total: $");
+
+        jLabel35.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel35.setText("Inversion: $");
+
+        inversion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        inversion.setForeground(new java.awt.Color(180, 180, 180));
+        inversion.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        inversion.setText("0");
+        inversion.setEnabled(false);
+        inversion.setPreferredSize(new java.awt.Dimension(49, 28));
+        inversion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                inversionFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                inversionFocusLost(evt);
+            }
+        });
+        inversion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inversionActionPerformed(evt);
+            }
+        });
+        inversion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                inversionKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -507,65 +687,88 @@ public class ViewProducto extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(labelNota, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
                             .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel28, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel25))
+                            .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(idCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel6Layout.createSequentialGroup()
                                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                                .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(precioCompra01, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(tipoUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(jLabel32)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(precioCompra02, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel29)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(incrementoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(jPanel6Layout.createSequentialGroup()
                                                 .addComponent(unidadExistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel26)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(minStock, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(jLabel26)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(minStock, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(maxStock, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                                .addComponent(cantidad01, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel31)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(cantidad02, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(tipoUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(0, 23, Short.MAX_VALUE))
                                     .addGroup(jPanel6Layout.createSequentialGroup()
-                                        .addComponent(precioCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(gananciaIndividual, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel29)
+                                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(incrementoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel30)))
+                                        .addComponent(gananciaTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(44, 44, 44))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(inversion, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(precioVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(maxStock, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
-                            .addComponent(idCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(44, 44, 44))
-                    .addComponent(labelNota, javax.swing.GroupLayout.DEFAULT_SIZE, 868, Short.MAX_VALUE)))
+                                .addComponent(precioVenta01, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(243, 243, 243))))))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jLabel20)
-                .addGap(19, 19, 19)
-                .addComponent(labelNota)
-                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(labelNota))
+                .addGap(53, 53, 53)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -583,8 +786,10 @@ public class ViewProducto extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tipoUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cantidad01, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tipoUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cantidad02, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel31))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -594,17 +799,29 @@ public class ViewProducto extends javax.swing.JPanel {
                             .addComponent(minStock)
                             .addComponent(maxStock))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(precioCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(incrementoVenta)
-                            .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(precioVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(incrementoVenta, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(precioCompra01, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(precioCompra02, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel32))))
                     .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gananciaIndividual, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gananciaTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(precioVenta01, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inversion, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
         );
 
         labelStatus.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -616,14 +833,6 @@ public class ViewProducto extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(267, 267, 267)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -632,6 +841,14 @@ public class ViewProducto extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(268, 268, 268)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -640,9 +857,9 @@ public class ViewProducto extends javax.swing.JPanel {
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(labelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelStatus)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -662,7 +879,7 @@ public class ViewProducto extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -724,26 +941,26 @@ public class ViewProducto extends javax.swing.JPanel {
             agregaModificaProducto();
     }//GEN-LAST:event_nombreKeyPressed
 
-    private void cantidadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidadFocusGained
+    private void cantidad01FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidad01FocusGained
         // TODO add your handling code here:
-        validation.placeHolder(true, cantidad,"0.0");
+        validation.placeHolder(true, cantidad01,"0");
         labelStatus.setText("");
-    }//GEN-LAST:event_cantidadFocusGained
+    }//GEN-LAST:event_cantidad01FocusGained
 
-    private void cantidadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidadFocusLost
+    private void cantidad01FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidad01FocusLost
         // TODO add your handling code here:
-        validation.placeHolder(false, cantidad,"0.0");
-    }//GEN-LAST:event_cantidadFocusLost
+        validation.placeHolder(false, cantidad01,"0");
+    }//GEN-LAST:event_cantidad01FocusLost
 
-    private void cantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadActionPerformed
+    private void cantidad01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidad01ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cantidadActionPerformed
+    }//GEN-LAST:event_cantidad01ActionPerformed
 
-    private void cantidadKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cantidadKeyPressed
+    private void cantidad01KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cantidad01KeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
             agregaModificaProducto();        
-    }//GEN-LAST:event_cantidadKeyPressed
+    }//GEN-LAST:event_cantidad01KeyPressed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -778,48 +995,6 @@ public class ViewProducto extends javax.swing.JPanel {
             agregaModificaProducto();  
     }//GEN-LAST:event_unidadExistenciaKeyPressed
 
-    private void precioCompraFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_precioCompraFocusGained
-        // TODO add your handling code here:
-        validation.placeHolder(true, precioCompra,"0.0");
-        labelStatus.setText("");
-    }//GEN-LAST:event_precioCompraFocusGained
-
-    private void precioCompraFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_precioCompraFocusLost
-        // TODO add your handling code here:
-        validation.placeHolder(false, precioCompra,"0.0");
-    }//GEN-LAST:event_precioCompraFocusLost
-
-    private void precioCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioCompraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_precioCompraActionPerformed
-
-    private void precioCompraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_precioCompraKeyPressed
-        // TODO add your handling code here:
-        if(evt.getKeyChar()==10)
-            agregaModificaProducto();
-    }//GEN-LAST:event_precioCompraKeyPressed
-
-    private void precioVentaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_precioVentaFocusGained
-        // TODO add your handling code here:
-        validation.placeHolder(true, precioVenta,"0.0");
-        labelStatus.setText("");
-    }//GEN-LAST:event_precioVentaFocusGained
-
-    private void precioVentaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_precioVentaFocusLost
-        // TODO add your handling code here:
-        validation.placeHolder(false, precioVenta,"0.0");
-    }//GEN-LAST:event_precioVentaFocusLost
-
-    private void precioVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioVentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_precioVentaActionPerformed
-
-    private void precioVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_precioVentaKeyPressed
-        // TODO add your handling code here:
-        if(evt.getKeyChar()==10)
-            agregaModificaProducto();
-    }//GEN-LAST:event_precioVentaKeyPressed
-
     private void IDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IDFocusGained
         // TODO add your handling code here:
         validation.placeHolder(true,ID,"Código de barras");
@@ -828,7 +1003,7 @@ public class ViewProducto extends javax.swing.JPanel {
 
     private void IDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IDFocusLost
         // TODO add your handling code here:
-        validation.placeHolder(false, precioVenta,"Código de barras");
+        validation.placeHolder(false,ID,"Código de barras");
     }//GEN-LAST:event_IDFocusLost
 
     private void IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDActionPerformed
@@ -875,14 +1050,175 @@ public class ViewProducto extends javax.swing.JPanel {
             agregaModificaProducto();
     }//GEN-LAST:event_incrementoVentaKeyPressed
 
+    private void cantidad02FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidad02FocusGained
+        // TODO add your handling code here:
+        validation.placeHolder(true, cantidad02,"00");
+        labelStatus.setText("");
+    }//GEN-LAST:event_cantidad02FocusGained
+
+    private void cantidad02FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidad02FocusLost
+        // TODO add your handling code here:
+        validation.placeHolder(false, cantidad02,"00");
+    }//GEN-LAST:event_cantidad02FocusLost
+
+    private void cantidad02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidad02ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cantidad02ActionPerformed
+
+    private void cantidad02KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cantidad02KeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyChar()==10)
+            agregaModificaProducto();
+    }//GEN-LAST:event_cantidad02KeyPressed
+
+    private void precioCompra01FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_precioCompra01FocusGained
+        // TODO add your handling code here:
+        validation.placeHolder(true, precioCompra01,"0");
+        labelStatus.setText("");
+    }//GEN-LAST:event_precioCompra01FocusGained
+
+    private void precioCompra01FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_precioCompra01FocusLost
+        // TODO add your handling code here:
+        validation.placeHolder(false, precioCompra01,"0");
+        controller.despliegaCuentas();
+    }//GEN-LAST:event_precioCompra01FocusLost
+
+    private void precioCompra01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioCompra01ActionPerformed
+        // TODO add your handling code here:
+//        precioVenta.setText(""+controller.calcularPrecioReal());
+    }//GEN-LAST:event_precioCompra01ActionPerformed
+
+    private void precioCompra01KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_precioCompra01KeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyChar()==10)
+            agregaModificaProducto();
+    }//GEN-LAST:event_precioCompra01KeyPressed
+
+    private void precioCompra02FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_precioCompra02FocusGained
+        // TODO add your handling code here:
+        validation.placeHolder(true, precioCompra02,"00");
+        labelStatus.setText("");
+    }//GEN-LAST:event_precioCompra02FocusGained
+
+    private void precioCompra02FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_precioCompra02FocusLost
+        // TODO add your handling code here:
+        validation.placeHolder(false, precioCompra02,"00");
+        controller.despliegaCuentas();
+    }//GEN-LAST:event_precioCompra02FocusLost
+
+    private void precioCompra02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioCompra02ActionPerformed
+        // TODO add your handling code here:
+//        precioVenta.setText(""+controller.calcularPrecioReal());
+    }//GEN-LAST:event_precioCompra02ActionPerformed
+
+    private void precioCompra02KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_precioCompra02KeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyChar()==10)
+            agregaModificaProducto();        
+    }//GEN-LAST:event_precioCompra02KeyPressed
+
+    private void precioVenta01FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_precioVenta01FocusGained
+        // TODO add your handling code here:
+        validation.placeHolder(true, precioCompra02,"0");
+        labelStatus.setText("");
+    }//GEN-LAST:event_precioVenta01FocusGained
+
+    private void precioVenta01FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_precioVenta01FocusLost
+        // TODO add your handling code here:
+        validation.placeHolder(false, precioCompra02,"0");
+    }//GEN-LAST:event_precioVenta01FocusLost
+
+    private void precioVenta01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioVenta01ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_precioVenta01ActionPerformed
+
+    private void precioVenta01KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_precioVenta01KeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyChar()==10)
+            agregaModificaProducto();          
+    }//GEN-LAST:event_precioVenta01KeyPressed
+
+    private void incrementoVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_incrementoVentaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_incrementoVentaMouseClicked
+
+    private void incrementoVentaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_incrementoVentaFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_incrementoVentaFocusLost
+
+    private void gananciaIndividualFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_gananciaIndividualFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gananciaIndividualFocusGained
+
+    private void gananciaIndividualFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_gananciaIndividualFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gananciaIndividualFocusLost
+
+    private void gananciaIndividualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gananciaIndividualActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gananciaIndividualActionPerformed
+
+    private void gananciaIndividualKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gananciaIndividualKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gananciaIndividualKeyPressed
+
+    private void incrementoVentaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_incrementoVentaMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_incrementoVentaMousePressed
+
+    private void incrementoVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_incrementoVentaMouseEntered
+
+    }//GEN-LAST:event_incrementoVentaMouseEntered
+
+    private void incrementoVentaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_incrementoVentaStateChanged
+        // TODO add your handling code here:
+        controller.despliegaCuentas();
+    }//GEN-LAST:event_incrementoVentaStateChanged
+
+    private void gananciaTotalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_gananciaTotalFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gananciaTotalFocusGained
+
+    private void gananciaTotalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_gananciaTotalFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gananciaTotalFocusLost
+
+    private void gananciaTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gananciaTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gananciaTotalActionPerformed
+
+    private void gananciaTotalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gananciaTotalKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gananciaTotalKeyPressed
+
+    private void inversionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inversionFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inversionFocusGained
+
+    private void inversionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inversionFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inversionFocusLost
+
+    private void inversionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inversionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inversionActionPerformed
+
+    private void inversionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inversionKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inversionKeyPressed
+
     
        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ID;
-    private javax.swing.JTextField cantidad;
+    private javax.swing.JTextField cantidad01;
+    private javax.swing.JTextField cantidad02;
+    private javax.swing.JTextField gananciaIndividual;
+    private javax.swing.JTextField gananciaTotal;
     private javax.swing.JComboBox idCategoria;
     private javax.swing.JLabel imagen;
     private javax.swing.JSpinner incrementoVenta;
+    private javax.swing.JTextField inversion;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -900,6 +1236,11 @@ public class ViewProducto extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel4;
@@ -911,8 +1252,9 @@ public class ViewProducto extends javax.swing.JPanel {
     private javax.swing.JSpinner minStock;
     private javax.swing.JTextField nombre;
     private javax.swing.JPanel panelImagen;
-    private javax.swing.JTextField precioCompra;
-    private javax.swing.JTextField precioVenta;
+    private javax.swing.JTextField precioCompra01;
+    private javax.swing.JTextField precioCompra02;
+    private javax.swing.JTextField precioVenta01;
     private javax.swing.JComboBox tipoUnidad;
     private javax.swing.JTextField unidadExistencia;
     // End of variables declaration//GEN-END:variables
