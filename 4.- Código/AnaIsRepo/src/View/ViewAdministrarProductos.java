@@ -478,7 +478,7 @@ private void validation(){
 
     private void nuevoVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoVendedorActionPerformed
         // TODO add your handling code here:
-        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewProducto(controllerPaneles,null)); //asi
+        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewProducto(controllerPaneles,null,false)); //asi
     }//GEN-LAST:event_nuevoVendedorActionPerformed
 
     private void idProductoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idProductoFocusGained
