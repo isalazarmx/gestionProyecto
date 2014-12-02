@@ -56,3 +56,5 @@ INSERT INTO PROVEEDOR (NOMBRE,APATERNO,AMATERNO,MARCA,EMPRESA,RFC,TELFIJO,TELCEL
 -- Gramos > grs.
 -- Litros > ltrs.
 -- Mililitros > mls.
+
+select auto_increment from information_schema.tables where table_schema='poscakeapp' and table_name='categoria';

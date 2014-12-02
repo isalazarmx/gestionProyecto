@@ -6,7 +6,6 @@
 package DataBase;
 
 import Controller.ControllerConnDBMS;
-import Model.ModelCategoria;
 import Model.ModelProducto;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -30,8 +29,8 @@ public class DataBaseProducto
         Connection conn = controller.connectDB();
         try {
             Statement sta = conn.createStatement();
-            String strQuery = "insert into producto(nombre,descripcion,linkFoto,kilos,numPersonas,precioUnitario,eliminado,Categoria_idCategoria,Empresa_idEmpresa) values "+model.addInfo();
-            sta.executeUpdate(strQuery);
+//            String strQuery = "insert into producto(nombre,descripcion,linkFoto,kilos,numPersonas,precioUnitario,eliminado,Categoria_idCategoria,Empresa_idEmpresa) values "+model.addInfo();
+//            sta.executeUpdate(strQuery);
             flag = true;
         } catch (SQLException ex) {
             Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
@@ -83,7 +82,7 @@ public class DataBaseProducto
             while(res.next())
             {
                 ModelProducto categoria=new ModelProducto();
-                categoria.setIdCategoria(Integer.parseInt(res.getString("idProducto")));
+//                categoria.setIdCategoria(Integer.parseInt(res.getString("idProducto")));
                 categoria.setNombre(res.getString("nombre"));                
                 arrayCategoria.add(categoria);
             }
@@ -185,13 +184,13 @@ public class DataBaseProducto
             String strQuery = "select * from producto where nombre = '"+cadena+"';";
             ResultSet res = sta.executeQuery(strQuery);
             if(res.next()){
-                categoria.setIdCategoria(Integer.parseInt(res.getString("idproducto")));
+//                categoria.setIdCategoria(Integer.parseInt(res.getString("idproducto")));
                 categoria.setNombre(res.getString("nombre"));
-                categoria.setDescripcion(res.getString("descripcion"));
-                categoria.setLinkFoto(res.getString("linkFoto"));
-                categoria.setKilos(Integer.parseInt(res.getString("kilos")));
-                categoria.setNumPersonas(Integer.parseInt(res.getString("numPersonas")));
-                categoria.setPrecioUnitario(Double.parseDouble(res.getString("precioUnitario")));
+//                categoria.setDescripcion(res.getString("descripcion"));
+//                categoria.setLinkFoto(res.getString("linkFoto"));
+//                categoria.setKilos(Integer.parseInt(res.getString("kilos")));
+//                categoria.setNumPersonas(Integer.parseInt(res.getString("numPersonas")));
+//                categoria.setPrecioUnitario(Double.parseDouble(res.getString("precioUnitario")));
             }
         } catch (SQLException ex) {
             Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
@@ -213,8 +212,8 @@ public class DataBaseProducto
         Connection conn = controller.connectDB();
         try {
             Statement sta = conn.createStatement();
-            String strQuery = "update producto "+categoria.modInfo()+" where nombre = '"+nombre+"';";            
-            sta.executeUpdate(strQuery);
+//            String strQuery = "update producto "+categoria.modInfo()+" where nombre = '"+nombre+"';";            
+//            sta.executeUpdate(strQuery);
             flag = true;
         } catch (SQLException ex) {
             Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);

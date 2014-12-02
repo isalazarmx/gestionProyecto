@@ -918,7 +918,7 @@ public class ViewProducto extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), controllerPaneles.getPanelVendedores()); //asi
+        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), controllerPaneles.getPanelAlmacen()); //asi
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void nombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreFocusGained
@@ -965,6 +965,7 @@ public class ViewProducto extends javax.swing.JPanel {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewCategoria(controllerPaneles, null,false)); //asi
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void tipoUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoUnidadActionPerformed

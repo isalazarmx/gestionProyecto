@@ -7,11 +7,10 @@ package View;
 
 import Controller.ControllerPaneles;
 import Controller.ControllerValidation;
-import Controller.ControllerViewMsj;
 import Controller.ControllerViewVendedores;
+import Model.ModelCategoria;
 import Model.ModelEmpresa;
 import Model.ModelUsuario;
-import java.util.ArrayList;
 
 /**
  *
@@ -22,26 +21,39 @@ public class ViewCategoria extends javax.swing.JPanel {
     ControllerValidation validation;
     ModelEmpresa modelEmpresa;
     ControllerViewVendedores controller;
-    ModelUsuario usuarioTemporal;
+    ModelCategoria categoriaTemp;
     /**
      * Creates new form ViewBaseAdministrador
      * @param controllerPaneles
-     * @param user
+     * @param categoria
+     * @param tipoProducto
      */
-    public ViewCategoria(ControllerPaneles controllerPaneles, ModelUsuario user) {
-        this.usuarioTemporal = user;
+    public ViewCategoria(ControllerPaneles controllerPaneles, ModelCategoria categoria, boolean tipoProducto) {
+        this.categoriaTemp = categoria;
         this.validation = new ControllerValidation();
         this.controllerPaneles = controllerPaneles;
         this.modelEmpresa = controllerPaneles.getModelEmpresa();
         initComponents();
 //        validation();
-        if(user==null){
-            labelRuta.setText("Administración de vendedores / Nuevo Vendedor");   
-            acID.setText(DataBase.DataBaseUsuario.verProximoID());
+        acID.setText(DataBase.DataBaseCategoria.verProximoID());
+        if(categoria==null){
+            if(tipoProducto){
+                labelRuta.setText("Administración de productos / Nuevo producto tienda / Agrega categoría");
+                regresar.setText("Nuevo producto tienda");
+            }
+            else{
+                labelRuta.setText("Administración de almacén / Nuevo producto almacén  / Agrega categoría");
+                regresar.setText("Nuevo producto almacén");
+            }
         }else{
-            controller.identificaInfo(user);
-            acID.setText(""+usuarioTemporal.getIdUsuario());
-            labelRuta.setText("Administración de vendedores / Modifica Vendedor");
+            if(tipoProducto){
+                labelRuta.setText("Administración de productos / Modifica producto tienda / Modifica categoría");
+                regresar.setText("Modifica producto tienda");    
+            }
+            else{
+                labelRuta.setText("Administración de almacén / Modifica producto almacén / Modifica categoría");
+                regresar.setText("Modifica producto almacén");    
+            }
         }
         labelStatus.setText("");
     }
@@ -71,7 +83,7 @@ public class ViewCategoria extends javax.swing.JPanel {
         labelRuta = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
+        regresar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         acID = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
@@ -80,10 +92,10 @@ public class ViewCategoria extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        username5 = new javax.swing.JTextField();
+        nombre = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        descripcion = new javax.swing.JTextArea();
         labelStatus = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(245, 246, 247));
@@ -114,17 +126,18 @@ public class ViewCategoria extends javax.swing.JPanel {
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(53, 107, 161));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/regresar.png"))); // NOI18N
-        jButton4.setText("Nuevo producto");
-        jButton4.setToolTipText("Regresar");
-        jButton4.setContentAreaFilled(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.setPreferredSize(new java.awt.Dimension(107, 33));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        regresar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        regresar.setForeground(new java.awt.Color(53, 107, 161));
+        regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/regresar.png"))); // NOI18N
+        regresar.setText("Nuevo producto");
+        regresar.setToolTipText("Regresar");
+        regresar.setContentAreaFilled(false);
+        regresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        regresar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        regresar.setPreferredSize(new java.awt.Dimension(107, 33));
+        regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                regresarActionPerformed(evt);
             }
         });
 
@@ -155,7 +168,7 @@ public class ViewCategoria extends javax.swing.JPanel {
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -165,7 +178,7 @@ public class ViewCategoria extends javax.swing.JPanel {
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(regresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(acID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -217,27 +230,27 @@ public class ViewCategoria extends javax.swing.JPanel {
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel17.setText("Nombre:");
 
-        username5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        username5.setForeground(new java.awt.Color(180, 180, 180));
-        username5.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        username5.setText("Nombre del producto");
-        username5.setPreferredSize(new java.awt.Dimension(49, 28));
-        username5.addFocusListener(new java.awt.event.FocusAdapter() {
+        nombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nombre.setForeground(new java.awt.Color(180, 180, 180));
+        nombre.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        nombre.setText("Nombre de la categoría (*)");
+        nombre.setPreferredSize(new java.awt.Dimension(49, 28));
+        nombre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                username5FocusGained(evt);
+                nombreFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                username5FocusLost(evt);
+                nombreFocusLost(evt);
             }
         });
-        username5.addActionListener(new java.awt.event.ActionListener() {
+        nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                username5ActionPerformed(evt);
+                nombreActionPerformed(evt);
             }
         });
-        username5.addKeyListener(new java.awt.event.KeyAdapter() {
+        nombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                username5KeyPressed(evt);
+                nombreKeyPressed(evt);
             }
         });
 
@@ -245,14 +258,22 @@ public class ViewCategoria extends javax.swing.JPanel {
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel18.setText("Descripción:");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextArea2.setForeground(new java.awt.Color(180, 180, 180));
-        jTextArea2.setLineWrap(true);
-        jTextArea2.setRows(5);
-        jTextArea2.setText("Agrega una descripción");
-        jTextArea2.setCaretColor(new java.awt.Color(204, 204, 0));
-        jScrollPane2.setViewportView(jTextArea2);
+        descripcion.setColumns(20);
+        descripcion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        descripcion.setForeground(new java.awt.Color(180, 180, 180));
+        descripcion.setLineWrap(true);
+        descripcion.setRows(5);
+        descripcion.setText("Agrega una descripción");
+        descripcion.setCaretColor(new java.awt.Color(204, 204, 0));
+        descripcion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                descripcionFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                descripcionFocusLost(evt);
+            }
+        });
+        jScrollPane2.setViewportView(descripcion);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -264,7 +285,7 @@ public class ViewCategoria extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(username5, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel16)
                         .addGroup(jPanel3Layout.createSequentialGroup()
@@ -281,7 +302,7 @@ public class ViewCategoria extends javax.swing.JPanel {
                 .addGap(77, 77, 77)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(username5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -323,7 +344,7 @@ public class ViewCategoria extends javax.swing.JPanel {
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(labelStatus)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -345,7 +366,7 @@ public class ViewCategoria extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -362,13 +383,13 @@ public class ViewCategoria extends javax.swing.JPanel {
 //        ModelUsuario user = controller.creaModelo(new ModelUsuario());
 //        user.setIdEmpresa(modelEmpresa.getIdEmpresa());
 //        user.setTipo(2);
-//        if(usuarioTemporal == null){
+//        if(categoriaTemp == null){
 //            controller.addUser(labelStatus,user);
 //            acID.setText(DataBase.DataBaseUsuario.verProximoID());
 //        }
 //        else{
-//            user.setIdUsuario(usuarioTemporal.getIdUsuario());
-//            if(controller.acceptUsername(username.getText(),usuarioTemporal.getUsername())){
+//            user.setIdUsuario(categoriaTemp.getIdUsuario());
+//            if(controller.acceptUsername(username.getText(),categoriaTemp.getUsername())){
 //                if(controller.guardarCambios(labelStatus,user))
 //                        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewAdministrarVendedores(controllerPaneles)); //asi
 //            }else
@@ -381,10 +402,10 @@ public class ViewCategoria extends javax.swing.JPanel {
         controller.limpiaCampos();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
         // TODO add your handling code here:
-        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), controllerPaneles.getPanelVendedores()); //asi
-    }//GEN-LAST:event_jButton4ActionPerformed
+        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), controllerPaneles.getPanelProductos()); //asi
+    }//GEN-LAST:event_regresarActionPerformed
 
     private void acIDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acIDFocusGained
         validation.placeHolder(true,acID,"Id Cliente"); // TODO add your handling code here:
@@ -398,30 +419,41 @@ public class ViewCategoria extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_acIDActionPerformed
 
-    private void username5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_username5FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_username5FocusGained
+    private void nombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreFocusGained
+        validation.placeHolder(true,nombre,"Nombre de la categoría (*)");
+    }//GEN-LAST:event_nombreFocusGained
 
-    private void username5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_username5FocusLost
+    private void nombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_username5FocusLost
+        validation.placeHolder(false,nombre,"Nombre de la categoría (*)");
+    }//GEN-LAST:event_nombreFocusLost
 
-    private void username5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username5ActionPerformed
+    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_username5ActionPerformed
+    }//GEN-LAST:event_nombreActionPerformed
 
-    private void username5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_username5KeyPressed
+    private void nombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_username5KeyPressed
+    }//GEN-LAST:event_nombreKeyPressed
+
+    private void descripcionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_descripcionFocusGained
+        // TODO add your handling code here:
+        validation.placeHolder(true,descripcion,"Agrega una descripción");
+    }//GEN-LAST:event_descripcionFocusGained
+
+    private void descripcionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_descripcionFocusLost
+        // TODO add your handling code here:
+        validation.placeHolder(false,descripcion,"Agrega una descripción");
+    }//GEN-LAST:event_descripcionFocusLost
 
     
        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField acID;
+    private javax.swing.JTextArea descripcion;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -431,9 +463,9 @@ public class ViewCategoria extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JLabel labelRuta;
     private javax.swing.JLabel labelStatus;
-    private javax.swing.JTextField username5;
+    private javax.swing.JTextField nombre;
+    private javax.swing.JButton regresar;
     // End of variables declaration//GEN-END:variables
 }

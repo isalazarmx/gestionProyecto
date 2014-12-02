@@ -38,9 +38,9 @@ public class ControllerViewCategoria
     
     
     public void next(ModelCategoria emp){        
-            if (!nombre.getText().equals("Nombre de la categoria(*)") && !nombre.getText().isEmpty()) {
+            if (!nombre.getText().equals("Nombre de la categoría (*)") && !nombre.getText().isEmpty()) {
             emp.setNombre(nombre.getText().toUpperCase());
-            emp.setDescripcion(reviewInfo(descripcion, "Descripcion de la categoria", true));
+            emp.setDescripcion(reviewInfo(descripcion, "Agrega una descripción", true));
             if (!DataBaseCategoria.checkExistCategoria(nombre.getText().toUpperCase())) {
                 if (DataBaseCategoria.addInfoCategoria(emp)) {
 

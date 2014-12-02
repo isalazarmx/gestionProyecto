@@ -36,6 +36,7 @@ public class ControllerPaneles {
     private JButton botonDatosUsuario;
     private JPanel panelBotoneraPrincipal;
     private JPanel panelCentral;
+    private JPanel Productos;
     //--------------------------------------
     private JPanel panelInicio;
     private JPanel panelProductos;
@@ -306,5 +307,19 @@ public class ControllerPaneles {
      */
     public void setPanelAlmacen(JPanel panelAlmacen) {
         this.panelAlmacen = panelAlmacen;
+    }
+
+    /**
+     * @return the Productos
+     */
+    public JPanel getProductos() {
+        return Productos;
+    }
+
+    /**
+     * @param Productos the Productos to set
+     */
+    public void setProductos(JPanel Productos) {
+        this.Productos = Productos;
     }
 }

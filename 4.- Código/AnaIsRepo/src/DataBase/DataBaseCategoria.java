@@ -21,6 +21,29 @@ import java.util.logging.Logger;
  */
 public class DataBaseCategoria 
 {
+    public static String verProximoID(){
+        String id = "";
+        ControllerConnDBMS controller = new ControllerConnDBMS();
+        Connection conn = controller.connectDB();
+        try {
+            Statement sta = conn.createStatement();
+            String strQuery = "select auto_increment from information_schema.tables where table_schema='poscakeapp' and table_name='categoria';";
+            System.out.println(strQuery);
+            ResultSet res = sta.executeQuery(strQuery);
+            if(res.next())
+                id = res.getString("Auto_increment");
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.DataBaseCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+              try {
+                if (conn != null && !conn.isClosed())
+                    conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return id;
+    }
     
     ///Consultas agregadas-------------------
     //------------------- Metodo para agregar Categoria-------------------
