@@ -8,7 +8,6 @@ package Controller;
 import Model.ModelCategoria;
 import Model.ModelCliente;
 import Model.ModelEmpresa;
-import Model.ModelInsumo;
 import Model.ModelInsumo_has_Producto;
 import Model.ModelProducto;
 import Model.ModelProveedor;
@@ -30,7 +29,6 @@ public class ControllerPaneles {
     private ModelProveedor modelProveedor;
     private ModelProducto modelProducto;
     private ModelCategoria modelCategoria;
-    private ModelInsumo modelInsumo;
     private ModelInsumo_has_Producto modelInsumoProducto;
     private ModelVenta modelVenta;
     //---------------------------------------
@@ -252,20 +250,6 @@ public class ControllerPaneles {
      */
     public void setModelCategoria(ModelCategoria modelCategoria) {
         this.modelCategoria = modelCategoria;
-    }
-
-    /**
-     * @return the modelInsumo
-     */
-    public ModelInsumo getModelInsumo() {
-        return modelInsumo;
-    }
-
-    /**
-     * @param modelInsumo the modelInsumo to set
-     */
-    public void setModelInsumo(ModelInsumo modelInsumo) {
-        this.modelInsumo = modelInsumo;
     }
 
     /**

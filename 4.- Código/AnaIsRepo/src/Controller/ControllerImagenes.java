@@ -6,7 +6,16 @@
 package Controller;
 
 import java.awt.Image;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -18,6 +27,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Jesus
  */
 public class ControllerImagenes {
+    Image foto;
+    File ruta;
     
     public void buscaImagen(JPanel panel, JLabel imagen){
         JFileChooser archivo = new JFileChooser();
@@ -25,12 +36,12 @@ public class ControllerImagenes {
         archivo.addChoosableFileFilter(filtroImagen);
         archivo.setDialogTitle("Abrir archivo");
         archivo.setDialogType(1);
-        File ruta = new File(System.getProperty("user.home")+System.getProperty("file.separator")+"Pictures");
+        ruta = new File(System.getProperty("user.home")+System.getProperty("file.separator")+"Pictures");
         archivo.setCurrentDirectory(ruta);
         int ventana = archivo.showOpenDialog(panel);
         if(ventana == JFileChooser.APPROVE_OPTION){
             File file = archivo.getSelectedFile();
-            Image foto = panel.getToolkit().getImage(String.valueOf(file));
+            foto = panel.getToolkit().getImage(String.valueOf(file));
             foto = foto.getScaledInstance(panel.getWidth(),panel.getHeight(), Image.SCALE_DEFAULT);
             imagen.setIcon(new ImageIcon(foto));
         }

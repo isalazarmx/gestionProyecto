@@ -2,6 +2,7 @@
 package Controller;
 
 import Model.ModelCliente;
+import Model.ModelProducto;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
@@ -98,28 +99,30 @@ public class ControllerViewProducto {
         ControllerValidation.soloNumeros(precioCompra02);
     }
     
-    public void addCliente(JTextField acID,JLabel labelStatus,ModelCliente cliente){
-        if(!Nombre.getText().equals("Nombre (*)") && !Nombre.getText().isEmpty()){
-            if(!acApellidoPaterno.getText().equals("Apellido Paterno (*)") && !acApellidoPaterno.getText().isEmpty()){
-                if(!acEmail.getText().equals("cliente@anais.com (*)") && !acEmail.getText().isEmpty()){
-                    if(!acTelCelular.getText().equals("xx-xxx-xxxxxxx (*)") && !acTelCelular.getText().isEmpty()){
-                        if(!acCP.getText().equals("xxxxx (*)") && !acCP.getText().isEmpty()){
-                            if(DataBase.DataBaseCliente.addCliente(cliente)){
-                                   labelStatus.setText("Cliente agregado con éxito");
-                                   limpiaCampos();
-                                   acID.setText(DataBase.DataBaseCliente.verProximoID());
+    public void addProducto(JLabel labelStatus,ModelProducto producto){
+        if(!((String)idCategoria.getItemAt(idCategoria.getSelectedIndex())).equals("Selecciona categoría")){
+            if(!ID.getText().equals("Código de barras") && !ID.getText().isEmpty()){
+                if(!nombre.getText().equals("Nombre del producto") && !nombre.getText().isEmpty()){
+                    if(!cantidad01.getText().equals("0") && !cantidad01.getText().isEmpty()){
+                        if(!unidadExistencia.getText().equals("0") && !unidadExistencia.getText().isEmpty()){
+                            if(!precioCompra01.getText().equals("0") && !precioCompra01.getText().isEmpty()){
+//                                if(DataBase.DataBaseCliente.addCliente(cliente)){
+//                                       labelStatus.setText("Cliente agregado con éxito");
+//                                       limpiaCampos();
+//                                }else
+//                                   labelStatus.setText("Error interno para almacenar la información");
                             }else
-                               labelStatus.setText("Error interno para almacenar la información");
+                                ControllerViewMsj.muestraMensajeGlobo("Indica el precio del producto", precioCompra01);
                         }else
-                            ControllerViewMsj.muestraMensajeGlobo("Agrega un código postal", acCP);
+                            ControllerViewMsj.muestraMensajeGlobo("Indica la cantidad de productos que tienes", unidadExistencia);
                     }else
-                        ControllerViewMsj.muestraMensajeGlobo("Agrega un teléfono móvil", acTelCelular);
+                        ControllerViewMsj.muestraMensajeGlobo("Indica el peso del producto", cantidad01);
                 }else
-                    ControllerViewMsj.muestraMensajeGlobo("Agrega un email", acTelCelular);
+                    ControllerViewMsj.muestraMensajeGlobo("Identifica el producto con un nombre",nombre);
             }else
-                ControllerViewMsj.muestraMensajeGlobo("Agrega un apellido paterno",acApellidoPaterno);
+                ControllerViewMsj.muestraMensajeGlobo("El producto debe de tener un código de barras", ID);
         }else
-            ControllerViewMsj.muestraMensajeGlobo("Agrega un nombre para el cliente", Nombre);
+            ControllerViewMsj.muestraMensajeGlobo("Agrega una categoría para el producto", idCategoria);
     }
     
     public boolean modificaCliente(JLabel labelStatus,ModelCliente cliente){

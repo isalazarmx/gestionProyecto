@@ -893,6 +893,7 @@ public class ViewProducto extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void agregaModificaProducto(){
+        controller.addProducto(labelStatus, new ModelProducto());
 //        ModelUsuario user = controller.creaModelo(new ModelUsuario());
 //        user.setIdEmpresa(modelEmpresa.getIdEmpresa());
 //        user.setTipo(2);
@@ -984,6 +985,7 @@ public class ViewProducto extends javax.swing.JPanel {
     private void unidadExistenciaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_unidadExistenciaFocusLost
         // TODO add your handling code here:
         validation.placeHolder(false, unidadExistencia,"0");
+        controller.despliegaCuentas();
     }//GEN-LAST:event_unidadExistenciaFocusLost
 
     private void unidadExistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unidadExistenciaActionPerformed
@@ -1059,6 +1061,7 @@ public class ViewProducto extends javax.swing.JPanel {
     private void cantidad02FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidad02FocusLost
         // TODO add your handling code here:
         validation.placeHolder(false, cantidad02,"00");
+        controller.despliegaCuentas();
     }//GEN-LAST:event_cantidad02FocusLost
 
     private void cantidad02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidad02ActionPerformed

@@ -5,6 +5,7 @@
  */
 package Model;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 
 /**
@@ -12,15 +13,21 @@ import java.util.ArrayList;
  * @author Teté
  */
 public class ModelProducto {
-    private int idProducto;
+    private String idProducto;
     private String nombre;
-    private String descripcion;
-    private String linkFoto;
-    private int kilos;
-    private int numPersonas;
-    private double precioUnitario;
-    private int idCategoria;
-    private int idEmpresa;
+    private double cantidad;
+    private String tipoUnidad;
+    private int unidadExistencia;
+    private int minStock;
+    private int maxStock;
+    private double precioCompra;
+    private double incrementoVenta;
+    private double precioVenta;
+    private Blob imagen;
+    private String rutaImagen;
+    private int tipoProducto;
+    private int emprsa_idempresa;
+    private int categoria_idcategoria;
     
     public ArrayList componentesPDF(){
         ArrayList comp = new ArrayList();
@@ -49,17 +56,42 @@ public class ModelProducto {
         return ancho; 
     }
 
+//    public String addInfo(){
+//        return "('"
+//                +getNombre()+"','"
+//                +getDescripcion()+"','"                
+//                +getLinkFoto()+"',"
+//                +getKilos()+","
+//                +getNumPersonas()+","
+//                +getPrecioUnitario()+","
+//                +"0,"
+//                +getIdCategoria()+""
+//                +",01"
+//                + ");";
+//    }
+    
+//    public String modInfo(){
+//        return "set nombre = '"+getNombre()+"',"+ 
+//               "descripcion = '"+getDescripcion()+"',"+
+//               "linkFoto = '"+getLinkFoto()+"',"+
+//               "kilos = "+getKilos()+","+
+//               "numPersonas = "+getNumPersonas()+","+
+//               "precioUnitario = "+getPrecioUnitario()+","+
+//                "Categoria_idCategoria = "+getIdCategoria()+""
+//                ;     
+//    }
+
     /**
      * @return the idProducto
      */
-    public int getIdProducto() {
+    public String getIdProducto() {
         return idProducto;
     }
 
     /**
      * @param idProducto the idProducto to set
      */
-    public void setIdProducto(int idProducto) {
+    public void setIdProducto(String idProducto) {
         this.idProducto = idProducto;
     }
 
@@ -78,127 +110,185 @@ public class ModelProducto {
     }
 
     /**
-     * @return the descripcion
+     * @return the cantidad
      */
-    public String getDescripcion() {
-        return descripcion;
+    public double getCantidad() {
+        return cantidad;
     }
 
     /**
-     * @param descripcion the descripcion to set
+     * @param cantidad the cantidad to set
      */
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setCantidad(double cantidad) {
+        this.cantidad = cantidad;
     }
 
     /**
-     * @return the linkFoto
+     * @return the tipoUnidad
      */
-    public String getLinkFoto() {
-        return linkFoto;
+    public String getTipoUnidad() {
+        return tipoUnidad;
     }
 
     /**
-     * @param linkFoto the linkFoto to set
+     * @param tipoUnidad the tipoUnidad to set
      */
-    public void setLinkFoto(String linkFoto) {
-        this.linkFoto = linkFoto;
+    public void setTipoUnidad(String tipoUnidad) {
+        this.tipoUnidad = tipoUnidad;
     }
 
     /**
-     * @return the kilos
+     * @return the unidadExistencia
      */
-    public int getKilos() {
-        return kilos;
+    public int getUnidadExistencia() {
+        return unidadExistencia;
     }
 
     /**
-     * @param kilos the kilos to set
+     * @param unidadExistencia the unidadExistencia to set
      */
-    public void setKilos(int kilos) {
-        this.kilos = kilos;
+    public void setUnidadExistencia(int unidadExistencia) {
+        this.unidadExistencia = unidadExistencia;
     }
 
     /**
-     * @return the numPersonas
+     * @return the minStock
      */
-    public int getNumPersonas() {
-        return numPersonas;
+    public int getMinStock() {
+        return minStock;
     }
 
     /**
-     * @param numPersonas the numPersonas to set
+     * @param minStock the minStock to set
      */
-    public void setNumPersonas(int numPersonas) {
-        this.numPersonas = numPersonas;
+    public void setMinStock(int minStock) {
+        this.minStock = minStock;
     }
 
     /**
-     * @return the precioUnitario
+     * @return the maxStock
      */
-    public double getPrecioUnitario() {
-        return precioUnitario;
+    public int getMaxStock() {
+        return maxStock;
     }
 
     /**
-     * @param precioUnitario the precioUnitario to set
+     * @param maxStock the maxStock to set
      */
-    public void setPrecioUnitario(double precioUnitario) {
-        this.precioUnitario = precioUnitario;
+    public void setMaxStock(int maxStock) {
+        this.maxStock = maxStock;
     }
 
     /**
-     * @return the idCategoria
+     * @return the precioCompra
      */
-    public int getIdCategoria() {
-        return idCategoria;
+    public double getPrecioCompra() {
+        return precioCompra;
     }
 
     /**
-     * @param idCategoria the idCategoria to set
+     * @param precioCompra the precioCompra to set
      */
-    public void setIdCategoria(int idCategoria) {
-        this.idCategoria = idCategoria;
+    public void setPrecioCompra(double precioCompra) {
+        this.precioCompra = precioCompra;
     }
 
     /**
-     * @return the idEmpresa
+     * @return the incrementoVenta
      */
-    public int getIdEmpresa() {
-        return idEmpresa;
+    public double getIncrementoVenta() {
+        return incrementoVenta;
     }
 
     /**
-     * @param idEmpresa the idEmpresa to set
+     * @param incrementoVenta the incrementoVenta to set
      */
-    public void setIdEmpresa(int idEmpresa) {
-        this.idEmpresa = idEmpresa;
+    public void setIncrementoVenta(double incrementoVenta) {
+        this.incrementoVenta = incrementoVenta;
     }
-    
-    
-    public String addInfo(){
-        return "('"
-                +getNombre()+"','"
-                +getDescripcion()+"','"                
-                +getLinkFoto()+"',"
-                +getKilos()+","
-                +getNumPersonas()+","
-                +getPrecioUnitario()+","
-                +"0,"
-                +getIdCategoria()+""
-                +",01"
-                + ");";
+
+    /**
+     * @return the precioVenta
+     */
+    public double getPrecioVenta() {
+        return precioVenta;
     }
-    
-    public String modInfo(){
-        return "set nombre = '"+getNombre()+"',"+ 
-               "descripcion = '"+getDescripcion()+"',"+
-               "linkFoto = '"+getLinkFoto()+"',"+
-               "kilos = "+getKilos()+","+
-               "numPersonas = "+getNumPersonas()+","+
-               "precioUnitario = "+getPrecioUnitario()+","+
-                "Categoria_idCategoria = "+getIdCategoria()+""
-                ;     
+
+    /**
+     * @param precioVenta the precioVenta to set
+     */
+    public void setPrecioVenta(double precioVenta) {
+        this.precioVenta = precioVenta;
+    }
+
+    /**
+     * @return the imagen
+     */
+    public Blob getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(Blob imagen) {
+        this.imagen = imagen;
+    }
+
+    /**
+     * @return the rutaImagen
+     */
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    /**
+     * @param rutaImagen the rutaImagen to set
+     */
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
+    }
+
+    /**
+     * @return the tipoProducto
+     */
+    public int getTipoProducto() {
+        return tipoProducto;
+    }
+
+    /**
+     * @param tipoProducto the tipoProducto to set
+     */
+    public void setTipoProducto(int tipoProducto) {
+        this.tipoProducto = tipoProducto;
+    }
+
+    /**
+     * @return the emprsa_idempresa
+     */
+    public int getEmprsa_idempresa() {
+        return emprsa_idempresa;
+    }
+
+    /**
+     * @param emprsa_idempresa the emprsa_idempresa to set
+     */
+    public void setEmprsa_idempresa(int emprsa_idempresa) {
+        this.emprsa_idempresa = emprsa_idempresa;
+    }
+
+    /**
+     * @return the categoria_idcategoria
+     */
+    public int getCategoria_idcategoria() {
+        return categoria_idcategoria;
+    }
+
+    /**
+     * @param categoria_idcategoria the categoria_idcategoria to set
+     */
+    public void setCategoria_idcategoria(int categoria_idcategoria) {
+        this.categoria_idcategoria = categoria_idcategoria;
     }
           
     
