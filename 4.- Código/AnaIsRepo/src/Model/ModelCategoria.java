@@ -13,6 +13,7 @@ public class ModelCategoria {
     private int idCategoria;
     private String nombre;
     private String descripcion;
+    private int tipoProducto;
 
     /**
      * @return the idCategoria
@@ -60,7 +61,8 @@ public class ModelCategoria {
     public String addInfo(){
         return "('"
                 +getNombre()+"','"
-                +getDescripcion()+"'"                
+                +getDescripcion()+"',"                
+                +getTipoProducto()
                 +",0);";
     }
     
@@ -68,6 +70,20 @@ public class ModelCategoria {
     public String modInfo(){
         return "set nombre = '"+getNombre()+"',"+ 
                "descripcion = '"+getDescripcion()+"'";     
+    }
+
+    /**
+     * @return the tipoProducto
+     */
+    public int getTipoProducto() {
+        return tipoProducto;
+    }
+
+    /**
+     * @param tipoProducto the tipoProducto to set
+     */
+    public void setTipoProducto(int tipoProducto) {
+        this.tipoProducto = tipoProducto;
     }
     
     

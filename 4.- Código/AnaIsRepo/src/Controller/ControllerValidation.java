@@ -340,7 +340,4 @@ public class ControllerValidation {
            pas = pas + car[i];
         return pas;
     }
-    
-    
-
 }

@@ -11,7 +11,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -53,7 +55,8 @@ public class DataBaseCategoria
         Connection conn = controller.connectDB();
         try {
             Statement sta = conn.createStatement();
-            String strQuery = "insert into categoria(nombre,descripcion,elimiando) values "+model.addInfo();
+            String strQuery = "insert into categoria(nombre,descripcion,tipoProducto,elimiando) values "+model.addInfo();
+            System.out.println(strQuery);
             sta.executeUpdate(strQuery);
             flag = true;
         } catch (SQLException ex) {
@@ -224,5 +227,38 @@ public class DataBaseCategoria
             }
         }
         return flag;
+    }
+    
+    public static List<ModelCategoria> buscaCategorias(boolean tipoCategoria){
+        ControllerConnDBMS controller = new ControllerConnDBMS();
+        Connection conn = controller.connectDB();
+        List<ModelCategoria> list = new ArrayList<>();
+        try {
+            Statement sta = conn.createStatement();
+            String strQuery;
+            if(tipoCategoria)
+                strQuery = "SELECT * FROM CATEGORIA WHERE TIPOPRODUCTO = 3;";
+            else
+                strQuery = "SELECT * FROM CATEGORIA WHERE TIPOPRODUCTO = 2;";
+            ResultSet res = sta.executeQuery(strQuery);
+            while(res.next()){
+                ModelCategoria model = new ModelCategoria();
+                model.setIdCategoria(Integer.parseInt(res.getString("idCategoria")));
+                model.setNombre(res.getString("nombre"));
+                model.setDescripcion(res.getString("descripcion"));
+                model.setTipoProducto(Integer.parseInt(res.getString("tipoProducto")));
+                list.add(model);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+              try {
+                if (conn != null && !conn.isClosed())
+                    conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return list;
     }
 }

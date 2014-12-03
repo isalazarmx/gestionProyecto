@@ -211,4 +211,32 @@ public class DataBaseProveedor {
         }
         return proveedor;
     }
+    
+    public static List<ModelProveedor> buscaProveedores(){
+        ControllerConnDBMS controller = new ControllerConnDBMS();
+        Connection conn = controller.connectDB();
+        List<ModelProveedor> list = new ArrayList<>();
+        try {
+            Statement sta = conn.createStatement();
+            String strQuery = "SELECT IDPROVEEDOR, NOMBRE, APATERNO FROM PROVEEDOR;";
+            ResultSet res = sta.executeQuery(strQuery);
+            while(res.next()){
+                ModelProveedor model = new ModelProveedor();
+                model.setIdProveedor(Integer.parseInt(res.getString("idProveedor")));
+                model.setNombre(res.getString("nombre"));
+                model.setaPaterno(res.getString("aPaterno"));
+                list.add(model);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+              try {
+                if (conn != null && !conn.isClosed())
+                    conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return list;
+    }
 }

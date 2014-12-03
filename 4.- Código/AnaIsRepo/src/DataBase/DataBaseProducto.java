@@ -11,7 +11,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,6 +23,52 @@ import java.util.logging.Logger;
  */
 public class DataBaseProducto 
 {
+    public static List<ModelProducto> buscaCategorias(boolean tipoCategoria){
+        ControllerConnDBMS controller = new ControllerConnDBMS();
+        Connection conn = controller.connectDB();
+        List<ModelProducto> list = new ArrayList<>();
+        try {
+            Statement sta = conn.createStatement();
+            String strQuery;
+            if(tipoCategoria)
+                strQuery = "SELECT * FROM PRODUCTO WHERE TIPOPRODUCTO = 3;";
+            else
+                strQuery = "SELECT * FROM CATEGORIA WHERE TIPOPRODUCTO = 2;";
+            ResultSet res = sta.executeQuery(strQuery);
+            while(res.next()){
+                ModelProducto model = new ModelProducto();
+                model.setIdProducto(res.getString("idProducto"));
+                model.setNombre(res.getString("nombre"));
+                model.setCantidad(res.getInt("cantidad"));
+                model.setTipoUnidad(res.getString("tipoUnidad"));
+                model.setUnidadExistencia(res.getInt("UnidadExistencia"));
+                model.setMinStock(res.getInt("minStock"));
+                model.setMaxStock(res.getInt("maxStock"));
+                model.setPrecioCompra(res.getDouble("precioCompra"));
+                model.setIncrementoVenta(res.getDouble("incrementoVenta"));
+                model.setPrecioVenta(res.getDouble("precioVenta"));
+                model.setImagen(res.getBlob("image"));
+                model.setRutaImagen(res.getString("RutaImagen"));
+                model.setTipoProducto(res.getInt("tipoProducto"));
+                model.setEmprsa_idempresa(res.getInt("empresa_idempresa"));
+                model.setCategoria_idcategoria(res.getInt("categoria_idcategoria"));
+                list.add(model);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+              try {
+                if (conn != null && !conn.isClosed())
+                    conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return list;
+    }
+    
+    //----------------------------------------------------------------------
+    
     ///Consultas agregadas-------------------
     //------------------- Metodo para agregar Categoria-------------------
     public static boolean addInfoProducto(ModelProducto model){

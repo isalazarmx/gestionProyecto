@@ -40,7 +40,7 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
         modelProducto=new ModelProducto();
         initComponents();
         configInicial();
-        validationCategoriaProducto();
+//        validationCategoriaProducto();
     }
     
     public void configInicial()
@@ -721,7 +721,7 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
                     .addComponent(ComboProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelNota))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BotonEditarProducto)
                     .addComponent(BotonEliminarProducto))
                 .addGap(0, 11, Short.MAX_VALUE))
@@ -1024,7 +1024,7 @@ public final class ViewCaptInfProductoInsumo extends javax.swing.JPanel {
     }//GEN-LAST:event_ComboProductoItemStateChanged
 
     private void next(){
-        controllerCategoria.next(modelCategoria);
+        controllerCategoria.addCategoria(modelCategoria);
         controllerCategoria.cargaComboCategoria(ComboCategoria,NombreCategoriaEditDelete.getText(),BotonEditarCategoria,BotonEliminarCategoria);
         controllerCategoria.cargaComboCategoria(ComboCategoriaProducto,TextBuscaCategoria.getText(),BotonAgregarProducto);
     }
