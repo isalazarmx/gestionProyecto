@@ -8,7 +8,7 @@ package Controller;
 import Model.ModelCategoria;
 import Model.ModelCliente;
 import Model.ModelEmpresa;
-import Model.ModelInsumo_has_Producto;
+import Model.Proveedor_has_Producto;
 import Model.ModelProducto;
 import Model.ModelProveedor;
 import Model.ModelUsuario;
@@ -29,7 +29,7 @@ public class ControllerPaneles {
     private ModelProveedor modelProveedor;
     private ModelProducto modelProducto;
     private ModelCategoria modelCategoria;
-    private ModelInsumo_has_Producto modelInsumoProducto;
+    private Proveedor_has_Producto modelInsumoProducto;
     private ModelVenta modelVenta;
     //---------------------------------------
     private JPanel panelUserData;
@@ -256,14 +256,14 @@ public class ControllerPaneles {
     /**
      * @return the modelInsumoProducto
      */
-    public ModelInsumo_has_Producto getModelInsumoProducto() {
+    public Proveedor_has_Producto getModelInsumoProducto() {
         return modelInsumoProducto;
     }
 
     /**
      * @param modelInsumoProducto the modelInsumoProducto to set
      */
-    public void setModelInsumoProducto(ModelInsumo_has_Producto modelInsumoProducto) {
+    public void setModelInsumoProducto(Proveedor_has_Producto modelInsumoProducto) {
         this.modelInsumoProducto = modelInsumoProducto;
     }
 

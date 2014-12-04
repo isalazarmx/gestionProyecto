@@ -1,10 +1,9 @@
 package Controller;
 
-import DataBase.DataBaseCategoria;
 import Model.ModelCategoria;
-import Model.ModelCliente;
 import Model.ModelProducto;
 import Model.ModelProveedor;
+import Model.Proveedor_has_Producto;
 import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
@@ -46,6 +45,7 @@ public class ControllerViewProducto {
     List<ModelCategoria> listCategoria;
     List<ModelProveedor> listProveedor;
     List<ModelProducto> listProductos;
+    List<Proveedor_has_Producto> listRelations;
     boolean modifica;
     double precioCompra;
     double precioVenta;
@@ -126,22 +126,37 @@ public class ControllerViewProducto {
         List temp = null;
         switch (tipoProducto) {
             case 0:
+                int cant00 = idCategoria.getItemCount()-1;
+                for (int i = cant00; i > 0; i--) {
+                    idCategoria.removeItemAt(i);
+                }
                 listCategoria = DataBase.DataBaseCategoria.buscaCategorias(seleccion);
                 for (ModelCategoria list1 : listCategoria)
                     idCategoria.addItem(list1.getNombre());
                 temp = listCategoria;
                 break;
             case 1:
+                int cant01 = idProveedor.getItemCount()-1;
+                for (int i = cant01; i > 0; i--) {
+                    idProveedor.removeItemAt(i);
+                }
                 listProveedor = DataBase.DataBaseProveedor.buscaProveedores();
                 for (ModelProveedor list1 : listProveedor)
                     idProveedor.addItem(list1.getNombre() + " " + list1.getaPaterno());
                 temp = listProveedor;
                 break;
             case 2:
-                listProductos = DataBase.DataBaseProducto.buscaCategorias(seleccion);
+                int cant02 = idProducto.getItemCount()-1;
+                for (int i = cant02; i > 0; i--) {
+                    idProducto.removeItemAt(i);
+                }
+                listProductos = DataBase.DataBaseProducto.buscaProductos(seleccion);
                 for (ModelProducto list1 : listProductos)
                     idProducto.addItem(list1.getIdProducto()+" "+list1.getNombre());
-                temp = listProveedor;
+                temp = listProductos;
+                break;
+            case 3:
+                listRelations = DataBase.DataBaseProveedor_has_Producto.buscaRelations();
                 break;
         }
         return temp;
@@ -152,8 +167,11 @@ public class ControllerViewProducto {
             if(!modifica){
                     ModelProducto categoria = creaModelProducto(new ModelProducto(), false);
                 if (DataBase.DataBaseProducto.addProducto(categoria)) {
-                    limpiaCampos();
-                    labelStatus.setText("Categoría agregada con éxito");
+                    Proveedor_has_Producto relation = creaModelRelation(new Proveedor_has_Producto());
+                    if(DataBase.DataBaseProveedor_has_Producto.addRegister(relation)){
+                        limpiaCampos();
+                        labelStatus.setText("Categoría agregada con éxito");
+                    }
                 } else {
                     JOptionPane.showMessageDialog(null, "Error interno para almacenar la información");
                 }
@@ -161,6 +179,14 @@ public class ControllerViewProducto {
             
             }
         }
+    }
+    
+    private Proveedor_has_Producto creaModelRelation(Proveedor_has_Producto model){
+        model.setProoveedor_idproveedor(buscaIdProveedor());
+        model.setProducto_idproducto(ID.getText());
+        model.setProducto_empresa_idempresa(1);
+        model.setProdcuto_categoria_idcategoria(buscaIdCategoria());
+        return model;
     }
     
     public boolean validaCampos() {
@@ -231,73 +257,179 @@ public class ControllerViewProducto {
         return 0;
     }
     
+    private int buscaIdProveedor(){
+        for (int i = 0; i < listProveedor.size(); i++) {
+            ModelProveedor modTemp = listProveedor.get(i);
+            if((modTemp.getNombre()+" "+modTemp.getaPaterno()).equals((String)idProveedor.getSelectedItem()))
+               return modTemp.getIdProveedor();
+        }
+        return 0;
+    }
+    
     private double obtenerCantidad(){
         return Integer.parseInt(cantidad01.getText()) + (Integer.parseInt(cantidad02.getText())/100);
     }
     
-    public void identificaInfo(ModelCliente model) {
-        if (!model.getNombre().equals("")) {
-            Nombre.setForeground(Color.black);
-            Nombre.setText(model.getNombre());
+    public void identificaInfo() {
+        int pos = idProducto.getSelectedIndex()-1;
+        if (pos != -1){
+            ModelProducto producto = listProductos.get(pos);
+            Model.Proveedor_has_Producto relations = buscaRelations(producto.getIdProducto());
+            idCategoria.setSelectedIndex(identificaInfoCom(relations.getProdcuto_categoria_idcategoria(),true));
+            idProveedor.setSelectedIndex(identificaInfoCom(relations.getProoveedor_idproveedor(),false));
+            ID.setText(producto.getIdProducto());
+            nombre.setText(producto.getNombre());
+            String[] temp;
+            temp = convertirCantidades(producto.getCantidad());
+            cantidad01.setText(temp[0]);
+            cantidad02.setText(temp[1]);
+            tipoUnidad.setSelectedIndex(buscatipoUnidad(producto.getTipoUnidad()));
+            unidadExistencia.setText(""+producto.getUnidadExistencia());
+            minStock.setValue(producto.getMinStock());
+            maxStock.setValue(producto.getMaxStock());
+            temp = convertirCantidades(producto.getPrecioCompra());
+            precioCompra01.setText(temp[0]);
+            precioCompra02.setText(temp[1]);
+            temp = convertirCantidades(producto.getIncrementoVenta());
+            incrementoVenta.setValue(Integer.parseInt(temp[0]));
+            despliegaCuentas();
+        }else
+            limpiaCampos();
+    }
+    
+    private int buscatipoUnidad(String unidadPeso){
+        for (int i = 0; i < tipoUnidad.getItemCount(); i++) {
+            String value = (String)tipoUnidad.getItemAt(i);
+            if(value.equals(unidadPeso))
+                return i;
         }
-        if (!model.getaPaterno().equals("")) {
-            acApellidoPaterno.setText(model.getaPaterno());
-            acApellidoPaterno.setForeground(Color.black);
+        return 0;
+    }
+    
+    private String[] convertirCantidades(Double valor){
+        String aux = ""+valor;
+        int posDot = aux.indexOf(".");
+        String valor1 = aux.substring(0,posDot);
+        int posDotTemp = posDot+1;
+        String valor2 = aux.substring(posDotTemp,aux.length());
+        String[] temp = new String[]{valor1,valor2};
+        return temp;
+    }
+    
+    private int identificaInfoCom(int id,boolean opc){
+        if(opc){
+            for (int i = 0; i < listCategoria.size(); i++) {
+                ModelCategoria model = listCategoria.get(i);
+                if (model.getIdCategoria()==id){
+                    i++;
+                    return i;
+                }
+            }
+        }else{
+            for (int i = 0; i < listProveedor.size(); i++) {
+                ModelProveedor model = listProveedor.get(i);
+                if (model.getIdProveedor()==id){
+                    i++;
+                    return i;
+                }
+            }        
         }
-        if (!model.getaMaterno().equals("")) {
-            acApellidoMaterno.setText(model.getaMaterno());
-            acApellidoMaterno.setForeground(Color.black);
+        return 0;
+    }
+    
+    private Model.Proveedor_has_Producto buscaRelations(String idProducto){
+        for (int i = 0; i < listRelations.size(); i++) {
+            Model.Proveedor_has_Producto model = listRelations.get(i);
+            if(model.getProducto_idproducto().equals(idProducto))
+                return model;
         }
-        if (!model.getRFC().equals("")) {
-            acRFC.setText(model.getRFC());
-            acRFC.setForeground(Color.black);
-        }
-        if (!model.getTelFijo().equals("")) {
-            acTelefono.setForeground(Color.black);
-            acTelefono.setText("" + model.getTelFijo());
-        }
-        if (!model.getTelCel().equals("")) {
-            acTelCelular.setForeground(Color.black);
-            acTelCelular.setText("" + model.getTelCel());
-        }
-        if (!model.geteMail().equals("")) {
-            acEmail.setForeground(Color.black);
-            acEmail.setText("" + model.geteMail());
-        }
-        if (!model.getCalle().equals("")) {
-            acCalle.setForeground(Color.black);
-            acCalle.setText("" + model.getCalle());
-        }
-        if (!model.getCiudad().equals("")) {
-            acCiudad.setForeground(Color.black);
-            acCiudad.setText("" + model.getCalle());
-        }
-        if (!model.getColonia().equals("")) {
-            acColonia.setForeground(Color.black);
-            acColonia.setText("" + model.getCalle());
-        }
-        if (!model.getEstado().equals("")) {
-            for (int i = 0; i < acEstados.getModel().getSize(); i++) {
-                String est = (String) acEstados.getItemAt(i);
-                if (est.equals(model.getEstado())) {
-                    acEstados.setSelectedIndex(i);
+        return new Proveedor_has_Producto();
+    }
+     
+    private int buscaID(int ID,boolean flag){
+        int id = 0;
+        if(flag){
+            for (int i = 0; i < listCategoria.size(); i++) {
+                ModelCategoria modeTemp = listCategoria.get(i);
+                if(modeTemp.getIdCategoria() == ID){
+                    id = i;
                     break;
                 }
             }
+        }else{
+//            for (int i = 0; i < listCategoria.size(); i++) {
+//                ModelProveedor modeTemp = listCategoria.get(i);
+//                if(modeTemp.getIdCategoria() == ID){
+//                    id = i;
+//                    break;
+//                }
+//            }
         }
-        if (model.getCodigoPostal() != 0) {
-            acCP.setForeground(Color.black);
-            acCP.setText("" + model.getCodigoPostal());
-        }
-        if (model.getNumExt() != 0) {
-            acNoExt.setForeground(Color.black);
-            acNoExt.setText("" + model.getNumExt());
-        }
-        if (model.getNumInt() != 0) {
-            acNoInt.setForeground(Color.black);
-            acNoInt.setText("" + model.getNumInt());
-        }
+        return id;
     }
+//    public void identificaInfo(ModelCliente model) {
+//        if (!model.getNombre().equals("")) {
+//            Nombre.setForeground(Color.black);
+//            Nombre.setText(model.getNombre());
+//        }
+//        if (!model.getaPaterno().equals("")) {
+//            acApellidoPaterno.setText(model.getaPaterno());
+//            acApellidoPaterno.setForeground(Color.black);
+//        }
+//        if (!model.getaMaterno().equals("")) {
+//            acApellidoMaterno.setText(model.getaMaterno());
+//            acApellidoMaterno.setForeground(Color.black);
+//        }
+//        if (!model.getRFC().equals("")) {
+//            acRFC.setText(model.getRFC());
+//            acRFC.setForeground(Color.black);
+//        }
+//        if (!model.getTelFijo().equals("")) {
+//            acTelefono.setForeground(Color.black);
+//            acTelefono.setText("" + model.getTelFijo());
+//        }
+//        if (!model.getTelCel().equals("")) {
+//            acTelCelular.setForeground(Color.black);
+//            acTelCelular.setText("" + model.getTelCel());
+//        }
+//        if (!model.geteMail().equals("")) {
+//            acEmail.setForeground(Color.black);
+//            acEmail.setText("" + model.geteMail());
+//        }
+//        if (!model.getCalle().equals("")) {
+//            acCalle.setForeground(Color.black);
+//            acCalle.setText("" + model.getCalle());
+//        }
+//        if (!model.getCiudad().equals("")) {
+//            acCiudad.setForeground(Color.black);
+//            acCiudad.setText("" + model.getCalle());
+//        }
+//        if (!model.getColonia().equals("")) {
+//            acColonia.setForeground(Color.black);
+//            acColonia.setText("" + model.getCalle());
+//        }
+//        if (!model.getEstado().equals("")) {
+//            for (int i = 0; i < acEstados.getModel().getSize(); i++) {
+//                String est = (String) acEstados.getItemAt(i);
+//                if (est.equals(model.getEstado())) {
+//                    acEstados.setSelectedIndex(i);
+//                    break;
+//                }
+//            }
+//        }
+//        if (model.getCodigoPostal() != 0) {
+//            acCP.setForeground(Color.black);
+//            acCP.setText("" + model.getCodigoPostal());
+//        }
+//        if (model.getNumExt() != 0) {
+//            acNoExt.setForeground(Color.black);
+//            acNoExt.setText("" + model.getNumExt());
+//        }
+//        if (model.getNumInt() != 0) {
+//            acNoInt.setForeground(Color.black);
+//            acNoInt.setText("" + model.getNumInt());
+//        }
+//    }
 
     private String reviewInfo(JTextField box, String value, boolean flag) {
         if (flag) {

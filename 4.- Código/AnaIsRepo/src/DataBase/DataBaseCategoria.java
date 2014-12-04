@@ -146,9 +146,9 @@ public class DataBaseCategoria
             Statement sta = conn.createStatement();
             String strQuery;
             if(tipoCategoria)
-                strQuery = "SELECT * FROM CATEGORIA WHERE TIPOPRODUCTO = 3 AND ELIMINADO = 0;";
+                strQuery = "SELECT * FROM CATEGORIA WHERE TIPOPRODUCTO = 3 AND ELIMINADO = 0 ORDER BY NOMBRE;";
             else
-                strQuery = "SELECT * FROM CATEGORIA WHERE TIPOPRODUCTO = 2 AND ELIMINADO = 0;";
+                strQuery = "SELECT * FROM CATEGORIA WHERE TIPOPRODUCTO = 2 AND ELIMINADO = 0 ORDER BY NOMBRE;";
             ResultSet res = sta.executeQuery(strQuery);
             while(res.next()){
                 ModelCategoria model = new ModelCategoria();

@@ -26,7 +26,7 @@ import java.util.logging.Logger;
  */
 public class DataBaseProducto 
 {
-    public static List<ModelProducto> buscaCategorias(boolean tipoCategoria){
+    public static List<ModelProducto> buscaProductos(boolean tipoCategoria){
         ControllerConnDBMS controller = new ControllerConnDBMS();
         Connection conn = controller.connectDB();
         List<ModelProducto> list = new ArrayList<>();
@@ -34,9 +34,9 @@ public class DataBaseProducto
             Statement sta = conn.createStatement();
             String strQuery;
             if(tipoCategoria)
-                strQuery = "SELECT * FROM PRODUCTO WHERE TIPOPRODUCTO = 3;";
+                strQuery = "SELECT * FROM PRODUCTO WHERE TIPOPRODUCTO = 3 ORDER BY NOMBRE;";
             else
-                strQuery = "SELECT * FROM CATEGORIA WHERE TIPOPRODUCTO = 2;";
+                strQuery = "SELECT * FROM CATEGORIA WHERE TIPOPRODUCTO = 2 ORDER BY NOMBRE;";
             ResultSet res = sta.executeQuery(strQuery);
             while(res.next()){
                 ModelProducto model = creaModelo(res);

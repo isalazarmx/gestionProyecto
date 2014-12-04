@@ -40,7 +40,7 @@ public class ViewProducto extends javax.swing.JPanel {
         this.modelEmpresa = controllerPaneles.getModelEmpresa();
         initComponents();
         validation();
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
             controller.cargarCombo(i,true);
         if(user==null){
             if(tipoProducto)
@@ -1256,6 +1256,7 @@ public class ViewProducto extends javax.swing.JPanel {
 
     private void idProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idProductoActionPerformed
         // TODO add your handling code here:
+        controller.identificaInfo();
     }//GEN-LAST:event_idProductoActionPerformed
 
     private void idProductoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idProductoKeyPressed
