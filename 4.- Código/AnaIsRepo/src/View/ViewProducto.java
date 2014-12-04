@@ -78,6 +78,7 @@ public class ViewProducto extends javax.swing.JPanel {
         components.add(gananciaIndividual);
         components.add(gananciaTotal);
         components.add(inversion);
+        components.add(labelStatus);
         controller = new ControllerViewProducto(components);
         controller.validations();
     }
@@ -120,8 +121,7 @@ public class ViewProducto extends javax.swing.JPanel {
         jLabel22 = new javax.swing.JLabel();
         ID = new javax.swing.JTextField();
         panelImagen = new javax.swing.JPanel();
-        imagen = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
+        imagen = new javax.swing.JButton();
         jLabel23 = new javax.swing.JLabel();
         idCategoria = new javax.swing.JComboBox();
         labelNota = new javax.swing.JLabel();
@@ -423,7 +423,7 @@ public class ViewProducto extends javax.swing.JPanel {
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel22.setText("Codigo: #");
+        jLabel22.setText("Código: #");
 
         ID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         ID.setForeground(new java.awt.Color(180, 180, 180));
@@ -452,6 +452,18 @@ public class ViewProducto extends javax.swing.JPanel {
         panelImagen.setBackground(new java.awt.Color(255, 255, 255));
         panelImagen.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(180, 180, 180), 1, true));
 
+        imagen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/buscaImagen.png"))); // NOI18N
+        imagen.setToolTipText("Cargar foto de producto");
+        imagen.setContentAreaFilled(false);
+        imagen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        imagen.setPreferredSize(new java.awt.Dimension(107, 33));
+        imagen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imagenActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelImagenLayout = new javax.swing.GroupLayout(panelImagen);
         panelImagen.setLayout(panelImagenLayout);
         panelImagenLayout.setHorizontalGroup(
@@ -462,19 +474,6 @@ public class ViewProducto extends javax.swing.JPanel {
             panelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-
-        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/imagen.png"))); // NOI18N
-        jButton6.setText("Carga imagen");
-        jButton6.setToolTipText("Limpia formulario");
-        jButton6.setContentAreaFilled(false);
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton6.setPreferredSize(new java.awt.Dimension(107, 33));
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -742,8 +741,7 @@ public class ViewProducto extends javax.swing.JPanel {
                         .addGap(17, 17, 17)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addGap(168, 168, 168)
                                 .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
@@ -841,12 +839,10 @@ public class ViewProducto extends javax.swing.JPanel {
                             .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cantidad01, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -953,27 +949,8 @@ public class ViewProducto extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        agregaModificaProducto();
+        controller.agregaModificaProducto();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    public void agregaModificaProducto(){
-        controller.addProducto(labelStatus, new ModelProducto());
-//        ModelUsuario user = controller.creaModelo(new ModelUsuario());
-//        user.setIdEmpresa(modelEmpresa.getIdEmpresa());
-//        user.setTipo(2);
-//        if(prodcutoTemp == null){
-//            controller.addUser(labelStatus,user);
-//            acID.setText(DataBase.DataBaseUsuario.verProximoID());
-//        }
-//        else{
-//            user.setIdUsuario(prodcutoTemp.getIdUsuario());
-//            if(controller.acceptUsername(username.getText(),prodcutoTemp.getUsername())){
-//                if(controller.guardarCambios(labelStatus,user))
-//                        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewAdministrarVendedores(controllerPaneles)); //asi
-//            }else
-//                ControllerViewMsj.muestraMensajeGlobo("El nombre de usuario ya existe", username);
-//        }
-    }
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -1003,7 +980,7 @@ public class ViewProducto extends javax.swing.JPanel {
     private void nombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
-            agregaModificaProducto();
+            controller.agregaModificaProducto();
     }//GEN-LAST:event_nombreKeyPressed
 
     private void cantidad01FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidad01FocusGained
@@ -1024,7 +1001,7 @@ public class ViewProducto extends javax.swing.JPanel {
     private void cantidad01KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cantidad01KeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
-            agregaModificaProducto();        
+            controller.agregaModificaProducto();   
     }//GEN-LAST:event_cantidad01KeyPressed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -1038,7 +1015,7 @@ public class ViewProducto extends javax.swing.JPanel {
 
     private void tipoUnidadKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tipoUnidadKeyPressed
         if(evt.getKeyChar()==10)
-            agregaModificaProducto();         // TODO add your handling code here:
+            controller.agregaModificaProducto();         // TODO add your handling code here:
     }//GEN-LAST:event_tipoUnidadKeyPressed
 
     private void unidadExistenciaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_unidadExistenciaFocusGained
@@ -1059,7 +1036,7 @@ public class ViewProducto extends javax.swing.JPanel {
 
     private void unidadExistenciaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_unidadExistenciaKeyPressed
         if(evt.getKeyChar()==10)
-            agregaModificaProducto();  
+            controller.agregaModificaProducto(); 
     }//GEN-LAST:event_unidadExistenciaKeyPressed
 
     private void IDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IDFocusGained
@@ -1080,14 +1057,8 @@ public class ViewProducto extends javax.swing.JPanel {
     private void IDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IDKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
-            agregaModificaProducto();
+            controller.agregaModificaProducto();
     }//GEN-LAST:event_IDKeyPressed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-        Controller.ControllerImagenes image = new Controller.ControllerImagenes();
-        image.buscaImagen(panelImagen, imagen);
-    }//GEN-LAST:event_jButton6ActionPerformed
 
     private void idCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idCategoriaActionPerformed
         // TODO add your handling code here:
@@ -1096,25 +1067,25 @@ public class ViewProducto extends javax.swing.JPanel {
     private void idCategoriaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idCategoriaKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
-            agregaModificaProducto();
+            controller.agregaModificaProducto();
     }//GEN-LAST:event_idCategoriaKeyPressed
 
     private void minStockKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_minStockKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
-            agregaModificaProducto();
+            controller.agregaModificaProducto();
     }//GEN-LAST:event_minStockKeyPressed
 
     private void maxStockKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_maxStockKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
-            agregaModificaProducto();
+            controller.agregaModificaProducto();
     }//GEN-LAST:event_maxStockKeyPressed
 
     private void incrementoVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_incrementoVentaKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
-            agregaModificaProducto();
+            controller.agregaModificaProducto();;
     }//GEN-LAST:event_incrementoVentaKeyPressed
 
     private void cantidad02FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidad02FocusGained
@@ -1136,7 +1107,7 @@ public class ViewProducto extends javax.swing.JPanel {
     private void cantidad02KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cantidad02KeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
-            agregaModificaProducto();
+            controller.agregaModificaProducto();
     }//GEN-LAST:event_cantidad02KeyPressed
 
     private void precioCompra01FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_precioCompra01FocusGained
@@ -1159,7 +1130,7 @@ public class ViewProducto extends javax.swing.JPanel {
     private void precioCompra01KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_precioCompra01KeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
-            agregaModificaProducto();
+            controller.agregaModificaProducto();
     }//GEN-LAST:event_precioCompra01KeyPressed
 
     private void precioCompra02FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_precioCompra02FocusGained
@@ -1182,7 +1153,7 @@ public class ViewProducto extends javax.swing.JPanel {
     private void precioCompra02KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_precioCompra02KeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
-            agregaModificaProducto();        
+            controller.agregaModificaProducto();        
     }//GEN-LAST:event_precioCompra02KeyPressed
 
     private void precioVenta01FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_precioVenta01FocusGained
@@ -1203,7 +1174,7 @@ public class ViewProducto extends javax.swing.JPanel {
     private void precioVenta01KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_precioVenta01KeyPressed
         // TODO add your handling code here:
         if(evt.getKeyChar()==10)
-            agregaModificaProducto();          
+            controller.agregaModificaProducto();          
     }//GEN-LAST:event_precioVenta01KeyPressed
 
     private void incrementoVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_incrementoVentaMouseClicked
@@ -1291,6 +1262,13 @@ public class ViewProducto extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_idProductoKeyPressed
 
+    private void imagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imagenActionPerformed
+        // TODO add your handling code here:
+        Controller.ControllerImagenes image = new Controller.ControllerImagenes();
+        image.buscaImagen(panelImagen,imagen);
+        controller.setRutaImagen(image.getRuta());
+    }//GEN-LAST:event_imagenActionPerformed
+
     
        
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1302,7 +1280,7 @@ public class ViewProducto extends javax.swing.JPanel {
     private javax.swing.JComboBox idCategoria;
     private javax.swing.JComboBox idProducto;
     private javax.swing.JComboBox idProveedor;
-    private javax.swing.JLabel imagen;
+    private javax.swing.JButton imagen;
     private javax.swing.JSpinner incrementoVenta;
     private javax.swing.JTextField inversion;
     private javax.swing.JButton jButton1;
@@ -1310,7 +1288,6 @@ public class ViewProducto extends javax.swing.JPanel {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;

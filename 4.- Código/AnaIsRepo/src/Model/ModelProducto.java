@@ -5,6 +5,7 @@
  */
 package Model;
 
+import java.io.File;
 import java.sql.Blob;
 import java.util.ArrayList;
 
@@ -24,7 +25,7 @@ public class ModelProducto {
     private double incrementoVenta;
     private double precioVenta;
     private Blob imagen;
-    private String rutaImagen;
+    private File rutaImagen;
     private int tipoProducto;
     private int emprsa_idempresa;
     private int categoria_idcategoria;
@@ -238,14 +239,14 @@ public class ModelProducto {
     /**
      * @return the rutaImagen
      */
-    public String getRutaImagen() {
+    public File getRutaImagen() {
         return rutaImagen;
     }
 
     /**
      * @param rutaImagen the rutaImagen to set
      */
-    public void setRutaImagen(String rutaImagen) {
+    public void setRutaImagen(File rutaImagen) {
         this.rutaImagen = rutaImagen;
     }
 

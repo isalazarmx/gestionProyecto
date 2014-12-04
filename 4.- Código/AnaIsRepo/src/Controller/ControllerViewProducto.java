@@ -1,14 +1,18 @@
 package Controller;
 
+import DataBase.DataBaseCategoria;
 import Model.ModelCategoria;
 import Model.ModelCliente;
 import Model.ModelProducto;
 import Model.ModelProveedor;
 import java.awt.Color;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 
@@ -32,15 +36,20 @@ public class ControllerViewProducto {
     JTextField precioCompra01;
     JTextField precioCompra02;
     JSpinner incrementoVenta;
-    JTextField precioVenta;
-    JLabel imagen;
+    JTextField precioVenta01;
+    JButton imagen;
     JTextField gananciaIndividual;
     JTextField gananciaTotal;
     JTextField inversion;
+    JLabel labelStatus;
     ControllerCuentas cuentas;
     List<ModelCategoria> listCategoria;
     List<ModelProveedor> listProveedor;
     List<ModelProducto> listProductos;
+    boolean modifica;
+    double precioCompra;
+    double precioVenta;
+    private File rutaImagen;
 
     public ControllerViewProducto(ArrayList components) {
         cuentas = new ControllerCuentas();
@@ -58,11 +67,13 @@ public class ControllerViewProducto {
         this.precioCompra01 = (JTextField) components.get(11);
         this.precioCompra02 = (JTextField) components.get(12);
         this.incrementoVenta = (JSpinner) components.get(13);
-        this.precioVenta = (JTextField) components.get(14);
-        this.imagen = (JLabel) components.get(15);
+        this.precioVenta01 = (JTextField) components.get(14);
+        this.imagen = (JButton) components.get(15);
         this.gananciaIndividual = (JTextField) components.get(16);
         this.gananciaTotal = (JTextField) components.get(17);
         this.inversion = (JTextField) components.get(18);
+        this.labelStatus = (JLabel) components.get(19);
+        modifica = false;
     }
 
     private double incremento() {
@@ -87,11 +98,13 @@ public class ControllerViewProducto {
     }
 
     public void despliegaCuentas() {
-        double temp = cuentas.gananciaIndividual(precioCompra(), incremento());
+        precioCompra = precioCompra();
+        precioVenta = cuentas.precioVenta(precioCompra, incremento());
+        double temp = cuentas.gananciaIndividual(precioCompra, incremento());
         gananciaIndividual.setText(cuentas.formatoNumero("" + temp));
         gananciaTotal.setText("" + cuentas.formatoNumero("" + cuentas.gananciaTotal(temp, cantidadProductos())));
-        precioVenta.setText("" + cuentas.formatoNumero("" + cuentas.precioVenta(precioCompra(), incremento())));
-        inversion.setText("" + cuentas.formatoNumero("" + cuentas.cantidadInvertida(cantidadProductos(), precioCompra())));
+        precioVenta01.setText("" + cuentas.formatoNumero("" + precioVenta));
+        inversion.setText("" + cuentas.formatoNumero("" + cuentas.cantidadInvertida(cantidadProductos(), precioCompra)));
     }
 
     public void validations() {
@@ -107,42 +120,6 @@ public class ControllerViewProducto {
         ControllerValidation.soloNumeros(precioCompra01);
         ControllerValidation.limitarCaracteres(precioCompra02, 2);
         ControllerValidation.soloNumeros(precioCompra02);
-    }
-
-    public void addProducto(JLabel labelStatus, ModelProducto producto) {
-        if (!((String) idCategoria.getItemAt(idCategoria.getSelectedIndex())).equals("Selecciona categoría")) {
-            if (!((String) idProveedor.getItemAt(idProveedor.getSelectedIndex())).equals("Selecciona proveedor")) {
-                if (!ID.getText().equals("Código de barras") && !ID.getText().isEmpty()) {
-                    if (!nombre.getText().equals("Nombre del producto") && !nombre.getText().isEmpty()) {
-                        if (!cantidad01.getText().equals("0") && !cantidad01.getText().isEmpty()) {
-                            if (!unidadExistencia.getText().equals("0") && !unidadExistencia.getText().isEmpty()) {
-                                if (!precioCompra01.getText().equals("0") && !precioCompra01.getText().isEmpty()) {
-    //                                if(DataBase.DataBaseCliente.addCliente(cliente)){
-                                    //                                       labelStatus.setText("Cliente agregado con éxito");
-                                    //                                       limpiaCampos();
-                                    //                                }else
-                                    //                                   labelStatus.setText("Error interno para almacenar la información");
-                                } else {
-                                    ControllerViewMsj.muestraMensajeGlobo("Indica el precio del producto", precioCompra01);
-                                }
-                            } else {
-                                ControllerViewMsj.muestraMensajeGlobo("Indica la cantidad de productos que tienes", unidadExistencia);
-                            }
-                        } else {
-                            ControllerViewMsj.muestraMensajeGlobo("Indica el peso del producto", cantidad01);
-                        }
-                    } else {
-                        ControllerViewMsj.muestraMensajeGlobo("Identifica el producto con un nombre", nombre);
-                    }
-                } else {
-                    ControllerViewMsj.muestraMensajeGlobo("El producto debe de tener un código de barras", ID);
-                }
-            } else {
-                ControllerViewMsj.muestraMensajeGlobo("Agrega un proveedor para el producto", idProveedor);
-            }
-        } else {
-            ControllerViewMsj.muestraMensajeGlobo("Agrega una categoría para el producto", idCategoria);
-        }
     }
 
     public List cargarCombo(int tipoProducto, boolean seleccion) {
@@ -170,38 +147,94 @@ public class ControllerViewProducto {
         return temp;
     }
 
-    //---------------------------------------------
-    public boolean modificaCliente(JLabel labelStatus, ModelCliente cliente) {
+    public void agregaModificaProducto(){
+        if(validaCampos()){
+            if(!modifica){
+                    ModelProducto categoria = creaModelProducto(new ModelProducto(), false);
+                if (DataBase.DataBaseProducto.addProducto(categoria)) {
+                    limpiaCampos();
+                    labelStatus.setText("Categoría agregada con éxito");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error interno para almacenar la información");
+                }
+            }else{
+            
+            }
+        }
+    }
+    
+    public boolean validaCampos() {
         boolean flag = false;
-        if (!Nombre.getText().equals("Nombre (*)") && !Nombre.getText().isEmpty()) {
-            if (!acApellidoPaterno.getText().equals("Apellido Paterno (*)") && !acApellidoPaterno.getText().isEmpty()) {
-                if (!acEmail.getText().equals("cliente@anais.com (*)") && !acEmail.getText().isEmpty()) {
-                    if (!acTelCelular.getText().equals("xx-xxx-xxxxxxx (*)") && !acTelCelular.getText().isEmpty()) {
-                        if (!acCP.getText().equals("xxxxx (*)") && !acCP.getText().isEmpty()) {
-                            if (DataBase.DataBaseCliente.modifUser(cliente)) {
-                                ControllerViewMsj.informacion(Nombre.getText() + " modificado con éxito", "Modificación de usuario");
-                                flag = true;
+        if (!((String) idCategoria.getItemAt(idCategoria.getSelectedIndex())).equals("Selecciona categoría")) {
+            if (!((String) idProveedor.getItemAt(idProveedor.getSelectedIndex())).equals("Selecciona proveedor")) {
+                if (!ID.getText().equals("Código de barras") && !ID.getText().isEmpty()) {
+                    if(!DataBase.DataBaseProducto.checkExistProducto(ID.getText())){
+                        if (!nombre.getText().equals("Nombre del producto") && !nombre.getText().isEmpty()) {
+                            if (!cantidad01.getText().equals("0") && !cantidad01.getText().isEmpty()) {
+                                if (!unidadExistencia.getText().equals("0") && !unidadExistencia.getText().isEmpty()) {
+                                    if (!precioCompra01.getText().equals("0") && !precioCompra01.getText().isEmpty()) {
+                                        flag = true;
+                                    } else {
+                                        ControllerViewMsj.muestraMensajeGlobo("Indica el precio del producto", precioCompra01);
+                                    }
+                                } else {
+                                    ControllerViewMsj.muestraMensajeGlobo("Indica la cantidad de productos que tienes", unidadExistencia);
+                                }
                             } else {
-                                labelStatus.setText("Error interno para almacenar la información");
+                                ControllerViewMsj.muestraMensajeGlobo("Indica el peso del producto", cantidad01);
                             }
                         } else {
-                            ControllerViewMsj.muestraMensajeGlobo("Agrega un código postal", acCP);
+                            ControllerViewMsj.muestraMensajeGlobo("Identifica el producto con un nombre", nombre);
                         }
-                    } else {
-                        ControllerViewMsj.muestraMensajeGlobo("Agrega un teléfono móvil", acTelCelular);
+                    }else{
+                        ControllerViewMsj.muestraMensajeGlobo("El producto ya existe", ID);
                     }
                 } else {
-                    ControllerViewMsj.muestraMensajeGlobo("Agrega un email", acEmail);
+                    ControllerViewMsj.muestraMensajeGlobo("El producto debe de tener un código de barras", ID);
                 }
             } else {
-                ControllerViewMsj.muestraMensajeGlobo("Agrega un apellido paterno", acApellidoPaterno);
+                ControllerViewMsj.muestraMensajeGlobo("Agrega un proveedor para el producto", idProveedor);
             }
         } else {
-            ControllerViewMsj.muestraMensajeGlobo("Agrega un nombre para el cliente", Nombre);
+            ControllerViewMsj.muestraMensajeGlobo("Agrega una categoría para el producto", idCategoria);
         }
         return flag;
     }
-
+    
+    public ModelProducto creaModelProducto(ModelProducto model, boolean tipoProducto) {
+        model.setIdProducto(ID.getText());
+        model.setNombre(nombre.getText());
+        model.setCantidad(obtenerCantidad());
+        model.setTipoUnidad((String)tipoUnidad.getSelectedItem());
+        model.setUnidadExistencia(Integer.parseInt(unidadExistencia.getText()));
+        model.setMinStock((Integer)minStock.getValue());
+        model.setMaxStock((Integer)maxStock.getValue());
+        model.setPrecioVenta(precioVenta);
+        model.setIncrementoVenta((Integer)incrementoVenta.getValue());
+        model.setPrecioCompra(precioCompra);
+        model.setRutaImagen(rutaImagen);
+        if(!tipoProducto)
+            model.setTipoProducto(3);
+        else
+            model.setTipoProducto(2);
+        model.setEmprsa_idempresa(1);
+        model.setCategoria_idcategoria(buscaIdCategoria());
+        return model;
+    }
+    
+    private int buscaIdCategoria(){
+        for (int i = 0; i < listCategoria.size(); i++) {
+            ModelCategoria modTemp = listCategoria.get(i);
+            if(modTemp.getNombre().equals((String)idCategoria.getSelectedItem()))
+               return modTemp.getIdCategoria();
+        }
+        return 0;
+    }
+    
+    private double obtenerCantidad(){
+        return Integer.parseInt(cantidad01.getText()) + (Integer.parseInt(cantidad02.getText())/100);
+    }
+    
     public void identificaInfo(ModelCliente model) {
         if (!model.getNombre().equals("")) {
             Nombre.setForeground(Color.black);
@@ -266,24 +299,6 @@ public class ControllerViewProducto {
         }
     }
 
-    public ModelCliente creaModelo(ModelCliente model) {
-        model.setNombre(reviewInfo(Nombre, "Nombre (*)", true));
-        model.setaPaterno(reviewInfo(acApellidoPaterno, "Apellido Paterno (*)", true));
-        model.setaMaterno(reviewInfo(acApellidoMaterno, "Apellido Materno", true));
-        model.setRFC(reviewInfo(acRFC, "R.F.C.", true));
-        model.setTelFijo(reviewInfo(acTelefono, "xx-xxx-xxxxxxx", true));
-        model.setTelCel(reviewInfo(acTelCelular, "xx-xxx-xxxxxxx (*)", true));
-        model.seteMail(reviewInfo(acEmail, "cliente@anais.com (*)", true));
-        model.setCalle(reviewInfo(acCalle, "Calle", true));
-        model.setCiudad(reviewInfo(acCiudad, "Ciudad", true));
-        model.setColonia(reviewInfo(acColonia, "Colonia", true));
-        model.setEstado((String) acEstados.getItemAt(acEstados.getSelectedIndex()));
-        model.setCodigoPostal(Integer.parseInt(reviewInfo(acCP, "xxxxx (*)", false)));
-        model.setNumExt(Integer.parseInt(reviewInfo(acNoExt, "No.Ext.", false)));
-        model.setNumInt(Integer.parseInt(reviewInfo(acNoInt, "No.Int.", false)));
-        return model;
-    }
-
     private String reviewInfo(JTextField box, String value, boolean flag) {
         if (flag) {
             if (box.getText().equals(value) || box.getText().equals("")) {
@@ -301,24 +316,45 @@ public class ControllerViewProducto {
     }
 
     public void limpiaCampos() {
-        limpiaJtextField(Nombre, "Nombre (*)");
-        limpiaJtextField(acApellidoPaterno, "Apellido Paterno (*)");
-        limpiaJtextField(acApellidoMaterno, "Apellido Materno");
-        limpiaJtextField(acRFC, "R.F.C.");
-        limpiaJtextField(acTelefono, "xx-xxx-xxxxxxx");
-        limpiaJtextField(acEmail, "cliente@anais.com (*)");
-        limpiaJtextField(acTelCelular, "xx-xxx-xxxxxxx (*)");
-        limpiaJtextField(acCalle, "Calle");
-        limpiaJtextField(acNoExt, "No.Ext.");
-        limpiaJtextField(acNoInt, "No.Int.");
-        limpiaJtextField(acCP, "xxxxx (*)");
-        limpiaJtextField(acColonia, "Colonia");
-        limpiaJtextField(acCiudad, "Ciudad");
-        acEstados.setSelectedIndex(0);
+        idProducto.setSelectedIndex(0);
+        idCategoria.setSelectedIndex(0);
+        idProveedor.setSelectedIndex(0);
+        limpiaJtextField(ID,"Código de barras");
+        limpiaJtextField(nombre,"Nombre del producto");
+        limpiaJtextField(cantidad01,"0");
+        limpiaJtextField(cantidad02,"00");
+        limpiaJtextField(unidadExistencia,"0");
+        minStock.setValue(5);
+        maxStock.setValue(10);
+        limpiaJtextField(precioCompra01,"0");
+        limpiaJtextField(precioCompra02,"00");
+        incrementoVenta.setValue(0);
+        limpiaJtextField(gananciaIndividual,"0");
+        limpiaJtextField(gananciaTotal,"0");
+        limpiaJtextField(inversion,"0");
+        limpiaJtextField(precioVenta01,"0");
+        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/buscaImagen.png")));
+        cargarCombo(0,true);
+        cargarCombo(1,true);
+        cargarCombo(2,true);
     }
 
     private void limpiaJtextField(JTextField box, String msj) {
         box.setForeground(new Color(180, 180, 180));
         box.setText(msj);
+    }
+
+    /**
+     * @return the rutaImagen
+     */
+    public File getRutaImagen() {
+        return rutaImagen;
+    }
+
+    /**
+     * @param rutaImagen the rutaImagen to set
+     */
+    public void setRutaImagen(File rutaImagen) {
+        this.rutaImagen = rutaImagen;
     }
 }
