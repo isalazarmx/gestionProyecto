@@ -123,7 +123,7 @@ public class DataBaseCategoria
         Connection conn = controller.connectDB();
         try {
             Statement sta = conn.createStatement();
-            String strQuery = "select * from categoria where nombre = '"+nombre+"' and elimiando=0;";
+            String strQuery = "SELECT * FROM CATEGORIA WHERE NOMBRE = '"+nombre+"' AND ELIMINADO = 0;";
             ResultSet res = sta.executeQuery(strQuery);
             if(res.next())
                 flag = true;

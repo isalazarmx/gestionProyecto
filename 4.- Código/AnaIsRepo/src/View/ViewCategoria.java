@@ -510,6 +510,7 @@ public class ViewCategoria extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewProducto(controllerPaneles, null, false)); //asi    
     }//GEN-LAST:event_jButton4ActionPerformed
 
     
