@@ -9,7 +9,6 @@ import DataBase.DataBaseCategoria;
 import Model.ModelCategoria;
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
