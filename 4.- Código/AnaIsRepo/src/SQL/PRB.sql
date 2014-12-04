@@ -52,8 +52,8 @@ INSERT INTO PROVEEDOR (NOMBRE,APATERNO,AMATERNO,MARCA,EMPRESA,RFC,TELFIJO,TELCEL
 INSERT INTO PROVEEDOR (NOMBRE,APATERNO,AMATERNO,MARCA,EMPRESA,RFC,TELFIJO,TELCEL,CALLE,NUMINT,NUMEXT,COLONIA,CIUDAD,ESTADO,CODIGOPOSTAL,EMAIL,ELIMINADO) VALUES ('Daniela','Villavicencio','Cuadros','Calima','Castas','ASDPQ12345','7224162531','7282816237','Calle Reforma',102,12,'Las Golondrinas','Villa Victoria','Durango',12341,'joasd1se@gmail.com',0);
 -- Categoría ---
 INSERT INTO CATEGORIA (NOMBRE,DESCRIPCION,TIPOPRODUCTO,ELIMINADO) VALUES ('pasta de azucar','Para embellecer sus pasteles',3,0);
-insert into categoria(nombre,descripcion,tipoProducto,elimiando) values ('Colorantes','Colorantes en polvo sin glúten',3,0);
-insert into categoria(nombre,descripcion,tipoProducto,elimiando) values ('pasta de zuchero','Para crear decoraciones utilizando moldes',3,0);
+INSERT INTO CATEGORIA (NOMBRE,DESCRIPCION,TIPOPRODUCTO,ELIMINADO) VALUES ('Colorantes','Colorantes en polvo sin glúten',3,0);
+INSERT INTO CATEGORIA (NOMBRE,DESCRIPCION,TIPOPRODUCTO,ELIMINADO) VALUES ('pasta de zuchero','Para crear decoraciones utilizando moldes',3,0);
 -- unidades de media --  
 -- Kilogramos > kgs.
 -- Gramos > grs.

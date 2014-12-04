@@ -68,8 +68,8 @@ public class ModelCategoria {
     
     
     public String modInfo(){
-        return "set nombre = '"+getNombre()+"',"+ 
-               "descripcion = '"+getDescripcion()+"'";     
+        return "SET NOMBRE = '"+getNombre()+"',"+ 
+               "DESCRIPCION = '"+getDescripcion()+"'";     
     }
 
     /**

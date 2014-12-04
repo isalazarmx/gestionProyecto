@@ -47,15 +47,13 @@ public class DataBaseCategoria
         return id;
     }
     
-    ///Consultas agregadas-------------------
-    //------------------- Metodo para agregar Categoria-------------------
-    public static boolean addInfoCategoria(ModelCategoria model){
+        public static boolean addCategoria(ModelCategoria model){
         boolean flag = false;
         ControllerConnDBMS controller = new ControllerConnDBMS();
         Connection conn = controller.connectDB();
         try {
             Statement sta = conn.createStatement();
-            String strQuery = "insert into categoria(nombre,descripcion,tipoProducto,elimiando) values "+model.addInfo();
+            String strQuery = "INSERT INTO CATEGORIA (NOMBRE,DESCRIPCION,TIPOPRODUCTO,ELIMINADO) VALUES "+model.addInfo();
             System.out.println(strQuery);
             sta.executeUpdate(strQuery);
             flag = true;
@@ -70,8 +68,54 @@ public class DataBaseCategoria
             }
         }
         return flag;
-    }    
-    
+    }  
+        
+     public static boolean modificaCategoria(ModelCategoria model){
+        boolean flag = false;
+        ControllerConnDBMS controller = new ControllerConnDBMS();
+        Connection conn = controller.connectDB();
+        try {
+            Statement sta = conn.createStatement();
+            String strQuery = "UPDATE CATEGORIA "+model.modInfo()+" WHERE IDCATEGORIA="+model.getIdCategoria()+";";
+            System.out.println(strQuery);
+            sta.executeUpdate(strQuery);            
+            flag = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+              try {
+                if (conn != null && !conn.isClosed())
+                    conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return flag;
+    }
+     
+        public static boolean modifCategoria(String idCategoria){
+        boolean flag = false;
+        ControllerConnDBMS controller = new ControllerConnDBMS();
+        Connection conn = controller.connectDB();
+        try {
+            Statement sta = conn.createStatement();
+            String strQuery = "UPDATE CATEGORIA SET ELIMINADO = 1 WHERE IDCATEGORIA = "+idCategoria+";";
+            System.out.println(strQuery);
+            sta.executeUpdate(strQuery);
+            flag = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.DataBaseCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+              try {
+                if (conn != null && !conn.isClosed())
+                    conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return flag;
+    } 
+//------------------------------------------------------------------------------    
     //---------Metodo para checar existencia de categoria-----------------
     public static boolean checkExistCategoria(String nombre){
         boolean flag = false;
@@ -237,9 +281,9 @@ public class DataBaseCategoria
             Statement sta = conn.createStatement();
             String strQuery;
             if(tipoCategoria)
-                strQuery = "SELECT * FROM CATEGORIA WHERE TIPOPRODUCTO = 3;";
+                strQuery = "SELECT * FROM CATEGORIA WHERE TIPOPRODUCTO = 3 AND ELIMINADO = 0;";
             else
-                strQuery = "SELECT * FROM CATEGORIA WHERE TIPOPRODUCTO = 2;";
+                strQuery = "SELECT * FROM CATEGORIA WHERE TIPOPRODUCTO = 2 AND ELIMINADO = 0;";
             ResultSet res = sta.executeQuery(strQuery);
             while(res.next()){
                 ModelCategoria model = new ModelCategoria();
