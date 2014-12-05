@@ -7,10 +7,12 @@ package Documentos;
 
 import Controller.ControllerFechas;
 import java.io.FileOutputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
@@ -74,7 +76,7 @@ public class ClaseAlmacenProducto {
 
             try ( // Creamos un Statement para poder hacer peticiones a la bd
                     Statement stat = con.createStatement()) {
-                ResultSet resultado = stat.executeQuery("select idProducto, nombre, cantidad,UnidadExistencia, precioVenta  from producto where tipoProducto=3 ");
+                ResultSet resultado = stat.executeQuery("select idProducto, nombre, cantidad,UnidadExistencia, precioVenta from producto where tipoProducto=3 ");
                 while (resultado.next()) {
                     
                     //creamos la fila
@@ -85,14 +87,16 @@ public class ClaseAlmacenProducto {
                     String cantidad = String.valueOf(resultado.getInt("cantidad"));
                     String UnidadExistencia = String.valueOf(resultado.getInt("UnidadExistencia"));
                     String precioVenta = String.valueOf(resultado.getInt("precioVenta"));
+                    //String Image = String.valueOf(resultado.getBlob("Image"));
                     // Creo las celdas de mi fila, se puede poner un diseño a la celda
-                    System.out.println(i + " /// " + idProducto + " - " + nombre + " - " + cantidad + " - " + UnidadExistencia + " - " + precioVenta);
+                    System.out.println(i + " /// " + idProducto + " - " + nombre + " - " + cantidad + " - " + UnidadExistencia + " - " + precioVenta + " - " /*+ Image*/);
                     
                     creandoCelda(wb, fila, 0, idProducto);
                     creandoCelda(wb, fila, 1, nombre);
                     creandoCelda(wb, fila, 2, cantidad);
                     creandoCelda(wb, fila, 3, UnidadExistencia);
                     creandoCelda(wb, fila, 4, precioVenta);
+                    //creandoCelda(wb, fila, 5, Image);
                     i++;
                 }
             }
