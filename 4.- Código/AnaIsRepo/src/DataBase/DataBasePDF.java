@@ -175,7 +175,7 @@ public class DataBasePDF {
         Connection conn = controller.connectDB();
         try {
             Statement sta = conn.createStatement();
-            String strQuery = "select * from producto;";
+            String strQuery = "select idproducto,nombre,format(cantidad,0) as cantidad,preciocompra,precioventa,concat('$ ',format(((precioventa-preciocompra)*cantidad),2)) as ganancia from producto where eliminado != 1;";
             System.out.println(strQuery);
             ResultSet res = sta.executeQuery(strQuery);
             while(res.next()){
@@ -183,11 +183,13 @@ public class DataBasePDF {
                 tabla.addCell(cell);
                 cell = new PdfPCell(new Paragraph(res.getString("nombre")));
                 tabla.addCell(cell);
-                cell = new PdfPCell(new Paragraph(res.getString("kilos")));
+                cell = new PdfPCell(new Paragraph(res.getString("cantidad")));
                 tabla.addCell(cell);
-                cell = new PdfPCell(new Paragraph(res.getString("precioUnitario")));
+                cell = new PdfPCell(new Paragraph(res.getString("precioCompra")));
                 tabla.addCell(cell);
-                cell = new PdfPCell(new Paragraph(res.getString("Categoria_idCategoria")));
+                cell = new PdfPCell(new Paragraph(res.getString("precioVenta")));
+                tabla.addCell(cell);
+                cell = new PdfPCell(new Paragraph(res.getString("ganancia")));
                 tabla.addCell(cell);
             }
         } catch (SQLException ex) {

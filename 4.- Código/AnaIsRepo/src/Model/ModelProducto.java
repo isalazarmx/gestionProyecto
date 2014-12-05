@@ -38,22 +38,24 @@ public class ModelProducto {
     }
     
         private String[] rotuloPDF(){
-        String rotulo[] = new String[5];
+        String rotulo[] = new String[6];
         rotulo[0]="Código producto";
         rotulo[1]="Nombre";
-        rotulo[2]="Kilos";
-        rotulo[3]="Precio unitario";
-        rotulo[4]="Categoria";
+        rotulo[2]="Cantidad existencía";
+        rotulo[3]="Precio compra";
+        rotulo[4]="Precio venta";
+        rotulo[5]="Ganancía";
         return rotulo;
     }
         
         private float[] anchoFilas(){
-        float ancho[] = new float[5];
+        float ancho[] = new float[6];
         ancho[0] = 1f;
         ancho[1] = 1f;
         ancho[2] = 1f;
         ancho[3] = 1f;
         ancho[4] = 1f;
+        ancho[5] = 1f;
         return ancho; 
     }
 

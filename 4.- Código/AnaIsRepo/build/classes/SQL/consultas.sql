@@ -19,3 +19,4 @@ ON (PP.`Producto_Categoria_idCategoria`=C.`idCategoria`)
 ORDER BY 4;
 
 select * from proveedor order by nombre;
+select idproducto,nombre,format(cantidad,0)as cantidad,preciocompra,precioventa,concat('$ ',format(((precioventa-preciocompra)*cantidad),2)) as ganancia from producto where eliminado != 1;
