@@ -66,7 +66,7 @@ public class ControllerConnDBMS {
     }
     
     private void initDataConnection(){
-        setIp("192.168.43.240");
+        setIp("localhost");
         setDb("poscakeapp");
         setUser("root");
         setPass("");

@@ -29,8 +29,8 @@ import org.apache.poi.ss.util.CellRangeAddress;
  *
  * @author Teté
  */
-public class ClaseAlmacenXLS {
-        public static void main(String[] args) {
+public class ClaseAlmacenProducto {
+     public static void main(String[] args) {
 
     }
     int i;
@@ -57,7 +57,7 @@ public class ClaseAlmacenXLS {
 
             // creo una nueva fila
             Row trow = sheet1.createRow((short) 0);
-            createTituloCell(wb, trow, 0, CellStyle.ALIGN_CENTER, CellStyle.VERTICAL_CENTER, "Productos de Almacén-Repostería AnaIS " + ControllerFechas.getFechaActual());
+            createTituloCell(wb, trow, 0, CellStyle.ALIGN_CENTER, CellStyle.VERTICAL_CENTER, "Productos existentes-Repostería AnaIS " + ControllerFechas.getFechaActual());
             
 
             // Creo la cabecera de mi listado en Excel
@@ -67,14 +67,14 @@ public class ClaseAlmacenXLS {
             createCell(wb, row, 1, CellStyle.ALIGN_CENTER, CellStyle.VERTICAL_CENTER, "Nombre", true, true);
             createCell(wb, row, 2, CellStyle.ALIGN_CENTER, CellStyle.VERTICAL_CENTER, "Cantidad", true, true);
             createCell(wb, row, 3, CellStyle.ALIGN_CENTER, CellStyle.VERTICAL_CENTER, "Existencia", true, true);
-            createCell(wb, row, 4, CellStyle.ALIGN_CENTER, CellStyle.VERTICAL_CENTER, "Existencia miníma", true, true);
+            createCell(wb, row, 4, CellStyle.ALIGN_CENTER, CellStyle.VERTICAL_CENTER, "Precio de venta", true, true);
             
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/poscakeapp", "root", "");
 
             try ( // Creamos un Statement para poder hacer peticiones a la bd
                     Statement stat = con.createStatement()) {
-                ResultSet resultado = stat.executeQuery("select idProducto, nombre, cantidad,UnidadExistencia,minStock from producto where tipoProducto=2 ");
+                ResultSet resultado = stat.executeQuery("select idProducto, nombre, cantidad,UnidadExistencia, precioVenta  from producto where tipoProducto=3 ");
                 while (resultado.next()) {
                     
                     //creamos la fila
@@ -84,15 +84,15 @@ public class ClaseAlmacenXLS {
                     String nombre = String.valueOf(resultado.getString("nombre"));
                     String cantidad = String.valueOf(resultado.getInt("cantidad"));
                     String UnidadExistencia = String.valueOf(resultado.getInt("UnidadExistencia"));
-                    String minStock = String.valueOf(resultado.getInt("minStock"));
+                    String precioVenta = String.valueOf(resultado.getInt("precioVenta"));
                     // Creo las celdas de mi fila, se puede poner un diseño a la celda
-                    System.out.println(i + " /// " + idProducto + " - " + nombre + " - " + cantidad + " - " + UnidadExistencia + " - " + minStock);
+                    System.out.println(i + " /// " + idProducto + " - " + nombre + " - " + cantidad + " - " + UnidadExistencia + " - " + precioVenta);
                     
                     creandoCelda(wb, fila, 0, idProducto);
                     creandoCelda(wb, fila, 1, nombre);
                     creandoCelda(wb, fila, 2, cantidad);
                     creandoCelda(wb, fila, 3, UnidadExistencia);
-                    creandoCelda(wb, fila, 4, minStock);
+                    creandoCelda(wb, fila, 4, precioVenta);
                     i++;
                 }
             }
@@ -123,7 +123,7 @@ public class ClaseAlmacenXLS {
             wb.setPrintArea(0, 0, 1, 0, 9);
 
             String strRuta = System.getProperty("user.dir")+ System.getProperty("file.separator") 
-                           + "reports"+System.getProperty("file.separator")+"Almacen"+ControllerFechas.getFechaActual()+".xls";
+                           + "reports"+System.getProperty("file.separator")+"Productos"+ControllerFechas.getFechaActual()+".xls";
                     //"C:\\Users\\Teté\\Documents\\GitHub\\gestionProyecto\\4.- Código\\AnaIsRepo" + ControllerFechas.getFechaActual() + ".xls";
 
             try (FileOutputStream fileOut = new FileOutputStream(strRuta)) {
@@ -199,6 +199,5 @@ public class ClaseAlmacenXLS {
         }
         cell.setCellStyle(cellStyle);
     }
-
     
 }
