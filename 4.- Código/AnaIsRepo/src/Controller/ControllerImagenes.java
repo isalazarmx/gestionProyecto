@@ -6,7 +6,15 @@
 package Controller;
 
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
+import java.sql.Blob;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -35,6 +43,23 @@ public class ControllerImagenes {
             foto = panel.getToolkit().getImage(String.valueOf(getRuta()));
             foto = foto.getScaledInstance(panel.getWidth(),panel.getHeight(), Image.SCALE_DEFAULT);
             imagen.setIcon(new ImageIcon(foto));
+        }
+    }
+    
+    public void cargaImagen(Blob imagen,JPanel panel,JButton button){
+        try {
+            byte[] data = imagen.getBytes(1,(int)imagen.length());
+            BufferedImage img = null;
+            try{
+                img = ImageIO.read(new ByteArrayInputStream(data));
+            }catch(IOException ex){
+                Logger.getLogger(ControllerImagenes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            foto = img;
+            foto = foto.getScaledInstance(panel.getWidth(),panel.getHeight(), Image.SCALE_DEFAULT);
+            button.setIcon(new ImageIcon(foto));
+        } catch (SQLException ex) {
+            Logger.getLogger(ControllerImagenes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

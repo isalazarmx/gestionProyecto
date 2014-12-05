@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 
@@ -41,6 +42,8 @@ public class ControllerViewProducto {
     JTextField gananciaTotal;
     JTextField inversion;
     JLabel labelStatus;
+    JLabel labelStatus02;
+    JButton eliminar;
     ControllerCuentas cuentas;
     List<ModelCategoria> listCategoria;
     List<ModelProveedor> listProveedor;
@@ -50,6 +53,7 @@ public class ControllerViewProducto {
     double precioCompra;
     double precioVenta;
     private File rutaImagen;
+    ModelProducto modelTemp;
 
     public ControllerViewProducto(ArrayList components) {
         cuentas = new ControllerCuentas();
@@ -73,6 +77,8 @@ public class ControllerViewProducto {
         this.gananciaTotal = (JTextField) components.get(17);
         this.inversion = (JTextField) components.get(18);
         this.labelStatus = (JLabel) components.get(19);
+        this.labelStatus02 = (JLabel) components.get(20);
+        this.eliminar = (JButton) components.get(21);
         modifica = false;
     }
 
@@ -152,7 +158,7 @@ public class ControllerViewProducto {
                 }
                 listProductos = DataBase.DataBaseProducto.buscaProductos(seleccion);
                 for (ModelProducto list1 : listProductos)
-                    idProducto.addItem(list1.getIdProducto()+" "+list1.getNombre());
+                    idProducto.addItem(list1.getNombre());
                 temp = listProductos;
                 break;
             case 3:
@@ -171,12 +177,25 @@ public class ControllerViewProducto {
                     if(DataBase.DataBaseProveedor_has_Producto.addRegister(relation)){
                         limpiaCampos();
                         labelStatus.setText("Categoría agregada con éxito");
+                    }else {
+                        JOptionPane.showMessageDialog(null, "Error interno para almacenar la información");
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Error interno para almacenar la información");
                 }
             }else{
-            
+                ModelProducto categoria = creaModelProducto(new ModelProducto(), false);
+                if (DataBase.DataBaseProducto.modificaProducto(categoria)){
+                    Proveedor_has_Producto relation = creaModelRelation(new Proveedor_has_Producto());
+                     if(DataBase.DataBaseProveedor_has_Producto.modificaRegister(relation)){
+                        limpiaCampos();
+                        labelStatus.setText("Categoría agregada con éxito");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Error interno para almacenar la información");
+                    }
+                }else {
+                    JOptionPane.showMessageDialog(null, "Error interno para almacenar la información");
+                }
             }
         }
     }
@@ -194,7 +213,7 @@ public class ControllerViewProducto {
         if (!((String) idCategoria.getItemAt(idCategoria.getSelectedIndex())).equals("Selecciona categoría")) {
             if (!((String) idProveedor.getItemAt(idProveedor.getSelectedIndex())).equals("Selecciona proveedor")) {
                 if (!ID.getText().equals("Código de barras") && !ID.getText().isEmpty()) {
-                    if(!DataBase.DataBaseProducto.checkExistProducto(ID.getText())){
+                    if(!DataBase.DataBaseProducto.checkExistProducto(ID.getText()) || modifica){
                         if (!nombre.getText().equals("Nombre del producto") && !nombre.getText().isEmpty()) {
                             if (!cantidad01.getText().equals("0") && !cantidad01.getText().isEmpty()) {
                                 if (!unidadExistencia.getText().equals("0") && !unidadExistencia.getText().isEmpty()) {
@@ -238,7 +257,10 @@ public class ControllerViewProducto {
         model.setPrecioVenta(precioVenta);
         model.setIncrementoVenta((Integer)incrementoVenta.getValue());
         model.setPrecioCompra(precioCompra);
-        model.setRutaImagen(rutaImagen);
+        if(rutaImagen!=null)
+            model.setRutaImagen(rutaImagen);
+        else
+            model.setImagen(modelTemp.getImagen());
         if(!tipoProducto)
             model.setTipoProducto(3);
         else
@@ -270,29 +292,42 @@ public class ControllerViewProducto {
         return Integer.parseInt(cantidad01.getText()) + (Integer.parseInt(cantidad02.getText())/100);
     }
     
-    public void identificaInfo() {
+    public void identificaInfo(JPanel panelImage) {
         int pos = idProducto.getSelectedIndex()-1;
         if (pos != -1){
-            ModelProducto producto = listProductos.get(pos);
-            Model.Proveedor_has_Producto relations = buscaRelations(producto.getIdProducto());
+            modelTemp = listProductos.get(pos);
+            Model.Proveedor_has_Producto relations = buscaRelations(modelTemp.getIdProducto());
+            idCategoria.setEnabled(false);
             idCategoria.setSelectedIndex(identificaInfoCom(relations.getProdcuto_categoria_idcategoria(),true));
             idProveedor.setSelectedIndex(identificaInfoCom(relations.getProoveedor_idproveedor(),false));
-            ID.setText(producto.getIdProducto());
-            nombre.setText(producto.getNombre());
+            ID.setForeground(Color.BLACK);
+            ID.setEditable(false);
+            ID.setText(modelTemp.getIdProducto());
+            nombre.setForeground(Color.BLACK);
+            nombre.setText(modelTemp.getNombre());
             String[] temp;
-            temp = convertirCantidades(producto.getCantidad());
+            temp = convertirCantidades(modelTemp.getCantidad());
+            cantidad01.setForeground(Color.BLACK);
             cantidad01.setText(temp[0]);
+            cantidad02.setForeground(Color.BLACK);
             cantidad02.setText(temp[1]);
-            tipoUnidad.setSelectedIndex(buscatipoUnidad(producto.getTipoUnidad()));
-            unidadExistencia.setText(""+producto.getUnidadExistencia());
-            minStock.setValue(producto.getMinStock());
-            maxStock.setValue(producto.getMaxStock());
-            temp = convertirCantidades(producto.getPrecioCompra());
+            tipoUnidad.setSelectedIndex(buscatipoUnidad(modelTemp.getTipoUnidad()));
+            unidadExistencia.setForeground(Color.BLACK);
+            unidadExistencia.setText(""+modelTemp.getUnidadExistencia());
+            minStock.setValue(modelTemp.getMinStock());
+            maxStock.setValue(modelTemp.getMaxStock());
+            temp = convertirCantidades(modelTemp.getPrecioCompra());
+            precioCompra01.setForeground(Color.BLACK);
             precioCompra01.setText(temp[0]);
+            precioCompra02.setForeground(Color.BLACK);
             precioCompra02.setText(temp[1]);
-            temp = convertirCantidades(producto.getIncrementoVenta());
+            temp = convertirCantidades(modelTemp.getIncrementoVenta());
             incrementoVenta.setValue(Integer.parseInt(temp[0]));
             despliegaCuentas();
+            new ControllerImagenes().cargaImagen(modelTemp.getImagen(), panelImage, imagen);
+            modifica = true;
+            labelStatus02.setText("Modifica campos para producto");
+            eliminar.setVisible(true);
         }else
             limpiaCampos();
     }
@@ -345,112 +380,13 @@ public class ControllerViewProducto {
         }
         return new Proveedor_has_Producto();
     }
-     
-    private int buscaID(int ID,boolean flag){
-        int id = 0;
-        if(flag){
-            for (int i = 0; i < listCategoria.size(); i++) {
-                ModelCategoria modeTemp = listCategoria.get(i);
-                if(modeTemp.getIdCategoria() == ID){
-                    id = i;
-                    break;
-                }
-            }
-        }else{
-//            for (int i = 0; i < listCategoria.size(); i++) {
-//                ModelProveedor modeTemp = listCategoria.get(i);
-//                if(modeTemp.getIdCategoria() == ID){
-//                    id = i;
-//                    break;
-//                }
-//            }
-        }
-        return id;
-    }
-//    public void identificaInfo(ModelCliente model) {
-//        if (!model.getNombre().equals("")) {
-//            Nombre.setForeground(Color.black);
-//            Nombre.setText(model.getNombre());
-//        }
-//        if (!model.getaPaterno().equals("")) {
-//            acApellidoPaterno.setText(model.getaPaterno());
-//            acApellidoPaterno.setForeground(Color.black);
-//        }
-//        if (!model.getaMaterno().equals("")) {
-//            acApellidoMaterno.setText(model.getaMaterno());
-//            acApellidoMaterno.setForeground(Color.black);
-//        }
-//        if (!model.getRFC().equals("")) {
-//            acRFC.setText(model.getRFC());
-//            acRFC.setForeground(Color.black);
-//        }
-//        if (!model.getTelFijo().equals("")) {
-//            acTelefono.setForeground(Color.black);
-//            acTelefono.setText("" + model.getTelFijo());
-//        }
-//        if (!model.getTelCel().equals("")) {
-//            acTelCelular.setForeground(Color.black);
-//            acTelCelular.setText("" + model.getTelCel());
-//        }
-//        if (!model.geteMail().equals("")) {
-//            acEmail.setForeground(Color.black);
-//            acEmail.setText("" + model.geteMail());
-//        }
-//        if (!model.getCalle().equals("")) {
-//            acCalle.setForeground(Color.black);
-//            acCalle.setText("" + model.getCalle());
-//        }
-//        if (!model.getCiudad().equals("")) {
-//            acCiudad.setForeground(Color.black);
-//            acCiudad.setText("" + model.getCalle());
-//        }
-//        if (!model.getColonia().equals("")) {
-//            acColonia.setForeground(Color.black);
-//            acColonia.setText("" + model.getCalle());
-//        }
-//        if (!model.getEstado().equals("")) {
-//            for (int i = 0; i < acEstados.getModel().getSize(); i++) {
-//                String est = (String) acEstados.getItemAt(i);
-//                if (est.equals(model.getEstado())) {
-//                    acEstados.setSelectedIndex(i);
-//                    break;
-//                }
-//            }
-//        }
-//        if (model.getCodigoPostal() != 0) {
-//            acCP.setForeground(Color.black);
-//            acCP.setText("" + model.getCodigoPostal());
-//        }
-//        if (model.getNumExt() != 0) {
-//            acNoExt.setForeground(Color.black);
-//            acNoExt.setText("" + model.getNumExt());
-//        }
-//        if (model.getNumInt() != 0) {
-//            acNoInt.setForeground(Color.black);
-//            acNoInt.setText("" + model.getNumInt());
-//        }
-//    }
-
-    private String reviewInfo(JTextField box, String value, boolean flag) {
-        if (flag) {
-            if (box.getText().equals(value) || box.getText().equals("")) {
-                return "";
-            } else {
-                return box.getText();
-            }
-        } else {
-            if (box.getText().equals(value) || box.getText().equals("")) {
-                return "0";
-            } else {
-                return box.getText();
-            }
-        }
-    }
-
+    
     public void limpiaCampos() {
         idProducto.setSelectedIndex(0);
+        idCategoria.setEnabled(true);
         idCategoria.setSelectedIndex(0);
         idProveedor.setSelectedIndex(0);
+        ID.setEditable(true);
         limpiaJtextField(ID,"Código de barras");
         limpiaJtextField(nombre,"Nombre del producto");
         limpiaJtextField(cantidad01,"0");
@@ -465,17 +401,40 @@ public class ControllerViewProducto {
         limpiaJtextField(gananciaTotal,"0");
         limpiaJtextField(inversion,"0");
         limpiaJtextField(precioVenta01,"0");
+        gananciaIndividual.setForeground(Color.BLACK);
+        gananciaTotal.setForeground(Color.BLACK);
+        inversion.setForeground(Color.BLACK);
+        precioVenta01.setForeground(Color.BLACK);
         imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/buscaImagen.png")));
-        cargarCombo(0,true);
-        cargarCombo(1,true);
-        cargarCombo(2,true);
+        cargaCombos();
+        modifica=false;
+        labelStatus02.setText("");
+        eliminar.setVisible(false);
     }
 
+    public void cargaCombos(){
+        for (int i = 0; i < 4; i++)
+        cargarCombo(i,true);
+    }
+    
     private void limpiaJtextField(JTextField box, String msj) {
         box.setForeground(new Color(180, 180, 180));
         box.setText(msj);
     }
 
+    public void eliminaCategoria(JLabel status){
+            String[] dat = new String[2];
+            dat[0]="Si";
+            dat[1]="No";
+            if(ControllerViewMsj.pregunta("Estás seguro de quere eliminar esta categoría?", dat,idProveedor)==0){
+                DataBase.DataBaseProducto.eliminaProducto(ID.getText());
+                limpiaCampos();
+                status.setText("Categoría eliminada con éxito");
+                cargaCombos();
+            }else
+                labelStatus02.setText("Eliminación de usuario cancelada");
+    }
+    
     /**
      * @return the rutaImagen
      */

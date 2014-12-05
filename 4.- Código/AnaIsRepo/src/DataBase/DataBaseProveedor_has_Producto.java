@@ -49,6 +49,29 @@ public class DataBaseProveedor_has_Producto {
         return flag;
     }   
     
+    public static boolean modificaRegister(Proveedor_has_Producto model){
+        boolean flag = false;
+        ControllerConnDBMS controller = new ControllerConnDBMS();
+        Connection conn = controller.connectDB();
+        try {
+            String strQuery = "UPDATE PROVEEDOR_HAS_PRODUCTO SET PROVEEDOR_IDPROVEEDOR=? WHERE PRODUCTO_IDPRODUCTO='"+model.getProducto_idproducto()+"';";
+            PreparedStatement ps = conn.prepareStatement(strQuery);
+            ps.setInt(1,model.getProoveedor_idproveedor());
+            ps.executeUpdate();
+            flag = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.DataBaseProveedor_has_Producto.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+              try {
+                if (conn != null && !conn.isClosed())
+                    conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return flag;
+    }   
+    
     public static List<Model.Proveedor_has_Producto> buscaRelations(){
         ControllerConnDBMS controller = new ControllerConnDBMS();
         Connection conn = controller.connectDB();

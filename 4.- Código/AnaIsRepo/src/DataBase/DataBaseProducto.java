@@ -34,9 +34,9 @@ public class DataBaseProducto
             Statement sta = conn.createStatement();
             String strQuery;
             if(tipoCategoria)
-                strQuery = "SELECT * FROM PRODUCTO WHERE TIPOPRODUCTO = 3 ORDER BY NOMBRE;";
+                strQuery = "SELECT * FROM PRODUCTO WHERE TIPOPRODUCTO = 3 AND ELIMINADO != 1 ORDER BY NOMBRE;";
             else
-                strQuery = "SELECT * FROM CATEGORIA WHERE TIPOPRODUCTO = 2 ORDER BY NOMBRE;";
+                strQuery = "SELECT * FROM PRODUCTO WHERE TIPOPRODUCTO = 2 AND ELIMINADO != 1 ORDER BY NOMBRE;";
             ResultSet res = sta.executeQuery(strQuery);
             while(res.next()){
                 ModelProducto model = creaModelo(res);
@@ -54,8 +54,6 @@ public class DataBaseProducto
         }
         return list;
     }
-    
-    
     
     private static ModelProducto creaModelo(ResultSet res){
         ModelProducto model = new ModelProducto();
@@ -86,7 +84,7 @@ public class DataBaseProducto
         Connection conn = controller.connectDB();
         try {
             Statement sta = conn.createStatement();
-            String strQuery = "SELECT IDPRODUCTO FROM PRODUCTO WHERE IDPRODUCTO='"+id+"'";
+            String strQuery = "SELECT IDPRODUCTO FROM PRODUCTO WHERE IDPRODUCTO='"+id+"' AND ELIMINADO != 1;";
             ResultSet res = sta.executeQuery(strQuery);
             if(res.next())
                 flag = true;
@@ -119,15 +117,84 @@ public class DataBaseProducto
             ps.setInt(7,model.getMaxStock());
             ps.setDouble(8,model.getPrecioCompra());
             ps.setDouble(9,model.getIncrementoVenta());
-            ps.setDouble(10,model.getPrecioVenta());
+                        ps.setDouble(10,model.getPrecioVenta());
             try {
-                ps.setBinaryStream(11,new FileInputStream(model.getRutaImagen()),(int)model.getRutaImagen().length());
+                if(model.getRutaImagen() != null)
+                    ps.setBinaryStream(11,new FileInputStream(model.getRutaImagen()),(int)model.getRutaImagen().length());
+                else
+                    ps.setBlob(11,model.getImagen());
             } catch (FileNotFoundException ex) {
                 ps.setBinaryStream(11, null);
             }
             ps.setInt(12,model.getTipoProducto());
             ps.setInt(13,model.getEmprsa_idempresa());
             ps.setInt(14,model.getCategoria_idcategoria());
+            ps.executeUpdate();
+            flag = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+              try {
+                if (conn != null && !conn.isClosed())
+                    conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return flag;
+    }    
+    
+    public static boolean modificaProducto(ModelProducto model){
+        boolean flag = false;
+        ControllerConnDBMS controller = new ControllerConnDBMS();
+        Connection conn = controller.connectDB();
+        try {
+            String strQuery = "UPDATE PRODUCTO SET IDPRODUCTO=?,NOMBRE=?,CANTIDAD=?,TIPOUNIDAD=?,UNIDADEXISTENCIA=?,MINSTOCK=?,MAXSTOCK=?,PRECIOCOMPRA=?,INCREMENTOVENTA=?,PRECIOVENTA=?,IMAGE=?,TIPOPRODUCTO=?,EMPRESA_IDEMPRESA=?,CATEGORIA_IDCATEGORIA=? WHERE IDPRODUCTO='"+model.getIdProducto()+"';";
+            PreparedStatement ps = conn.prepareStatement(strQuery);
+            ps.setString(1,model.getIdProducto());
+            ps.setString(2,model.getNombre());
+            ps.setDouble(3,model.getCantidad());
+            ps.setString(4,model.getTipoUnidad());
+            ps.setInt(5,model.getUnidadExistencia());
+            ps.setInt(6,model.getMinStock());
+            ps.setInt(7,model.getMaxStock());
+            ps.setDouble(8,model.getPrecioCompra());
+            ps.setDouble(9,model.getIncrementoVenta());
+            ps.setDouble(10,model.getPrecioVenta());
+            try {
+                if(model.getRutaImagen()!=null)
+                    ps.setBinaryStream(11,new FileInputStream(model.getRutaImagen()),(int)model.getRutaImagen().length());
+                else
+                    ps.setBlob(11,model.getImagen());
+            } catch (FileNotFoundException ex) {
+                ps.setBinaryStream(11, null);
+            }
+            ps.setInt(12,model.getTipoProducto());
+            ps.setInt(13,model.getEmprsa_idempresa());
+            ps.setInt(14,model.getCategoria_idcategoria());
+            ps.executeUpdate();
+            flag = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+              try {
+                if (conn != null && !conn.isClosed())
+                    conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return flag;
+    }    
+    
+    public static boolean eliminaProducto(String idProducto){
+        boolean flag = false;
+        ControllerConnDBMS controller = new ControllerConnDBMS();
+        Connection conn = controller.connectDB();
+        try {
+            String strQuery = "UPDATE PRODUCTO SET ELIMINADO = ? WHERE IDPRODUCTO='"+idProducto+"';";
+            PreparedStatement ps = conn.prepareStatement(strQuery);
+            ps.setInt(1,1);
             ps.executeUpdate();
             flag = true;
         } catch (SQLException ex) {
