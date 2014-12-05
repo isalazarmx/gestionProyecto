@@ -40,7 +40,8 @@ public class ViewBotoneraPrincipal extends javax.swing.JPanel {
     }
     
     private void initPanelesBotones(){
-        controllerPaneles.setPanelAlmacen(new ViewAdministrarProductos(controllerPaneles));
+        controllerPaneles.setPanelProductos(new ViewAdministrarProductos(controllerPaneles,false));
+        controllerPaneles.setPanelAlmacen(new ViewAdministrarProductos(controllerPaneles,true));
         controllerPaneles.setPanelVendedores(new ViewAdministrarVendedores(controllerPaneles));
         controllerPaneles.setPanelClientes(new ViewAdministrarClientes(controllerPaneles));
         controllerPaneles.setPanelProveedores(new ViewAdministrarProveedores(controllerPaneles));

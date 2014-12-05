@@ -54,6 +54,7 @@ public class ControllerViewProducto {
     double precioVenta;
     private File rutaImagen;
     ModelProducto modelTemp;
+    boolean tipoaAlmacen;
 
     public ControllerViewProducto(ArrayList components) {
         cuentas = new ControllerCuentas();
@@ -79,6 +80,7 @@ public class ControllerViewProducto {
         this.labelStatus = (JLabel) components.get(19);
         this.labelStatus02 = (JLabel) components.get(20);
         this.eliminar = (JButton) components.get(21);
+        this.tipoaAlmacen = (boolean) components.get(22);
         modifica = false;
     }
 
@@ -171,7 +173,7 @@ public class ControllerViewProducto {
     public void agregaModificaProducto(){
         if(validaCampos()){
             if(!modifica){
-                    ModelProducto categoria = creaModelProducto(new ModelProducto(), false);
+                    ModelProducto categoria = creaModelProducto(new ModelProducto(), tipoaAlmacen);
                 if (DataBase.DataBaseProducto.addProducto(categoria)) {
                     Proveedor_has_Producto relation = creaModelRelation(new Proveedor_has_Producto());
                     if(DataBase.DataBaseProveedor_has_Producto.addRegister(relation)){
@@ -184,7 +186,7 @@ public class ControllerViewProducto {
                     JOptionPane.showMessageDialog(null, "Error interno para almacenar la información");
                 }
             }else{
-                ModelProducto categoria = creaModelProducto(new ModelProducto(), false);
+                ModelProducto categoria = creaModelProducto(new ModelProducto(), tipoaAlmacen);
                 if (DataBase.DataBaseProducto.modificaProducto(categoria)){
                     Proveedor_has_Producto relation = creaModelRelation(new Proveedor_has_Producto());
                      if(DataBase.DataBaseProveedor_has_Producto.modificaRegister(relation)){
@@ -261,7 +263,7 @@ public class ControllerViewProducto {
             model.setRutaImagen(rutaImagen);
         else
             model.setImagen(modelTemp.getImagen());
-        if(!tipoProducto)
+        if(tipoProducto)
             model.setTipoProducto(3);
         else
             model.setTipoProducto(2);
@@ -414,7 +416,7 @@ public class ControllerViewProducto {
 
     public void cargaCombos(){
         for (int i = 0; i < 4; i++)
-        cargarCombo(i,true);
+        cargarCombo(i,tipoaAlmacen);
     }
     
     private void limpiaJtextField(JTextField box, String msj) {

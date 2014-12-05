@@ -20,8 +20,10 @@ public class ViewAdministrarProductos extends javax.swing.JPanel {
     ControllerValidation validation;
     ControllerPaneles controllerPaneles;
     ModelProducto modelProducto;
+    boolean tipoAlmacen;
    
-public ViewAdministrarProductos(ControllerPaneles controllerPaneles) {
+public ViewAdministrarProductos(ControllerPaneles controllerPaneles,boolean tipoAlmacen) {
+        this.tipoAlmacen = tipoAlmacen;
         this.validation = new ControllerValidation();
         this.controllerPaneles = controllerPaneles;//asi
         controllerPaneles.setModelProducto(new ModelProducto());
@@ -29,9 +31,15 @@ public ViewAdministrarProductos(ControllerPaneles controllerPaneles) {
         initComponents();
         modelProducto.creaModelTable();
         validation();
+        if(tipoAlmacen){
+            labelTitulo.setText("Administración de almacén");
+            labelTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/almacenInfo.png")));
+        }else{
+            labelTitulo.setText("Administración de productos");
+            labelTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/ajustesProducto.png")));
+        }
         for (int i = 0; i < 4; i++)
-            controller.cargarCombo(i,true);
-//        controller.buscaCliente(true);
+            controller.cargarCombo(i,tipoAlmacen);
     }
 
 private void validation(){
@@ -41,6 +49,7 @@ private void validation(){
         components.add(vertodos);
         components.add(tableProducto);
         components.add(modelProducto.getModeloTable());
+        components.add(tipoAlmacen);
         controller = new ControllerViewAdministrarProducto(components);
         controller.validations();
     }    
@@ -51,7 +60,7 @@ private void validation(){
     private void initComponents() {
 
         panelTitulo = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        labelTitulo = new javax.swing.JLabel();
         panelBusqueda = new javax.swing.JPanel();
         vertodos = new javax.swing.JButton();
         idCategoria = new javax.swing.JComboBox();
@@ -74,22 +83,22 @@ private void validation(){
         panelTitulo.setBackground(new java.awt.Color(250, 250, 250));
         panelTitulo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true));
 
-        jLabel1.setBackground(new java.awt.Color(250, 250, 250));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(53, 107, 161));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/almacenInfo.png"))); // NOI18N
-        jLabel1.setText("Administración de almacén");
+        labelTitulo.setBackground(new java.awt.Color(250, 250, 250));
+        labelTitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelTitulo.setForeground(new java.awt.Color(53, 107, 161));
+        labelTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/almacenInfo.png"))); // NOI18N
+        labelTitulo.setText("Administración de almacén");
 
         javax.swing.GroupLayout panelTituloLayout = new javax.swing.GroupLayout(panelTitulo);
         panelTitulo.setLayout(panelTituloLayout);
         panelTituloLayout.setHorizontalGroup(
             panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(labelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelTituloLayout.setVerticalGroup(
             panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTituloLayout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addComponent(labelTitulo)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -379,8 +388,7 @@ private void validation(){
 
     private void vertodos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vertodos1ActionPerformed
         // TODO add your handling code here:
-        controllerPaneles.setPanelProductos(new ViewProducto(controllerPaneles,null,false));
-        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), controllerPaneles.getPanelProductos()); //asi
+        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(),new ViewProducto(controllerPaneles,null,tipoAlmacen)); //asi
     }//GEN-LAST:event_vertodos1ActionPerformed
 
     private void imagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imagenActionPerformed
@@ -402,11 +410,11 @@ private void validation(){
     private javax.swing.JComboBox idCategoria;
     private javax.swing.JComboBox idProveedor;
     private javax.swing.JButton imagen;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelCount;
+    private javax.swing.JLabel labelTitulo;
     private javax.swing.JPanel panelBusqueda;
     private javax.swing.JPanel panelCantidadResultados;
     private javax.swing.JPanel panelImagen;

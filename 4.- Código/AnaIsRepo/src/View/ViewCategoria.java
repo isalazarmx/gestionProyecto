@@ -22,13 +22,16 @@ public class ViewCategoria extends javax.swing.JPanel {
     ControllerViewCategoria controller;
     ModelEmpresa modelEmpresa;
     ModelCategoria categoriaTemp;
+    boolean tipoAlmacen;
+    
     /**
      * Creates new form ViewBaseAdministrador
      * @param controllerPaneles
      * @param categoria
      * @param tipoProducto
      */
-    public ViewCategoria(ControllerPaneles controllerPaneles, ModelCategoria categoria, boolean tipoProducto) {
+    public ViewCategoria(ControllerPaneles controllerPaneles, ModelCategoria categoria, boolean tipoAlmacen) {
+        this.tipoAlmacen = tipoAlmacen;
         this.categoriaTemp = categoria;
         this.validation = new ControllerValidation();
         this.controllerPaneles = controllerPaneles;
@@ -39,24 +42,24 @@ public class ViewCategoria extends javax.swing.JPanel {
         labelStatus02.setText("");
         elimina.setVisible(false);
         acID.setText(DataBase.DataBaseCategoria.verProximoID());
+        controller.cargarCombo(tipoAlmacen);
         if(categoria==null){
-            if(tipoProducto){
+            if(tipoAlmacen){
+                labelRuta.setText("Administración de almacén / Nuevo producto almacén  / Agrega categoría");
+                regresar.setText("Nuevo producto almacén");
+            }
+            else{
                 labelRuta.setText("Administración de productos / Nuevo producto tienda / Agrega categoría");
                 regresar.setText("Nuevo producto tienda");
             }
-            else{
-                labelRuta.setText("Administración de almacén / Nuevo producto almacén  / Agrega categoría");
-                regresar.setText("Nuevo producto almacén");
-                controller.cargarCombo(true);
-            }
         }else{
-            if(tipoProducto){
-                labelRuta.setText("Administración de productos / Modifica producto tienda / Modifica categoría");
-                regresar.setText("Modifica producto tienda");    
+            if(tipoAlmacen){
+                labelRuta.setText("Administración de almacén / Modifica producto almacén / Modifica categoría");
+                regresar.setText("Modifica producto almacén");
             }
             else{
-                labelRuta.setText("Administración de almacén / Modifica producto almacén / Modifica categoría");
-                regresar.setText("Modifica producto almacén");    
+                labelRuta.setText("Administración de productos / Modifica producto tienda / Modifica categoría");
+                regresar.setText("Modifica producto tienda");     
             }
         }
         labelStatus.setText("");
@@ -70,6 +73,7 @@ public class ViewCategoria extends javax.swing.JPanel {
         components.add(acID);
         components.add(labelStatus02);
         components.add(elimina);
+        components.add(tipoAlmacen);
         controller = new ControllerViewCategoria(components);
         controller.validations();
     }
@@ -454,7 +458,7 @@ public class ViewCategoria extends javax.swing.JPanel {
 
     private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
         // TODO add your handling code here:
-        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewProducto(controllerPaneles, null, false)); //asi
+        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewProducto(controllerPaneles, null,tipoAlmacen)); //asi
     }//GEN-LAST:event_regresarActionPerformed
 
     private void acIDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_acIDFocusGained
@@ -510,7 +514,7 @@ public class ViewCategoria extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewProducto(controllerPaneles, null, false)); //asi    
+        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewProducto(controllerPaneles, null, tipoAlmacen)); //asi    
     }//GEN-LAST:event_jButton4ActionPerformed
 
     

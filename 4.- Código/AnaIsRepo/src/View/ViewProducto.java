@@ -27,13 +27,15 @@ public class ViewProducto extends javax.swing.JPanel {
     ModelProducto prodcutoTemp;
     List<ModelProveedor> listProveedores;
     List<ModelCategoria> listCategoria;
+    boolean tipoAlmacen;
     /**
      * Creates new form ViewBaseAdministrador
      * @param controllerPaneles
      * @param user
      * @param tipoProducto
      */
-    public ViewProducto(ControllerPaneles controllerPaneles, ModelProducto user,boolean tipoProducto) {
+    public ViewProducto(ControllerPaneles controllerPaneles, ModelProducto user,boolean tipoAlmacen) {
+        this.tipoAlmacen=tipoAlmacen;
         this.prodcutoTemp = user;
         this.validation = new ControllerValidation();
         this.controllerPaneles = controllerPaneles;
@@ -43,18 +45,18 @@ public class ViewProducto extends javax.swing.JPanel {
         labelStatus02.setText("");
         eliminar.setVisible(false);
         for (int i = 0; i < 4; i++)
-            controller.cargarCombo(i,true);
+            controller.cargarCombo(i,tipoAlmacen);
         if(user==null){
-            if(tipoProducto)
-                labelRuta.setText("Administración de productos / Nuevo producto tienda");
-            else
+            if(tipoAlmacen)
                 labelRuta.setText("Administración de almacén / Nuevo producto almacén");
+            else
+                labelRuta.setText("Administración de productos / Nuevo producto tienda");
 
         }else{
-            if(tipoProducto)
-                labelRuta.setText("Administración de productos / Modifica producto");
-            else
+            if(tipoAlmacen)
                 labelRuta.setText("Administración de almacén / Modifica producto almacén");
+            else
+                labelRuta.setText("Administración de productos / Modifica producto");
         }
         labelStatus.setText("");
     }
@@ -83,6 +85,7 @@ public class ViewProducto extends javax.swing.JPanel {
         components.add(labelStatus);
         components.add(labelStatus02);
         components.add(eliminar);
+        components.add(tipoAlmacen);
         controller = new ControllerViewProducto(components);
         controller.validations();
     }
@@ -818,7 +821,7 @@ public class ViewProducto extends javax.swing.JPanel {
                                         .addComponent(labelStatus02, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(idProducto, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(idCategoria, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGap(45, 45, 45)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))))
         );
@@ -830,23 +833,18 @@ public class ViewProducto extends javax.swing.JPanel {
                     .addComponent(labelNota))
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                                .addComponent(labelStatus02, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(idProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(idCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGap(18, 18, 18)
+                        .addComponent(labelStatus02, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(idProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(idCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(idProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -979,7 +977,7 @@ public class ViewProducto extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), controllerPaneles.getPanelAlmacen());
+        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewAdministrarProductos(controllerPaneles, tipoAlmacen)); //asi
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -994,7 +992,7 @@ public class ViewProducto extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), controllerPaneles.getPanelAlmacen()); //asi
+            controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewAdministrarProductos(controllerPaneles, tipoAlmacen)); //asi
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void nombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreFocusGained
@@ -1041,7 +1039,7 @@ public class ViewProducto extends javax.swing.JPanel {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewCategoria(controllerPaneles, null,false)); //asi
+        controllerPaneles.addPanel(controllerPaneles.getPanelCentral(), new ViewCategoria(controllerPaneles, null,tipoAlmacen)); //asi
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void tipoUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoUnidadActionPerformed

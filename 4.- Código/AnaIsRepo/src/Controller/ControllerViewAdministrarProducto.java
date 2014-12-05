@@ -25,6 +25,7 @@ public class ControllerViewAdministrarProducto {
     JComboBox idCategoria;
     JComboBox idProveedor;
     JButton verTodo;
+    boolean tipoAlmacen;
     ControllerTables controllerTable;
     List<ModelCategoria> listCategoria;
     List<ModelProveedor> listProveedor;
@@ -38,6 +39,7 @@ public class ControllerViewAdministrarProducto {
         this.verTodo = (JButton)components.get(2);
         controllerTable.setTabla((JTable)components.get(3));
         controllerTable.setModelTable((DefaultTableModel)components.get(4));
+        this.tipoAlmacen = (Boolean)components.get(5);
     }
     
     public void validations(){
@@ -99,7 +101,7 @@ public class ControllerViewAdministrarProducto {
     public void buscaCategoria(){
         limpiaBusqueda(new JButton());
         int idCat = buscaIdCategoria();
-        List cat = DataBase.DataBaseProducto.buscaPorCategoria(idCat, true);
+        List cat = DataBase.DataBaseProducto.buscaPorCategoria(idCat, tipoAlmacen);
         for (int i = 0; i < cat.size(); i++) {
             List list = (List)cat.get(i);
             String[] datos = {""+list.get(0),""+list.get(1),""+list.get(2),""+list.get(3),""+list.get(4),""+list.get(5)};
@@ -110,7 +112,7 @@ public class ControllerViewAdministrarProducto {
     public void buscaProveedor(){
         limpiaBusqueda(new JButton());
         int id = buscaIdProveedor();
-        List pro = DataBase.DataBaseProducto.buscaPorProveedor(id, true);
+        List pro = DataBase.DataBaseProducto.buscaPorProveedor(id, tipoAlmacen);
         for (int i = 0; i < pro.size(); i++) {
             List list = (List)pro.get(i);
             String[] datos = {""+list.get(0),""+list.get(1),""+list.get(2),""+list.get(3),""+list.get(4),""+list.get(5)};
@@ -119,7 +121,7 @@ public class ControllerViewAdministrarProducto {
     }
     
     public void busquedaTotal(){
-        List pro = DataBase.DataBaseProducto.buscaTotal(true);
+        List pro = DataBase.DataBaseProducto.buscaTotal(tipoAlmacen);
         for (int i = 0; i < pro.size(); i++) {
             List list = (List)pro.get(i);
             String[] datos = {""+list.get(0),""+list.get(1),""+list.get(2),""+list.get(3),""+list.get(4),""+list.get(5)};

@@ -31,6 +31,7 @@ public class ControllerViewCategoria {
     JButton elimina;
     List<ModelCategoria> listCategoria;
     private boolean modifica;
+    boolean tipoAlmacen;
 
     public ControllerViewCategoria(ArrayList components) {
         this.nombre = (JTextField) components.get(0);
@@ -39,6 +40,7 @@ public class ControllerViewCategoria {
         this.acID = (JTextField) components.get(3);
         this.labelStatus02 = (JLabel)components.get(4);
         this.elimina = (JButton)components.get(5);
+        this.tipoAlmacen = (boolean)components.get(6);
         modifica = false;
     }
 
@@ -49,11 +51,11 @@ public class ControllerViewCategoria {
 
     public void addCategoria(JLabel labelStatus) {
         if(validaCategoria()){
-            ModelCategoria categoria = creaModelCategoria(new ModelCategoria(), false);
+            ModelCategoria categoria = creaModelCategoria(new ModelCategoria(), tipoAlmacen);
             if (DataBaseCategoria.addCategoria(categoria)) {
                 limpiaCampos();
                 labelStatus.setText("Categoría agregada con éxito");
-                cargarCombo(true);
+                cargarCombo(tipoAlmacen);
             } else {
                 JOptionPane.showMessageDialog(null, "Error interno para almacenar la información");
             }
@@ -83,13 +85,13 @@ public class ControllerViewCategoria {
         }
     }
     
-    public ModelCategoria creaModelCategoria(ModelCategoria categoria, boolean tipoProducto) {
+    public ModelCategoria creaModelCategoria(ModelCategoria categoria, boolean tipoAlmacen) {
         categoria.setNombre(nombre.getText());
         categoria.setDescripcion(descripcion.getText());
-        if (tipoProducto)
-            categoria.setTipoProducto(2);
-        else
+        if (tipoAlmacen)
             categoria.setTipoProducto(3);
+        else
+            categoria.setTipoProducto(2);
         return categoria;
     }
 
@@ -137,12 +139,12 @@ public class ControllerViewCategoria {
     
     public void modificaCategoria(JLabel labelStatus){
         if(validaCategoria()){
-            ModelCategoria categoria = creaModelCategoria(new ModelCategoria(), false);
+            ModelCategoria categoria = creaModelCategoria(new ModelCategoria(), tipoAlmacen);
             categoria.setIdCategoria(Integer.parseInt(acID.getText()));
             if (DataBaseCategoria.modificaCategoria(categoria)) {
                 limpiaCampos();
                 labelStatus.setText("Categoría modificada con éxito");
-                cargarCombo(true);
+                cargarCombo(tipoAlmacen);
             } else {
                 JOptionPane.showMessageDialog(null, "Error interno para almacenar la información");
             }
@@ -158,7 +160,7 @@ public class ControllerViewCategoria {
                 DataBase.DataBaseCategoria.modifCategoria(acID.getText());
                 limpiaCampos();
                 status.setText("Categoría eliminada con éxito");
-                cargarCombo(true);
+                cargarCombo(tipoAlmacen);
             }else
                 labelStatus02.setText("Eliminación de usuario cancelada");
         }
