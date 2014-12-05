@@ -8,6 +8,7 @@ package Model;
 import java.io.File;
 import java.sql.Blob;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -29,6 +30,7 @@ public class ModelProducto {
     private int tipoProducto;
     private int emprsa_idempresa;
     private int categoria_idcategoria;
+    private DefaultTableModel modeloTable;
     
     public ArrayList componentesPDF(){
         ArrayList comp = new ArrayList();
@@ -39,7 +41,7 @@ public class ModelProducto {
     
         private String[] rotuloPDF(){
         String rotulo[] = new String[6];
-        rotulo[0]="Código producto";
+        rotulo[0]="Código";
         rotulo[1]="Nombre";
         rotulo[2]="Cantidad existencía";
         rotulo[3]="Precio compra";
@@ -59,30 +61,24 @@ public class ModelProducto {
         return ancho; 
     }
 
-//    public String addInfo(){
-//        return "('"
-//                +getNombre()+"','"
-//                +getDescripcion()+"','"                
-//                +getLinkFoto()+"',"
-//                +getKilos()+","
-//                +getNumPersonas()+","
-//                +getPrecioUnitario()+","
-//                +"0,"
-//                +getIdCategoria()+""
-//                +",01"
-//                + ");";
-//    }
-    
-//    public String modInfo(){
-//        return "set nombre = '"+getNombre()+"',"+ 
-//               "descripcion = '"+getDescripcion()+"',"+
-//               "linkFoto = '"+getLinkFoto()+"',"+
-//               "kilos = "+getKilos()+","+
-//               "numPersonas = "+getNumPersonas()+","+
-//               "precioUnitario = "+getPrecioUnitario()+","+
-//                "Categoria_idCategoria = "+getIdCategoria()+""
-//                ;     
-//    }
+        public DefaultTableModel creaModelTable(){
+        setModeloTable(new DefaultTableModel(){
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return canEdit [column];
+            }
+        });
+        getModeloTable().addColumn("Código");
+        getModeloTable().addColumn("Nombre");
+        getModeloTable().addColumn("Cantidad");
+        getModeloTable().addColumn("PrecioCompra");
+        getModeloTable().addColumn("PrecioVenta");
+        getModeloTable().addColumn("Ganancia");
+        return getModeloTable();
+    }
 
     /**
      * @return the idProducto
@@ -292,6 +288,20 @@ public class ModelProducto {
      */
     public void setCategoria_idcategoria(int categoria_idcategoria) {
         this.categoria_idcategoria = categoria_idcategoria;
+    }
+
+    /**
+     * @return the modeloTable
+     */
+    public DefaultTableModel getModeloTable() {
+        return modeloTable;
+    }
+
+    /**
+     * @param modeloTable the modeloTable to set
+     */
+    public void setModeloTable(DefaultTableModel modeloTable) {
+        this.modeloTable = modeloTable;
     }
           
     

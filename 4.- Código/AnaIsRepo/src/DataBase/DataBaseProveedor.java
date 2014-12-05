@@ -218,7 +218,7 @@ public class DataBaseProveedor {
         List<ModelProveedor> list = new ArrayList<>();
         try {
             Statement sta = conn.createStatement();
-            String strQuery = "SELECT IDPROVEEDOR, NOMBRE, APATERNO FROM PROVEEDOR ORDER BY NOMBRE;";
+            String strQuery = "SELECT IDPROVEEDOR, NOMBRE, APATERNO FROM PROVEEDOR WHERE ELIMINADO !=1 ORDER BY NOMBRE;";
             ResultSet res = sta.executeQuery(strQuery);
             while(res.next()){
                 ModelProveedor model = new ModelProveedor();

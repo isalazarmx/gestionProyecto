@@ -15,7 +15,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,6 +39,123 @@ public class DataBaseProducto
             ResultSet res = sta.executeQuery(strQuery);
             while(res.next()){
                 ModelProducto model = creaModelo(res);
+                list.add(model);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+              try {
+                if (conn != null && !conn.isClosed())
+                    conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return list;
+    }
+    
+    public static List buscaPorCategoria(int idcategoria, boolean tipoCategoria){
+        ControllerConnDBMS controller = new ControllerConnDBMS();
+        Connection conn = controller.connectDB();
+        List list = new ArrayList<>();
+        try {
+            Statement sta = conn.createStatement();
+            String strQuery;
+            if(tipoCategoria)
+                strQuery = "SELECT IDPRODUCTO,NOMBRE,FORMAT(CANTIDAD,0) AS CANTIDAD,TIPOUNIDAD,PRECIOCOMPRA,PRECIOVENTA, CONCAT('$ ',FORMAT(((PRECIOVENTA-PRECIOCOMPRA)*CANTIDAD),2)) AS GANANCIA FROM PRODUCTO WHERE TIPOPRODUCTO = 3 AND ELIMINADO != 1 AND CATEGORIA_IDCATEGORIA = "+idcategoria+" ORDER BY NOMBRE;";
+            else
+                strQuery = "SELECT IDPRODUCTO,NOMBRE,FORMAT(CANTIDAD,0),TIPOUNIDAD,PRECIOCOMPRA,PRECIOVENTA, CONCAT('$ ',FORMAT(((PRECIOVENTA-PRECIOCOMPRA)*CANTIDAD),2)) AS GANANCIA FROM PRODUCTO WHERE TIPOPRODUCTO = 2 AND ELIMINADO != 1 AND CATEGORIA_IDCATEGORIA = "+idcategoria+" ORDER BY NOMBRE;";
+            ResultSet res = sta.executeQuery(strQuery);
+            while(res.next()){
+                List model = new ArrayList<>();
+                model.add(res.getString("IDPRODUCTO"));
+                model.add(res.getString("NOMBRE"));
+                model.add(res.getString("CANTIDAD"));
+                model.add(res.getString("PRECIOCOMPRA"));
+                model.add(res.getString("PRECIOVENTA"));
+                model.add(res.getString("GANANCIA"));
+                list.add(model);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+              try {
+                if (conn != null && !conn.isClosed())
+                    conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return list;
+    }
+    
+    public static List buscaPorProveedor(int idproveedor, boolean tipoCategoria){
+        ControllerConnDBMS controller = new ControllerConnDBMS();
+        Connection conn = controller.connectDB();
+        List list = new ArrayList<>();
+        try {
+            Statement sta = conn.createStatement();
+            String strQuery;
+            if(tipoCategoria)
+                strQuery = "SELECT PPP.`idProveedor`,P.`idProducto`,P.nombre,FORMAT(P.cantidad,0) AS CANTIDAD,P.`precioCompra`,P.`precioVenta`, CONCAT('$ ',FORMAT(((PRECIOVENTA-PRECIOCOMPRA)*CANTIDAD),2)) AS GANANCIA \n" +
+                            "FROM PROVEEDOR PPP\n" +
+                            "JOIN PROVEEDOR_HAS_PRODUCTO PP\n" +
+                            "ON (PPP.`idProveedor`=PP.`Proveedor_idProveedor`)\n" +
+                            "JOIN producto P\n" +
+                            "ON(PP.`Producto_idProducto`=P.`idProducto`)\n" +
+                            "WHERE PPP.`idProveedor`="+idproveedor+" AND P.`tipoProducto`=3;";
+            else
+                strQuery = "SELECT PPP.`idProveedor`,P.`idProducto`,P.nombre,FORMAT(P.cantidad,0) AS CANTIDAD,P.`precioCompra`,P.`precioVenta`, CONCAT('$ ',FORMAT(((PRECIOVENTA-PRECIOCOMPRA)*CANTIDAD),2)) AS GANANCIA \n" +
+                            "FROM PROVEEDOR PPP\n" +
+                            "JOIN PROVEEDOR_HAS_PRODUCTO PP\n" +
+                            "ON (PPP.`idProveedor`=PP.`Proveedor_idProveedor`)\n" +
+                            "JOIN producto P\n" +
+                            "ON(PP.`Producto_idProducto`=P.`idProducto`)\n" +
+                            "WHERE PPP.`idProveedor`="+idproveedor+" AND P.`tipoProducto`=2;";
+            ResultSet res = sta.executeQuery(strQuery);
+            while(res.next()){
+                List model = new ArrayList<>();
+                model.add(res.getString("IDPRODUCTO"));
+                model.add(res.getString("NOMBRE"));
+                model.add(res.getString("CANTIDAD"));
+                model.add(res.getString("PRECIOCOMPRA"));
+                model.add(res.getString("PRECIOVENTA"));
+                model.add(res.getString("GANANCIA"));
+                list.add(model);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+              try {
+                if (conn != null && !conn.isClosed())
+                    conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return list;
+    }
+    
+    public static List buscaTotal(boolean tipoCategoria){
+        ControllerConnDBMS controller = new ControllerConnDBMS();
+        Connection conn = controller.connectDB();
+        List list = new ArrayList<>();
+        try {
+            Statement sta = conn.createStatement();
+            String strQuery;
+            if(tipoCategoria)
+                strQuery = "SELECT IDPRODUCTO,NOMBRE,FORMAT(CANTIDAD,0) AS CANTIDAD,TIPOUNIDAD,PRECIOCOMPRA,PRECIOVENTA, CONCAT('$ ',FORMAT(((PRECIOVENTA-PRECIOCOMPRA)*CANTIDAD),2)) AS GANANCIA FROM PRODUCTO WHERE TIPOPRODUCTO = 3 AND ELIMINADO != 1 ORDER BY NOMBRE;";
+            else
+                strQuery = "SELECT IDPRODUCTO,NOMBRE,FORMAT(CANTIDAD,0),TIPOUNIDAD,PRECIOCOMPRA,PRECIOVENTA, CONCAT('$ ',FORMAT(((PRECIOVENTA-PRECIOCOMPRA)*CANTIDAD),2)) AS GANANCIA FROM PRODUCTO WHERE TIPOPRODUCTO = 2 AND ELIMINADO != 1 ORDER BY NOMBRE;";
+            ResultSet res = sta.executeQuery(strQuery);
+            while(res.next()){
+                List model = new ArrayList<>();
+                model.add(res.getString("IDPRODUCTO"));
+                model.add(res.getString("NOMBRE"));
+                model.add(res.getString("CANTIDAD"));
+                model.add(res.getString("PRECIOCOMPRA"));
+                model.add(res.getString("PRECIOVENTA"));
+                model.add(res.getString("GANANCIA"));
                 list.add(model);
             }
         } catch (SQLException ex) {
@@ -209,163 +325,4 @@ public class DataBaseProducto
         }
         return flag;
     }    
-    
-    //----------------------------------------------------------------------
-    //----------Obtiene todas las categorias-----------------
-    public static LinkedList findProductos(String cadena){
-        LinkedList arrayCategoria=new LinkedList();
-        ControllerConnDBMS controller = new ControllerConnDBMS();
-        Connection conn = controller.connectDB();
-        try {
-            Statement sta = conn.createStatement();
-            String strQuery = "select * from producto where eliminado=0 and nombre like '%"+cadena+"%';";
-            ResultSet res = sta.executeQuery(strQuery);
-            while(res.next())
-            {
-                ModelProducto categoria=new ModelProducto();
-//                categoria.setIdCategoria(Integer.parseInt(res.getString("idProducto")));
-                categoria.setNombre(res.getString("nombre"));                
-                arrayCategoria.add(categoria);
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-              try {
-                if (conn != null && !conn.isClosed())
-                    conn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return arrayCategoria;
-    }
-    
-    
-    //-----------Eliminar la categoria--------------
-    public static boolean deleteProducto(String nombre){
-        boolean flag = false;
-        ControllerConnDBMS controller = new ControllerConnDBMS();
-        Connection conn = controller.connectDB();
-        try {
-            Statement sta = conn.createStatement();
-            String strQuery = "update producto set eliminado=1 where nombre='"+nombre+"';";
-            sta.executeUpdate(strQuery);            
-            flag = true;
-        } catch (SQLException ex) {
-            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-              try {
-                if (conn != null && !conn.isClosed())
-                    conn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return flag;
-    }
-    
-    
-    //----------obtiene la categoria-------------
-    public static int idCategoria(String nombre){
-        int idCategoria = 0;
-        ControllerConnDBMS controller = new ControllerConnDBMS();
-        Connection conn = controller.connectDB();
-        try {
-            Statement sta = conn.createStatement();
-            String strQuery = "select idCategoria from categoria where nombre = '"+nombre+"';";
-            ResultSet res = sta.executeQuery(strQuery);
-            if(res.next()){
-                idCategoria=Integer.parseInt(res.getString("idCategoria"));                
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-              try {
-                if (conn != null && !conn.isClosed())
-                    conn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return idCategoria;
-    }    
-    
-    public static int idProducto(String nombre){
-        int idCategoria = 0;
-        ControllerConnDBMS controller = new ControllerConnDBMS();
-        Connection conn = controller.connectDB();
-        try {
-            Statement sta = conn.createStatement();
-            String strQuery = "select idProducto from producto where nombre = '"+nombre+"';";
-            ResultSet res = sta.executeQuery(strQuery);
-            if(res.next()){
-                idCategoria=Integer.parseInt(res.getString("idProducto"));                
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-              try {
-                if (conn != null && !conn.isClosed())
-                    conn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return idCategoria;
-    }    
-    
-    
-    //--------Obtiene una categoria----------------------
-    public static ModelProducto getProducto(ModelProducto categoria,String cadena){
-        ControllerConnDBMS controller = new ControllerConnDBMS();
-        Connection conn = controller.connectDB();
-        try {
-            Statement sta = conn.createStatement();
-            String strQuery = "select * from producto where nombre = '"+cadena+"';";
-            ResultSet res = sta.executeQuery(strQuery);
-            if(res.next()){
-//                categoria.setIdCategoria(Integer.parseInt(res.getString("idproducto")));
-                categoria.setNombre(res.getString("nombre"));
-//                categoria.setDescripcion(res.getString("descripcion"));
-//                categoria.setLinkFoto(res.getString("linkFoto"));
-//                categoria.setKilos(Integer.parseInt(res.getString("kilos")));
-//                categoria.setNumPersonas(Integer.parseInt(res.getString("numPersonas")));
-//                categoria.setPrecioUnitario(Double.parseDouble(res.getString("precioUnitario")));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-              try {
-                if (conn != null && !conn.isClosed())
-                    conn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return categoria;
-    }
-    
-    
-    public static boolean modifProdcuto(ModelProducto categoria,String nombre){
-        boolean flag = false;
-        ControllerConnDBMS controller = new ControllerConnDBMS();
-        Connection conn = controller.connectDB();
-        try {
-            Statement sta = conn.createStatement();
-//            String strQuery = "update producto "+categoria.modInfo()+" where nombre = '"+nombre+"';";            
-//            sta.executeUpdate(strQuery);
-            flag = true;
-        } catch (SQLException ex) {
-            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-              try {
-                if (conn != null && !conn.isClosed())
-                    conn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return flag;
-    }
 }

@@ -20,3 +20,11 @@ ORDER BY 4;
 
 select * from proveedor order by nombre;
 select idproducto,nombre,format(cantidad,0)as cantidad,preciocompra,precioventa,concat('$ ',format(((precioventa-preciocompra)*cantidad),2)) as ganancia from producto where eliminado != 1;
+SELECT IDPROVEEDOR, NOMBRE, APATERNO FROM PROVEEDOR WHERE ELIMINADO !=1 ORDER BY NOMBRE;
+
+SELECT PPP.`idProveedor`,PPP.nombre,PPP.`aPaterno`,P.`idProducto`,P.nombre,FORMAT(P.cantidad,0) AS CANTIDAD,P.`precioCompra`,P.`precioVenta`, CONCAT('$ ',FORMAT(((PRECIOVENTA-PRECIOCOMPRA)*CANTIDAD),2)) AS GANANCIA 
+FROM PROVEEDOR PPP
+JOIN PROVEEDOR_HAS_PRODUCTO PP
+ON (PPP.`idProveedor`=PP.`Proveedor_idProveedor`)
+JOIN producto P
+ON(PP.`Producto_idProducto`=P.`idProducto`);
