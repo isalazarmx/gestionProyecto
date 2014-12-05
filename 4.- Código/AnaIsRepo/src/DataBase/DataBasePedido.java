@@ -29,8 +29,8 @@ public class DataBasePedido {
         Connection conn = controller.connectDB();
         try {
             Statement sta = conn.createStatement();
-            String strQuery = "insert into ventaPedido(abono,resto,entregado,descripcion) values "+model.addInfo();
-            sta.executeUpdate(strQuery);
+//            String strQuery = "insert into ventaPedido(abono,resto,entregado,descripcion) values "+model.addInfo();
+//            sta.executeUpdate(strQuery);
             flag = true;
         } catch (SQLException ex) {
             Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);

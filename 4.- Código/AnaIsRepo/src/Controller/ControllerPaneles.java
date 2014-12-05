@@ -8,8 +8,7 @@ package Controller;
 import Model.ModelCategoria;
 import Model.ModelCliente;
 import Model.ModelEmpresa;
-import Model.ModelInsumo;
-import Model.ModelInsumo_has_Producto;
+import Model.Proveedor_has_Producto;
 import Model.ModelProducto;
 import Model.ModelProveedor;
 import Model.ModelUsuario;
@@ -30,17 +29,18 @@ public class ControllerPaneles {
     private ModelProveedor modelProveedor;
     private ModelProducto modelProducto;
     private ModelCategoria modelCategoria;
-    private ModelInsumo modelInsumo;
-    private ModelInsumo_has_Producto modelInsumoProducto;
+    private Proveedor_has_Producto modelInsumoProducto;
     private ModelVenta modelVenta;
     //---------------------------------------
     private JPanel panelUserData;
     private JButton botonDatosUsuario;
     private JPanel panelBotoneraPrincipal;
     private JPanel panelCentral;
+    private JPanel Productos;
     //--------------------------------------
     private JPanel panelInicio;
     private JPanel panelProductos;
+    private JPanel panelAlmacen;
     private JPanel panelVendedores;
     private JPanel panelClientes;
     private JPanel panelProveedores;
@@ -254,30 +254,16 @@ public class ControllerPaneles {
     }
 
     /**
-     * @return the modelInsumo
-     */
-    public ModelInsumo getModelInsumo() {
-        return modelInsumo;
-    }
-
-    /**
-     * @param modelInsumo the modelInsumo to set
-     */
-    public void setModelInsumo(ModelInsumo modelInsumo) {
-        this.modelInsumo = modelInsumo;
-    }
-
-    /**
      * @return the modelInsumoProducto
      */
-    public ModelInsumo_has_Producto getModelInsumoProducto() {
+    public Proveedor_has_Producto getModelInsumoProducto() {
         return modelInsumoProducto;
     }
 
     /**
      * @param modelInsumoProducto the modelInsumoProducto to set
      */
-    public void setModelInsumoProducto(ModelInsumo_has_Producto modelInsumoProducto) {
+    public void setModelInsumoProducto(Proveedor_has_Producto modelInsumoProducto) {
         this.modelInsumoProducto = modelInsumoProducto;
     }
 
@@ -307,5 +293,33 @@ public class ControllerPaneles {
      */
     public void setPanelProductos(JPanel panelProductos) {
         this.panelProductos = panelProductos;
+    }
+
+    /**
+     * @return the panelAlmacen
+     */
+    public JPanel getPanelAlmacen() {
+        return panelAlmacen;
+    }
+
+    /**
+     * @param panelAlmacen the panelAlmacen to set
+     */
+    public void setPanelAlmacen(JPanel panelAlmacen) {
+        this.panelAlmacen = panelAlmacen;
+    }
+
+    /**
+     * @return the Productos
+     */
+    public JPanel getProductos() {
+        return Productos;
+    }
+
+    /**
+     * @param Productos the Productos to set
+     */
+    public void setProductos(JPanel Productos) {
+        this.Productos = Productos;
     }
 }
