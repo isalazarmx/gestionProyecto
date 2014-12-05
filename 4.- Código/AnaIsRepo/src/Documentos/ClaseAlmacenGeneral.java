@@ -29,8 +29,8 @@ import org.apache.poi.ss.util.CellRangeAddress;
  *
  * @author Teté
  */
-public class ClaseAlmacenXLS {
-        public static void main(String[] args) {
+public class ClaseAlmacenGeneral {
+     public static void main(String[] args) {
 
     }
     int i;
@@ -74,7 +74,7 @@ public class ClaseAlmacenXLS {
 
             try ( // Creamos un Statement para poder hacer peticiones a la bd
                     Statement stat = con.createStatement()) {
-                ResultSet resultado = stat.executeQuery("select idProducto, nombre, cantidad,UnidadExistencia,minStock from producto where tipoProducto=2 ");
+                ResultSet resultado = stat.executeQuery("select idProducto, nombre, cantidad,UnidadExistencia,minStock  where tipoProducto=2 from producto");
                 while (resultado.next()) {
                     
                     //creamos la fila
@@ -199,6 +199,5 @@ public class ClaseAlmacenXLS {
         }
         cell.setCellStyle(cellStyle);
     }
-
     
 }

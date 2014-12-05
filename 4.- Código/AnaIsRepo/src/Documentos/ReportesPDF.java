@@ -53,7 +53,7 @@ public class ReportesPDF {
             agregarMetaDatos(documento);
             documento.add(new Paragraph(new Date().toString()));
             documento.close();
-            JOptionPane.showMessageDialog(null, "Ha terminado!\nSu archivo es:\n" + ruta);
+            JOptionPane.showMessageDialog(null, "Se ha creado!\nSu archivo es:\n" + ruta);
         } catch (FileNotFoundException | DocumentException | HeadlessException e) {
             e.getMessage();
         }
