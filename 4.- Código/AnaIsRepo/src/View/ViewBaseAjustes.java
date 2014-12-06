@@ -97,7 +97,7 @@ public class ViewBaseAjustes extends javax.swing.JPanel {
         next = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(245, 246, 247));
-        setPreferredSize(new java.awt.Dimension(1000, 724));
+        setPreferredSize(new java.awt.Dimension(900, 600));
 
         jPanel3.setBackground(new java.awt.Color(245, 246, 247));
 

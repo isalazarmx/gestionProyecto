@@ -13,17 +13,20 @@ import java.util.ArrayList;
  */
 public class ModelVenta {
     private int idVenta;
-    private int tipoVenta;
     private String fechaVenta;
     private String fechaEntrega;
-    private int kios;
+    private int kilos;
     private double abono;
-    private double resto;
+    private double resto;       
     private double precioTotal;
     private boolean entregado;
-    private int idProducto;
+    private String descripcion;
+    private int tipoVenta;
     private int idUsuario;
     private int idCliente;
+    private int idProducto;
+    
+    
     
     public ArrayList componentesPDF(){
         ArrayList comp = new ArrayList();
@@ -109,17 +112,17 @@ public class ModelVenta {
     }
 
     /**
-     * @return the kios
+     * @return the kilos
      */
     public int getKios() {
-        return kios;
+        return kilos;
     }
 
     /**
-     * @param kios the kios to set
+     * @param kios the kilos to set
      */
     public void setKios(int kios) {
-        this.kios = kios;
+        this.kilos = kios;
     }
 
     /**
@@ -218,6 +221,20 @@ public class ModelVenta {
      */
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
+    }
+
+    /**
+     * @return the descripcion
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * @param descripcion the descripcion to set
+     */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
     
 }

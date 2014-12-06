@@ -44,6 +44,8 @@ public class ControllerViewProducto {
     JLabel labelStatus;
     JLabel labelStatus02;
     JButton eliminar;
+    JTextField precioKilo01;
+    JTextField precioKilo02;
     ControllerCuentas cuentas;
     List<ModelCategoria> listCategoria;
     List<ModelProveedor> listProveedor;
@@ -81,6 +83,8 @@ public class ControllerViewProducto {
         this.labelStatus02 = (JLabel) components.get(20);
         this.eliminar = (JButton) components.get(21);
         this.tipoaAlmacen = (boolean) components.get(22);
+        this.precioKilo01 = (JTextField)components.get(23);
+        this.precioKilo02 = (JTextField)components.get(24);
         modifica = false;
     }
 
@@ -98,6 +102,13 @@ public class ControllerViewProducto {
         return buscaValor(
                 Integer.parseInt(precioCompra01.getText()),
                 Integer.parseInt(precioCompra02.getText())
+        );
+    }
+    
+    private double precioKilo() {
+        return buscaValor(
+                Integer.parseInt(precioKilo01.getText()),
+                Integer.parseInt(precioKilo02.getText())
         );
     }
 
@@ -128,6 +139,10 @@ public class ControllerViewProducto {
         ControllerValidation.soloNumeros(precioCompra01);
         ControllerValidation.limitarCaracteres(precioCompra02, 2);
         ControllerValidation.soloNumeros(precioCompra02);
+        ControllerValidation.limitarCaracteres(precioKilo01, 9);
+        ControllerValidation.soloNumeros(precioKilo01);
+        ControllerValidation.limitarCaracteres(precioKilo02, 2);
+        ControllerValidation.soloNumeros(precioKilo02);
     }
 
     public List cargarCombo(int tipoProducto, boolean seleccion) {
@@ -217,18 +232,22 @@ public class ControllerViewProducto {
                 if (!ID.getText().equals("Código de barras") && !ID.getText().isEmpty()) {
                     if(!DataBase.DataBaseProducto.checkExistProducto(ID.getText()) || modifica){
                         if (!nombre.getText().equals("Nombre del producto") && !nombre.getText().isEmpty()) {
-                            if (!cantidad01.getText().equals("0") && !cantidad01.getText().isEmpty()) {
-                                if (!unidadExistencia.getText().equals("0") && !unidadExistencia.getText().isEmpty()) {
-                                    if (!precioCompra01.getText().equals("0") && !precioCompra01.getText().isEmpty()) {
-                                        flag = true;
+                            if (!precioKilo01.getText().equals("0") && !precioCompra01.getText().isEmpty() || tipoaAlmacen) {
+                                if (!cantidad01.getText().equals("0") && !cantidad01.getText().isEmpty()) {
+                                    if (!unidadExistencia.getText().equals("0") && !unidadExistencia.getText().isEmpty()) {
+                                        if (!precioCompra01.getText().equals("0") && !precioCompra01.getText().isEmpty()) {
+                                           flag = true;
+                                        } else {
+                                            ControllerViewMsj.muestraMensajeGlobo("Indica el precio del producto", precioCompra01);
+                                        }
                                     } else {
-                                        ControllerViewMsj.muestraMensajeGlobo("Indica el precio del producto", precioCompra01);
+                                        ControllerViewMsj.muestraMensajeGlobo("Indica el precio del producto", unidadExistencia);
                                     }
                                 } else {
-                                    ControllerViewMsj.muestraMensajeGlobo("Indica la cantidad de productos que tienes", unidadExistencia);
+                                    ControllerViewMsj.muestraMensajeGlobo("Indica la cantidad de productos que tienes", cantidad01);
                                 }
                             } else {
-                                ControllerViewMsj.muestraMensajeGlobo("Indica el peso del producto", cantidad01);
+                                ControllerViewMsj.muestraMensajeGlobo("Indica el peso del producto", precioKilo01);
                             }
                         } else {
                             ControllerViewMsj.muestraMensajeGlobo("Identifica el producto con un nombre", nombre);
@@ -267,6 +286,8 @@ public class ControllerViewProducto {
             model.setTipoProducto(3);
         else
             model.setTipoProducto(2);
+        if(!tipoaAlmacen)
+            model.setPrecioKilo(precioKilo());
         model.setEmprsa_idempresa(1);
         model.setCategoria_idcategoria(buscaIdCategoria());
         return model;
@@ -323,6 +344,13 @@ public class ControllerViewProducto {
             precioCompra01.setText(temp[0]);
             precioCompra02.setForeground(Color.BLACK);
             precioCompra02.setText(temp[1]);
+            if(!tipoaAlmacen){
+                temp = convertirCantidades(modelTemp.getPrecioKilo());
+                precioKilo01.setForeground(Color.BLACK);
+                precioKilo01.setText(temp[0]);
+                precioKilo02.setForeground(Color.BLACK);
+                precioKilo02.setText(temp[1]);
+            }
             temp = convertirCantidades(modelTemp.getIncrementoVenta());
             incrementoVenta.setValue(Integer.parseInt(temp[0]));
             despliegaCuentas();
@@ -349,6 +377,8 @@ public class ControllerViewProducto {
         String valor1 = aux.substring(0,posDot);
         int posDotTemp = posDot+1;
         String valor2 = aux.substring(posDotTemp,aux.length());
+        if(valor2.length()==1)
+            valor2 = valor2+"0";
         String[] temp = new String[]{valor1,valor2};
         return temp;
     }
@@ -398,6 +428,8 @@ public class ControllerViewProducto {
         maxStock.setValue(10);
         limpiaJtextField(precioCompra01,"0");
         limpiaJtextField(precioCompra02,"00");
+        limpiaJtextField(precioKilo01,"0");
+        limpiaJtextField(precioKilo02,"00");
         incrementoVenta.setValue(0);
         limpiaJtextField(gananciaIndividual,"0");
         limpiaJtextField(gananciaTotal,"0");

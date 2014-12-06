@@ -19,6 +19,7 @@ public class ModelProducto {
     private String nombre;
     private double cantidad;
     private String tipoUnidad;
+    private double precioKilo;
     private int unidadExistencia;
     private int minStock;
     private int maxStock;
@@ -302,6 +303,20 @@ public class ModelProducto {
      */
     public void setModeloTable(DefaultTableModel modeloTable) {
         this.modeloTable = modeloTable;
+    }
+
+    /**
+     * @return the precioKilo
+     */
+    public double getPrecioKilo() {
+        return precioKilo;
+    }
+
+    /**
+     * @param precioKilo the precioKilo to set
+     */
+    public void setPrecioKilo(double precioKilo) {
+        this.precioKilo = precioKilo;
     }
           
     

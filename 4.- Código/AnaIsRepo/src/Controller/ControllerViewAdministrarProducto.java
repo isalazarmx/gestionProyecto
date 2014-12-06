@@ -121,6 +121,7 @@ public class ControllerViewAdministrarProducto {
     }
     
     public void busquedaTotal(){
+        limpiaBusqueda(new JButton());
         List pro = DataBase.DataBaseProducto.buscaTotal(tipoAlmacen);
         for (int i = 0; i < pro.size(); i++) {
             List list = (List)pro.get(i);

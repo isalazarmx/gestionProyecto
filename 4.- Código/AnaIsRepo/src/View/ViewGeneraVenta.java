@@ -19,7 +19,7 @@ import java.util.List;
  *
  * @author Jesus
  */
-public class ViewProducto extends javax.swing.JPanel {
+public class ViewGeneraVenta extends javax.swing.JPanel {
     ControllerPaneles controllerPaneles;
     ControllerValidation validation;
     ControllerViewProducto controller;
@@ -32,9 +32,9 @@ public class ViewProducto extends javax.swing.JPanel {
      * Creates new form ViewBaseAdministrador
      * @param controllerPaneles
      * @param user
-     * @param tipoAlmacen
+     * @param tipoProducto
      */
-    public ViewProducto(ControllerPaneles controllerPaneles, ModelProducto user,boolean tipoAlmacen) {
+    public ViewGeneraVenta(ControllerPaneles controllerPaneles, ModelProducto user,boolean tipoAlmacen) {
         this.tipoAlmacen=tipoAlmacen;
         this.prodcutoTemp = user;
         this.validation = new ControllerValidation();
@@ -46,13 +46,6 @@ public class ViewProducto extends javax.swing.JPanel {
         eliminar.setVisible(false);
         for (int i = 0; i < 4; i++)
             controller.cargarCombo(i,tipoAlmacen);
-        if(tipoAlmacen){
-            labelKilo.setVisible(false);
-            precioKilo01.setVisible(false);
-            labelDotKilo.setVisible(false);
-            precioKilo02.setVisible(false);
-        }
-        
         if(user==null){
             if(tipoAlmacen)
                 labelRuta.setText("Administración de almacén / Nuevo producto almacén");
@@ -93,8 +86,6 @@ public class ViewProducto extends javax.swing.JPanel {
         components.add(labelStatus02);
         components.add(eliminar);
         components.add(tipoAlmacen);
-        components.add(precioKilo01);
-        components.add(precioKilo02);
         controller = new ControllerViewProducto(components);
         controller.validations();
     }
@@ -158,10 +149,6 @@ public class ViewProducto extends javax.swing.JPanel {
         idProducto = new javax.swing.JComboBox();
         jLabel38 = new javax.swing.JLabel();
         labelStatus02 = new javax.swing.JLabel();
-        labelKilo = new javax.swing.JLabel();
-        precioKilo02 = new javax.swing.JTextField();
-        precioKilo01 = new javax.swing.JTextField();
-        labelDotKilo = new javax.swing.JLabel();
         labelStatus = new javax.swing.JLabel();
         eliminar = new javax.swing.JButton();
 
@@ -749,62 +736,6 @@ public class ViewProducto extends javax.swing.JPanel {
         labelStatus02.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelStatus02.setText("categoría almacenada con éxito");
 
-        labelKilo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelKilo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        labelKilo.setText("Precio por kilo:");
-
-        precioKilo02.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        precioKilo02.setForeground(new java.awt.Color(180, 180, 180));
-        precioKilo02.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        precioKilo02.setText("00");
-        precioKilo02.setPreferredSize(new java.awt.Dimension(49, 28));
-        precioKilo02.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                precioKilo02FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                precioKilo02FocusLost(evt);
-            }
-        });
-        precioKilo02.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                precioKilo02ActionPerformed(evt);
-            }
-        });
-        precioKilo02.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                precioKilo02KeyPressed(evt);
-            }
-        });
-
-        precioKilo01.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        precioKilo01.setForeground(new java.awt.Color(180, 180, 180));
-        precioKilo01.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        precioKilo01.setText("0");
-        precioKilo01.setPreferredSize(new java.awt.Dimension(49, 28));
-        precioKilo01.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                precioKilo01FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                precioKilo01FocusLost(evt);
-            }
-        });
-        precioKilo01.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                precioKilo01ActionPerformed(evt);
-            }
-        });
-        precioKilo01.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                precioKilo01KeyPressed(evt);
-            }
-        });
-
-        labelDotKilo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        labelDotKilo.setForeground(new java.awt.Color(66, 139, 202));
-        labelDotKilo.setText(".");
-
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -875,21 +806,11 @@ public class ViewProducto extends javax.swing.JPanel {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(tipoUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                                .addComponent(minStock, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel27)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(maxStock, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                                                .addComponent(labelKilo)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(precioKilo01, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(labelDotKilo)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(precioKilo02, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(minStock, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel27)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(maxStock, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -910,9 +831,9 @@ public class ViewProducto extends javax.swing.JPanel {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(labelNota))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addComponent(labelStatus02, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -935,18 +856,16 @@ public class ViewProducto extends javax.swing.JPanel {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(11, 11, 11)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cantidad01, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel31)
                     .addComponent(cantidad02, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tipoUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelKilo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(precioKilo01, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelDotKilo)
-                    .addComponent(precioKilo02, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tipoUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1211,8 +1130,6 @@ public class ViewProducto extends javax.swing.JPanel {
     private void cantidad02FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidad02FocusLost
         // TODO add your handling code here:
         validation.placeHolder(false, cantidad02,"00");
-        if(cantidad02.getText().length()==1)
-            cantidad02.setText(cantidad02.getText()+"0");
         controller.despliegaCuentas();
     }//GEN-LAST:event_cantidad02FocusLost
 
@@ -1258,10 +1175,7 @@ public class ViewProducto extends javax.swing.JPanel {
     private void precioCompra02FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_precioCompra02FocusLost
         // TODO add your handling code here:
         validation.placeHolder(false, precioCompra02,"00");
-        if(precioCompra02.getText().length()==1)
-            precioCompra02.setText(precioCompra02.getText()+"0");
         controller.despliegaCuentas();
-        
     }//GEN-LAST:event_precioCompra02FocusLost
 
     private void precioCompra02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioCompra02ActionPerformed
@@ -1394,50 +1308,6 @@ public class ViewProducto extends javax.swing.JPanel {
         controller.eliminaCategoria(labelStatus);
     }//GEN-LAST:event_eliminarActionPerformed
 
-    private void precioKilo02FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_precioKilo02FocusGained
-        // TODO add your handling code here:
-        validation.placeHolder(true, precioKilo02,"00");
-        labelStatus.setText("");
-    }//GEN-LAST:event_precioKilo02FocusGained
-
-    private void precioKilo02FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_precioKilo02FocusLost
-        // TODO add your handling code here:
-        validation.placeHolder(false, precioKilo02,"00");
-        if(precioKilo02.getText().length()==1)
-            precioKilo02.setText(precioKilo02.getText()+"0");
-    }//GEN-LAST:event_precioKilo02FocusLost
-
-    private void precioKilo02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioKilo02ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_precioKilo02ActionPerformed
-
-    private void precioKilo02KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_precioKilo02KeyPressed
-        // TODO add your handling code here:
-        if(evt.getKeyChar()==10)
-            controller.agregaModificaProducto();   
-    }//GEN-LAST:event_precioKilo02KeyPressed
-
-    private void precioKilo01FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_precioKilo01FocusGained
-        // TODO add your handling code here:
-        validation.placeHolder(true, precioKilo01,"0");
-        labelStatus.setText("");
-    }//GEN-LAST:event_precioKilo01FocusGained
-
-    private void precioKilo01FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_precioKilo01FocusLost
-        // TODO add your handling code here:
-        validation.placeHolder(false, precioKilo01,"0");
-    }//GEN-LAST:event_precioKilo01FocusLost
-
-    private void precioKilo01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioKilo01ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_precioKilo01ActionPerformed
-
-    private void precioKilo01KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_precioKilo01KeyPressed
-        // TODO add your handling code here:
-        if(evt.getKeyChar()==10)
-            controller.agregaModificaProducto();   
-    }//GEN-LAST:event_precioKilo01KeyPressed
-
     
        
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1480,8 +1350,6 @@ public class ViewProducto extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JLabel labelDotKilo;
-    private javax.swing.JLabel labelKilo;
     private javax.swing.JLabel labelNota;
     private javax.swing.JLabel labelRuta;
     private javax.swing.JLabel labelStatus;
@@ -1492,8 +1360,6 @@ public class ViewProducto extends javax.swing.JPanel {
     private javax.swing.JPanel panelImagen;
     private javax.swing.JTextField precioCompra01;
     private javax.swing.JTextField precioCompra02;
-    private javax.swing.JTextField precioKilo01;
-    private javax.swing.JTextField precioKilo02;
     private javax.swing.JTextField precioVenta01;
     private javax.swing.JComboBox tipoUnidad;
     private javax.swing.JTextField unidadExistencia;
