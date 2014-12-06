@@ -6,6 +6,7 @@
 package Model;
 
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,6 +26,7 @@ public class ModelVenta {
     private int idUsuario;
     private int idCliente;
     private int idProducto;
+    private DefaultTableModel modeloTable;
     
     
     
@@ -55,6 +57,25 @@ public class ModelVenta {
         return ancho; 
     }
 
+    public DefaultTableModel creaModelTable(){
+        setModeloTable(new DefaultTableModel(){
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false,false
+            };
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return canEdit [column];
+            }
+        });
+        getModeloTable().addColumn("Código");
+        getModeloTable().addColumn("Articulo");
+        getModeloTable().addColumn("Descripcion");
+        getModeloTable().addColumn("Tipo Venta");
+        getModeloTable().addColumn("Cantidad");
+        getModeloTable().addColumn("Precio");
+        getModeloTable().addColumn("Importe");
+        return getModeloTable();
+    }
     /**
      * @return the idVenta
      */
@@ -235,6 +256,20 @@ public class ModelVenta {
      */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    /**
+     * @return the modeloTable
+     */
+    public DefaultTableModel getModeloTable() {
+        return modeloTable;
+    }
+
+    /**
+     * @param modeloTable the modeloTable to set
+     */
+    public void setModeloTable(DefaultTableModel modeloTable) {
+        this.modeloTable = modeloTable;
     }
     
 }

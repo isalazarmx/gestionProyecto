@@ -35,7 +35,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanelBase" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanelBase" alignment="0" pref="733" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -124,7 +124,7 @@
                 <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor Por defecto"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -148,7 +148,7 @@
                 <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor Por defecto"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -179,11 +179,13 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="user" pref="500" max="32767" attributes="0"/>
+                      <Component id="user" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jLabelHora" min="-2" pref="140" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabelHora" min="-2" pref="160" max="-2" attributes="0"/>
+                      <Component id="jLabelFecha" min="-2" pref="249" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabelFecha" min="-2" pref="270" max="-2" attributes="0"/>
+                      <Component id="jLabelHora1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="ajustes" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -193,7 +195,10 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="ajustes" alignment="0" max="32767" attributes="0"/>
-                  <Component id="user" alignment="1" max="32767" attributes="0"/>
+                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                      <Component id="jLabelHora1" alignment="1" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="user" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Component id="jLabelHora" alignment="1" max="32767" attributes="0"/>
                   <Component id="jLabelFecha" alignment="1" max="32767" attributes="0"/>
               </Group>
@@ -226,7 +231,7 @@
                 <Property name="toolTipText" type="java.lang.String" value="Ajustes"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor Por defecto"/>
+                  <Color id="Default Cursor"/>
                 </Property>
                 <Property name="selected" type="boolean" value="true"/>
               </Properties>
@@ -248,7 +253,7 @@
                 <Property name="text" type="java.lang.String" value="Mensaje de bienvenida"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor Por defecto"/>
+                  <Color id="Default Cursor"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="4"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
@@ -272,6 +277,27 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Clock"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelHora1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="16" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f7" green="f6" red="f5" type="rgb"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Image/tienda.png"/>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Realiza nueva venta"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelHora1MouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -319,7 +345,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="panelCentral" max="32767" attributes="0"/>
+                      <Component id="panelCentral" pref="603" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -338,17 +364,20 @@
                     </LineBorder>
                   </Border>
                 </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[900, 600]"/>
+                </Property>
               </Properties>
 
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="898" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="568" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="601" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
