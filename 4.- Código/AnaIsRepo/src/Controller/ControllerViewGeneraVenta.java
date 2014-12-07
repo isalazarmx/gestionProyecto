@@ -520,6 +520,8 @@ public class ControllerViewGeneraVenta {
 //    }
 //    
     public void limpiaCamposVenta() {
+        precioTotal=0;
+        restoPrecio=0;
         codigoBarras.setForeground(new Color(180,180,180));
         codigoBarras.setText("Código de barras");
         imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/buscaImagen.png")));
