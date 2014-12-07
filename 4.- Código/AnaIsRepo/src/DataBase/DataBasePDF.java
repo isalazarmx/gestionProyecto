@@ -140,7 +140,7 @@ public class DataBasePDF {
         Connection conn = controller.connectDB();
         try {
             Statement sta = conn.createStatement();
-            String strQuery = "select * from ventas;";
+            String strQuery = "select idVenta, tipoVenta, fechaVenta, precioTotal, usuario_idusuario, SUM(precioTotal) as 'Total Ventas' from venta;";
             System.out.println(strQuery);
             ResultSet res = sta.executeQuery(strQuery);
             while(res.next()){
@@ -154,6 +154,7 @@ public class DataBasePDF {
                 tabla.addCell(cell);
                 cell = new PdfPCell(new Paragraph(res.getString("usuario_idusuario")));
                 tabla.addCell(cell);
+                cell = new PdfPCell (new Paragraph(res.getString("Total Ventas")));
             }
         } catch (SQLException ex) {
             Logger.getLogger(DataBase.DataBaseCliente.class.getName()).log(Level.SEVERE, null, ex);
@@ -212,8 +213,8 @@ public class DataBasePDF {
         Connection conn = controller.connectDB();
         try {
             Statement sta = conn.createStatement();
-            String strQuery = "select v.ventaPedido_idventaPedido,v.precioTotal,p.abono,p.resto,p.entregado,p.descripcion"
-                    + "       where v.ventaPedido_idventaPedido=p.idventaPedido from venta;";
+            String strQuery = "select ventaPedido_idventaPedido, precioTotal, Cliente_idCliente,usuario_idusario, fechaVenta, fechaEntrega from venta "
+                    + "order by fechaEntrega ;";
             System.out.println(strQuery);
             ResultSet res = sta.executeQuery(strQuery);
             while(res.next()){
@@ -221,13 +222,13 @@ public class DataBasePDF {
                 tabla.addCell(cell);
                 cell = new PdfPCell(new Paragraph(res.getString("precioTotal")));
                 tabla.addCell(cell);
-                cell = new PdfPCell(new Paragraph(res.getString("abono")));
+                cell = new PdfPCell(new Paragraph(res.getString("Clientee_idCliente")));
                 tabla.addCell(cell);
-                cell = new PdfPCell(new Paragraph(res.getString("resto")));
+                cell = new PdfPCell(new Paragraph(res.getString("usuario_idusuario")));
                 tabla.addCell(cell);
-                cell = new PdfPCell(new Paragraph(res.getString("entregado")));
+                cell = new PdfPCell(new Paragraph(res.getString("fechaVenta")));
                 tabla.addCell(cell);
-            }   cell = new PdfPCell(new Paragraph(res.getString("descripción")));
+            }   cell = new PdfPCell(new Paragraph(res.getString("fechaEntrega")));
                 tabla.addCell(cell);
         } catch (SQLException ex) {
             Logger.getLogger(DataBase.DataBaseCliente.class.getName()).log(Level.SEVERE, null, ex);

@@ -39,22 +39,24 @@ public class ModelVenta {
     }
     
     private String[] rotuloPDF(){
-        String rotulo[] = new String[5];
+        String rotulo[] = new String[6];
         rotulo[0]="Código venta";
         rotulo[1]="Tipo de venta";
         rotulo[2]="Fecha de venta";
         rotulo[3]="Precio total";
         rotulo[4]="Vendedor";
+        rotulo[5]="Total Ventas";
         return rotulo;
     }
     
     private float[] anchoFilas(){
-        float ancho[] = new float[5];
+        float ancho[] = new float[6];
         ancho[0] = 1f;
         ancho[1] = 1f;
         ancho[2] = 1f;
         ancho[3] = 1f;
         ancho[4] = 1f;
+        ancho[5] = 1f;
         return ancho; 
     }
 
