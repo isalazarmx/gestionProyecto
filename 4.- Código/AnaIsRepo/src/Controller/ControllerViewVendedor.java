@@ -38,23 +38,23 @@ public class ControllerViewVendedor {
     
     
     public ControllerViewVendedor(ArrayList components){
-        this.idCliente = (JTextField)components.get(0);
-        this.tipoVenta = (JComboBox)components.get(1);
-        this.fecha = (JTextField)components.get(2);
-        this.horaEnt = (JTextField)components.get(3);
-        this.lugarEnt = (JTextField)components.get(4);
-        this.idVentas = (JTextField)components.get(5);
-        this.codBarras = (JTextField)components.get(6);
-        this.descripcion = (JTextField)components.get(7);
-        this.price = (JTextField)components.get(8);
-        this.cantidad = (JTextField)components.get(9);
-        this.descuento = (JTextField)components.get(10);
-        this.importe = (JTextField)components.get(11);
-        this.abono = (JTextField)components.get(12);
-        this.resto= (JTextField)components.get(13);
-        this.subtotal = (JTextField)components.get(14);
-        this.iva = (JTextField)components.get(15);
-        this.totalT = (JTextField)components.get(16);
+////        this.idCliente = (JTextField)components.get(0);
+////        this.tipoVenta = (JComboBox)components.get(1);
+////        this.fecha = (JTextField)components.get(2);
+////        this.horaEnt = (JTextField)components.get(3);
+////        this.lugarEnt = (JTextField)components.get(4);
+////        this.idVentas = (JTextField)components.get(5);
+////        this.codBarras = (JTextField)components.get(6);
+////        this.descripcion = (JTextField)components.get(7);
+////        this.price = (JTextField)components.get(8);
+////        this.cantidad = (JTextField)components.get(9);
+////        this.descuento = (JTextField)components.get(10);
+////        this.importe = (JTextField)components.get(11);
+////        this.abono = (JTextField)components.get(12);
+////        this.resto= (JTextField)components.get(13);
+////        this.subtotal = (JTextField)components.get(14);
+////        this.iva = (JTextField)components.get(15);
+////        this.totalT = (JTextField)components.get(16);
     }
     
         public void validations(){

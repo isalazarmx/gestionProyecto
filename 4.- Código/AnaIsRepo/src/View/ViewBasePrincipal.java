@@ -100,6 +100,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         ajustes = new javax.swing.JButton();
         user = new javax.swing.JButton();
         jLabelHora = new javax.swing.JLabel();
+        jLabelHora1 = new javax.swing.JLabel();
         panelBotoneraPrincipal = new javax.swing.JPanel();
         panelBase = new javax.swing.JPanel();
         panelCentral = new javax.swing.JPanel();
@@ -120,7 +121,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         BCerrar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         BCerrar.setBorderPainted(false);
         BCerrar.setContentAreaFilled(false);
-        BCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BCerrarActionPerformed(evt);
@@ -133,7 +134,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         BMin.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         BMin.setBorderPainted(false);
         BMin.setContentAreaFilled(false);
-        BMin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BMin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BMin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BMinActionPerformed(evt);
@@ -205,16 +206,30 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         jLabelHora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clock.png"))); // NOI18N
         jLabelHora.setText("Clock");
 
+        jLabelHora1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabelHora1.setForeground(new java.awt.Color(245, 246, 247));
+        jLabelHora1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelHora1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/tienda.png"))); // NOI18N
+        jLabelHora1.setToolTipText("Realiza nueva venta");
+        jLabelHora1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelHora1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelHora1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelDataUserLayout = new javax.swing.GroupLayout(panelDataUser);
         panelDataUser.setLayout(panelDataUserLayout);
         panelDataUserLayout.setHorizontalGroup(
             panelDataUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDataUserLayout.createSequentialGroup()
-                .addComponent(user, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                .addComponent(user, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelHora, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelHora, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelHora1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ajustes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
@@ -222,7 +237,9 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         panelDataUserLayout.setVerticalGroup(
             panelDataUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(ajustes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(user, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDataUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabelHora1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(user))
             .addComponent(jLabelHora, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabelFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -245,16 +262,17 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
 
         panelCentral.setBackground(new java.awt.Color(245, 246, 247));
         panelCentral.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true));
+        panelCentral.setPreferredSize(new java.awt.Dimension(900, 600));
 
         javax.swing.GroupLayout panelCentralLayout = new javax.swing.GroupLayout(panelCentral);
         panelCentral.setLayout(panelCentralLayout);
         panelCentralLayout.setHorizontalGroup(
             panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 898, Short.MAX_VALUE)
         );
         panelCentralLayout.setVerticalGroup(
             panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 568, Short.MAX_VALUE)
+            .addGap(0, 601, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panelBaseLayout = new javax.swing.GroupLayout(panelBase);
@@ -270,7 +288,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
             panelBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBaseLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelCentral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelCentral, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -305,7 +323,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelBase, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
         );
 
         pack();
@@ -332,6 +350,13 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
         controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBotoneraPrincipal(controllerPaneles,false));
     }//GEN-LAST:event_userActionPerformed
 
+    private void jLabelHora1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHora1MouseClicked
+        // TODO add your handling code here:
+        controllerPaneles.addPanel(panelCentral, new ViewGeneraVenta(controllerPaneles, null, rootPaneCheckingEnabled));
+        controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBotoneraPrincipal(controllerPaneles,false));
+        
+    }//GEN-LAST:event_jLabelHora1MouseClicked
+
     public void agregaJPanel(JPanel panelBase, JPanel panelAdd){
         panelBase.removeAll();
         panelBase.add(panelAdd);
@@ -344,6 +369,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
     private javax.swing.JButton ajustes;
     private javax.swing.JLabel jLabelFecha;
     private javax.swing.JLabel jLabelHora;
+    private javax.swing.JLabel jLabelHora1;
     private javax.swing.JPanel jPanelBase;
     private javax.swing.JLabel labelTituloSoftware;
     private javax.swing.JPanel panelBase;

@@ -6,6 +6,7 @@
 package Model;
 
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,17 +14,21 @@ import java.util.ArrayList;
  */
 public class ModelVenta {
     private int idVenta;
-    private int tipoVenta;
     private String fechaVenta;
     private String fechaEntrega;
-    private int kios;
+    private int kilos;
     private double abono;
-    private double resto;
+    private double resto;       
     private double precioTotal;
     private boolean entregado;
-    private int idProducto;
+    private String descripcion;
+    private int tipoVenta;
     private int idUsuario;
     private int idCliente;
+    private int idProducto;
+    private DefaultTableModel modeloTable;
+    
+    
     
     public ArrayList componentesPDF(){
         ArrayList comp = new ArrayList();
@@ -52,6 +57,25 @@ public class ModelVenta {
         return ancho; 
     }
 
+    public DefaultTableModel creaModelTable(){
+        setModeloTable(new DefaultTableModel(){
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false,false
+            };
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return canEdit [column];
+            }
+        });
+        getModeloTable().addColumn("Código");
+        getModeloTable().addColumn("Articulo");
+        getModeloTable().addColumn("Descripcion");
+        getModeloTable().addColumn("Tipo Venta");
+        getModeloTable().addColumn("Cantidad");
+        getModeloTable().addColumn("Precio");
+        getModeloTable().addColumn("Importe");
+        return getModeloTable();
+    }
     /**
      * @return the idVenta
      */
@@ -109,17 +133,17 @@ public class ModelVenta {
     }
 
     /**
-     * @return the kios
+     * @return the kilos
      */
     public int getKios() {
-        return kios;
+        return kilos;
     }
 
     /**
-     * @param kios the kios to set
+     * @param kios the kilos to set
      */
     public void setKios(int kios) {
-        this.kios = kios;
+        this.kilos = kios;
     }
 
     /**
@@ -218,6 +242,34 @@ public class ModelVenta {
      */
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
+    }
+
+    /**
+     * @return the descripcion
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * @param descripcion the descripcion to set
+     */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    /**
+     * @return the modeloTable
+     */
+    public DefaultTableModel getModeloTable() {
+        return modeloTable;
+    }
+
+    /**
+     * @param modeloTable the modeloTable to set
+     */
+    public void setModeloTable(DefaultTableModel modeloTable) {
+        this.modeloTable = modeloTable;
     }
     
 }

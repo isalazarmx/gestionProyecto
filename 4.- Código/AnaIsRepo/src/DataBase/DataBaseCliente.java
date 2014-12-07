@@ -100,7 +100,7 @@ public class DataBaseCliente {
         try {
             Statement sta = conn.createStatement();
             if(cond){
-                String strQuery = "select * from cliente where eliminado!=1 order by idcliente;";
+                String strQuery = "select * from cliente where eliminado!=1 order by nombre;";
                 System.out.println(strQuery);
                 ResultSet res = sta.executeQuery(strQuery);
                 while(res.next())
