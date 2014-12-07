@@ -6,15 +6,18 @@ import Model.ModelProducto;
 import Model.ModelProveedor;
 import Model.Proveedor_has_Producto;
 import com.toedter.calendar.JDateChooser;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,11 +25,10 @@ import javax.swing.table.DefaultTableModel;
  * @author Carolina
  */
 public class ControllerViewGeneraVenta {
-
-   JTextField codigoBarras;
+    JTextField codigoBarras;
     JPanel panelImagen;
     JButton imagen;
-    JComboBox idProducto;
+    JComboBox idProductoTienda;
     JComboBox tipoVenta;
     JTextField existencia;
     JTextField precio;
@@ -49,23 +51,30 @@ public class ControllerViewGeneraVenta {
     JTextField resta01;
     JTextField cambio;
     JTextField total;
-    List<ModelProducto> listProductos;
+    List<ModelProducto> listProductosVenta;
+    List<ModelProducto> listProductosAlmacen;
     List<ModelCliente> listCliente;
-    
+    ModelProducto modTemp;
+    JComboBox idProductoAlmacen;
     ControllerCuentas cuentas;
+    ControllerTables controllerTableS;
+    double precioTotal;
+    double abonoPrecio;
+    double restoPrecio;
+    ///------------------------------------------------
+    
     List<ModelCategoria> listCategoria;
     List<ModelProveedor> listProveedor;
-    
     List<Proveedor_has_Producto> listRelations;
     boolean modifica;
     double precioCompra;
     double precioVenta;
-    ModelProducto modelTemp;
     boolean tipoaAlmacen;
 
     public ControllerViewGeneraVenta(ArrayList components) {
+        controllerTableS =  new ControllerTables();
         this.codigoBarras = (JTextField)components.get(0);
-        this.idProducto = (JComboBox)components.get(1);
+        this.idProductoTienda = (JComboBox)components.get(1);
         this.panelImagen = (JPanel)components.get(2);
         this.imagen = (JButton)components.get(3);
         this.tipoVenta= (JComboBox)components.get(4);
@@ -83,13 +92,16 @@ public class ControllerViewGeneraVenta {
         this.abono01= (JTextField)components.get(16);
         this.abono02= (JTextField)components.get(17);
         this.resto= (JTextField)components.get(18);
-        this.tablaNuevaVenta= (JTable)components.get(19);
-        this.modelTableVenta = (DefaultTableModel)components.get(20);
+        controllerTableS.setTabla((JTable)components.get(19));
+        controllerTableS.setModelTable((DefaultTableModel)components.get(20));
         this.cantidadRecibida01= (JTextField)components.get(21);
         this.cantidadRecibida02= (JTextField)components.get(22);
         this.resta01= (JTextField)components.get(23);
         this.cambio= (JTextField)components.get(24);
         this.total= (JTextField)components.get(25);
+        this.idProductoAlmacen = (JComboBox)components.get(26);
+        cuentas = new ControllerCuentas();
+        controllerTableS.getTabla().setModel(controllerTableS.getModelTable());
     }
 
     public void validations(){
@@ -106,15 +118,113 @@ public class ControllerViewGeneraVenta {
         
     }
     
+    public void muestraInfoPedido(JPanel panelPedido,JLabel labelPrecioKilo,JLabel labelKilos){
+    if(!idProductoTienda.getSelectedItem().equals("Producto tienda")
+            ||!idProductoAlmacen.getSelectedItem().equals("Producto almacen")
+            ||precio.equals("0")){    
+        if(tipoVenta.getSelectedItem().equals("Pedido")){
+            limpiaCamposPedido();
+            panelPedido.setVisible(true);
+            if(modTemp.getTipoProducto()==3){
+                labelPrecioKilo.setVisible(false);
+                precioKilo.setVisible(false);
+                labelKilos.setVisible(false);
+                kilos.setVisible(false);
+                String[] temp = convertirCantidades(precioTotal);
+                precio.setText(temp[0]+"."+temp[1]);
+                resto.setText(temp[0]+"."+temp[1]);
+            }else{
+                String[] temp = convertirCantidades(precioTotal);
+                precio.setText(temp[0]+"."+temp[1]);
+                resto.setText(temp[0]+"."+temp[1]);
+                labelPrecioKilo.setVisible(true);
+                precioKilo.setVisible(true);
+                precioKilo.setText(""+modTemp.getPrecioKilo());
+                labelKilos.setVisible(true);
+                kilos.setVisible(true);
+            }
+        }else
+            panelPedido.setVisible(false);
+    }else{
+        ControllerViewMsj.muestraMensajeGlobo("Seleciona un producto de la tienda", tipoVenta);
+        tipoVenta.setSelectedIndex(0);
+    }
+    }
+    
+    public void buscaInfoProducto(boolean tipoProducto){
+        boolean agregarInfo = false;
+        if(tipoProducto){
+            int selected = idProductoAlmacen.getSelectedIndex()-1;
+            if(selected==-1)
+                limpiaCamposVenta();
+            else{
+                modTemp = listProductosAlmacen.get(selected);
+                agregarInfo=true;
+            }
+        }else{
+            int selected = idProductoTienda.getSelectedIndex()-1;
+            if(selected==-1)
+                limpiaCamposVenta();
+            else{
+                modTemp = listProductosVenta.get(selected);
+                agregarInfo=true;
+            }
+        }
+        if(agregarInfo){
+            new ControllerImagenes().cargaImagen(modTemp.getImagen(), panelImagen, imagen);
+            existencia.setText(""+modTemp.getUnidadExistencia());
+            precio.setText(""+modTemp.getPrecioVenta());
+            String[] temp = convertirCantidades(modTemp.getPrecioVenta());
+            precioTotal = buscaValor(Integer.parseInt(temp[0]),Integer.parseInt(temp[1]));
+            precioKilo.setText(""+modTemp.getPrecioKilo());
+            cantidad.setModel(new SpinnerNumberModel(1,1,modTemp.getUnidadExistencia(),1));
+            panelImagen.updateUI();
+        }
+    }
+    
+    public void calcularPrecioVentaGeneral(boolean tipoCampo){
+        if(modTemp != null){
+            if(tipoCampo){
+                double val1 = (Integer)cantidad.getValue();
+                double val2 = modTemp.getPrecioVenta();
+                precioTotal = cuentas.gananciaIndividual(val2,val1);
+            }else{
+                double val1 = (Integer)kilos.getValue();
+                double val2 = modTemp.getPrecioKilo();
+                precioTotal = cuentas.gananciaIndividual(val2,val1);
+                restoPrecio = precioTotal;
+            }
+            String[] temp = convertirCantidades(precioTotal);
+            precio.setText(temp[0]+"."+temp[1]);
+            resto.setText(temp[0]+"."+temp[1]);
+        }
+        
+    }
+    
+    private String[] convertirCantidades(Double valor){
+        String aux = ""+valor;
+        int posDot = aux.indexOf(".");
+        String valor1 = aux.substring(0,posDot);
+        int posDotTemp = posDot+1;
+        int posDotTemp2 = posDot+3;
+        if(aux.length()<posDotTemp2)
+            posDotTemp2=posDotTemp2-1;
+        String valor2 = aux.substring(posDotTemp,posDotTemp2);
+        if(valor2.length()==1)
+            valor2 = valor2+"0";
+        String[] temp = new String[]{valor1,valor2};
+        return temp;
+    }
+        
 //    private double incremento() {
 //        double temp2 = (Integer) incrementoVenta.getValue();
 //        double temp = temp2 / 100;
 //        return temp;
 //    }
 //
-//    private double buscaValor(double parteEntera, double parteDecimal) {
-//        return parteEntera + (parteDecimal / 100);
-//    }
+    private double buscaValor(double parteEntera, double parteDecimal) {
+        return parteEntera + (parteDecimal / 100);
+    }
 //
 //    private double precioCompra() {
 //        return buscaValor(
@@ -148,18 +258,28 @@ public class ControllerViewGeneraVenta {
         List temp = null;
         switch (tipoProducto) {
             case 0:
-                int cant00 = idProducto.getItemCount()-1;
+                int cant00 = idProductoTienda.getItemCount()-1;
                 for (int i = cant00; i > 0; i--) {
-                    idProducto.removeItemAt(i);
+                    idProductoTienda.removeItemAt(i);
                 }
-                listProductos = DataBase.DataBaseProducto.regresaTodos();
-                for (ModelProducto list1 : listProductos)
-                    idProducto.addItem(list1.getNombre());
-                temp = listProductos;
+                listProductosVenta = DataBase.DataBaseProducto.buscaProductos(false);
+                for (ModelProducto list1 : listProductosVenta)
+                    idProductoTienda.addItem(list1.getNombre());
+                temp = listProductosVenta;
                 break;
             case 1:
-                int cant01 = idCliente.getItemCount()-1;
+                int cant01 = idProductoAlmacen.getItemCount()-1;
                 for (int i = cant01; i > 0; i--) {
+                    idProductoAlmacen.removeItemAt(i);
+                }
+                listProductosAlmacen = DataBase.DataBaseProducto.buscaProductos(true);
+                for (ModelProducto list1 : listProductosAlmacen)
+                    idProductoAlmacen.addItem(list1.getNombre());
+                temp = listProductosAlmacen;
+                break;
+            case 2:
+                int cant02 = idCliente.getItemCount()-1;
+                for (int i = cant02; i > 0; i--) {
                     idCliente.removeItemAt(i);
                 }
                 listCliente = DataBase.DataBaseCliente.buscaCliente("","",true);
@@ -167,19 +287,6 @@ public class ControllerViewGeneraVenta {
                     idCliente.addItem(list1.getNombre() + " " + list1.getaPaterno());
                 temp = listCliente;
                 break;
-//            case 2:
-//                int cant02 = idProducto.getItemCount()-1;
-//                for (int i = cant02; i > 0; i--) {
-//                    idProducto.removeItemAt(i);
-//                }
-//                listProductos = DataBase.DataBaseProducto.buscaProductos(seleccion);
-//                for (ModelProducto list1 : listProductos)
-//                    idProducto.addItem(list1.getNombre());
-//                temp = listProductos;
-//                break;
-//            case 3:
-//                listRelations = DataBase.DataBaseProveedor_has_Producto.buscaRelations();
-//                break;
         }
         return temp;
     }
@@ -315,9 +422,9 @@ public class ControllerViewGeneraVenta {
 //    }
 //    
 //    public void identificaInfo(JPanel panelImage) {
-//        int pos = idProducto.getSelectedIndex()-1;
+//        int pos = idProductoTienda.getSelectedIndex()-1;
 //        if (pos != -1){
-//            modelTemp = listProductos.get(pos);
+//            modelTemp = listProductosVenta.get(pos);
 //            Model.Proveedor_has_Producto relations = buscaRelations(modelTemp.getIdProducto());
 //            idCategoria.setEnabled(false);
 //            idCategoria.setSelectedIndex(identificaInfoCom(relations.getProdcuto_categoria_idcategoria(),true));
@@ -403,47 +510,50 @@ public class ControllerViewGeneraVenta {
 //        return 0;
 //    }
 //    
-//    private Model.Proveedor_has_Producto buscaRelations(String idProducto){
+//    private Model.Proveedor_has_Producto buscaRelations(String idProductoTienda){
 //        for (int i = 0; i < listRelations.size(); i++) {
 //            Model.Proveedor_has_Producto model = listRelations.get(i);
-//            if(model.getProducto_idproducto().equals(idProducto))
+//            if(model.getProducto_idproducto().equals(idProductoTienda))
 //                return model;
 //        }
 //        return new Proveedor_has_Producto();
 //    }
 //    
-//    public void limpiaCampos() {
-//        idProducto.setSelectedIndex(0);
-//        idCategoria.setEnabled(true);
-//        idCategoria.setSelectedIndex(0);
-//        idProveedor.setSelectedIndex(0);
-//        ID.setEditable(true);
-//        limpiaJtextField(ID,"Código de barras");
-//        limpiaJtextField(nombre,"Nombre del producto");
-//        limpiaJtextField(cantidad01,"0");
-//        limpiaJtextField(cantidad02,"00");
-//        limpiaJtextField(unidadExistencia,"0");
-//        minStock.setValue(5);
-//        maxStock.setValue(10);
-//        limpiaJtextField(precioCompra01,"0");
-//        limpiaJtextField(precioCompra02,"00");
-//        limpiaJtextField(precioKilo01,"0");
-//        limpiaJtextField(precioKilo02,"00");
-//        incrementoVenta.setValue(0);
-//        limpiaJtextField(gananciaIndividual,"0");
-//        limpiaJtextField(gananciaTotal,"0");
-//        limpiaJtextField(inversion,"0");
-//        limpiaJtextField(precioVenta01,"0");
-//        gananciaIndividual.setForeground(Color.BLACK);
-//        gananciaTotal.setForeground(Color.BLACK);
-//        inversion.setForeground(Color.BLACK);
-//        precioVenta01.setForeground(Color.BLACK);
-//        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/buscaImagen.png")));
-//        cargaCombos();
-//        modifica=false;
-//        labelStatus02.setText("");
-//        eliminar.setVisible(false);
-//    }
+    public void limpiaCamposVenta() {
+        codigoBarras.setForeground(new Color(180,180,180));
+        codigoBarras.setText("Código de barras");
+        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/buscaImagen.png")));
+        idProductoTienda.setSelectedIndex(0);
+        idProductoAlmacen.setSelectedIndex(0);
+        tipoVenta.setSelectedIndex(0);
+        existencia.setText("0");
+        precio.setText("0");
+        cantidad.setValue(1);
+        limpiaCamposPedido();
+//        cantidadRecibida01.setForeground(new Color(180,180,180));
+//        cantidadRecibida01.setText("0");
+//        cantidadRecibida02.setForeground(new Color(180,180,180));
+//        cantidadRecibida02.setText("00");
+//        resta01.setText("0");
+//        cambio.setText("0");
+//        total.setText("0");
+    }
+    
+    public void limpiaCamposPedido(){
+        idCliente.setSelectedIndex(0);
+        fechaEntrega.cleanup();
+        hora.setValue(12);
+        minutos.setValue(30);
+        descripcion.setForeground(new Color(180,180,180));
+        descripcion.setText("Agrega una descripción");
+        precioKilo.setText("0");
+        kilos.setValue(1);
+        abono01.setForeground(new Color(180,180,180));
+        abono01.setText("0");
+        abono02.setForeground(new Color(180,180,180));
+        abono02.setText("00");
+        resto.setText("0");
+    }
 //
 //    public void cargaCombos(){
 //        for (int i = 0; i < 4; i++)

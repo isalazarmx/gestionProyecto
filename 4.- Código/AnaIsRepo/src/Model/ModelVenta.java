@@ -17,6 +17,7 @@ public class ModelVenta {
     private String fechaVenta;
     private String fechaEntrega;
     private int kilos;
+    private int unidadesVendidas;
     private double abono;
     private double resto;       
     private double precioTotal;
@@ -136,14 +137,14 @@ public class ModelVenta {
      * @return the kilos
      */
     public int getKios() {
-        return kilos;
+        return getKilos();
     }
 
     /**
      * @param kios the kilos to set
      */
     public void setKios(int kios) {
-        this.kilos = kios;
+        this.setKilos(kios);
     }
 
     /**
@@ -270,6 +271,34 @@ public class ModelVenta {
      */
     public void setModeloTable(DefaultTableModel modeloTable) {
         this.modeloTable = modeloTable;
+    }
+
+    /**
+     * @return the kilos
+     */
+    public int getKilos() {
+        return kilos;
+    }
+
+    /**
+     * @param kilos the kilos to set
+     */
+    public void setKilos(int kilos) {
+        this.kilos = kilos;
+    }
+
+    /**
+     * @return the unidadesVendidas
+     */
+    public int getUnidadesVendidas() {
+        return unidadesVendidas;
+    }
+
+    /**
+     * @param unidadesVendidas the unidadesVendidas to set
+     */
+    public void setUnidadesVendidas(int unidadesVendidas) {
+        this.unidadesVendidas = unidadesVendidas;
     }
     
 }

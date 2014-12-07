@@ -54,32 +54,6 @@ public class DataBaseProducto
         return list;
     }
     
-    public static List<ModelProducto> regresaTodos(){
-        ControllerConnDBMS controller = new ControllerConnDBMS();
-        Connection conn = controller.connectDB();
-        List<ModelProducto> list = new ArrayList<>();
-        try {
-            Statement sta = conn.createStatement();
-            String strQuery;
-                strQuery = "SELECT * FROM PRODUCTO WHERE ELIMINADO != 1 ORDER BY NOMBRE;";
-            ResultSet res = sta.executeQuery(strQuery);
-            while(res.next()){
-                ModelProducto model = creaModelo(res);
-                list.add(model);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-              try {
-                if (conn != null && !conn.isClosed())
-                    conn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return list;
-    }
-    
     public static List buscaPorCategoria(int idcategoria, boolean tipoCategoria){
         ControllerConnDBMS controller = new ControllerConnDBMS();
         Connection conn = controller.connectDB();
