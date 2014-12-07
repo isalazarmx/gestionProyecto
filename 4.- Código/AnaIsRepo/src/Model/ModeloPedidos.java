@@ -30,10 +30,10 @@ public class ModeloPedidos {
         String rotulo[] = new String[6];
         rotulo[0]="Codigo Pedido";
         rotulo[1]="Total";
-        rotulo[2]="Abono";
-        rotulo[3]="Resto";
-        rotulo[4]="Status";
-        rotulo[5]="Descripcion";
+        rotulo[2]="Cliente";
+        rotulo[3]="Vendedor";
+        rotulo[4]="Fecha de venta";
+        rotulo[5]="Fecha de entrega";
         return rotulo;
     }
     
