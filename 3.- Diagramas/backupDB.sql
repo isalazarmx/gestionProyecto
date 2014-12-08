@@ -319,9 +319,9 @@ CREATE TABLE `venta` (
   `descripcion` varchar(250) DEFAULT NULL,
   `tipoVenta` int(11) NOT NULL DEFAULT '1',
   `usuario_idusuario` int(11) NOT NULL,
-  `Cliente_idCliente` int(11) NOT NULL,
+  `Cliente_idCliente` int(11) DEFAULT '0',
   `Producto_idProducto` varchar(30) NOT NULL,
-  PRIMARY KEY (`idVenta`,`usuario_idusuario`,`Cliente_idCliente`,`Producto_idProducto`),
+  PRIMARY KEY (`idVenta`,`usuario_idusuario`,`Producto_idProducto`),
   UNIQUE KEY `idVenta_UNIQUE` (`idVenta`),
   KEY `fk_Venta_usuario1_idx` (`usuario_idusuario`),
   KEY `fk_Venta_Cliente1_idx` (`Cliente_idCliente`),
@@ -329,7 +329,7 @@ CREATE TABLE `venta` (
   CONSTRAINT `fk_Venta_Cliente1` FOREIGN KEY (`Cliente_idCliente`) REFERENCES `cliente` (`idCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Venta_Producto1` FOREIGN KEY (`Producto_idProducto`) REFERENCES `producto` (`idProducto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Venta_usuario1` FOREIGN KEY (`usuario_idusuario`) REFERENCES `usuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -338,6 +338,7 @@ CREATE TABLE `venta` (
 
 LOCK TABLES `venta` WRITE;
 /*!40000 ALTER TABLE `venta` DISABLE KEYS */;
+INSERT INTO `venta` VALUES (4,'2014-12-07 20:46:00','2014-12-07 12:30:00',1,4,0.00,0.00,252.00,1,0,'Agrega una descripción',2,1,1,'XVA123'),(5,'2014-12-07 20:54:44','2014-12-07 12:30:00',1,4,0.00,0.00,252.00,1,0,'Agrega una descripción',2,1,1,'XVA123'),(6,'2014-12-07 20:54:47','2014-12-14 12:30:00',1,1,200.00,52.00,252.00,0,0,'Agrega una descripción',3,1,5,'XVA123'),(7,'2014-12-07 20:58:26','2014-12-07 12:30:00',1,4,0.00,0.00,252.00,1,0,'Agrega una descripción',2,1,1,'XVA123'),(8,'2014-12-07 20:58:26','2014-12-07 12:30:00',1,2,0.00,0.00,200.00,1,0,'Agrega una descripción',2,1,1,'confirmacion123'),(9,'2014-12-07 20:58:26','2014-12-07 12:30:00',1,8,0.00,0.00,150.63,1,0,'Agrega una descripción',2,1,1,'BoteRelleno125'),(10,'2014-12-07 20:58:26','2014-12-07 12:30:00',5,4,0.00,0.00,945.00,1,0,'Agrega una descripción',2,1,1,'Relleno458'),(11,'2014-12-07 20:58:26','2014-12-15 18:30:00',1,1,252.00,0.00,252.00,0,0,'Agrega una descripción',3,1,7,'XVA123'),(12,'2014-12-07 20:58:26','2014-12-14 12:30:00',6,6,252.00,350.70,350.70,0,0,'Agrega una descripción',3,1,18,'bautizo123'),(13,'2014-12-07 21:02:54','2014-12-07 12:30:00',1,4,0.00,0.00,252.00,1,0,'Agrega una descripción',2,1,1,'XVA123'),(14,'2014-12-07 23:16:10','2014-12-07 12:30:00',2,5,0.00,0.00,407.46,1,0,'Agrega una descripción',2,1,1,'boda123');
 /*!40000 ALTER TABLE `venta` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -350,4 +351,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-12-07 20:33:51
+-- Dump completed on 2014-12-08  0:35:37
