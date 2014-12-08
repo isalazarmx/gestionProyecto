@@ -68,9 +68,9 @@ public class ClaseAlmacenProducto {
             createCell(wb, row, 0, CellStyle.ALIGN_CENTER, CellStyle.VERTICAL_CENTER, "Código de producto", true, true);
             createCell(wb, row, 1, CellStyle.ALIGN_CENTER, CellStyle.VERTICAL_CENTER, "Nombre", true, true);
             createCell(wb, row, 2, CellStyle.ALIGN_CENTER, CellStyle.VERTICAL_CENTER, "Cantidad", true, true);
-            createCell(wb, row, 2, CellStyle.ALIGN_CENTER, CellStyle.VERTICAL_CENTER, "Precio de Venta", true, true);
-            createCell(wb, row, 3, CellStyle.ALIGN_CENTER, CellStyle.VERTICAL_CENTER, "Ganancia", true, true);
-            createCell(wb, row, 4, CellStyle.ALIGN_CENTER, CellStyle.VERTICAL_CENTER, "Existencia", true, true);
+            createCell(wb, row, 3, CellStyle.ALIGN_CENTER, CellStyle.VERTICAL_CENTER, "Precio de Venta", true, true);
+            createCell(wb, row, 4, CellStyle.ALIGN_CENTER, CellStyle.VERTICAL_CENTER, "Ganancia", true, true);
+            createCell(wb, row, 5, CellStyle.ALIGN_CENTER, CellStyle.VERTICAL_CENTER, "Existencia", true, true);
             
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/poscakeapp", "root", "");
@@ -86,8 +86,8 @@ public class ClaseAlmacenProducto {
                     String idProducto = String.valueOf(resultado.getString("idProducto"));
                     String nombre = String.valueOf(resultado.getString("nombre"));
                     String cantidad = String.valueOf(resultado.getInt("cantidad"));
-                    String precioVenta = String.valueOf(resultado.getInt("precioVenta"));
-                    String ganancia = String.valueOf(resultado.getInt("ganancia"));
+                    String precioVenta = String.valueOf(resultado.getString("precioVenta"));
+                    String ganancia = String.valueOf(resultado.getString("ganancia"));
                     String UnidadExistencia = String.valueOf(resultado.getInt("UnidadExistencia"));
                     //String Image = String.valueOf(resultado.getBlob("Image"));
                     // Creo las celdas de mi fila, se puede poner un diseño a la celda
@@ -96,9 +96,9 @@ public class ClaseAlmacenProducto {
                     creandoCelda(wb, fila, 0, idProducto);
                     creandoCelda(wb, fila, 1, nombre);
                     creandoCelda(wb, fila, 2, cantidad);
-                    creandoCelda(wb, fila, 2, precioVenta);
-                    creandoCelda(wb, fila, 2, ganancia);
-                    creandoCelda(wb, fila, 3, UnidadExistencia);
+                    creandoCelda(wb, fila, 3, precioVenta);
+                    creandoCelda(wb, fila, 4, ganancia);
+                    creandoCelda(wb, fila, 5, UnidadExistencia);
                     //creandoCelda(wb, fila, 5, Image);
                     i++;
                 }

@@ -213,8 +213,7 @@ public class DataBasePDF {
         Connection conn = controller.connectDB();
         try {
             Statement sta = conn.createStatement();
-            String strQuery = "select ventaPedido_idventaPedido, precioTotal, Cliente_idCliente,usuario_idusario, fechaVenta, fechaEntrega from venta "
-                    + "order by fechaEntrega ;";
+            String strQuery = "select idVenta, precioTotal, Cliente_idCliente,usuario_idusuario, fechaVenta, fechaEntrega from venta where tipoVenta=3 order by fechaEntrega ;";
             System.out.println(strQuery);
             ResultSet res = sta.executeQuery(strQuery);
             while(res.next()){
