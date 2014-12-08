@@ -29,4 +29,9 @@ ON (PPP.`idProveedor`=PP.`Proveedor_idProveedor`)
 JOIN producto P
 ON(PP.`Producto_idProducto`=P.`idProducto`);
 
-select * from venta;
+SELECT P.`idProducto` AS CODIGO,P.nombre AS ARTICULO,V.`tipoVenta`AS TIPOVENTA,V.`unidadesVendidas` AS CANTIDAD,P.`precioVenta` AS PRECIO,V.abono AS ABONO,V.resto AS RESTO,V.`precioTotal` AS IMPORTE 
+FROM VENTA V
+JOIN PRODUCTO P
+ON (V.PRODUCTO_IDPRODUCTO=P.IDPRODUCTO);
+
+select sum(preciototal) from venta;

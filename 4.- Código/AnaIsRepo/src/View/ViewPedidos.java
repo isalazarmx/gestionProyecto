@@ -30,6 +30,7 @@ public class ViewPedidos extends javax.swing.JPanel {
     
     /**
      * Creates new form ViewClientes
+     * @param controllerPaneles
      */
     public ViewPedidos(ControllerPaneles controllerPaneles) {
         this.controllerPaneles = controllerPaneles;
@@ -51,7 +52,6 @@ public class ViewPedidos extends javax.swing.JPanel {
         ArrayList components = new ArrayList<>();
         components.add(idCliente);
         components.add(codigoVenta);
-
         controller = new ControllerViewPedidos(components);
         controller.validations();
     }

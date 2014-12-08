@@ -26,21 +26,28 @@ import java.util.logging.Logger;
  */
 public class DataBaseVenta 
 {
-    public static List<ModelProducto> buscaProductos(boolean tipoCategoria){
+    public static List buscaVentas(){
         ControllerConnDBMS controller = new ControllerConnDBMS();
         Connection conn = controller.connectDB();
-        List<ModelProducto> list = new ArrayList<>();
+        List list = new ArrayList<>();
         try {
             Statement sta = conn.createStatement();
-            String strQuery;
-            if(tipoCategoria)
-                strQuery = "SELECT * FROM PRODUCTO WHERE TIPOPRODUCTO = 3 AND ELIMINADO != 1 ORDER BY NOMBRE;";
-            else
-                strQuery = "SELECT * FROM PRODUCTO WHERE TIPOPRODUCTO = 2 AND ELIMINADO != 1 ORDER BY NOMBRE;";
+            String strQuery="SELECT P.`idProducto` AS CODIGO,P.nombre AS ARTICULO,V.`tipoVenta`AS TIPOVENTA,V.`unidadesVendidas` AS CANTIDAD,P.`precioVenta` AS PRECIO,V.abono AS ABONO,V.resto AS RESTO,V.`precioTotal` AS IMPORTE \n" +
+                            "FROM VENTA V\n" +
+                            "JOIN PRODUCTO P\n" +
+                            "ON (V.PRODUCTO_IDPRODUCTO=P.IDPRODUCTO);";
             ResultSet res = sta.executeQuery(strQuery);
             while(res.next()){
-                ModelProducto model = creaModelo(res);
-                list.add(model);
+                List listTemp = new ArrayList<>();
+                listTemp.add(res.getString("CODIGO"));
+                listTemp.add(res.getString("ARTICULO"));
+                listTemp.add(res.getInt("TIPOVENTA"));
+                listTemp.add(res.getInt("CANTIDAD"));
+                listTemp.add(res.getDouble("PRECIO"));
+                listTemp.add(res.getDouble("ABONO"));
+                listTemp.add(res.getDouble("RESTO"));
+                listTemp.add(res.getDouble("IMPORTE"));
+                list.add(listTemp);
             }
         } catch (SQLException ex) {
             Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
@@ -55,27 +62,16 @@ public class DataBaseVenta
         return list;
     }
     
-    public static List buscaPorCategoria(int idcategoria, boolean tipoCategoria){
+    public static double buscaCantidadGanada(){
         ControllerConnDBMS controller = new ControllerConnDBMS();
         Connection conn = controller.connectDB();
-        List list = new ArrayList<>();
+        double temp = 0;
         try {
             Statement sta = conn.createStatement();
-            String strQuery;
-            if(tipoCategoria)
-                strQuery = "SELECT IDPRODUCTO,NOMBRE,FORMAT(CANTIDAD,0) AS CANTIDAD,TIPOUNIDAD,PRECIOCOMPRA,PRECIOVENTA, CONCAT('$ ',FORMAT(((PRECIOVENTA-PRECIOCOMPRA)*CANTIDAD),2)) AS GANANCIA FROM PRODUCTO WHERE TIPOPRODUCTO = 3 AND ELIMINADO != 1 AND CATEGORIA_IDCATEGORIA = "+idcategoria+" ORDER BY NOMBRE;";
-            else
-                strQuery = "SELECT IDPRODUCTO,NOMBRE,FORMAT(CANTIDAD,0) AS CANTIDAD,TIPOUNIDAD,PRECIOCOMPRA,PRECIOVENTA, CONCAT('$ ',FORMAT(((PRECIOVENTA-PRECIOCOMPRA)*CANTIDAD),2)) AS GANANCIA FROM PRODUCTO WHERE TIPOPRODUCTO = 2 AND ELIMINADO != 1 AND CATEGORIA_IDCATEGORIA = "+idcategoria+" ORDER BY NOMBRE;";
+            String strQuery = "select sum(preciototal) as precio from venta;";
             ResultSet res = sta.executeQuery(strQuery);
             while(res.next()){
-                List model = new ArrayList<>();
-                model.add(res.getString("IDPRODUCTO"));
-                model.add(res.getString("NOMBRE"));
-                model.add(res.getString("CANTIDAD"));
-                model.add(res.getString("PRECIOCOMPRA"));
-                model.add(res.getString("PRECIOVENTA"));
-                model.add(res.getString("GANANCIA"));
-                list.add(model);
+                temp = res.getDouble("precio");
             }
         } catch (SQLException ex) {
             Logger.getLogger(DataBase.DataBaseCategoria.class.getName()).log(Level.SEVERE, null, ex);
@@ -87,7 +83,7 @@ public class DataBaseVenta
                 Logger.getLogger(ControllerConnDBMS.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return list;
+        return temp;
     }
     
     public static List buscaPorProveedor(int idproveedor, boolean tipoCategoria){
@@ -172,24 +168,12 @@ public class DataBaseVenta
         return list;
     }
     
-    private static ModelProducto creaModelo(ResultSet res){
-        ModelProducto model = new ModelProducto();
+    private static ModelVenta creaModelo(ResultSet res){
+        ModelVenta model = new ModelVenta();
         try {
             model.setIdProducto(res.getString("idProducto"));
-            model.setNombre(res.getString("nombre"));
-            model.setCantidad(res.getInt("cantidad"));
-            model.setTipoUnidad(res.getString("tipoUnidad"));
-            model.setPrecioKilo(res.getDouble("preciokilo"));
-            model.setUnidadExistencia(res.getInt("UnidadExistencia"));
-            model.setMinStock(res.getInt("minStock"));
-            model.setMaxStock(res.getInt("maxStock"));
-            model.setPrecioCompra(res.getDouble("precioCompra"));
-            model.setIncrementoVenta(res.getDouble("incrementoVenta"));
-            model.setPrecioVenta(res.getDouble("precioVenta"));
-            model.setImagen(res.getBlob("image"));
-            model.setTipoProducto(res.getInt("tipoProducto"));
-            model.setEmprsa_idempresa(res.getInt("empresa_idempresa"));
-            model.setCategoria_idcategoria(res.getInt("categoria_idcategoria"));
+            model.setTipoVenta(res.getInt("TIPOVENTA"));
+            
         } catch (SQLException ex) {
             Logger.getLogger(DataBaseVenta.class.getName()).log(Level.SEVERE, null, ex);
         }
