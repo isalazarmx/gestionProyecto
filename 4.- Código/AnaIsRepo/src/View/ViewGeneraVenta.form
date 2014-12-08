@@ -127,7 +127,7 @@
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="agregar2" min="-2" pref="135" max="-2" attributes="0"/>
+                                  <Component id="agregar2" min="-2" pref="157" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="agregar1" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -225,10 +225,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="panelImagen" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="panelImagen" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="idProductoTienda" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
@@ -250,7 +247,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1181,6 +1178,9 @@
               <Dimension value="[107, 33]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="agregar1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="agregar2">
           <Properties>
@@ -1190,7 +1190,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Image/limpiar.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Nueva venta"/>
+            <Property name="text" type="java.lang.String" value="Limpia producto"/>
             <Property name="toolTipText" type="java.lang.String" value="Limpia formulario"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -1200,6 +1200,9 @@
               <Dimension value="[107, 33]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="agregar2ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

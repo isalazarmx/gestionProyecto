@@ -26,7 +26,7 @@ public class ModelVenta {
     private int tipoVenta;
     private int idUsuario;
     private int idCliente;
-    private int idProducto;
+    private String idProducto;
     private DefaultTableModel modeloTable;
     
     
@@ -63,7 +63,7 @@ public class ModelVenta {
     public DefaultTableModel creaModelTable(){
         setModeloTable(new DefaultTableModel(){
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false,false
+                false, false, false, false, false, false, false
             };
             @Override
             public boolean isCellEditable(int row, int column){
@@ -72,10 +72,11 @@ public class ModelVenta {
         });
         getModeloTable().addColumn("Código");
         getModeloTable().addColumn("Articulo");
-        getModeloTable().addColumn("Descripcion");
         getModeloTable().addColumn("Tipo Venta");
         getModeloTable().addColumn("Cantidad");
         getModeloTable().addColumn("Precio");
+        getModeloTable().addColumn("Abono");
+        getModeloTable().addColumn("Resto");
         getModeloTable().addColumn("Importe");
         return getModeloTable();
     }
@@ -208,14 +209,14 @@ public class ModelVenta {
     /**
      * @return the idProducto
      */
-    public int getIdProducto() {
+    public String getIdProducto() {
         return idProducto;
     }
 
     /**
      * @param idProducto the idProducto to set
      */
-    public void setIdProducto(int idProducto) {
+    public void setIdProducto(String idProducto) {
         this.idProducto = idProducto;
     }
 

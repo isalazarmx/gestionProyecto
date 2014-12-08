@@ -13,8 +13,15 @@ import Model.ModelEmpresa;
 import Model.ModelProveedor;
 import Model.ModelUsuario;
 import Model.ModelVenta;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -71,6 +78,18 @@ public class ViewGeneraVenta extends javax.swing.JPanel {
     
     private void validation(){
         ArrayList components = new ArrayList<>();
+        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("MMM d, yyyy");
+        Calendar fecha = new GregorianCalendar();
+        int YYYY = fecha.get(Calendar.YEAR);
+        String MM = encuentraMes(fecha.get(Calendar.MONTH)+1);
+        int DD = fecha.get(Calendar.DATE);
+        Date dato=null;
+        try {
+            dato = formatoDelTexto.parse(""+MM+" "+DD+", "+YYYY);
+        } catch (ParseException ex) {
+            Logger.getLogger(ViewGeneraVenta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        fechaEntrega.setDate(dato);
         components.add(codigoBarras);
         components.add(idProductoTienda);
         components.add(panelImagen);
@@ -102,6 +121,24 @@ public class ViewGeneraVenta extends javax.swing.JPanel {
         controller.validations();
     }
     
+    private String encuentraMes(int mes){
+        String MMM = "";
+        switch(mes){
+            case 1:MMM = "JAN";break;
+            case 2:MMM = "FEB";break;
+            case 3:MMM = "MAR";break;
+            case 4:MMM = "APR";break;
+            case 5:MMM = "MAY";break;
+            case 6:MMM = "JUN";break;
+            case 7:MMM = "JUL";break;
+            case 8:MMM = "AUG";break;
+            case 9:MMM = "SEP";break;
+            case 10:MMM = "OCT";break;
+            case 11:MMM = "NOV";break;
+            case 12:MMM = "DEC";break;
+        }
+        return MMM;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -452,9 +489,7 @@ public class ViewGeneraVenta extends javax.swing.JPanel {
                     .addComponent(buscaProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(panelVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelVentaLayout.createSequentialGroup()
-                        .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelVentaLayout.createSequentialGroup()
                         .addComponent(idProductoTienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
@@ -472,7 +507,7 @@ public class ViewGeneraVenta extends javax.swing.JPanel {
                             .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelPedido.setBackground(new java.awt.Color(255, 255, 255));
@@ -1031,14 +1066,24 @@ public class ViewGeneraVenta extends javax.swing.JPanel {
         agregar1.setContentAreaFilled(false);
         agregar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         agregar1.setPreferredSize(new java.awt.Dimension(107, 33));
+        agregar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregar1ActionPerformed(evt);
+            }
+        });
 
         agregar2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         agregar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/limpiar.png"))); // NOI18N
-        agregar2.setText("Nueva venta");
+        agregar2.setText("Limpia producto");
         agregar2.setToolTipText("Limpia formulario");
         agregar2.setContentAreaFilled(false);
         agregar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         agregar2.setPreferredSize(new java.awt.Dimension(107, 33));
+        agregar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregar2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1060,7 +1105,7 @@ public class ViewGeneraVenta extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(agregar2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(agregar2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(agregar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(panelprecios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1103,7 +1148,8 @@ public class ViewGeneraVenta extends javax.swing.JPanel {
     
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
         // TODO add your handling code here:
-//        controller.eliminaCategoria(labelStatus);
+        controller.agregarVentaTabla(userTemp.getIdUsuario());
+         controller.limpiaCamposVenta();
     }//GEN-LAST:event_agregarActionPerformed
 
     private void idProductoAlmacenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idProductoAlmacenKeyPressed
@@ -1259,6 +1305,7 @@ public class ViewGeneraVenta extends javax.swing.JPanel {
 
     private void resta01FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_resta01FocusLost
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_resta01FocusLost
 
     private void resta01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resta01ActionPerformed
@@ -1410,6 +1457,7 @@ public class ViewGeneraVenta extends javax.swing.JPanel {
     private void abono01FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_abono01FocusLost
         // TODO add your handling code here:
         validation.placeHolder(false, abono01,"0");
+        controller.ingresaAbono();
     }//GEN-LAST:event_abono01FocusLost
 
     private void abono02FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_abono02FocusGained
@@ -1419,7 +1467,8 @@ public class ViewGeneraVenta extends javax.swing.JPanel {
 
     private void abono02FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_abono02FocusLost
         // TODO add your handling code here:
-        validation.placeHolder(true, abono02,"00");
+        validation.placeHolder(false, abono02,"00");
+        controller.ingresaAbono();
     }//GEN-LAST:event_abono02FocusLost
 
     private void cantidadRecibida01FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidadRecibida01FocusGained
@@ -1430,7 +1479,7 @@ public class ViewGeneraVenta extends javax.swing.JPanel {
     private void cantidadRecibida01FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidadRecibida01FocusLost
         // TODO add your handling code here:
         validation.placeHolder(false, cantidadRecibida01,"0");
-
+        controller.ingresaCantidadPagar();
     }//GEN-LAST:event_cantidadRecibida01FocusLost
 
     private void cantidadRecibida02FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidadRecibida02FocusGained
@@ -1441,6 +1490,7 @@ public class ViewGeneraVenta extends javax.swing.JPanel {
     private void cantidadRecibida02FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidadRecibida02FocusLost
         // TODO add your handling code here:
         validation.placeHolder(false, cantidadRecibida02,"00");
+        controller.ingresaCantidadPagar();
     }//GEN-LAST:event_cantidadRecibida02FocusLost
 
     private void idProductoTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idProductoTiendaActionPerformed
@@ -1452,6 +1502,16 @@ public class ViewGeneraVenta extends javax.swing.JPanel {
     private void idProductoTiendaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idProductoTiendaKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_idProductoTiendaKeyPressed
+
+    private void agregar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar2ActionPerformed
+        // TODO add your handling code here:
+        controller.limpiaCamposVenta();
+    }//GEN-LAST:event_agregar2ActionPerformed
+
+    private void agregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar1ActionPerformed
+        // TODO add your handling code here:
+        controller.addRegistro();
+    }//GEN-LAST:event_agregar1ActionPerformed
 
     
        

@@ -76,7 +76,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
     
     private void cargarModoVendedor(){
         panelBotoneraPrincipal.setVisible(false);
-        controllerPaneles.addPanel(panelCentral, new ViewRealizarVentas(controllerPaneles));
+        controllerPaneles.addPanel(panelCentral, new ViewGeneraVenta(controllerPaneles, modelUsuario, rootPaneCheckingEnabled));
         ajustes.setVisible(false);
         user.setEnabled(false);
     }
@@ -352,7 +352,7 @@ public class ViewBasePrincipal extends javax.swing.JFrame {
 
     private void jLabelHora1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHora1MouseClicked
         // TODO add your handling code here:
-        controllerPaneles.addPanel(panelCentral, new ViewGeneraVenta(controllerPaneles, null, rootPaneCheckingEnabled));
+        controllerPaneles.addPanel(panelCentral, new ViewGeneraVenta(controllerPaneles,modelUsuario, rootPaneCheckingEnabled));
         controllerPaneles.addPanel(panelBotoneraPrincipal, new ViewBotoneraPrincipal(controllerPaneles,false));
         
     }//GEN-LAST:event_jLabelHora1MouseClicked

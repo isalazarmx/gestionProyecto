@@ -28,3 +28,5 @@ JOIN PROVEEDOR_HAS_PRODUCTO PP
 ON (PPP.`idProveedor`=PP.`Proveedor_idProveedor`)
 JOIN producto P
 ON(PP.`Producto_idProducto`=P.`idProducto`);
+
+select * from venta;
