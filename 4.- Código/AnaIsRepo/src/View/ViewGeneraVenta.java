@@ -169,7 +169,6 @@ public class ViewGeneraVenta extends javax.swing.JPanel {
         panelPedido = new javax.swing.JPanel();
         idCliente = new javax.swing.JComboBox();
         jLabel40 = new javax.swing.JLabel();
-        fechaEntrega = new com.toedter.calendar.JDateChooser();
         jLabel41 = new javax.swing.JLabel();
         hora = new javax.swing.JSpinner();
         jLabel33 = new javax.swing.JLabel();
@@ -187,6 +186,7 @@ public class ViewGeneraVenta extends javax.swing.JPanel {
         abono02 = new javax.swing.JTextField();
         jLabel31 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
+        fechaEntrega = new com.toedter.calendar.JDateChooser();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaNuevaVenta = new javax.swing.JTable();
         panelprecios = new javax.swing.JPanel();
@@ -530,16 +530,6 @@ public class ViewGeneraVenta extends javax.swing.JPanel {
         jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel40.setText("Fecha:");
 
-        fechaEntrega.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        fechaEntrega.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fechaEntregaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fechaEntregaFocusLost(evt);
-            }
-        });
-
         jLabel41.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel41.setText("Hora:");
@@ -756,16 +746,18 @@ public class ViewGeneraVenta extends javax.swing.JPanel {
         jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel50.setText("Cliente:");
 
+        fechaEntrega.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout panelPedidoLayout = new javax.swing.GroupLayout(panelPedido);
         panelPedido.setLayout(panelPedidoLayout);
         panelPedidoLayout.setHorizontalGroup(
             panelPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPedidoLayout.createSequentialGroup()
-                .addGroup(panelPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelPedidoLayout.createSequentialGroup()
                         .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fechaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(fechaEntrega, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelPedidoLayout.createSequentialGroup()
                         .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -814,11 +806,11 @@ public class ViewGeneraVenta extends javax.swing.JPanel {
                     .addComponent(idCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel50, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
-                .addGroup(panelPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(panelPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(panelPedidoLayout.createSequentialGroup()
-                        .addGroup(panelPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fechaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(fechaEntrega, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1439,15 +1431,6 @@ public class ViewGeneraVenta extends javax.swing.JPanel {
     private void idClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idClienteActionPerformed
-
-    private void fechaEntregaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaEntregaFocusGained
-        // TODO add your handling code here:
-        fechaEntrega.setDate(null);
-    }//GEN-LAST:event_fechaEntregaFocusGained
-
-    private void fechaEntregaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaEntregaFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fechaEntregaFocusLost
 
     private void abono01FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_abono01FocusGained
         // TODO add your handling code here:
